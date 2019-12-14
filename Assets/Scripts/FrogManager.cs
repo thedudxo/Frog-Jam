@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class FrogManager : MonoBehaviour {
 
     private Vector2 spawnpoint;
@@ -10,6 +11,7 @@ public class FrogManager : MonoBehaviour {
     [SerializeField] private GameObject deathcounter;
     [SerializeField] private float resetDistance;
     [SerializeField] private float setBack = 25;
+
 
     private int deaths = 0;
 
@@ -60,7 +62,7 @@ public class FrogManager : MonoBehaviour {
         }
         
         rb.velocity = Vector3.zero;
-        GM.instance.PhillDied();
+        GM.PhillDied();
 
     }
 }

@@ -16,7 +16,7 @@ public class AlliA : MonoBehaviour {
         spawnPos = transform.position;
         startSpeed = speed;
         GetComponent<SpriteRenderer>().flipX = true;
-        GM.instance.AddGater(gameObject);
+        GM.AddGater(gameObject);
     }
 	
 	// Update is called once per frame

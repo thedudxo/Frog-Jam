@@ -3,38 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GM : MonoBehaviour {
-    public static GM instance = null;
+public static class GM {
 
-    List<GameObject> gaters = new List<GameObject>();
+    public static ProgressBar progressBar;
+    public static ComboCounter comboCounter;
+
+    static List<GameObject> gaters = new List<GameObject>();
 
 
-	// Use this for initialization
-	void Awake () {
-		if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(this);
-        }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    public void PhillDied()
+    static public void PhillDied()
     {
      foreach(GameObject gater in gaters)
         {
             gater.GetComponent<AlliA>().ResetGater();
         }
+
+        progressBar.checkPersonalBest();
+        comboCounter.CheckCombo();
     }
 
-    public void AddGater(GameObject gater)
+    public static void AddGater(GameObject gater)
     {
         gaters.Add(gater);
     }
