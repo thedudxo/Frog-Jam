@@ -13,19 +13,10 @@ public class Level : MonoBehaviour
     public GameObject wave;
 
 
+
+
     float gizmoYOffset = 0; //avoid drawing on the canvas boundry
     float gizmoScale = 1;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnDrawGizmos()
     {
@@ -37,7 +28,5 @@ public class Level : MonoBehaviour
         Gizmos.DrawLine(startDraw, endDraw);
         Gizmos.DrawSphere(startDraw, gizmoScale);
         Gizmos.DrawSphere(endDraw, gizmoScale);
-
-
     }
 }
