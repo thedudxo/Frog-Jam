@@ -24,7 +24,7 @@ public static class GM {
             gater.GetComponent<AlliA>().ResetGater();
         }
 
-        progressBar.checkPersonalBest();
+        progressBar.PhillDied();
         comboCounter.CheckCombo();
     }
 
