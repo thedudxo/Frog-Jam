@@ -7,8 +7,13 @@ public static class GM {
 
     public static ProgressBar progressBar;
     public static ComboCounter comboCounter;
+    public static FrogManager frogManager;
+    public static Level currentLevel;
 
+ 
     static List<GameObject> gaters = new List<GameObject>();
+
+    public static readonly string playerTag = "Phill";
 
 
 

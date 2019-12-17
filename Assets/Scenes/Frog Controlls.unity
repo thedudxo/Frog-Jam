@@ -794,6 +794,7 @@ GameObject:
   - component: {fileID: 171035171}
   - component: {fileID: 171035170}
   - component: {fileID: 171035169}
+  - component: {fileID: 171035173}
   m_Layer: 0
   m_Name: DeathText
   m_TagString: DeathCount
@@ -814,7 +815,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.0576353, y: -6.634123}
+  m_Offset: {x: 3.0576353, y: -9}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -901,6 +902,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &171035173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171035168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c24604904895f34d92bb706cd16b923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathcounter: {fileID: 171035170}
 --- !u!1001 &234317913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2345,6 +2359,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startX: -29
   endX: 243
+  spawnPlatformEndX: -11.69
+  spawnPlatformLength: 0
+  gizmoYOffset: -4.44
+  gizmoScale: 0.6
   player: {fileID: 1958854815}
   wave: {fileID: 1765290826}
 --- !u!4 &651638694
@@ -4930,6 +4948,21 @@ PrefabInstance:
     - target: {fileID: 114394257589219016, guid: afe1246e1dbcdba4bad9b95b9c7a0a07,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212644457572000316, guid: afe1246e1dbcdba4bad9b95b9c7a0a07,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212644457572000316, guid: afe1246e1dbcdba4bad9b95b9c7a0a07,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212644457572000316, guid: afe1246e1dbcdba4bad9b95b9c7a0a07,
+        type: 3}
+      propertyPath: m_FlipY
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -8301,7 +8334,7 @@ GameObject:
   - component: {fileID: 1958854817}
   - component: {fileID: 1958854816}
   m_Layer: 0
-  m_Name: phil_the_frog_jumping
+  m_Name: Phill the Frog
   m_TagString: Phill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8319,11 +8352,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e13faaddcab9f948b9881e1cb19c392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1958854818}
-  wave: {fileID: 1765290826}
-  deathcounter: {fileID: 171035168}
   resetDistance: 0
   setBack: 25
+  killPhillUnderY: -5
 --- !u!114 &1958854817
 MonoBehaviour:
   m_ObjectHideFlags: 0
