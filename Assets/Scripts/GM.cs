@@ -9,13 +9,14 @@ public static class GM {
     public static ComboCounter comboCounter;
     public static FrogManager frogManager;
     public static Level currentLevel;
+    public static SplitManager splitManager;
 
- 
+
     static List<GameObject> gaters = new List<GameObject>();
 
     public static readonly string playerTag = "Phill";
 
-
+    
 
     static public void PhillDied()
     {

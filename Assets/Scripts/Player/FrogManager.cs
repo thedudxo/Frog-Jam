@@ -51,6 +51,7 @@ public class FrogManager : MonoBehaviour {
         {
             transform.position = spawnpoint;
             wave.GetComponent<Wave>().ResetWave();
+            GM.splitManager.currentTime = 0;
         }
         
         rb.velocity = Vector3.zero;
