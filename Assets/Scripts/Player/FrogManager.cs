@@ -39,14 +39,13 @@ public class FrogManager : MonoBehaviour {
 
     public void KillPhill(bool reset = false)
     {
-
+        //setback
         if (!reset) 
         {
             transform.position = new Vector2(transform.position.x - setBack, 5);
             wave.transform.position = new Vector2(wave.transform.position.x - setBack, wave.transform.position.y);
         }
-        
-
+        //respawn
         if (transform.position.x < (spawnpoint.x + GM.currentLevel.spawnPlatformLength) || reset) //start from the beginning of the level
         {
             transform.position = spawnpoint;
@@ -54,8 +53,14 @@ public class FrogManager : MonoBehaviour {
         }
         
         rb.velocity = Vector3.zero;
-        GM.PhillDied();
+
+        //particles
         respawnParticles.gameObject.transform.position = transform.position;
         respawnParticles.Emit(5);
+
+        //bloodsplatter
+        GetComponent<FrogMetaBloodSplater>().startSplatter();
+
+        GM.PhillDied();
     }
 }
