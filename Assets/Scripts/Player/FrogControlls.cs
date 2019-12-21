@@ -5,9 +5,11 @@ using UnityEngine;
 public class FrogControlls : MonoBehaviour {
 
 
-    [SerializeField] private Rigidbody2D rb;
+    Rigidbody2D rb;
     [SerializeField] private Sprite jumpSprite;
     [SerializeField] private Sprite restSprite;
+    [SerializeField] GameObject jumpColliders;
+    [SerializeField] GameObject restColliders;
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
     [SerializeField] private KeyCode DebugKillKey = KeyCode.Q;
     [SerializeField] private float jumpForce;
@@ -24,15 +26,24 @@ public class FrogControlls : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        
+        rb = GetComponent<Rigidbody2D>();
         layermask = LayerMask.GetMask("Ground");
 	}
+
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (canJump) { gameObject.GetComponent<SpriteRenderer>().sprite = restSprite; }
-        else { gameObject.GetComponent<SpriteRenderer>().sprite = jumpSprite; }
+        if (canJump) {
+            gameObject.GetComponent<SpriteRenderer>().sprite = restSprite;
+            jumpColliders.SetActive(false);
+            restColliders.SetActive(true);
+        }
+        else {
+            gameObject.GetComponent<SpriteRenderer>().sprite = jumpSprite;
+            jumpColliders.SetActive(true);
+            restColliders.SetActive(false);
+        }
 
         if (Input.GetKey(jumpKey))
         {
