@@ -14,6 +14,7 @@ public class FrogControlls : MonoBehaviour {
     [SerializeField] private float maxJumpTime;
     [SerializeField] private float jumpTimerBuff = 2;  
     [SerializeField] private float minJumpAmmount = 0.2f;
+    [SerializeField] bool drawRays = false;
 
     private int layermask;
     private float jumpTimer = 0;
@@ -57,6 +58,7 @@ public class FrogControlls : MonoBehaviour {
 
     private void FixedUpdate()
     {
+
         Vector2 rayPos1 = new Vector2(transform.position.x - 1.1f, transform.position.y);
         Vector2 rayPos2 = new Vector2(transform.position.x + 1.1f, transform.position.y);
         Vector2 rayPos3 = new Vector2(transform.position.x - 1.1f, transform.position.y - 1f);
@@ -66,8 +68,12 @@ public class FrogControlls : MonoBehaviour {
             || Physics2D.Raycast(rayPos2, Vector2.down, 0.9f, layermask) 
             || Physics2D.Raycast(rayPos3, Vector2.right,2.2f , layermask);
 
-        Debug.DrawRay(rayPos1, Vector2.down, Color.magenta, layermask);     Debug.DrawRay(rayPos2, Vector2.down, Color.magenta, layermask);
-        Debug.DrawRay(rayPos3, new Vector2(2.2f,0), Color.magenta, layermask);
+        if (drawRays)
+        {
+            Debug.DrawRay(rayPos1, Vector2.down, Color.magenta, layermask); Debug.DrawRay(rayPos2, Vector2.down, Color.magenta, layermask);
+            Debug.DrawRay(rayPos3, new Vector2(2.2f, 0), Color.magenta, layermask);
+        }
+        
     }
 
 }
