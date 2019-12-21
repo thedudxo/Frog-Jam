@@ -13,6 +13,7 @@ public class FrogManager : MonoBehaviour {
     [SerializeField] float setBack = 25;
     [SerializeField] float killPhillUnderY = -5;
 
+    [SerializeField] ParticleSystem respawnParticles;
 
     // Use this for initialization
     void Start () {
@@ -54,6 +55,7 @@ public class FrogManager : MonoBehaviour {
         
         rb.velocity = Vector3.zero;
         GM.PhillDied();
-
+        respawnParticles.gameObject.transform.position = transform.position;
+        respawnParticles.Emit(5);
     }
 }
