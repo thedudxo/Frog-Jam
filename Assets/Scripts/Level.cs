@@ -18,13 +18,30 @@ public class Level : MonoBehaviour
     [Header("Assigniees")]
     public GameObject player;
     public GameObject wave;
-    
-    
+    [SerializeField] GameObject winScreen;
+
+
 
     private void Start()
     {
         GM.currentLevel = this;
         spawnPlatformLength = spawnPlatformEndX - startX;
+    }
+
+    private void Update()
+    {
+        // got to the end of the level (won game)
+        if (player.transform.position.x >= endX)
+        {
+            winScreen.SetActive(true);
+        }
+
+        //restart after winning
+        if (winScreen.activeInHierarchy && Input.GetKeyDown(KeyCode.Q))
+        {
+            winScreen.SetActive(false);
+            player.GetComponent<FrogManager>().KillPhill(true);
+        }
     }
 
     private void OnDrawGizmos()
