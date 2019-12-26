@@ -14,7 +14,12 @@ public class FrogManager : MonoBehaviour {
     [SerializeField] float killPhillUnderY = -5;
 
     [SerializeField] AudioSource deathSound;
+
+    [Header("Particles")]
     [SerializeField] ParticleSystem respawnParticles;
+    int respawnEmit = 5;
+    [SerializeField] ParticleSystem deathParticles;
+    int deathEmit = 25;
 
     // Use this for initialization
     void Start () {
@@ -40,6 +45,10 @@ public class FrogManager : MonoBehaviour {
 
     public void KillPhill(bool reset = false)
     {
+
+        deathParticles.gameObject.transform.position = transform.position;
+        deathParticles.Emit(deathEmit);
+
         //setback
         if (!reset) 
         {
@@ -58,7 +67,7 @@ public class FrogManager : MonoBehaviour {
 
         //particles
         respawnParticles.gameObject.transform.position = transform.position;
-        respawnParticles.Emit(5);
+        respawnParticles.Emit(respawnEmit);
 
         //bloodsplatter
         GetComponent<FrogMetaBloodSplater>().startSplatter();
