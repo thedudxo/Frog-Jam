@@ -7,25 +7,28 @@ public static class GM {
 
     public static ProgressBar progressBar;
     public static ComboCounter comboCounter;
-    public static FrogManager frogManager;
+    public static FrogDeath frogDeath;
     public static Level currentLevel;
     public static SplitManager splitManager;
+    public static AudioManager audioManager;
 
 
     static List<GameObject> gaters = new List<GameObject>();
 
     public static readonly string playerTag = "Phill";
 
-    
-
-    static public void PhillDied()
+    static public void PhillRespawned()
     {
-     foreach(GameObject gater in gaters)
+        foreach (GameObject gater in gaters)
         {
             gater.GetComponent<AlliA>().ResetGater();
         }
 
         progressBar.PhillDied();
+    }
+
+    static public void PhillDied()
+    {
         comboCounter.CheckCombo();
     }
 

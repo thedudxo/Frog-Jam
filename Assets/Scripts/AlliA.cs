@@ -47,7 +47,7 @@ public class AlliA : MonoBehaviour {
     {
         if(collision.tag == "Phill" && !freindly)
         {
-            GM.frogManager.KillPhill();
+            GM.frogDeath.KillPhill();
         }
     }
 

@@ -32,7 +32,9 @@ public class FrogControlls : MonoBehaviour {
 
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () { 
+
+        if(GM.frogDeath.dead) { return; }
 
         if (canJump) {
             gameObject.GetComponent<SpriteRenderer>().sprite = restSprite;
@@ -63,7 +65,7 @@ public class FrogControlls : MonoBehaviour {
 
         if (Input.GetKeyDown(DebugKillKey))
         {
-            GetComponent<FrogManager>().KillPhill();
+            GetComponent<FrogDeath>().KillPhill();
         }
     }
 

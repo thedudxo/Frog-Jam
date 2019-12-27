@@ -7,6 +7,8 @@ public class SplitManager : MonoBehaviour
 {
     public decimal currentTime = 0;
     [SerializeField] Text timer;
+    [SerializeField] public ParticleSystem newPBParticles;
+    public int particleBurstCount = 20;
 
     // Start is called before the first frame update
     void Start()

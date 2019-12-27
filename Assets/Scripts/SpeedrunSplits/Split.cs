@@ -16,12 +16,6 @@ public class Split : MonoBehaviour
         title.text = splitName;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("hit");
@@ -30,6 +24,8 @@ public class Split : MonoBehaviour
         {
             bestTime = GM.splitManager.currentTime;
             bestTimeText.text = decimal.Round(bestTime,2) + " sec";
+            GM.splitManager.newPBParticles.gameObject.transform.position = GM.frogDeath.gameObject.transform.position;
+            GM.splitManager.newPBParticles.Emit(GM.splitManager.particleBurstCount);
         }
     }
 }

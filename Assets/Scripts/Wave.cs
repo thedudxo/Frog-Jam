@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour {
 
-    [SerializeField] private float waveStartSpeed;
+    [SerializeField] public float waveStartSpeed;
     [SerializeField] private float waveAcceleration; 
     //Waves really dont work this way but whatever
     //Maybie this wave has rocket thrusters on the back of it.

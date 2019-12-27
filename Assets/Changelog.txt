@@ -1,0 +1,16 @@
+0.2.2
+New Features
+- Particles: When you die, and respawn. So all the time.
+- "pop" sound "effect" when you die. *warranty void if its just a dude making a pop sound with his lips*
+- Speedrun chekpoints and timer. Sonic not included.
+- Camera smoothly follows Phill around. Phill is the name of the frog.
+- somewhat unoticicable red bar shows you how much progress you loose, just to make you feel worse.
+- green "blood" effect over the screen when you die.
+
+New Bugs
+- that green blood effect doesn't work.
+
+Changes
+- Frog colliders are a little more fair and are always within the frog. one must find the true frog within themselves.
+- removed some old scripts from the project that were never used. this doesn't affect you, sou you just wasted your time reading that line. mwuahahhaa
+- Respawning on the starting platform will now cause a full reset. this should reduce confusion when the wave starts "spawning" next to you.

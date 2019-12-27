@@ -40,7 +40,7 @@ public class Level : MonoBehaviour
         if (winScreen.activeInHierarchy && Input.GetKeyDown(KeyCode.Q))
         {
             winScreen.SetActive(false);
-            player.GetComponent<FrogManager>().KillPhill(true);
+            player.GetComponent<FrogDeath>().KillPhill(true);
         }
     }
 
