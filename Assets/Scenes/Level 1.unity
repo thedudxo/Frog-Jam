@@ -14611,7 +14611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splatter: {fileID: 325029910}
-  startAlpha: 0.3
+  startAlpha: 0.9
   decayAlpha: 0.03
 --- !u!212 &1958854820
 SpriteRenderer:
