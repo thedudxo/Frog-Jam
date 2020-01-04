@@ -16,7 +16,6 @@ public class Level : MonoBehaviour
     [SerializeField] float gizmoScale = 1;
 
     [Header("Assigniees")]
-    public GameObject player;
     public GameObject wave;
     [SerializeField] GameObject winScreen;
 
@@ -30,17 +29,21 @@ public class Level : MonoBehaviour
 
     private void Update()
     {
+        GameObject frog = FrogManager.frog;
+
         // got to the end of the level (won game)
-        if (player.transform.position.x >= endX)
+        if (frog.transform.position.x >= endX)
         {
             winScreen.SetActive(true);
+            frog.SetActive(false);
         }
 
         //restart after winning
         if (winScreen.activeInHierarchy && Input.GetKeyDown(KeyCode.Q))
         {
             winScreen.SetActive(false);
-            player.GetComponent<FrogDeath>().KillPhill(true);
+            frog.SetActive(true);
+            FrogManager.frogDeath.KillPhill(true);
         }
     }
 

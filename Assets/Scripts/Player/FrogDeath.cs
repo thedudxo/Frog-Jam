@@ -30,7 +30,8 @@ public class FrogDeath : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        GM.frogDeath = this;
+        FrogManager.frogDeath = this;
+        FrogManager.frog = gameObject;
         wave = GM.currentLevel.wave;
         spawnpoint = transform.position;
         rb = GetComponent<Rigidbody2D>();

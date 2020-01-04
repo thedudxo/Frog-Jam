@@ -36,18 +36,15 @@ public class AlliA : MonoBehaviour {
             if (transform.position.x < -patrollRange + spawnPos.x)
             {
                 speed *= -1;
-                
             }
         }
-        
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Phill" && !freindly)
         {
-            GM.frogDeath.KillPhill();
+            FrogManager.frogDeath.KillPhill();
         }
     }
 

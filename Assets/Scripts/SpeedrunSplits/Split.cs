@@ -24,7 +24,7 @@ public class Split : MonoBehaviour
         {
             bestTime = GM.splitManager.currentTime;
             bestTimeText.text = decimal.Round(bestTime,2) + " sec";
-            GM.splitManager.newPBParticles.gameObject.transform.position = GM.frogDeath.gameObject.transform.position;
+            GM.splitManager.newPBParticles.gameObject.transform.position = FrogManager.frog.transform.position;
             GM.splitManager.newPBParticles.Emit(GM.splitManager.particleBurstCount);
         }
     }

@@ -20,7 +20,7 @@ public class ProgressBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerProgressBar.value = (level.player.transform.position.x - level.startX) / (level.endX - level.startX);
+        playerProgressBar.value = (FrogManager.frog.transform.position.x - level.startX) / (level.endX - level.startX);
         waveProgressBar.value   = (level.wave.transform.position.x   - level.startX) / (level.endX - level.startX);
 
         //update looseProgressBar

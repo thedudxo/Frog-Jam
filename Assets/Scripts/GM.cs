@@ -7,7 +7,7 @@ public static class GM {
 
     public static ProgressBar progressBar;
     public static ComboCounter comboCounter;
-    public static FrogDeath frogDeath;
+    //public static FrogDeath frogDeath;
     public static Level currentLevel;
     public static SplitManager splitManager;
     public static AudioManager audioManager;
