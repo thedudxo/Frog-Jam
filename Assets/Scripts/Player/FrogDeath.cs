@@ -17,7 +17,6 @@ public class FrogDeath : MonoBehaviour {
     [SerializeField] float waitToRespawn = 1;
     float currentRespawnWaitTime = -1; //negative when not dying currently
     bool reset;
-    [HideInInspector] public bool dead = false;
     [SerializeField] GameObject colliders;
 
     [Header("Particles")]
@@ -40,8 +39,11 @@ public class FrogDeath : MonoBehaviour {
 
 
     // Update is called once per frame
-    void Update() { 
+    void Update() {
 
+        Debug.Log(GM.gameState);
+
+        //wait for respawn
         if(! (currentRespawnWaitTime < 0)) //currently dying
         {
             currentRespawnWaitTime += Time.deltaTime;
@@ -86,7 +88,6 @@ public class FrogDeath : MonoBehaviour {
         respawnParticles.Emit(respawnEmit);
 
         //these get disabled when killed
-        dead = false;
         rb.gravityScale = 1;
         spriteRenderer.enabled = true;
         colliders.SetActive(true);
@@ -94,15 +95,17 @@ public class FrogDeath : MonoBehaviour {
 
         GM.audioManager.PlaySound("RespawnPop");
         rb.velocity = Vector3.zero;
+        GM.gameState = GM.GameState.alive;
         GM.PhillRespawned();
     }
 
     public void KillPhill(bool reset = false)
     {
+        if(GM.gameState == GM.GameState.finishedLevel) { return; }
         this.reset = reset;
 
         //these get changed back when respawning
-        dead = true;
+        GM.gameState = GM.GameState.dead;
         rb.gravityScale = 0;
         spriteRenderer.enabled = false; 
         colliders.SetActive(false);

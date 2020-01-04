@@ -32,17 +32,17 @@ public class Level : MonoBehaviour
         GameObject frog = FrogManager.frog;
 
         // got to the end of the level (won game)
-        if (frog.transform.position.x >= endX)
+        if (frog.transform.position.x >= endX && GM.gameState == GM.GameState.alive)
         {
             winScreen.SetActive(true);
-            frog.SetActive(false);
+            GM.gameState = GM.GameState.finishedLevel;
         }
 
         //restart after winning
-        if (winScreen.activeInHierarchy && Input.GetKeyDown(KeyCode.Q))
+        if (GM.gameState == GM.GameState.finishedLevel && Input.GetKeyDown(KeyCode.Q))
         {
             winScreen.SetActive(false);
-            frog.SetActive(true);
+            GM.gameState = GM.GameState.alive;
             FrogManager.frogDeath.KillPhill(true);
         }
     }
