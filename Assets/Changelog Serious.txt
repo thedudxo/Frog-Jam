@@ -1,3 +1,12 @@
+0.2.3
+
+Fixes:
+- the game doesn't 'really' play anymore when the win screen pops up.
+- sound should now work on HTML
+- activating the "assassins creed" checkpoint and not surviving shouldn't happen now.
+
+
+
 0.2.2
 
 New Features:

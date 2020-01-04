@@ -666,7 +666,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a072d0204a9103942a0b87bce5028db2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5cc9707ebf1c1004f80b3354b83a2cc8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2654,7 +2654,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619378636}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 125.03, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 12456337}
@@ -2768,7 +2768,6 @@ MonoBehaviour:
   spawnPlatformLength: 0
   gizmoYOffset: -4.44
   gizmoScale: 0.6
-  player: {fileID: 1958854815}
   wave: {fileID: 1765290826}
   winScreen: {fileID: 938858856}
 --- !u!4 &651638694
@@ -3009,7 +3008,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 75ef14642141316418ba383f544477c8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5d9074e3767cfd2458cd87ba3e50b475, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3520,8 +3519,8 @@ RectTransform:
   m_Children:
   - {fileID: 325029912}
   - {fileID: 1295296008}
-  - {fileID: 938858857}
   - {fileID: 1478898278}
+  - {fileID: 938858857}
   m_Father: {fileID: 651638694}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4148,7 +4147,7 @@ RectTransform:
   - {fileID: 1143655722}
   - {fileID: 551738621}
   m_Father: {fileID: 847348692}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7171,7 +7170,7 @@ GameObject:
   - component: {fileID: 1478898280}
   - component: {fileID: 1478898279}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7190,7 +7189,7 @@ RectTransform:
   m_Children:
   - {fileID: 1469096803}
   m_Father: {fileID: 847348692}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -12642,7 +12641,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6c6d407ed1bbab84eb1b8931b5b029d3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b963930373392bf48a7b425f4ff452b6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -14229,7 +14228,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4c8760d45ebe08a47be87af96f6488f0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cc56dcbe5c2a7f64fb42e657affb6427, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -14550,7 +14549,6 @@ MonoBehaviour:
   killPhillUnderY: -5
   setBack: 25
   waitToRespawn: 1
-  dead: 0
   colliders: {fileID: 650456351}
   respawnParticles: {fileID: 2020713797}
   deathParticles: {fileID: 1551111630}
@@ -14831,22 +14829,22 @@ PrefabInstance:
     - target: {fileID: 6311799612257047874, guid: db98ff9b47d6e5d4d981d80fa72237aa,
         type: 3}
       propertyPath: m_Offset.x
-      value: -4.1260033
+      value: -4.492634
       objectReference: {fileID: 0}
     - target: {fileID: 6311799612257047874, guid: db98ff9b47d6e5d4d981d80fa72237aa,
         type: 3}
       propertyPath: m_Size.x
-      value: 1.7510757
+      value: 0.8528671
       objectReference: {fileID: 0}
     - target: {fileID: 6311799612257047874, guid: db98ff9b47d6e5d4d981d80fa72237aa,
         type: 3}
       propertyPath: m_Offset.y
-      value: -3.75071
+      value: -1.8556318
       objectReference: {fileID: 0}
     - target: {fileID: 6311799612257047874, guid: db98ff9b47d6e5d4d981d80fa72237aa,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.45407963
+      value: 0.29784966
       objectReference: {fileID: 0}
     - target: {fileID: 6311799612257047875, guid: db98ff9b47d6e5d4d981d80fa72237aa,
         type: 3}
@@ -25085,7 +25083,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bfd2d6660ec21b44289a1812471a1f4b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 72299a75698185c4eb254548b74b111c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -36,6 +36,8 @@ public class Level : MonoBehaviour
         {
             winScreen.SetActive(true);
             GM.gameState = GM.GameState.finishedLevel;
+            FrogManager.frog.GetComponent<Rigidbody2D>().gravityScale = 0;
+            FrogManager.frog.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
 
         //restart after winning
