@@ -1,0 +1,12 @@
+The following is reported at the end of your playsession:
+
+wave Deaths
+deaths at that hole which counts up your deaths
+aligator Deaths
+water Deaths
+suicide Deaths
+time In Session
+your personal best distance through the level as a percentage
+personal best time for each split checkpoint
+
+your time at each split checkpoint is reported when you reach one for the first time.
