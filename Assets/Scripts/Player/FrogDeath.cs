@@ -54,7 +54,7 @@ public class FrogDeath : MonoBehaviour {
         }
         else { //not dying
             if (transform.position.y < killPhillUnderY)
-                { KillPhill(); }
+                { KillPhill(); Statistics.waterDeaths++; }
         }
     }
 
@@ -62,7 +62,7 @@ public class FrogDeath : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Wave") {
-            KillPhill(true); }
+            KillPhill(true); Statistics.waveDeaths++; }
     }
 
 
@@ -120,6 +120,7 @@ public class FrogDeath : MonoBehaviour {
         GM.audioManager.PlaySound("DeathFart" + Random.Range(1,4));
 
         GM.PhillDied();
+        Statistics.totalDeaths++;
         currentRespawnWaitTime = 0;
     }
 }

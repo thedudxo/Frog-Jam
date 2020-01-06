@@ -60,4 +60,9 @@ public class ProgressBar : MonoBehaviour
         progressLost.gameObject.SetActive(true);
         progressLost.value = playerProgressBar.value;
     }
+
+    public float GetPersonalBest()
+    {
+        return personalBest.value;
+    }
 }

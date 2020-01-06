@@ -14,6 +14,7 @@ public static class GM {
     static List<GameObject> gaters = new List<GameObject>();
 
     public static readonly string playerTag = "Phill";
+    public static bool sendAnyalitics = true;
 
     public enum GameState
     {
@@ -44,4 +45,5 @@ public static class GM {
     {
         gaters.Add(gater);
     }
+
 }

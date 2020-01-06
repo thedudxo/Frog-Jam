@@ -66,6 +66,7 @@ public class FrogControlls : MonoBehaviour {
         if (Input.GetKeyDown(DebugKillKey))
         {
             GetComponent<FrogDeath>().KillPhill();
+            Statistics.suicideDeaths++;
         }
     }
 

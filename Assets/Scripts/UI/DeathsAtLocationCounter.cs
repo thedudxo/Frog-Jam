@@ -12,6 +12,7 @@ public class DeathsAtLocationCounter : MonoBehaviour
         if (collision.gameObject.tag == GM.playerTag)
         {
             deaths++;
+            Statistics.deathsAtThatHole++; //TODO: make more dynamic for future uses in other levels
             deathcounter.text = "Deaths Here: " + deaths;
         }
     }

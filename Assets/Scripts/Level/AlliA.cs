@@ -45,6 +45,7 @@ public class AlliA : MonoBehaviour {
         if(collision.tag == "Phill" && !freindly)
         {
             FrogManager.frogDeath.KillPhill();
+            Statistics.aligatorDeaths++;
         }
     }
 
