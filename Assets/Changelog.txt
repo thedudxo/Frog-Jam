@@ -1,17 +1,17 @@
-​
-
 0.2.3 - Pretty much just fixing last versions "known issues".
 
 New Features:
 - Main Menu for main menuing. features this list of features.
-- Analytics, so i knows what chu up2 dog
-- Ability to Opt-Out of analytics, tinfoil hat not included
+
+- Anyalitics, so i knows what chu up2 dog
+
+- Ablility to Opt-Out of anaylitics, tinfoil hat not included
 
 Fixes:
 
 - the game doesn't 'really' play anymore when the win screen pops up. *warranty void if this is just a series of cheap hacks*
 
-- sound should now work on HTML. I promise there's no "RIP headphones" section.
+- sound should now work on HTML. I promise theres no "RIP headphones" section.
 
 - activating the "assassins creed" checkpoint when you didn't safely land in a conveniently placed cart of hay shouldn't happen now.
 

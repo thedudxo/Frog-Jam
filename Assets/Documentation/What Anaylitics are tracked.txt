@@ -1,8 +1,8 @@
-The following is reported at the end of your playsession:
+The following is reported at the end of your play session:
 
 wave Deaths
 deaths at that hole which counts up your deaths
-aligator Deaths
+alligator Deaths
 water Deaths
 suicide Deaths
 time In Session
