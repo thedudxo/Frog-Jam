@@ -41,8 +41,6 @@ public class FrogDeath : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        Debug.Log(GM.gameState);
-
         //wait for respawn
         if(! (currentRespawnWaitTime < 0)) //currently dying
         {

@@ -12,7 +12,6 @@ public class FrogCamera : MonoBehaviour
     void Start()
     {
         centerOffset = transform.position - player.transform.position;
-        Debug.Log(centerOffset);
     }
 
     // Update is called once per frame

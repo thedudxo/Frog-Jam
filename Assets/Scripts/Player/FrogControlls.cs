@@ -10,17 +10,23 @@ public class FrogControlls : MonoBehaviour {
     [SerializeField] private Sprite restSprite;
     [SerializeField] GameObject jumpColliders;
     [SerializeField] GameObject restColliders;
+
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
     [SerializeField] private KeyCode DebugKillKey = KeyCode.Q;
+
     [SerializeField] private float jumpForce;
     [SerializeField] private float maxJumpTime;
     [SerializeField] private float jumpTimerBuff = 2;  
     [SerializeField] private float minJumpAmmount = 0.2f;
+
     [SerializeField] bool drawRays = false;
 
     private int layermask;
-    private float jumpTimer = 0;
+    private float jumpKeyTime = 0;
+
     private bool canJump = false;
+    private float currentSpriteSwapTime = 0;
+    private readonly float spriteSwapMinWaitTime = .2f;
 
     private Ray2D jumpRay;
 
@@ -36,6 +42,26 @@ public class FrogControlls : MonoBehaviour {
 
         if(GM.gameState != GM.GameState.alive) { return; }
 
+        currentSpriteSwapTime += Time.deltaTime;
+
+        //can the frog jump?
+        currentSpriteSwapTime += Time.deltaTime;
+        if(currentSpriteSwapTime > spriteSwapMinWaitTime)
+        {
+            if (rb.velocity.magnitude <= Vector2.zero.magnitude + 1.5f )
+            {
+                canJump = true;
+            }
+            else
+            { 
+                canJump = false;
+            }
+            currentSpriteSwapTime = 0;
+        }
+        
+
+
+
         if (canJump) {
             gameObject.GetComponent<SpriteRenderer>().sprite = restSprite;
             jumpColliders.SetActive(false);
@@ -49,26 +75,40 @@ public class FrogControlls : MonoBehaviour {
 
         if (Input.GetKey(jumpKey))
         {
-            jumpTimer += Time.deltaTime;
+            jumpKeyTime += Time.deltaTime;
         }
 
         if (Input.GetKeyUp(jumpKey))
         {
             if (canJump)
             {
-                jumpTimer *= jumpTimerBuff;
-                jumpTimer = Mathf.Clamp(jumpTimer, minJumpAmmount, maxJumpTime);
-                rb.AddForce(new Vector2(jumpForce * jumpTimer, jumpForce * jumpTimer));
+                jumpKeyTime *= jumpTimerBuff;
+                jumpKeyTime = Mathf.Clamp(jumpKeyTime, minJumpAmmount, maxJumpTime);
+                rb.AddForce(new Vector2(jumpForce * jumpKeyTime, jumpForce * jumpKeyTime));
             }
-            jumpTimer = 0;
+            jumpKeyTime = 0;
         }
 
         if (Input.GetKeyDown(DebugKillKey))
         {
-            GetComponent<FrogDeath>().KillPhill();
+            FrogManager.frogDeath.KillPhill();
             Statistics.suicideDeaths++;
         }
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    colisions++;
+    //    if (colisions > 0) { canJump = true; }
+    //    Debug.Log(colisions);
+    //}
+
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    colisions--;
+    //    if (colisions == 0) { canJump = false; }
+    //    Debug.Log(colisions);
+    //}
 
     private void FixedUpdate()
     {
@@ -77,10 +117,10 @@ public class FrogControlls : MonoBehaviour {
         Vector2 rayPos2 = new Vector2(transform.position.x + 1.1f, transform.position.y);
         Vector2 rayPos3 = new Vector2(transform.position.x - 1.1f, transform.position.y - 1f);
 
-        canJump = 
-               Physics2D.Raycast(rayPos1, Vector2.down, 0.9f, layermask) 
-            || Physics2D.Raycast(rayPos2, Vector2.down, 0.9f, layermask) 
-            || Physics2D.Raycast(rayPos3, Vector2.right,2.2f , layermask);
+        //canJump = 
+        //       Physics2D.Raycast(rayPos1, Vector2.down, 0.9f, layermask) 
+        //    || Physics2D.Raycast(rayPos2, Vector2.down, 0.9f, layermask) 
+        //    || Physics2D.Raycast(rayPos3, Vector2.right,2.2f , layermask);
 
         if (drawRays)
         {
