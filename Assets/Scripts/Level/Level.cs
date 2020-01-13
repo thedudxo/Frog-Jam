@@ -19,9 +19,9 @@ public class Level : MonoBehaviour
     public GameObject wave;
     [SerializeField] GameObject winScreen;
 
+    public List<RandomSprite> randomSprites =  new List<RandomSprite>(); //these change when respawning
 
-
-    private void Start()
+    private void Awake()
     {
         GM.currentLevel = this;
         spawnPlatformLength = spawnPlatformEndX - startX;
@@ -47,6 +47,12 @@ public class Level : MonoBehaviour
             GM.gameState = GM.GameState.alive;
             FrogManager.frogDeath.KillPhill(true);
         }
+    }
+
+    public void FrogRespawned()
+    {
+
+        foreach (RandomSprite randomSprite in randomSprites) { randomSprite.randomSprite(); }
     }
 
     private void OnDrawGizmos()

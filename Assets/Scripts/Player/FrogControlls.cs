@@ -26,7 +26,7 @@ public class FrogControlls : MonoBehaviour {
 
     private bool canJump = false;
     private float currentSpriteSwapTime = 0;
-    private readonly float spriteSwapMinWaitTime = .2f;
+    private readonly float spriteSwapMinWaitTime = .1f;
 
     private Ray2D jumpRay;
 
@@ -48,7 +48,7 @@ public class FrogControlls : MonoBehaviour {
         currentSpriteSwapTime += Time.deltaTime;
         if(currentSpriteSwapTime > spriteSwapMinWaitTime)
         {
-            if (rb.velocity.magnitude <= Vector2.zero.magnitude + 1.5f )
+            if (rb.velocity.magnitude <= Vector2.zero.magnitude + 2f ) // not moving too fast
             {
                 canJump = true;
             }

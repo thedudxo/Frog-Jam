@@ -1,3 +1,24 @@
+New Features:
+Changes:
+Fixes:
+Known Issues:
+
+
+0.2.4
+
+New Features:
+- Stop sign
+
+
+Changes:
+- the way the game checks if you can jump or not is done differently, but should feel mostly the same. (It now checks if your moving)
+
+Fixes:
+
+Known Issues:
+- data privacy button may not work on html and I have no idea why ;~;
+
+
 0.2.3
 
 New Features:
