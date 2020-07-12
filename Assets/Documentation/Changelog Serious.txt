@@ -8,10 +8,14 @@ Known Issues:
 
 New Features:
 - Stop sign
+- Floppy Birb Art
+- Plumber pipes
 
 
 Changes:
-- the way the game checks if you can jump or not is done differently, but should feel mostly the same. (It now checks if your moving)
+- the way the game checks if you can jump or not is done differently, but should feel the same. (It now checks if your moving)
+- Colider is now a simple shape drawn around the frog
+- Wave has a bit of a jiggle to it, and no longer stops when you die
 
 Fixes:
 

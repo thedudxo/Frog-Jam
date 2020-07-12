@@ -9,7 +9,7 @@ public class Wave : MonoBehaviour {
     //Waves really dont work this way but whatever
     //Maybie this wave has rocket thrusters on the back of it.
 
-    public Vector2 spawnPosition;
+    Vector2 spawnPosition;
     public float waveCurrentSpeed;
 
     // Use this for initialization
@@ -25,7 +25,7 @@ public class Wave : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        transform.position = new Vector2(transform.position.x + waveCurrentSpeed, 0);
+        transform.position = new Vector2(transform.position.x + waveCurrentSpeed, transform.position.y);
         waveCurrentSpeed += waveAcceleration;
     }
 

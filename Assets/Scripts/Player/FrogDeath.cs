@@ -17,7 +17,7 @@ public class FrogDeath : MonoBehaviour {
     [SerializeField] float waitToRespawn = 1;
     float currentRespawnWaitTime = -1; //negative when not dying currently
     bool reset;
-    [SerializeField] GameObject colliders;
+    //[SerializeField] Collider collider;
 
     [Header("Particles")]
     [SerializeField] ParticleSystem respawnParticles;
@@ -74,7 +74,8 @@ public class FrogDeath : MonoBehaviour {
         }
 
         //respawn at platform
-        if (transform.position.x < (spawnpoint.x + GM.currentLevel.spawnPlatformLength) || reset) //start from the beginning of the level
+        if (transform.position.x < (spawnpoint.x + GM.currentLevel.spawnPlatformLength) || reset) 
+            //start from the beginning of the level
         {
             transform.position = spawnpoint;
             wave.GetComponent<Wave>().ResetWave();
@@ -89,7 +90,7 @@ public class FrogDeath : MonoBehaviour {
         //these get disabled when killed
         rb.gravityScale = 1;
         spriteRenderer.enabled = true;
-        colliders.SetActive(true);
+        GetComponent<PolygonCollider2D>().enabled = true;
         wave.GetComponent<Wave>().waveCurrentSpeed = wave.GetComponent<Wave>().waveStartSpeed;
 
         GM.audioManager.PlaySound("RespawnPop");
@@ -106,9 +107,9 @@ public class FrogDeath : MonoBehaviour {
         //these get changed back when respawning
         GM.gameState = GM.GameState.dead;
         rb.gravityScale = 0;
-        spriteRenderer.enabled = false; 
-        colliders.SetActive(false);
-        wave.GetComponent<Wave>().waveCurrentSpeed = 0;
+        spriteRenderer.enabled = false;
+        GetComponent<PolygonCollider2D>().enabled = false;
+        //wave.GetComponent<Wave>().waveCurrentSpeed = 0;
 
         rb.velocity = Vector3.zero;
 
