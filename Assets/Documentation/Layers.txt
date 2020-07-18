@@ -1,0 +1,7 @@
+70  - Objects Paper background
+80  - Phill paper background
+90  - Foreground collideable ojects
+95  - Foreground Details/Decals
+100 - Phill, collider, main sprite
+110 - Wave
+200 - UI

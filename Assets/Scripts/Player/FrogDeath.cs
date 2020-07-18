@@ -45,13 +45,13 @@ public class FrogDeath : MonoBehaviour {
         if(! (currentRespawnWaitTime < 0)) //currently dying
         {
             currentRespawnWaitTime += Time.deltaTime;
-            if(currentRespawnWaitTime >= waitToRespawn) {
-                respawn(reset);
+            if(GM.gameMusic.isBeatFrame && currentRespawnWaitTime >= waitToRespawn) {
+                Respawn(reset);
                 currentRespawnWaitTime = -1; //not currently waiting
             }
         }
         else { //not dying
-            if (transform.position.y < killPhillUnderY)
+            if (transform.position.y < killPhillUnderY && GM.gameMusic.isBeatFrame)
                 { KillPhill(); Statistics.waterDeaths++; }
         }
     }
@@ -64,7 +64,7 @@ public class FrogDeath : MonoBehaviour {
     }
 
 
-    void respawn(bool reset) //after pausing when dead
+    void Respawn(bool reset) //after pausing when dead
     {
         //setback
         if (!reset)
@@ -109,7 +109,7 @@ public class FrogDeath : MonoBehaviour {
         rb.gravityScale = 0;
         spriteRenderer.enabled = false;
         GetComponent<PolygonCollider2D>().enabled = false;
-        //wave.GetComponent<Wave>().waveCurrentSpeed = 0;
+        //those get changed back when respawning
 
         rb.velocity = Vector3.zero;
 
@@ -118,6 +118,7 @@ public class FrogDeath : MonoBehaviour {
 
         GetComponent<FrogMetaBloodSplater>().startSplatter();
         GM.audioManager.PlaySound("DeathFart" + Random.Range(1,4));
+        GM.gameMusic.DetuneMusic();
 
         GM.PhillDied();
         Statistics.totalDeaths++;

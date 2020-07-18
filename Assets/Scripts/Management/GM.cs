@@ -10,6 +10,7 @@ public static class GM {
     public static Level currentLevel;
     public static SplitManager splitManager;
     public static AudioManager audioManager;
+    public static GameMusic gameMusic;
 
     static List<GameObject> gaters = new List<GameObject>();
 

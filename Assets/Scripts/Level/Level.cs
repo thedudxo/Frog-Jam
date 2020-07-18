@@ -27,6 +27,11 @@ public class Level : MonoBehaviour
         spawnPlatformLength = spawnPlatformEndX - startX;
     }
 
+    private void Start()
+    {
+        GM.audioManager.PlaySound("BackgroundMusic");
+    }
+
     private void Update()
     {
         GameObject frog = FrogManager.frog;

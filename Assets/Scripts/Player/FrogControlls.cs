@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FrogControlls : MonoBehaviour {
 
@@ -8,8 +9,6 @@ public class FrogControlls : MonoBehaviour {
     Rigidbody2D rb;
     [SerializeField] private Sprite jumpSprite;
     [SerializeField] private Sprite restSprite;
-    [SerializeField] GameObject jumpColliders;
-    [SerializeField] GameObject restColliders;
 
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
     [SerializeField] private KeyCode DebugKillKey = KeyCode.Q;
@@ -20,6 +19,8 @@ public class FrogControlls : MonoBehaviour {
     [SerializeField] private float minJumpAmmount = 0.2f;
 
     [SerializeField] bool drawRays = false;
+
+    [SerializeField] Slider powerBar;
 
     private int layermask;
     private float jumpKeyTime = 0;
@@ -34,6 +35,9 @@ public class FrogControlls : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody2D>();
         layermask = LayerMask.GetMask("Ground");
+
+        powerBar.minValue = minJumpAmmount;
+        powerBar.maxValue = maxJumpTime;
 	}
 
 	
@@ -58,19 +62,16 @@ public class FrogControlls : MonoBehaviour {
             }
             currentSpriteSwapTime = 0;
         }
-        
 
+        powerBar.value = jumpKeyTime * jumpTimerBuff;
 
 
         if (canJump) {
             gameObject.GetComponent<SpriteRenderer>().sprite = restSprite;
-            jumpColliders.SetActive(false);
-            restColliders.SetActive(true);
         }
         else {
             gameObject.GetComponent<SpriteRenderer>().sprite = jumpSprite;
-            jumpColliders.SetActive(true);
-            restColliders.SetActive(false);
+
         }
 
         if (Input.GetKey(jumpKey))
@@ -85,6 +86,7 @@ public class FrogControlls : MonoBehaviour {
                 jumpKeyTime *= jumpTimerBuff;
                 jumpKeyTime = Mathf.Clamp(jumpKeyTime, minJumpAmmount, maxJumpTime);
                 rb.AddForce(new Vector2(jumpForce * jumpKeyTime, jumpForce * jumpKeyTime));
+                
             }
             jumpKeyTime = 0;
         }

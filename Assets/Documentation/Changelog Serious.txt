@@ -1,4 +1,5 @@
 New Features:
+New Art:
 Changes:
 Fixes:
 Known Issues:
@@ -7,20 +8,28 @@ Known Issues:
 0.2.4
 
 New Features:
+- Contextual Music. Origonal, Short and annoying after a while but suitable for prototyping the concept.
+- Jump Power Bar
+
+New Art:
 - Stop sign
 - Floppy Birb Art
 - Plumber pipes
+- Phill Art
 
 
 Changes:
 - the way the game checks if you can jump or not is done differently, but should feel the same. (It now checks if your moving)
-- Colider is now a simple shape drawn around the frog
-- Wave has a bit of a jiggle to it, and no longer stops when you die
+- Frog sillouette simplified, hence frog collider is simpler too. Less getting stuck on things.
+- Wave has a bit of a jiggle to it, and no longer stops when you die. also features more wave.
+- Checkpoints have non copyright infringing names.
+- Organised sprite layers so I know what should be drawn over what
 
 Fixes:
 
 Known Issues:
 - data privacy button may not work on html and I have no idea why ;~;
+- Phill can sometimes jump in the air just after respawning
 
 
 0.2.3
