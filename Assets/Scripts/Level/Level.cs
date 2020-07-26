@@ -29,7 +29,7 @@ public class Level : MonoBehaviour
 
     private void Start()
     {
-        GM.audioManager.PlaySound("BackgroundMusic");
+        //GM.audioManager.PlaySound("BackgroundMusic");
     }
 
     private void Update()

@@ -3,5 +3,7 @@
 90  - Foreground collideable ojects
 95  - Foreground Details/Decals
 100 - Phill, collider, main sprite
+105 - Details infront of player
 110 - Wave
+120 - ForeForeground
 200 - UI

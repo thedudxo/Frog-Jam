@@ -31,7 +31,13 @@ public class FrogControlls : MonoBehaviour {
 
     private Ray2D jumpRay;
 
-    // Use this for initialization
+    public bool CollidedSinceLastJump { get; private set; } = true;
+
+    private void Awake()
+    {
+        FrogManager.frogControlls = this;
+    }
+
     void Start () {
         rb = GetComponent<Rigidbody2D>();
         layermask = LayerMask.GetMask("Ground");
@@ -40,8 +46,7 @@ public class FrogControlls : MonoBehaviour {
         powerBar.maxValue = maxJumpTime;
 	}
 
-	
-	// Update is called once per frame
+
 	void Update () { 
 
         if(GM.gameState != GM.GameState.alive) { return; }
@@ -49,19 +54,20 @@ public class FrogControlls : MonoBehaviour {
         currentSpriteSwapTime += Time.deltaTime;
 
         //can the frog jump?
-        currentSpriteSwapTime += Time.deltaTime;
-        if(currentSpriteSwapTime > spriteSwapMinWaitTime)
+        if (rb.velocity.magnitude <= Vector2.zero.magnitude + 2f) // not moving too fast
         {
-            if (rb.velocity.magnitude <= Vector2.zero.magnitude + 2f ) // not moving too fast
-            {
-                canJump = true;
-            }
-            else
-            { 
-                canJump = false;
-            }
-            currentSpriteSwapTime = 0;
+            canJump = true;
         }
+        else
+        {
+            canJump = false;
+        }
+        //currentSpriteSwapTime += Time.deltaTime;
+        //if(currentSpriteSwapTime > spriteSwapMinWaitTime)
+        //{
+        //    
+        //    currentSpriteSwapTime = 0;
+        //}
 
         powerBar.value = jumpKeyTime * jumpTimerBuff;
 
@@ -86,6 +92,7 @@ public class FrogControlls : MonoBehaviour {
                 jumpKeyTime *= jumpTimerBuff;
                 jumpKeyTime = Mathf.Clamp(jumpKeyTime, minJumpAmmount, maxJumpTime);
                 rb.AddForce(new Vector2(jumpForce * jumpKeyTime, jumpForce * jumpKeyTime));
+                CollidedSinceLastJump = false;
                 
             }
             jumpKeyTime = 0;
@@ -98,12 +105,14 @@ public class FrogControlls : MonoBehaviour {
         }
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    colisions++;
-    //    if (colisions > 0) { canJump = true; }
-    //    Debug.Log(colisions);
-    //}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        CollidedSinceLastJump = true;
+
+        //colisions++;
+        //if (colisions > 0) { canJump = true; }
+        //Debug.Log(colisions);
+    }
 
     //private void OnCollisionExit2D(Collision2D collision)
     //{

@@ -13,8 +13,10 @@ public static class GM {
     public static GameMusic gameMusic;
 
     static List<GameObject> gaters = new List<GameObject>();
+    static List<IRespawnResetable> resetOnRespawn = new List<IRespawnResetable>();
 
     public static readonly string playerTag = "Phill";
+    public static int CurrentRespawnCount { get; private set; } = 1;
     public static bool sendAnyalitics = true;
 
     public enum GameState
@@ -32,9 +34,22 @@ public static class GM {
     {
         foreach (GameObject gater in gaters)
         {
+            //CHANGE TO IRespawnRessetable <---------------------------------
             gater.GetComponent<AlliA>().ResetGater();
+            //CHANGE TO IRespawnRessetable <---------------------------------
         }
+
+        foreach(IRespawnResetable resetable in resetOnRespawn)
+        {
+            resetable.RespawnReset();
+        }
+
+
         progressBar.PhillDied();
+
+        //gameMusic.PhillRespawned();
+
+        CurrentRespawnCount++;
     }
 
     static public void PhillDied()
@@ -45,6 +60,11 @@ public static class GM {
     public static void AddGater(GameObject gater)
     {
         gaters.Add(gater);
+    }
+
+    public static void AddRespawnResetable(IRespawnResetable resetable)
+    {
+        resetOnRespawn.Add(resetable);
     }
 
 }

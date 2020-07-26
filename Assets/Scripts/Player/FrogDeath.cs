@@ -45,13 +45,13 @@ public class FrogDeath : MonoBehaviour {
         if(! (currentRespawnWaitTime < 0)) //currently dying
         {
             currentRespawnWaitTime += Time.deltaTime;
-            if(GM.gameMusic.isBeatFrame && currentRespawnWaitTime >= waitToRespawn) {
+            if(GM.gameMusic.IsBeatFrame && currentRespawnWaitTime >= waitToRespawn) {
                 Respawn(reset);
                 currentRespawnWaitTime = -1; //not currently waiting
             }
         }
         else { //not dying
-            if (transform.position.y < killPhillUnderY && GM.gameMusic.isBeatFrame)
+            if (transform.position.y < killPhillUnderY && GM.gameMusic.IsBeatFrame)
                 { KillPhill(); Statistics.waterDeaths++; }
         }
     }

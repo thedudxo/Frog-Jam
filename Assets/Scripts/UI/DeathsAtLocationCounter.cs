@@ -13,7 +13,12 @@ public class DeathsAtLocationCounter : MonoBehaviour
         {
             deaths++;
             Statistics.deathsAtThatHole++; //TODO: make more dynamic for future uses in other levels
-            deathcounter.text = "Deaths Here: " + deaths;
+            deathcounter.text = ""+ deaths;
+            if(deaths > 99)
+            {
+                deathcounter.text = "heaps";
+                deathcounter.fontSize = 60;
+            }
         }
     }
 }
