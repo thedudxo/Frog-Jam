@@ -8,6 +8,12 @@ public class FrogCamera : MonoBehaviour
     Vector3 centerOffset;
     [SerializeField] float acceleration;
 
+
+    private void Awake()
+    {
+        FrogManager.frogCamera = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

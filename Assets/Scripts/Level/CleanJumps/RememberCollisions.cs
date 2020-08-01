@@ -23,7 +23,6 @@ public class RememberCollisions : MonoBehaviour, IRespawnResetable
 
     public void RespawnReset()
     {
-        Debug.Log("YEAH RESSETIING");
         HasCollided = false;
     }
 }

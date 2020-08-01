@@ -15,8 +15,12 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
     //DETUNE
 
 
-    //BEATFRAME
+    //Beatmatching
     readonly int bpm = 250;
+    double beatLength, barLength, clipLength;
+    public readonly double dspStartTime = 1;
+
+    //BEATFRAME
     float secondsPerBeat;
     public bool IsBeatFrame { get; private set; } = false;
     float secondsSinceLastBeatFrame;
@@ -26,8 +30,6 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
     //MUSIC ZONE
     List<MusicZone> musicZones = new List<MusicZone>();
     int currentMusicZone = 0;
-    bool waitingToSwitchZone = false;
-    int zoneToSwitchTo;
     int zonePlayerDiedIn;
     //MUSIC ZONE
 
@@ -36,23 +38,26 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
     {
         GM.gameMusic = this;
         GM.AddRespawnResetable(this);
+
+
+        //Beatmatching
+        beatLength = 60d / bpm; //d specifies double
+        barLength = beatLength * 4d;
+        clipLength = barLength * 8;
+
+        //beatframes
         secondsPerBeat = 60 / bpm;
         secondsSinceLastBeatFrame = secondsPerBeat + 1;
     }
 
     void Start()
     {
-        regularMusic = GM.audioManager.GetAudioClip("BackgroundMusic");
-        detuneMusic = GM.audioManager.GetAudioClip("DetuneMusic");
-        //detuneMusic.audioSource.Play();
-        //detuneMusic.audioSource.volume = 0;
-
         //MUSIC ZONE
-        musicZones[0].PlayZone();
+        musicZones[0].PlayZone(AudioSettings.dspTime + dspStartTime);
         //MUSIC ZONE
     }
 
-    void FixedUpdate()
+    void Update()
     {
 
         //DETUNE
@@ -66,38 +71,43 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
                 musicZones[currentMusicZone].TuneZone();
             }
         }
-        //DETUNE
+
+
+        //Beatmatching
+        double musicTime = AudioSettings.dspTime - dspStartTime;
 
 
         //BEATFRAME
         secondsSinceLastBeatFrame += Time.deltaTime;
         IsBeatFrame = false;
         if(secondsSinceLastBeatFrame >= secondsPerBeat) { IsBeatFrame = true; }
-        //BEATFRAME
 
 
         //MUSIC ZONE
         if ((currentMusicZone < musicZones.Count - 1)){
             if (musicZones[currentMusicZone + 1].IsPlayerPastZoneStart()) //player moved into the next zone
             {
-                waitingToSwitchZone = true;
-                zoneToSwitchTo = currentMusicZone + 1;
-                musicZones[currentMusicZone].StopLooping();
-            }
-        }
-
-        if (waitingToSwitchZone) //the next zone will start playing soon
-        {
-            if (musicZones[currentMusicZone].HasFinishedCurrentLoop()) //ready to switch over
-            {
                 Debug.Log("switching");
-                musicZones[currentMusicZone].StopPlayingZone();
+                MusicZone currentZone = musicZones[currentMusicZone];
                 currentMusicZone++;
-                musicZones[currentMusicZone].PlayZone();
-                waitingToSwitchZone = false;
+                MusicZone nextZone = musicZones[currentMusicZone];
+
+                //get the time untill the current bar ends
+                double timeThroughCurrentBar = currentZone.TimeElapsed() % barLength;
+                double timeToNextBar = barLength - timeThroughCurrentBar;
+
+
+                double playPositionAtEndBar = currentZone.TimeElapsed() + timeToNextBar;
+                //Debug.Log(musicZones[currentMusicZone].TimeElapsed());
+
+                currentZone.StopPlayingZone(timeToNextBar + AudioSettings.dspTime);
+
+                nextZone.PlayZone(timeToNextBar + AudioSettings.dspTime);
+                //set the play position of the next music zone to be the same as when the current one ends
+                nextZone.SetPlayPosition(
+                    (AudioSettings.dspTime - dspStartTime + timeToNextBar) % clipLength);
             }
         }
-        //MUSIC ZONE
     }
 
     public void DetuneMusic()
@@ -128,9 +138,13 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
         //player is in a different zone now
         if (zonePlayerDiedIn != currentMusicZone)
         {
-            //Debug.Log(currentMusicZone);
-            musicZones[zonePlayerDiedIn].StopPlayingZone();
-            musicZones[currentMusicZone].PlayZone();
+            //get the time untill the current bar ends
+            double timeRemaningToEndOfBar = musicZones[currentMusicZone].TimeElapsed() % barLength;
+            double timeToNextBar = barLength - timeRemaningToEndOfBar;
+
+
+            musicZones[zonePlayerDiedIn].StopPlayingZone(timeRemaningToEndOfBar + AudioSettings.dspTime);
+            musicZones[currentMusicZone].PlayZone(timeRemaningToEndOfBar + AudioSettings.dspTime);
         }
     }
 

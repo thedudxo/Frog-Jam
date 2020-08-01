@@ -13,7 +13,7 @@ public class FrogDeath : MonoBehaviour {
     [SerializeField] float killPhillUnderY = -5;
 
     [Header("Respawns")]
-    [SerializeField] float setBack = 25;
+    [SerializeField] public float respawnSetBack = 25;
     [SerializeField] float waitToRespawn = 1;
     float currentRespawnWaitTime = -1; //negative when not dying currently
     bool reset;
@@ -27,10 +27,15 @@ public class FrogDeath : MonoBehaviour {
 
 
 
-    // Use this for initialization
-    void Start() {
+    private void Awake()
+    {
         FrogManager.frogDeath = this;
         FrogManager.frog = gameObject;
+    }
+
+    // Use this for initialization
+    void Start() {
+
         wave = GM.currentLevel.wave;
         spawnpoint = transform.position;
         rb = GetComponent<Rigidbody2D>();
@@ -69,8 +74,8 @@ public class FrogDeath : MonoBehaviour {
         //setback
         if (!reset)
         {
-            transform.position = new Vector2(transform.position.x - setBack, 5);
-            wave.transform.position = new Vector2(wave.transform.position.x - setBack, wave.transform.position.y);
+            transform.position = new Vector2(transform.position.x - respawnSetBack, 5);
+            wave.transform.position = new Vector2(wave.transform.position.x - respawnSetBack, wave.transform.position.y);
         }
 
         //respawn at platform

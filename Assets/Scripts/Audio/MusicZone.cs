@@ -6,8 +6,28 @@ public class MusicZone : MonoBehaviour
 {
     //marks a spot where the next bit of music should be queued up to start playing
 
-    [SerializeField] public AudioSource normalAudioSource, detuneAudioSource;
+    [SerializeField] UnityEngine.AudioClip normalClip, detuneClip, waveClip;
+    AudioSource normalAudioSource, detuneAudioSource, waveAudioSource;
+
+
     float normalAudioMaxVolume = 1, detuneAudioMaxVolume = 1; // = Gamemusic.Volume
+
+    double dspStartTime;
+    int sampleRate;
+
+    private void Awake()
+    {
+        normalAudioSource = (AudioSource) gameObject.AddComponent(typeof(AudioSource));
+        detuneAudioSource = (AudioSource) gameObject.AddComponent(typeof(AudioSource));
+        waveAudioSource   = (AudioSource) gameObject.AddComponent(typeof(AudioSource));
+
+        normalAudioSource.clip = normalClip;
+        detuneAudioSource.clip = detuneClip;
+        waveAudioSource  .clip = waveClip;
+
+        sampleRate = normalClip.frequency;
+
+    }
 
     private void Start()
     {
@@ -23,23 +43,25 @@ public class MusicZone : MonoBehaviour
         return false;
     }
 
-    public void PlayZone()
+    public void PlayZone(double dspTime)
     {
-        normalAudioSource.Play();
-        detuneAudioSource.Play();
+        Debug.Log("playing in: " + (dspTime - AudioSettings.dspTime));
+        normalAudioSource.PlayScheduled(dspTime);
+        detuneAudioSource.PlayScheduled(dspTime);
 
         normalAudioSource.loop = true;
         detuneAudioSource.loop = true;
 
         TuneZone();
 
-        //Debug.Log("playing Zone");
+        dspStartTime = dspTime;
     }
 
-    public void StopPlayingZone()
+    public void StopPlayingZone(double dspTime)
     {
-        normalAudioSource.Stop();
-        detuneAudioSource.Stop();
+        normalAudioSource.SetScheduledEndTime(dspTime);
+        detuneAudioSource.SetScheduledEndTime(dspTime);
+        StopLooping();
     }
 
     public void TuneZone()
@@ -57,7 +79,6 @@ public class MusicZone : MonoBehaviour
 
     public void StopLooping()
     {
-        Debug.Log("STOPPING LOOP");
         normalAudioSource.loop = false;
         detuneAudioSource.loop = false;
     }
@@ -69,5 +90,19 @@ public class MusicZone : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    public double TimeElapsed()
+    {
+        return AudioSettings.dspTime - dspStartTime;
+    }
+
+    public void SetPlayPosition(double position)
+    {
+        Debug.Log("seeking to: " + position);
+        int sample = System.Convert.ToInt32 (position * sampleRate);
+        normalAudioSource.timeSamples = sample;
+        detuneAudioSource.timeSamples = sample;
+        waveAudioSource.timeSamples = sample;
     }
 }
