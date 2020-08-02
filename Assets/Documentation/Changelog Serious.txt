@@ -10,12 +10,15 @@ Known Issues:
 New Features:
 - Contextual Music. Origonal, Short and annoying after a while but suitable for prototyping the concept.
 - Jump Power Bar
+- Clouds that move
+- Recognition when you cleanly jump over/through certain obstacles
 
 New Art:
 - Stop sign
 - Floppy Birb Art
 - Plumber pipes
 - Phill Art
+- Clouds
 
 
 Changes:
@@ -26,10 +29,13 @@ Changes:
 - Organised sprite layers so I know what should be drawn over what
 
 Fixes:
+- Bugs I created whilst doing this
 
 Known Issues:
 - data privacy button may not work on html and I have no idea why ;~;
 - Phill can sometimes jump in the air just after respawning
+- music transitions abrubptly
+- Phill gets stuck occasionaly 
 
 
 0.2.3

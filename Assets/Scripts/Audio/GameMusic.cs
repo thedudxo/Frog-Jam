@@ -87,7 +87,7 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
         if ((currentMusicZone < musicZones.Count - 1)){
             if (musicZones[currentMusicZone + 1].IsPlayerPastZoneStart()) //player moved into the next zone
             {
-                Debug.Log("switching");
+                //Debug.Log("switching");
                 MusicZone currentZone = musicZones[currentMusicZone];
                 currentMusicZone++;
                 MusicZone nextZone = musicZones[currentMusicZone];
@@ -156,9 +156,5 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
     public void AddMusicZone(MusicZone zone)
     {
         musicZones.Add(zone);
-        foreach(MusicZone i in musicZones)
-        {
-            Debug.Log(i);
-        }
     }
 }

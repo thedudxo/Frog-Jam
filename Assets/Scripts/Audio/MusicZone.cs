@@ -45,7 +45,7 @@ public class MusicZone : MonoBehaviour
 
     public void PlayZone(double dspTime)
     {
-        Debug.Log("playing in: " + (dspTime - AudioSettings.dspTime));
+        //Debug.Log("playing in: " + (dspTime - AudioSettings.dspTime));
         normalAudioSource.PlayScheduled(dspTime);
         detuneAudioSource.PlayScheduled(dspTime);
 
@@ -99,7 +99,7 @@ public class MusicZone : MonoBehaviour
 
     public void SetPlayPosition(double position)
     {
-        Debug.Log("seeking to: " + position);
+        //Debug.Log("seeking to: " + position);
         int sample = System.Convert.ToInt32 (position * sampleRate);
         normalAudioSource.timeSamples = sample;
         detuneAudioSource.timeSamples = sample;

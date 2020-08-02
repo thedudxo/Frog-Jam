@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProgressBar : MonoBehaviour
+public class ProgressBar : MonoBehaviour, IRespawnResetable
 {
     [SerializeField] Slider playerProgressBar;
     [SerializeField] Slider waveProgressBar;
@@ -14,7 +14,8 @@ public class ProgressBar : MonoBehaviour
 
     private void Start()
     {
-        GM.progressBar = this;
+        GM.progressBar = this; //referenced by analitics when quit game, should probably be moved
+        GM.AddRespawnResetable(this);
     }
 
     // Update is called once per frame
@@ -35,7 +36,7 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
-    public void PhillDied()
+    public void RespawnReset()
     {
         checkPersonalBest();
         looseProgress();

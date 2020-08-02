@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlliA : MonoBehaviour {
+public class AlliA : MonoBehaviour, IRespawnResetable {
 
     public float patrollRange;
     public float speed;
@@ -16,7 +16,7 @@ public class AlliA : MonoBehaviour {
         spawnPos = transform.position;
         startSpeed = speed;
         GetComponent<SpriteRenderer>().flipX = true;
-        GM.AddGater(gameObject);
+        GM.AddRespawnResetable(this);
     }
 	
 	// Update is called once per frame
@@ -50,7 +50,7 @@ public class AlliA : MonoBehaviour {
     }
 
 
-    public void ResetGater()
+    public void RespawnReset()
     {
         transform.position = spawnPos;
         speed = startSpeed;

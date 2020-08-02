@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class GM {
 
-    public static ProgressBar progressBar;
+    public static ProgressBar progressBar; //referenced by analitics when quit game, should probably be moved
     public static ComboCounter comboCounter;
     public static Level currentLevel;
     public static SplitManager splitManager;
@@ -15,6 +15,8 @@ public static class GM {
     static List<GameObject> gaters = new List<GameObject>();
     static List<IRespawnResetable> resetOnRespawn = new List<IRespawnResetable>();
 
+
+    public static readonly float CameraVeiwRangeApprox = 18;
     public static readonly string playerTag = "Phill";
     public static int CurrentRespawnCount { get; private set; } = 1;
     public static bool sendAnyalitics = true;
@@ -32,22 +34,10 @@ public static class GM {
 
     static public void PhillRespawned()
     {
-        foreach (GameObject gater in gaters)
-        {
-            //CHANGE TO IRespawnRessetable <---------------------------------
-            gater.GetComponent<AlliA>().ResetGater();
-            //CHANGE TO IRespawnRessetable <---------------------------------
-        }
-
         foreach(IRespawnResetable resetable in resetOnRespawn)
         {
             resetable.RespawnReset();
         }
-
-
-        progressBar.PhillDied();
-
-        //gameMusic.PhillRespawned();
 
         CurrentRespawnCount++;
     }
@@ -57,11 +47,7 @@ public static class GM {
         comboCounter.CheckCombo();
     }
 
-    public static void AddGater(GameObject gater)
-    {
-        gaters.Add(gater);
-    }
-
+    //these have a method called whenever phill RESPAWNS
     public static void AddRespawnResetable(IRespawnResetable resetable)
     {
         resetOnRespawn.Add(resetable);

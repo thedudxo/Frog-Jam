@@ -34,6 +34,6 @@ public class FrogCamera : MonoBehaviour
             (transform.position.y - moveY),
             transform.position.z);
 
-
     }
+
 }
