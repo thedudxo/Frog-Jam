@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMusic : MonoBehaviour, IRespawnResetable
 {
@@ -8,12 +9,9 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
     AudioClip detuneMusic;
     AudioClip regularMusic;
 
-
     //DETUNE
     float detuneDurationSeconds = 1;
     float detuneTimer = 1000;
-    //DETUNE
-
 
     //Beatmatching
     readonly int bpm = 250;
@@ -24,15 +22,15 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
     float secondsPerBeat;
     public bool IsBeatFrame { get; private set; } = false;
     float secondsSinceLastBeatFrame;
-    //BEATFRAME
-
 
     //MUSIC ZONE
     List<MusicZone> musicZones = new List<MusicZone>();
     int currentMusicZone = 0;
     int zonePlayerDiedIn;
-    //MUSIC ZONE
 
+    //DEBUG MENU
+    [SerializeField] Slider currentClipSlider, currentBarSlider, currentBeatSlider, nextZoneInSlider;
+    [SerializeField] Text dspTimeText, currentZoneText;
 
     private void Awake()
     {
@@ -84,17 +82,25 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
 
 
         //MUSIC ZONE
+        MusicZone currentZone = musicZones[currentMusicZone]; //bit weird since it allready exists
+
+        //get the time untill the current bar ends
+        double timeThroughCurrentBar = currentZone.TimeElapsed() % barLength;
+        double timeToNextBar = barLength - timeThroughCurrentBar;
+
+        //get the time untill the current beat ends
+        double timeThroughCurrentBeat = currentZone.TimeElapsed() % beatLength;
+        double timeToNextBeat = beatLength - timeThroughCurrentBeat;
+
         if ((currentMusicZone < musicZones.Count - 1)){
             if (musicZones[currentMusicZone + 1].IsPlayerPastZoneStart()) //player moved into the next zone
             {
                 //Debug.Log("switching");
-                MusicZone currentZone = musicZones[currentMusicZone];
+                
                 currentMusicZone++;
                 MusicZone nextZone = musicZones[currentMusicZone];
 
-                //get the time untill the current bar ends
-                double timeThroughCurrentBar = currentZone.TimeElapsed() % barLength;
-                double timeToNextBar = barLength - timeThroughCurrentBar;
+               
 
 
                 double playPositionAtEndBar = currentZone.TimeElapsed() + timeToNextBar;
@@ -108,6 +114,27 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
                     (AudioSettings.dspTime - dspStartTime + timeToNextBar) % clipLength);
             }
         }
+
+        //DEBUG UI
+        dspTimeText.text = (AudioSettings.dspTime - dspStartTime).ToString("F3");
+        currentBarSlider.value = (float) (timeThroughCurrentBar /  barLength);
+        currentBeatSlider.value = (float)(timeThroughCurrentBeat / beatLength);
+        currentZoneText.text = "" + currentMusicZone;
+
+        //next zone slider
+        float currentZonePosX = musicZones[currentMusicZone].gameObject.transform.position.x;
+        float nextZonePosX = musicZones[Mathf.Clamp(currentMusicZone + 1, 0, musicZones.Count - 1)].gameObject.transform.position.x;
+        float playerPosX = FrogManager.frog.transform.position.x;
+        float distanceBetweenZones = nextZonePosX - currentZonePosX;
+        float progressThroughZone = playerPosX - currentZonePosX;
+        float progressNormalised = progressThroughZone / distanceBetweenZones;
+        nextZoneInSlider.value = progressNormalised;
+
+
+        //current clip slider
+        //currentZone.
+        //currentClipSlider.value = 
+
     }
 
     public void DetuneMusic()

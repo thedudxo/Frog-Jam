@@ -4451,7 +4451,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Current Zone
+  m_Text: 'Current Clip
+
+'
 --- !u!222 &728014469
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4896,7 +4898,7 @@ GameObject:
   - component: {fileID: 839474029}
   - component: {fileID: 839474030}
   m_Layer: 5
-  m_Name: Current Zone
+  m_Name: Current Clip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17717,7 +17719,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.6, y: 0}
+  m_AnchoredPosition: {x: -1.5999985, y: 0}
   m_SizeDelta: {x: 176.43, y: 508.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1923424776
@@ -18714,6 +18716,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b033ebb32dbc52c43969792896ea9879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentClipSlider: {fileID: 839474030}
+  currentBarSlider: {fileID: 137511694}
+  currentBeatSlider: {fileID: 435044828}
+  nextZoneInSlider: {fileID: 1563121513}
+  dspTimeText: {fileID: 989945963}
 --- !u!1 &2020713796
 GameObject:
   m_ObjectHideFlags: 0
@@ -28909,10 +28916,10 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -443.84998, y: 0}
-  m_SizeDelta: {x: -907.69995, y: -100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -2.6500244, y: 0}
+  m_SizeDelta: {x: 223.5, y: -64}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2137224127
 MonoBehaviour:
   m_ObjectHideFlags: 0
