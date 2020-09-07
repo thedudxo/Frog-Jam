@@ -6,7 +6,7 @@ public class MusicZone : MonoBehaviour
 {
     //marks a spot where the next bit of music should be queued up to start playing
 
-    [SerializeField] UnityEngine.AudioClip normalClip, detuneClip, waveClip;
+    [SerializeField]  UnityEngine.AudioClip normalClip, detuneClip, waveClip;
     AudioSource normalAudioSource, detuneAudioSource, waveAudioSource;
 
 
@@ -14,6 +14,14 @@ public class MusicZone : MonoBehaviour
 
     double dspStartTime;
     int sampleRate;
+
+    float playPositionNormalised;
+    public float PlayPositionNormalised
+    {
+        get {
+            playPositionNormalised =  normalAudioSource.time / normalClip.length;
+            return playPositionNormalised; }
+            }
 
     private void Awake()
     {
