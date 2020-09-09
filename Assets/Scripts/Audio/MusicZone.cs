@@ -97,6 +97,7 @@ public class MusicZone : MonoBehaviour
     {
         normalAudioSource.loop = false;
         detuneAudioSource.loop = false;
+        waveAudioSource  .loop = false;
     }
 
     public bool HasFinishedCurrentLoop()

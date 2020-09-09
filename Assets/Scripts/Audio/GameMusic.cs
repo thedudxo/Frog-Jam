@@ -106,12 +106,14 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
                 double playPositionAtEndBar = currentZone.TimeElapsed() + timeToNextSwitch;
 
                 //switch which zone is playing
-                currentZone.StopPlayingZone(timeToNextSwitch + musicTime);
-                nextZone.PlayZone(timeToNextSwitch + musicTime);
+                currentZone.StopPlayingZone(timeToNextSwitch + musicTime + dspStartTime + musicStartDelay);
+                nextZone.PlayZone(timeToNextSwitch + musicTime + dspStartTime + musicStartDelay);
+                //Debug.Log("playing next zone in: " + timeToNextSwitch);
 
                 //set the play position of the next music zone to be the same as when the current one ends
                 nextZone.SetPlayPosition(
-                    (musicTime + dspStartTime + musicStartDelay + timeToNextSwitch) % clipLength);
+                    (musicTime + timeToNextSwitch) % clipLength); 
+                    //cant use dspStartTime and %cliplength in the same eq
             }
         }
 
