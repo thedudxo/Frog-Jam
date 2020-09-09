@@ -33,6 +33,14 @@ public class MusicZone : MonoBehaviour
         detuneAudioSource.clip = detuneClip;
         waveAudioSource  .clip = waveClip;
 
+        normalAudioSource.playOnAwake = false;
+        detuneAudioSource.playOnAwake = false;
+        waveAudioSource.playOnAwake = false;
+
+        normalAudioSource.Pause();
+        detuneAudioSource.Pause();
+        waveAudioSource.Pause();
+
         sampleRate = normalClip.frequency;
 
     }
