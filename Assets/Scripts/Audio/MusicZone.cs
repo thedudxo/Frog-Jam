@@ -8,11 +8,12 @@ public class MusicZone : MonoBehaviour
 
     [SerializeField]  UnityEngine.AudioClip normalClip, detuneClip, waveClip;
     AudioSource normalAudioSource, detuneAudioSource, waveAudioSource;
-    [SerializeField] int position;
 
+
+    [SerializeField] int position;
     float normalAudioMaxVolume = 1, detuneAudioMaxVolume = 1; // = Gamemusic.Volume
 
-    double dspStartTime;
+    double ZoneStartDspTime;
     int sampleRate;
 
     float playPositionNormalised;
@@ -68,13 +69,11 @@ public class MusicZone : MonoBehaviour
         detuneAudioSource.PlayScheduled(dspTime);
         waveAudioSource.PlayScheduled(dspTime);
 
-        normalAudioSource.loop = true;
-        detuneAudioSource.loop = true;
-        waveAudioSource.loop = true;
+        SetLooping(true);
 
         TuneZone();
 
-        dspStartTime = dspTime;
+        ZoneStartDspTime = dspTime;
     }
 
     public void StopPlayingZone(double dspTime)
@@ -82,7 +81,7 @@ public class MusicZone : MonoBehaviour
         normalAudioSource.SetScheduledEndTime(dspTime);
         detuneAudioSource.SetScheduledEndTime(dspTime);
         waveAudioSource.SetScheduledEndTime(dspTime);
-        StopLooping();
+        SetLooping(false);
     }
 
     public void TuneZone()
@@ -98,25 +97,16 @@ public class MusicZone : MonoBehaviour
     }
 
 
-    public void StopLooping()
+    public void SetLooping(bool loop)
     {
-        normalAudioSource.loop = false;
-        detuneAudioSource.loop = false;
-        waveAudioSource  .loop = false;
-    }
-
-    public bool HasFinishedCurrentLoop()
-    {
-        if (normalAudioSource.isPlaying)
-        {
-            return false;
-        }
-        return true;
+        normalAudioSource.loop = loop;
+        detuneAudioSource.loop = loop;
+        waveAudioSource  .loop = loop;
     }
 
     public double TimeElapsed()
     {
-        return AudioSettings.dspTime - dspStartTime;
+        return AudioSettings.dspTime - ZoneStartDspTime;
     }
 
     public void SetPlayPosition(double position)
