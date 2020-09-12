@@ -23,7 +23,6 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
     public bool IsBeatFrame { get; private set; } = false;
     float secondsSinceLastBeatFrame;
 
-
     //MUSIC ZONE
     [SerializeField] GameObject musicZonesParent;
     MusicZone[] musicZones;
@@ -103,7 +102,6 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
                 SwitchMusicZone(currentZone, nextZone, timeToNextBeat);
             }
         }
-
 
         //DEBUG UI
         { 

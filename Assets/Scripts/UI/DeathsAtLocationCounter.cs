@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DeathsAtLocationCounter : MonoBehaviour
 {
     private int deaths = 0;
-    [SerializeField] TextMesh deathcounter;
+    [SerializeField] Text deathcounter;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -8,9 +8,9 @@ Known Issues:
 0.2.4
 
 New Features:
-- Contextual Music. Origonal, Short and annoying after a while but suitable for prototyping the concept.
+- Contextual Music
 - Jump Power Bar
-- Clouds that move
+- Clouds
 - Recognition when you cleanly jump over/through certain obstacles
 
 New Art:
@@ -19,7 +19,6 @@ New Art:
 - Plumber pipes
 - Phill Art
 - Clouds
-
 
 Changes:
 - the way the game checks if you can jump or not is done differently, but should feel the same. (It now checks if your moving)
@@ -32,10 +31,9 @@ Fixes:
 - Bugs I created whilst doing this
 
 Known Issues:
-- data privacy button may not work on html and I have no idea why ;~;
-- Phill can sometimes jump in the air just after respawning
-- music transitions abrubptly
-- Phill gets stuck occasionaly 
+- data privacy button may not work on html, and I have no idea why
+- Phill can sometimes jump in the air just after respawning, and I have no idea why
+- Phill gets stuck on flat ground occasionaly, and I have no idea why
 
 
 0.2.3
