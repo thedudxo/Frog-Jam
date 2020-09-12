@@ -74,7 +74,6 @@ public class Clouds : MonoBehaviour, IRespawnResetable
                     cloud.transform.position = new Vector2(newXPosition, cloud.transform.position.y);
                     cloud.PopUp();
                     cloudsOnScreen++;
-                    Debug.Log("MOVED CLOUD ONSCREEN");
                 }
 
                 else

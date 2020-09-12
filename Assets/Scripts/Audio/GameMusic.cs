@@ -23,14 +23,15 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
     public bool IsBeatFrame { get; private set; } = false;
     float secondsSinceLastBeatFrame;
 
+
     //MUSIC ZONE
-    List<MusicZone> musicZones = new List<MusicZone>();
+    [SerializeField] GameObject musicZonesParent;
+    MusicZone[] musicZones;
+    MusicZone currentZone;
     int currentZoneIndex = 0;
     int zonePlayerDiedIn;
 
     double musicTime, dspStartTime, timeToNextBeat, timeToNextBar;
-
-
 
     //DEBUG MENU
     [SerializeField] Slider currentClipSlider, currentBarSlider, currentBeatSlider, nextZoneInSlider;
@@ -50,16 +51,13 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
         //beatframes
         secondsPerBeat = 60 / bpm;
         secondsSinceLastBeatFrame = secondsPerBeat + 1;
+
+        musicZones = new MusicZone[musicZonesParent.transform.childCount];
     }
 
     void Start()
     {
         dspStartTime = AudioSettings.dspTime;
-
-        //MUSIC ZONE
-        musicZones[0].PlayZone(AudioSettings.dspTime + musicStartDelay);
-        //MUSIC ZONE
-
     }
 
     void Update()
@@ -73,8 +71,6 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
             detuneTimer += Time.deltaTime;
             if(detuneTimer >= detuneDurationSeconds) //time is up, stop the detune
             {
-                //detuneMusic.audioSource.volume = 0;
-                //regularMusic.audioSource.volume = regularMusic.MaxVolume;
                 musicZones[currentZoneIndex].TuneZone();
             }
         }
@@ -86,7 +82,7 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
 
 
         //MUSIC ZONE
-        MusicZone currentZone = musicZones[currentZoneIndex]; //bit weird since it allready exists
+        currentZone = musicZones[currentZoneIndex]; //bit weird since it allready exists
 
         //get the time untill the current bar ends
         double timeThroughCurrentBar = currentZone.TimeElapsed() % barLength;
@@ -97,7 +93,8 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
         timeToNextBeat = beatLength - timeThroughCurrentBeat;
 
 
-        if ((currentZoneIndex < musicZones.Count - 1)){ //there is actually another zone to move into
+
+        if ((currentZoneIndex < musicZones.Length - 1)){ //there is actually another zone to move into
             if (musicZones[currentZoneIndex + 1].IsPlayerPastZoneStart()) //player moved into the next zone
             {
                 currentZoneIndex++;
@@ -116,7 +113,7 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
             currentZoneText.text = "" + currentZoneIndex;
 
             float currentZonePosX = musicZones[currentZoneIndex].gameObject.transform.position.x;
-            float nextZonePosX = musicZones[Mathf.Clamp(currentZoneIndex + 1, 0, musicZones.Count - 1)].gameObject.transform.position.x;
+            float nextZonePosX = musicZones[Mathf.Clamp(currentZoneIndex + 1, 0, musicZones.Length - 1)].gameObject.transform.position.x;
             float playerPosX = FrogManager.frog.transform.position.x;
             float distanceBetweenZones = nextZonePosX - currentZonePosX;
             float progressThroughZone = playerPosX - currentZonePosX;
@@ -144,13 +141,6 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
         //player is in a different zone now
         if (zonePlayerDiedIn != currentZoneIndex)
         {
-            ////get the time untill the current bar ends
-            //double timeRemaningToEndOfBar = musicZones[currentZoneIndex].TimeElapsed() % barLength;
-            //double timeToNextBar = barLength - timeRemaningToEndOfBar;
-
-
-            //musicZones[zonePlayerDiedIn].StopPlayingZone(timeRemaningToEndOfBar + musicTime);
-            //musicZones[currentZoneIndex].PlayZone(timeRemaningToEndOfBar + musicTime);
             SwitchMusicZone(musicZones[zonePlayerDiedIn], musicZones[currentZoneIndex], timeToNextBeat);
         }
     }
@@ -171,8 +161,17 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
         musicZones[currentZoneIndex].DetuneZone();
     }
 
-    public void AddMusicZone(MusicZone zone)
+    public void AddMusicZone(MusicZone zone, int position)
     {
-        musicZones.Add(zone);
+       //unity execution order is dumb so this is how i have to ensure the list is in the correct order
+       //also have to start playing the first zone here again because unity execution jankyness
+
+        musicZones[position] = zone;
+
+        if (position == 0) //starting zone
+        {
+            musicZones[0].PlayZone(AudioSettings.dspTime + musicStartDelay);
+        }
+
     }
 }

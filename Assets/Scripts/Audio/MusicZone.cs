@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicZone : MonoBehaviour
+public class MusicZone : MonoBehaviour 
 {
     //marks a spot where the next bit of music should be queued up to start playing
 
     [SerializeField]  UnityEngine.AudioClip normalClip, detuneClip, waveClip;
     AudioSource normalAudioSource, detuneAudioSource, waveAudioSource;
-
+    [SerializeField] int position;
 
     float normalAudioMaxVolume = 1, detuneAudioMaxVolume = 1; // = Gamemusic.Volume
 
@@ -41,13 +41,15 @@ public class MusicZone : MonoBehaviour
         detuneAudioSource.Pause();
         waveAudioSource.Pause();
 
+        waveAudioSource.volume = 0;
+
         sampleRate = normalClip.frequency;
 
     }
 
     private void Start()
     {
-        GM.gameMusic.AddMusicZone(this);
+        GM.gameMusic.AddMusicZone(this, position);
     }
 
     public bool IsPlayerPastZoneStart()
@@ -64,9 +66,11 @@ public class MusicZone : MonoBehaviour
         //Debug.Log("playing in: " + (dspTime - AudioSettings.dspTime));
         normalAudioSource.PlayScheduled(dspTime);
         detuneAudioSource.PlayScheduled(dspTime);
+        waveAudioSource.PlayScheduled(dspTime);
 
         normalAudioSource.loop = true;
         detuneAudioSource.loop = true;
+        waveAudioSource.loop = true;
 
         TuneZone();
 
@@ -77,6 +81,7 @@ public class MusicZone : MonoBehaviour
     {
         normalAudioSource.SetScheduledEndTime(dspTime);
         detuneAudioSource.SetScheduledEndTime(dspTime);
+        waveAudioSource.SetScheduledEndTime(dspTime);
         StopLooping();
     }
 
