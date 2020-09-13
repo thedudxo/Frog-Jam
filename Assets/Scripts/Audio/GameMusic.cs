@@ -103,6 +103,8 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
             }
         }
 
+        currentZone.updateWaveAudio();
+
         //DEBUG UI
         { 
             dspTimeText.text = (musicTime).ToString("F3");

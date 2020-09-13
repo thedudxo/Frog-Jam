@@ -6,23 +6,27 @@ public class MusicZone : MonoBehaviour
 {
     //marks a spot where the next bit of music should be queued up to start playing
 
-    [SerializeField]  UnityEngine.AudioClip normalClip, detuneClip, waveClip;
-    AudioSource normalAudioSource, detuneAudioSource, waveAudioSource;
 
 
-    [SerializeField] int position;
-    float normalAudioMaxVolume = 1, detuneAudioMaxVolume = 1; // = Gamemusic.Volume
+    [SerializeField]  UnityEngine.AudioClip normalClip, detuneClip, waveClip; //clips
+    AudioSource normalAudioSource, detuneAudioSource, waveAudioSource;        //sources
+    [SerializeField] int position;                                            //which number zone this is
+    double ZoneStartDspTime;                                                  //dsp time this started playing at
+    int sampleRate;                                                           //sample rate of all the clips (assuming they're all the same format)
+    static float waveMusicDistance = 30;                                      //distance from the player before the wave starts playing music
+    static float bufferInFrontOfWave = 10;                                    //distance infront of the wave where the music will be max volume
 
-    double ZoneStartDspTime;
-    int sampleRate;
-
-    float playPositionNormalised;
+    float playPositionNormalised;                                             //between 0 to 1, the audio position the clip is currently playing
     public float PlayPositionNormalised
     {
         get {
             playPositionNormalised =  normalAudioSource.time / normalClip.length;
             return playPositionNormalised; }
             }
+
+
+
+    float normalAudioMaxVolume = 1, detuneAudioMaxVolume = 1; // = Gamemusic.Volume
 
     private void Awake()
     {
@@ -116,5 +120,16 @@ public class MusicZone : MonoBehaviour
         normalAudioSource.timeSamples = sample;
         detuneAudioSource.timeSamples = sample;
         waveAudioSource.timeSamples = sample;
+    }
+
+    public void updateWaveAudio()
+    {
+
+        float wavePos = GM.currentLevel.wave.transform.position.x;
+        float frogPos = FrogManager.frog.transform.position.x;
+
+        float distanceNormalised = 1 - Mathf.Clamp01((frogPos - (wavePos + bufferInFrontOfWave)) / (waveMusicDistance));
+        waveAudioSource.volume = distanceNormalised;
+        Debug.Log(distanceNormalised);
     }
 }
