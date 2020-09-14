@@ -27,6 +27,7 @@ public class FrogDeath : MonoBehaviour {
 
     [Header("Animation")]
     [SerializeField] Animator animator;
+    [SerializeField] GameObject[] thingsToHideWhileDead;
 
     private void Awake()
     {
@@ -95,11 +96,11 @@ public class FrogDeath : MonoBehaviour {
         respawnParticles.Emit(respawnEmit);
 
         //these get disabled when killed
-        rb.gravityScale = 1;
-        //spriteRenderer.enabled = true;
-        GetComponent<PolygonCollider2D>().enabled = true;
-        wave.GetComponent<Wave>().waveCurrentSpeed = wave.GetComponent<Wave>().waveStartSpeed;
-        FrogManager.frogCamera.followPhill = true;
+        rb.gravityScale = 1;                                                                        //turn on gravity
+        GetComponent<PolygonCollider2D>().enabled = true;                                           //turn on collisions
+        wave.GetComponent<Wave>().waveCurrentSpeed = wave.GetComponent<Wave>().waveStartSpeed;      //wave speed reset, still here incase acceleration is ever turned on   
+        FrogManager.frogCamera.followPhill = true;                                                  //camera follows again
+        foreach (GameObject obj in thingsToHideWhileDead)  { obj.SetActive(true); }                 //unhide all the sprites
 
         GM.audioManager.PlaySound("RespawnPop");
         rb.velocity = Vector3.zero;
@@ -133,9 +134,18 @@ public class FrogDeath : MonoBehaviour {
         GM.gameMusic.DetuneMusic();
 
         //misc
-        GM.PhillDied();
         Statistics.totalDeaths++;
         currentRespawnWaitTime = 0;
         animator.SetTrigger("died");
+
+        GM.PhillDied();
+    }
+
+    public void DeathAnimationFinished() //triggered by the death animation
+    {
+        foreach (GameObject obj in thingsToHideWhileDead)
+        {
+            obj.SetActive(false);
+        }
     }
 }
