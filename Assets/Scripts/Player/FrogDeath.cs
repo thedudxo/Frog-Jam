@@ -17,6 +17,7 @@ public class FrogDeath : MonoBehaviour {
     [SerializeField] float waitToRespawn = 1;
     float currentRespawnWaitTime = -1; //negative when not dying currently
     bool reset;
+    int respawnHeight = 5;
     //[SerializeField] Collider collider;
 
     [Header("Particles")]
@@ -76,7 +77,7 @@ public class FrogDeath : MonoBehaviour {
         //setback
         if (!reset)
         {
-            transform.position = new Vector2(transform.position.x - respawnSetBack, -3);
+            transform.position = new Vector2(transform.position.x - respawnSetBack, respawnHeight);
             wave.transform.position = new Vector2(wave.transform.position.x - respawnSetBack, wave.transform.position.y);
         }
 
