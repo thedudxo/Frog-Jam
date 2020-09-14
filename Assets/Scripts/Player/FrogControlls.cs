@@ -9,6 +9,7 @@ public class FrogControlls : MonoBehaviour {
     Rigidbody2D rb;
     [SerializeField] private Sprite jumpSprite;
     [SerializeField] private Sprite restSprite;
+    [SerializeField] private GameObject frogSpriteObject;
 
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
     [SerializeField] private KeyCode DebugKillKey = KeyCode.Q;
@@ -73,10 +74,10 @@ public class FrogControlls : MonoBehaviour {
 
 
         if (canJump) {
-            gameObject.GetComponent<SpriteRenderer>().sprite = restSprite;
+            frogSpriteObject.GetComponent<SpriteRenderer>().sprite = restSprite;
         }
         else {
-            gameObject.GetComponent<SpriteRenderer>().sprite = jumpSprite;
+            frogSpriteObject.GetComponent<SpriteRenderer>().sprite = jumpSprite;
 
         }
 

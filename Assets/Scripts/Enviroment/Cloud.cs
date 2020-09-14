@@ -27,8 +27,6 @@ public class Cloud : MonoBehaviour
         {
             renderers.Add(renderer);
         }
-
-        Debug.Log("CHILDREN ON THIS CLOUD: " + renderers.Count);
     }
 
     public bool IsOnScreen()

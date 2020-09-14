@@ -7,6 +7,7 @@ public class FrogCamera : MonoBehaviour
     [SerializeField] GameObject player;
     Vector3 centerOffset;
     [SerializeField] float acceleration;
+    public bool followPhill = true;
 
 
     private void Awake()
@@ -23,17 +24,18 @@ public class FrogCamera : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (followPhill)
+        {
+            //how much to move by
+            float moveX = (transform.position.x - player.transform.position.x - centerOffset.x) * acceleration;
+            float moveY = (transform.position.y - player.transform.position.y - centerOffset.y) * acceleration;
 
-        //how much to move by
-        float moveX = (transform.position.x - player.transform.position.x - centerOffset.x) * acceleration;
-        float moveY = (transform.position.y - player.transform.position.y - centerOffset.y) * acceleration;
-
-        //move camera
-        transform.position = new Vector3(
-            (transform.position.x - moveX),
-            (transform.position.y - moveY),
-            transform.position.z);
-
+            //move camera
+            transform.position = new Vector3(
+                (transform.position.x - moveX),
+                (transform.position.y - moveY),
+                transform.position.z);
+        }
     }
 
 }

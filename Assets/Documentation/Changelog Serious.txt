@@ -19,6 +19,7 @@ New Art:
 - Plumber pipes
 - Phill Art
 - Clouds
+- fishing boat
 
 Changes:
 - the way the game checks if you can jump or not is done differently, but should feel the same. (It now checks if your moving)

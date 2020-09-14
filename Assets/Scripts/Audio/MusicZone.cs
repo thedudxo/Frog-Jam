@@ -130,6 +130,5 @@ public class MusicZone : MonoBehaviour
 
         float distanceNormalised = 1 - Mathf.Clamp01((frogPos - (wavePos + bufferInFrontOfWave)) / (waveMusicDistance));
         waveAudioSource.volume = distanceNormalised;
-        Debug.Log(distanceNormalised);
     }
 }

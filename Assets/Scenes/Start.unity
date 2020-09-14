@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000022888184, y: -22.1}
+  m_AnchoredPosition: {x: 14, y: -14.51}
   m_SizeDelta: {x: 160, y: 40.399994}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &29477965
@@ -224,7 +224,7 @@ RectTransform:
   m_GameObject: {fileID: 185373463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.70114, y: 0.70114, z: 0.70114}
   m_Children: []
   m_Father: {fileID: 1123910913}
   m_RootOrder: 0
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 64214bb72eac96e49852aa84c5122c8a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -305,7 +305,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -301.3}
-  m_SizeDelta: {x: 160, y: 464.4}
+  m_SizeDelta: {x: 218.9, y: 464.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &189414137
 MonoBehaviour:
@@ -327,7 +327,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: ffb8834cac37940438106fa5b54270ac, type: 3}
-    m_FontSize: 14
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -338,7 +338,31 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "0.2.3 - Pretty much just fixing last versions \"known issues\".\r\n\r\nNew
+  m_Text: "0.2.4 - Mostly music\r\n\r\nFeature Creep:\r\n- Contextual Music that changes
+    to your every move, like that weird guy out your window in a trenchcoat.\r\n\n-
+    super AWESOME Jump POWER METER 9000+\r\n\n- fluffy poofs, totaly not fake.\r\n\n-
+    a certificate of approval when you do the good, direct from the mayor themself.\r\n\r\nNew
+    Doodles:\r\n- stahhpy stoop no gooo sign\r\n\n- Floppy Bib drawing, totaly origanal
+    character\r\n\n- mario pipes stolen fresh outta italy (that was a lie, I got them
+    from the flappy sky)\r\n\n- litteraly the dumbest frog you've ever seen ... (cant
+    spell dumbest without BEST)\r\n\n- fluffy poofs, popsicle sticks not included.
+    use supplied straws instead.\r\n\n- \"crispy\" fish boap - WIP obviously\r\n\r\na
+    \"weve made changes to our privacy statement\" email:\r\n\n- the way the game
+    checks if you can jump or not is done differently, but should feel the same. (It
+    now checks if your moving, so slow down you fucking spastic)\r\n\n- simply slick
+    phill sillouette simplified, so slick phill collider should show simpler somewhat.
+    sticky stuck on static stacks less.\r\n\n- added JELL-O to the wave, and gave
+    it a hall pass. also features more wave.\r\n\n- Checkpoint names wont upset the
+    man anymore. usualy I'd stick it to the man, but I guess he wins this one.\n\r\n-
+    got my shit together so I know what should be shown overtop of what\r\n\r\nBOOOOB
+    TH E BUILLLD ER:\r\n\n- Bugs I created whilst doing this that nobody will ever
+    know about. except woody, he knows about some of them. like, 2 of them. there
+    was way more than 2.\r\n\r\nI have issues:\r\n\n- data privacy button may not
+    work on html, and I have no idea why. who cares anyway, unless you own a tinfoil
+    hat.\r\n\n- Phill can sometimes jump in the air just after respawning, and I have
+    no idea why. chill phill. \r\n\n- Phill gets stuck on flat ground occasionaly,
+    and I have no idea why\u200B. CHILL LESS PHILL THE WAVE IS COMING OH GOD PHILL
+    WHY\r\n\r\n\n\n0.2.3 - Pretty much just fixing last versions \"known issues\".\r\n\r\nNew
     Features:\r\n- Main Menu for main menuing. features this list of features.\r\n\r\n-
     Anyalitics, so i knows what chu up2 dog\r\n\r\n- Ablility to Opt-Out of anaylitics,
     tinfoil hat not included\r\n\r\nFixes:\r\n\r\n- the game doesn't 'really' play
@@ -409,7 +433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 101, y: -106.8}
   m_SizeDelta: {x: -13.299999, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &451945140
@@ -455,7 +479,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1473312037}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 0.9999998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -478,8 +502,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -666,11 +690,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22409076, guid: 71b11355001648444b41d17fd36c150d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 698.2
       objectReference: {fileID: 0}
     - target: {fileID: 22409076, guid: 71b11355001648444b41d17fd36c150d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 40
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 22409076, guid: 71b11355001648444b41d17fd36c150d, type: 3}
       propertyPath: m_SizeDelta.x
@@ -703,6 +727,18 @@ PrefabInstance:
     - target: {fileID: 22409076, guid: 71b11355001648444b41d17fd36c150d, type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22409076, guid: 71b11355001648444b41d17fd36c150d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.77611
+      objectReference: {fileID: 0}
+    - target: {fileID: 22409076, guid: 71b11355001648444b41d17fd36c150d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.77611
+      objectReference: {fileID: 0}
+    - target: {fileID: 22409076, guid: 71b11355001648444b41d17fd36c150d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.77611
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71b11355001648444b41d17fd36c150d, type: 3}
@@ -861,7 +897,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 591555380}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.16597511
+  m_Size: 0.1398108
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1089,8 +1125,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: 0}
-  m_SizeDelta: {x: 200, y: 0}
+  m_AnchoredPosition: {x: -134.3, y: 0}
+  m_SizeDelta: {x: 265.1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &897849801
 MonoBehaviour:
@@ -1421,7 +1457,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.000061035156}
-  m_SizeDelta: {x: 0, y: 3133}
+  m_SizeDelta: {x: 0, y: 4677.75}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1473312036
 GameObject:
@@ -1564,7 +1600,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '0.2.3
+  m_Text: '0.2.4
 
 '
 --- !u!222 &1536634766
@@ -1755,7 +1791,7 @@ RectTransform:
   m_GameObject: {fileID: 1955122463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5355, y: 1.5355, z: 1.5355}
+  m_LocalScale: {x: 2.0919654, y: 2.0919654, z: 2.0919654}
   m_Children:
   - {fileID: 1972888839}
   m_Father: {fileID: 1123910913}
@@ -1763,7 +1799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 38.8, y: 155.51999}
+  m_AnchoredPosition: {x: 44, y: 116}
   m_SizeDelta: {x: 137.3, y: 38.799988}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1955122465
@@ -1936,7 +1972,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Start Game
+  m_Text: PLAY
 --- !u!222 &1972888841
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -19,20 +19,23 @@ public class Split : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == GM.playerTag &&
-            (GM.splitManager.currentTime < bestTime || bestTime == 0))
+        if (collision.gameObject.tag == GM.playerTag){
+            if (GM.splitManager.currentTime < bestTime || bestTime == 0)
         {
-            if(bestTime == 0 && GM.sendAnyalitics) {  //first time
-                Analytics.CustomEvent("First Time at " + splitName, new Dictionary<string, object>
+                if (bestTime == 0 && GM.sendAnyalitics) {  //first time
+                    Analytics.CustomEvent("First Time at " + splitName, new Dictionary<string, object>
                 { {"Time", GM.splitManager.currentTime}
                 });
+                }
+
+                bestTime = GM.splitManager.currentTime;
+                bestTimeText.text = decimal.Round(bestTime, 2) + " sec";
             }
 
-            bestTime = GM.splitManager.currentTime;
-            bestTimeText.text = decimal.Round(bestTime,2) + " sec";
-
-            GM.splitManager.newPBParticles.gameObject.transform.position = FrogManager.frog.transform.position;
-            GM.splitManager.newPBParticles.Emit(GM.splitManager.particleBurstCount);
+            ParticleSystem SplitParticles = GM.splitManager.newPBParticles;
+            SplitParticles.gameObject.transform.position = new Vector3(
+                FrogManager.frog.transform.position.x, FrogManager.frog.transform.position.y, SplitParticles.gameObject.transform.position.z);
+            SplitParticles.Emit(GM.splitManager.particleBurstCount);
         }
     }
 

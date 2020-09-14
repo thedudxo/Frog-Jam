@@ -25,7 +25,8 @@ public class FrogDeath : MonoBehaviour {
     [SerializeField] ParticleSystem deathParticles;
     int deathEmit = 25;
 
-
+    [Header("Animation")]
+    [SerializeField] Animator animator;
 
     private void Awake()
     {
@@ -74,7 +75,7 @@ public class FrogDeath : MonoBehaviour {
         //setback
         if (!reset)
         {
-            transform.position = new Vector2(transform.position.x - respawnSetBack, 5);
+            transform.position = new Vector2(transform.position.x - respawnSetBack, -3);
             wave.transform.position = new Vector2(wave.transform.position.x - respawnSetBack, wave.transform.position.y);
         }
 
@@ -89,14 +90,16 @@ public class FrogDeath : MonoBehaviour {
         }
 
         //particles
-        respawnParticles.gameObject.transform.position = transform.position;
+        respawnParticles.gameObject.transform.position = new Vector3(
+            transform.position.x, transform.position.y, respawnParticles.transform.position.z);
         respawnParticles.Emit(respawnEmit);
 
         //these get disabled when killed
         rb.gravityScale = 1;
-        spriteRenderer.enabled = true;
+        //spriteRenderer.enabled = true;
         GetComponent<PolygonCollider2D>().enabled = true;
         wave.GetComponent<Wave>().waveCurrentSpeed = wave.GetComponent<Wave>().waveStartSpeed;
+        FrogManager.frogCamera.followPhill = true;
 
         GM.audioManager.PlaySound("RespawnPop");
         rb.velocity = Vector3.zero;
@@ -112,21 +115,27 @@ public class FrogDeath : MonoBehaviour {
         //these get changed back when respawning
         GM.gameState = GM.GameState.dead;
         rb.gravityScale = 0;
-        spriteRenderer.enabled = false;
+        //spriteRenderer.enabled = false;
         GetComponent<PolygonCollider2D>().enabled = false;
+        FrogManager.frogCamera.followPhill = false;
         //those get changed back when respawning
 
         rb.velocity = Vector3.zero;
 
-        deathParticles.gameObject.transform.position = transform.position;
+        //particles
+        deathParticles.gameObject.transform.position = 
+            new Vector3(transform.position.x, transform.position.y, deathParticles.transform.position.z);
         deathParticles.Emit(deathEmit);
 
+        //audio
         GetComponent<FrogMetaBloodSplater>().startSplatter();
         GM.audioManager.PlaySound("DeathFart" + Random.Range(1,4));
         GM.gameMusic.DetuneMusic();
 
+        //misc
         GM.PhillDied();
         Statistics.totalDeaths++;
         currentRespawnWaitTime = 0;
+        animator.SetTrigger("died");
     }
 }
