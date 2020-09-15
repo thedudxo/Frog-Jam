@@ -104,7 +104,10 @@ public class FrogDeath : MonoBehaviour {
         foreach (GameObject obj in thingsToHideWhileDead)  { obj.SetActive(true); }                 //unhide all the sprites
 
         GM.audioManager.PlaySound("RespawnPop");
-        rb.velocity = Vector3.zero;
+        //an attempt to fix the jumping after respawing bug. might be caused because velocity is 0 when you respawn 
+        //so have one frame where you can jump
+        //.AddForce(new Vector2(0, -0.1f));
+        rb.velocity = new Vector2(0, -1f);
         GM.gameState = GM.GameState.alive;
         GM.PhillRespawned();
     }

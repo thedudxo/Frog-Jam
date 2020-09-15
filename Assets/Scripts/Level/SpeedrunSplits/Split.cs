@@ -4,24 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 
-public class Split : MonoBehaviour
+public class Split : MonoBehaviour, IRespawnResetable
 {
     [SerializeField] string splitName;
     [SerializeField] Text bestTimeText;
     [SerializeField] Text title;
     decimal bestTime;
 
+    bool triggeredThisLife = false;
+
     // Start is called before the first frame update
     void Start()
     {
         title.text = splitName;
+        GM.AddRespawnResetable(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == GM.playerTag){
-            if (GM.splitManager.currentTime < bestTime || bestTime == 0)
+        if (collision.gameObject.tag == GM.playerTag && ! triggeredThisLife)
         {
+
+            triggeredThisLife = true;
+
+            if (GM.splitManager.currentTime < bestTime || bestTime == 0)
+            {
                 if (bestTime == 0 && GM.sendAnyalitics) {  //first time
                     Analytics.CustomEvent("First Time at " + splitName, new Dictionary<string, object>
                 { {"Time", GM.splitManager.currentTime}
@@ -32,11 +39,18 @@ public class Split : MonoBehaviour
                 bestTimeText.text = decimal.Round(bestTime, 2) + " sec";
             }
 
+
+            //particles
             ParticleSystem SplitParticles = GM.splitManager.newPBParticles;
             SplitParticles.gameObject.transform.position = new Vector3(
                 FrogManager.frog.transform.position.x, FrogManager.frog.transform.position.y, SplitParticles.gameObject.transform.position.z);
             SplitParticles.Emit(GM.splitManager.particleBurstCount);
         }
+    }
+
+    public void RespawnReset()
+    {
+        triggeredThisLife = false;
     }
 
     public string getSplitName()
