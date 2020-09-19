@@ -1,0 +1,29 @@
+0.2.3 - Pretty much just fixing last versions "known issues".
+
+===============
+
+New Features:
+
+- Main Menu for main menuing. features this list of features.
+
+- Analytics, so i knows what chu up2 dog
+
+- Ability to Opt-Out of analytics, tinfoil hat not included
+
+===============
+
+Fixes:
+
+- the game doesn't 'really' play anymore when the win screen pops up. *warranty void if this is just a series of cheap hacks*
+
+- sound should now work on HTML. I promise there's no "RIP headphones" section.
+
+- activating the "assassins creed" checkpoint when you didn't safely land in a conveniently placed cart of hay shouldn't happen now.
+
+===============
+
+Changes:
+
+- Made colliders more fair and accurate (again). You can now speedrun the "flappy bird" checkpoint to 10s, I think less is still possible.
+
+- Removed Herobrine

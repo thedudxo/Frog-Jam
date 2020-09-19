@@ -1,0 +1,58 @@
+0.2.4 - Music, Art, and Juice
+
+===============
+
+New Features:
+
+- Contextual Music
+
+- Jump Power Bar
+
+- Clouds
+
+- Recognition when you cleanly jump over/through certain obstacles
+
+===============
+New Art:
+
+- Stop sign
+
+- Floppy Birb Art
+
+- Plumber pipes
+
+- Phill Art
+
+- Clouds
+
+- fishing boat
+
+===============
+
+Changes:
+
+- the way the game checks if you can jump or not is done differently, but should feel the same. (It now checks if your moving)
+
+- Frog sillouette simplified, hence frog collider is simpler too. Less getting stuck on things.
+
+- Wave has a bit of a jiggle to it, and no longer stops when you die. also features more wave.
+
+- Checkpoints have non copyright infringing names.
+
+- Organised sprite layers so I know what should be drawn over what
+
+===============
+
+Fixes:
+
+- Bugs I created whilst doing this
+
+===============
+
+Known Issues:
+
+- data privacy button may not work on html, and I have no idea why
+
+- Phill can sometimes jump in the air just after respawning, and I have no idea why
+
+- Phill gets stuck on flat ground occasionaly, and I have no idea why

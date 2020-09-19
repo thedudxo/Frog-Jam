@@ -1,0 +1,38 @@
+0.2.2
+
+===============
+
+New Features:
+
+- pop  sound effect when you Respawn.
+
+- pffft sound effect when you die.
+
+- Speedrun checkpoints and timer.
+
+- Camera smoothly follows Phill around.
+
+- Progress lost shown on the progress bar
+
+- green "blood" effect over the screen when you die.
+
+===============
+Changes:
+
+- Frog colliders are a little more fair and are always within the frog.
+
+- removed some old scripts from the project that were never used. 
+
+- Respawning on the starting platform will now cause a full reset. this should reduce confusion when the wave starts "spawning" next to you.
+
+- Most fonts aren't default anymore.
+
+===============
+
+Known Issues:
+
+- The game keeps playing when the win screen pops up
+
+- It's possible to activate the "assassins creed" checkpoint and not survive the jump.
+
+- sound doesn't work in HTML for some reason ;~;

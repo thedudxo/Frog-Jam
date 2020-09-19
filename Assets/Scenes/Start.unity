@@ -427,40 +427,41 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "0.2.4 - Mostly music\r\n\r\nFeature Creep:\r\n- Contextual Music that changes
-    to your every move, like that weird guy out your window in a trenchcoat.\r\n\n-
-    super AWESOME Jump POWER METER 9000+\r\n\n- fluffy poofs, totaly not fake.\r\n\n-
-    a certificate of approval when you do the good, direct from the mayor themself.\r\n\r\nNew
-    Doodles:\r\n- stahhpy stoop no gooo sign\r\n\n- Floppy Bib drawing, totaly origanal
-    character\r\n\n- mario pipes stolen fresh outta italy (that was a lie, I got them
-    from the flappy sky)\r\n\n- litteraly the dumbest frog you've ever seen ... (cant
-    spell dumbest without BEST)\r\n\n- fluffy poofs, popsicle sticks not included.
-    use supplied straws instead.\r\n\n- \"crispy\" fish boap - WIP obviously\r\n\r\na
-    \"weve made changes to our privacy statement\" email:\r\n\n- the way the game
-    checks if you can jump or not is done differently, but should feel the same. (It
-    now checks if your moving, so slow down you fucking spastic)\r\n\n- simply slick
-    phill sillouette simplified, so slick phill collider should show simpler somewhat.
-    sticky stuck on static stacks less.\r\n\n- added JELL-O to the wave, and gave
-    it a hall pass. also features more wave.\r\n\n- Checkpoint names wont upset the
-    man anymore. usualy I'd stick it to the man, but I guess he wins this one.\n\r\n-
-    got my shit together so I know what should be shown overtop of what\r\n\r\nBOOOOB
-    TH E BUILLLD ER:\r\n\n- Bugs I created whilst doing this that nobody will ever
-    know about. except woody, he knows about some of them. like, 2 of them. there
-    was way more than 2.\r\n\r\nI have issues:\r\n\n- data privacy button may not
-    work on html, and I have no idea why. who cares anyway, unless you own a tinfoil
-    hat.\r\n\n- Phill can sometimes jump in the air just after respawning, and I have
-    no idea why. chill phill. \r\n\n- Phill gets stuck on flat ground occasionaly,
-    and I have no idea why\u200B. CHILL LESS PHILL THE WAVE IS COMING OH GOD PHILL
-    WHY\r\n\r\n\n\n0.2.3 - Pretty much just fixing last versions \"known issues\".\r\n\r\nNew
-    Features:\r\n- Main Menu for main menuing. features this list of features.\r\n\r\n-
-    Anyalitics, so i knows what chu up2 dog\r\n\r\n- Ablility to Opt-Out of anaylitics,
-    tinfoil hat not included\r\n\r\nFixes:\r\n\r\n- the game doesn't 'really' play
-    anymore when the win screen pops up. *warranty void if this is just a series of
-    cheap hacks*\r\n\r\n- sound should now work on HTML. I promise theres no \"RIP
-    headphones\" section.\r\n\r\n- activating the \"assassins creed\" checkpoint when
-    you didn't safely land in a conveniently placed cart of hay shouldn't happen now.\r\n\r\nChanges:\r\n-
-    Made colliders more fair and accurate (again). You can now speedrun the \"flappy
-    bird\" checkpoint to 10s, I think less is still possible.\r\n\r\n- Removed Herobrine\r\n\r\n\r\n\r\n0.2.2\r\n\r\nNew
+  m_Text: "0.2.4 - Mostly music\r\n===============\nFeature Creep:\r\n- Contextual
+    Music that changes to your every move, like that weird guy out your window in
+    a trenchcoat.\r\n\n- super AWESOME Jump POWER METER 9000+\r\n\n- fluffy poofs,
+    totaly not fake.\r\n\n- a certificate of approval when you do the good, direct
+    from the mayor themself.\r\n\r\nNew Doodles:\r\n- stahhpy stoop no gooo sign\r\n\n-
+    Floppy Bib drawing, totaly origanal character\r\n\n- mario pipes stolen fresh
+    outta italy (that was a lie, I got them from the flappy sky)\r\n\n- litteraly
+    the dumbest frog you've ever seen ... (cant spell dumbest without BEST)\r\n\n-
+    fluffy poofs, popsicle sticks not included. use supplied straws instead.\r\n\n-
+    \"crispy\" fish boap - WIP obviously\r\n\r\na \"weve made changes to our privacy
+    statement\" email:\r\n\n- the way the game checks if you can jump or not is done
+    differently, but should feel the same. (It now checks if your moving, so slow
+    down you fucking spastic)\r\n\n- simply slick phill sillouette simplified, so
+    slick phill collider should show simpler somewhat. sticky stuck on static stacks
+    less.\r\n\n- added JELL-O to the wave, and gave it a hall pass. also features
+    more wave.\r\n\n- Checkpoint names wont upset the man anymore. usualy I'd stick
+    it to the man, but I guess he wins this one.\n\r\n- got my shit together so I
+    know what should be shown overtop of what\r\n\r\nBOOOOB TH E BUILLLD ER:\r\n\n-
+    Bugs I created whilst doing this that nobody will ever know about. except woody,
+    he knows about some of them. like, 2 of them. there was way more than 2.\r\n\r\nI
+    have issues:\r\n\n- data privacy button may not work on html, and I have no idea
+    why. who cares anyway, unless you own a tinfoil hat.\r\n\n- Phill can sometimes
+    jump in the air just after respawning, and I have no idea why. chill phill. \r\n\n-
+    Phill gets stuck on flat ground occasionaly, and I have no idea why\u200B. CHILL
+    LESS PHILL THE WAVE IS COMING OH GOD PHILL WHY\r\n\r\n\n\n0.2.3 - Pretty much
+    just fixing last versions \"known issues\".\r\n\r\nNew Features:\r\n- Main Menu
+    for main menuing. features this list of features.\r\n\r\n- Anyalitics, so i knows
+    what chu up2 dog\r\n\r\n- Ablility to Opt-Out of anaylitics, tinfoil hat not included\r\n\r\nFixes:\r\n\r\n-
+    the game doesn't 'really' play anymore when the win screen pops up. *warranty
+    void if this is just a series of cheap hacks*\r\n\r\n- sound should now work on
+    HTML. I promise theres no \"RIP headphones\" section.\r\n\r\n- activating the
+    \"assassins creed\" checkpoint when you didn't safely land in a conveniently placed
+    cart of hay shouldn't happen now.\r\n\r\nChanges:\r\n- Made colliders more fair
+    and accurate (again). You can now speedrun the \"flappy bird\" checkpoint to 10s,
+    I think less is still possible.\r\n\r\n- Removed Herobrine\r\n\r\n\r\n\r\n0.2.2\r\n\r\nNew
     Features:\r\n\r\n- \"pop\"  sound \"effect\" when you Respawn. *warranty void
     if its just a dude making a pop sound with his lips*\r\n\r\n- \"pffft\" sound
     \"effect\" when you die.  *warranty void if previous warranty was void*\r\n\r\n-
@@ -533,6 +534,7 @@ GameObject:
   - component: {fileID: 272155429}
   - component: {fileID: 272155431}
   - component: {fileID: 272155430}
+  - component: {fileID: 272155432}
   m_Layer: 5
   m_Name: Changelog
   m_TagString: Untagged
@@ -556,7 +558,7 @@ RectTransform:
   - {fileID: 1794188964}
   - {fileID: 1611246945}
   m_Father: {fileID: 1123910913}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -576,7 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.22152013, g: 0.3584906, b: 0.22361451, a: 1}
+  m_Color: {r: 0.13883945, g: 0.4528302, b: 0.23197566, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -599,6 +601,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272155428}
   m_CullTransparentMesh: 0
+--- !u!114 &272155432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272155428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 890add2b2039d534dab54cba1c2b6030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seriousChangelogs:
+  - {fileID: 4900000, guid: 0cbc6cc1261b1fe47961628a813896b7, type: 3}
+  - {fileID: 4900000, guid: 0a4d5439f91453942b57e9030d802f71, type: 3}
+  - {fileID: 4900000, guid: 69b0e344bbfe4114e82a075887a6f287, type: 3}
+  stupidChangelogs:
+  - {fileID: 4900000, guid: 6336c3ddfb668a34b84f22c4bbb8bea4, type: 3}
+  - {fileID: 4900000, guid: f822c834a555b3449875cc44f08b40d8, type: 3}
+  - {fileID: 4900000, guid: 0dcc4eb19abd4d54681562d750176490, type: 3}
+  displayText: {fileID: 189414137}
+  dropdown: {fileID: 1794188965}
 --- !u!1 &382883365
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,7 +778,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1473312037}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -949,7 +973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22409076, guid: 71b11355001648444b41d17fd36c150d, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 22409076, guid: 71b11355001648444b41d17fd36c150d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1248,8 +1272,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 591555381}
   m_HandleRect: {fileID: 591555380}
   m_Direction: 2
-  m_Value: 0.9857091
-  m_Size: 0.14583935
+  m_Value: 0.98623276
+  m_Size: 0.120399766
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1326,7 +1350,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.27661088, g: 0.5283019, b: 0.5231621, a: 0}
+  m_BackGroundColor: {r: 0.16785331, g: 0.77276915, b: 0.8679245, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1965,9 +1989,9 @@ RectTransform:
   - {fileID: 185373464}
   - {fileID: 1946925868}
   - {fileID: 1536634764}
-  - {fileID: 1636921603}
   - {fileID: 1955122464}
   - {fileID: 272155429}
+  - {fileID: 1636921603}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2397,7 +2421,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 57.1}
+  m_AnchoredPosition: {x: 0, y: 56.645897}
   m_SizeDelta: {x: 0, y: 4677.75}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1473312036
@@ -2523,7 +2547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7512412, g: 0.8584906, b: 0.13363297, a: 1}
+  m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2786,7 +2810,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 272155432}
+        m_MethodName: ToggleStupidity
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1611246946}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!224 &1636921603 stripped
 RectTransform:
@@ -2959,7 +2994,18 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 272155432}
+        m_MethodName: DropDownChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1794188966
 MonoBehaviour:
@@ -3243,7 +3289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7512412, g: 0.8584906, b: 0.13363297, a: 1}
+  m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3303,7 +3349,7 @@ RectTransform:
   m_Children:
   - {fileID: 1972888839}
   m_Father: {fileID: 1123910913}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
