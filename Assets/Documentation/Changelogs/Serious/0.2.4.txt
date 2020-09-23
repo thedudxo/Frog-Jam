@@ -12,6 +12,8 @@ New Features:
 
 - Recognition when you cleanly jump over/through certain obstacles
 
+- changelog menu
+
 ===============
 New Art:
 
@@ -26,6 +28,8 @@ New Art:
 - Clouds
 
 - fishing boat
+
+- Assassab
 
 ===============
 
@@ -53,6 +57,8 @@ Known Issues:
 
 - data privacy button may not work on html, and I have no idea why
 
-- Phill can sometimes jump in the air just after respawning, and I have no idea why
-
 - Phill gets stuck on flat ground occasionaly, and I have no idea why
+
+- Jump power doesn't reset when you die
+
+- music zones occasionaly bug out

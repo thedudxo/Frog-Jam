@@ -1,11 +1,10 @@
-FAQ (and answers to them)
+FAQAATT (frequently asked questions and answers to them)
 
 Q: have you beaten the game?
 A: Absolutely, I make sure I beat it once before starting any development work.
 
 Q: The checkpoints are broken!
-A: "Checkpoints" Function as intended. So yes, sometimes they respawn you only to immeadiately kill you a few more times. 
-	The wave always sends you back to the start.
+A: "Checkpoints" Function as intended. So yes, sometimes they respawn you only to immeadiately kill you a few more times. The wave always sends you back to the start.
 
 Q: whats with that counter below the progress bar?
 A: Thats keeping track of how many times you died in a row due to "Checkpoints".
@@ -13,8 +12,11 @@ A: Thats keeping track of how many times you died in a row due to "Checkpoints".
 Q: I keep getting stuck behind the floppy birb pipe, plz fix!
 A: Intentional. Press Q.
 
+Q: does anything happen when the counter reaches 69?
+A: no
+
 Q: Do you really need an FAQ?
-A: For now, yes
+A: no
 
 Q: Was that really a Frequently Asked Question?
 A: no
