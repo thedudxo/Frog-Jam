@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class GameTimer : MonoBehaviour
 {
+    static GameTimer gameTimer;
+
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        if(gameTimer = null)
+        {
+            gameTimer = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        
     }
 
     // Update is called once per frame

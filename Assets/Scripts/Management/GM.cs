@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class GM {
 
@@ -12,9 +13,7 @@ public static class GM {
     public static AudioManager audioManager;
     public static GameMusic gameMusic;
 
-    static List<GameObject> gaters = new List<GameObject>();
     static List<IRespawnResetable> resetOnRespawn = new List<IRespawnResetable>();
-
 
     public static readonly float CameraVeiwRangeApprox = 18;
     public static readonly string playerTag = "Phill";
@@ -29,8 +28,6 @@ public static class GM {
     }
 
     public static GameState gameState = GameState.alive;
-
-
 
     static public void PhillRespawned()
     {
@@ -51,6 +48,13 @@ public static class GM {
     public static void AddRespawnResetable(IRespawnResetable resetable)
     {
         resetOnRespawn.Add(resetable);
+    }
+
+    public static void QuitToMenu()
+    {
+        SceneManager.LoadScene(0);
+
+        resetOnRespawn = new List<IRespawnResetable>(); //reset or else the list will grow
     }
 
 }

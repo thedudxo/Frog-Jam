@@ -12,7 +12,11 @@ New Features:
 
 - Recognition when you cleanly jump over/through certain obstacles
 
-- changelog menu
+- Changelog menu
+
+- Frequently asked questions and answers to them
+
+- Esc key quits to menu now
 
 ===============
 New Art:
@@ -37,7 +41,7 @@ Changes:
 
 - the way the game checks if you can jump or not is done differently, but should feel the same. (It now checks if your moving)
 
-- Frog sillouette simplified, hence frog collider is simpler too. Less getting stuck on things.
+- Frog silhouette simplified, hence frog collider is simpler too. Less getting stuck on things.
 
 - Wave has a bit of a jiggle to it, and no longer stops when you die. also features more wave.
 
@@ -45,11 +49,15 @@ Changes:
 
 - Organised sprite layers so I know what should be drawn over what
 
+- Ran the changelogs through a spellchecker
+
 ===============
 
 Fixes:
 
 - Bugs I created whilst doing this
+
+- Jump power didn't reset when you died
 
 ===============
 
@@ -57,8 +65,8 @@ Known Issues:
 
 - data privacy button may not work on html, and I have no idea why
 
-- Phill gets stuck on flat ground occasionaly, and I have no idea why
+- Phill gets stuck on flat ground occasionally, and I have no idea why
 
-- Jump power doesn't reset when you die
+- music zones occasionally bug out
 
-- music zones occasionaly bug out
+

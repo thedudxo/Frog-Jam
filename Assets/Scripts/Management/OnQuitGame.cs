@@ -8,6 +8,11 @@ public class OnQuitGame : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        if(GM.splitManager = null)
+        {
+            Debug.Log("no split manager, not sending stats");
+            return;
+        }
         if (!GM.sendAnyalitics) { return; }
 
         //move to end of level, when theres more levels

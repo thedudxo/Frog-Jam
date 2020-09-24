@@ -5,9 +5,9 @@ New Features:
 
 - Main Menu
 
-- Anyalitics
+- Analytics
 
-- Opt-Out of anaylitics
+- Opt-Out of analytics
 
 ===============
 
@@ -24,3 +24,5 @@ Fixes:
 Changes:
 
 - Made colliders more fair and accurate (again)
+
+

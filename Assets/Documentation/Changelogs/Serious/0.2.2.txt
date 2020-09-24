@@ -6,7 +6,7 @@ New Features:
 
 - pop  sound effect when you Respawn.
 
-- pffft sound effect when you die.
+- pfft sound effect when you die.
 
 - Speedrun checkpoints and timer.
 
@@ -36,3 +36,5 @@ Known Issues:
 - It's possible to activate the "assassins creed" checkpoint and not survive the jump.
 
 - sound doesn't work in HTML for some reason ;~;
+
+

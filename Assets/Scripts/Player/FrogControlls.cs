@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FrogControlls : MonoBehaviour {
+public class FrogControlls : MonoBehaviour, IRespawnResetable {
 
 
     Rigidbody2D rb;
@@ -16,7 +16,7 @@ public class FrogControlls : MonoBehaviour {
 
     [SerializeField] private float jumpForce;
     [SerializeField] private float maxJumpTime;
-    [SerializeField] private float jumpTimerBuff = 2;  
+    [SerializeField] private float jumpTimerBuff = 2;
     [SerializeField] private float minJumpAmmount = 0.2f;
 
     [SerializeField] bool drawRays = false;
@@ -39,18 +39,20 @@ public class FrogControlls : MonoBehaviour {
         FrogManager.frogControlls = this;
     }
 
-    void Start () {
+    void Start() {
         rb = GetComponent<Rigidbody2D>();
         layermask = LayerMask.GetMask("Ground");
 
         powerBar.minValue = minJumpAmmount;
         powerBar.maxValue = maxJumpTime;
-	}
+
+        GM.AddRespawnResetable(this);
+    }
 
 
-	void Update () { 
+    void Update() {
 
-        if(GM.gameState != GM.GameState.alive) { return; }
+        if (GM.gameState != GM.GameState.alive) { return; }
 
         currentSpriteSwapTime += Time.deltaTime;
 
@@ -94,7 +96,7 @@ public class FrogControlls : MonoBehaviour {
                 jumpKeyTime = Mathf.Clamp(jumpKeyTime, minJumpAmmount, maxJumpTime);
                 rb.AddForce(new Vector2(jumpForce * jumpKeyTime, jumpForce * jumpKeyTime));
                 CollidedSinceLastJump = false;
-                
+
             }
             jumpKeyTime = 0;
         }
@@ -103,6 +105,12 @@ public class FrogControlls : MonoBehaviour {
         {
             FrogManager.frogDeath.KillPhill();
             Statistics.suicideDeaths++;
+        }
+
+        //quit to menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GM.QuitToMenu();
         }
     }
 
@@ -139,7 +147,13 @@ public class FrogControlls : MonoBehaviour {
             Debug.DrawRay(rayPos1, Vector2.down, Color.magenta, layermask); Debug.DrawRay(rayPos2, Vector2.down, Color.magenta, layermask);
             Debug.DrawRay(rayPos3, new Vector2(2.2f, 0), Color.magenta, layermask);
         }
-        
+
     }
+
+    public void RespawnReset()
+    {
+        jumpKeyTime = 0;
+    }
+
 
 }
