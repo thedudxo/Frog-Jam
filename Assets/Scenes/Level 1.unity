@@ -1055,7 +1055,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 19.208765, y: -48.256405}
+  m_Offset: {x: -56.228157, y: 2.0280762}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1066,7 +1066,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 54.88476, y: 27.809471}
+  m_Size: {x: 205.75856, y: 190.9531}
   m_EdgeRadius: 0
 --- !u!23 &171035171
 MeshRenderer:
@@ -27542,14 +27542,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startX: -29
-  endX: 253.79
+  endX: 253.17
   spawnPlatformEndX: -11.69
   spawnPlatformLength: 0
   gizmoYOffset: -4.44
   gizmoScale: 0.6
   wave: {fileID: 8322174571285801742}
   winScreen: {fileID: 8322174572598821164}
-  randomSprites: []
 --- !u!4 &8322174572349124578
 Transform:
   m_ObjectHideFlags: 0

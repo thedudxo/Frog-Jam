@@ -42,7 +42,12 @@ public static class GM {
         { resetOnLevelRestart.Add(resetable); }
 
     public static void AddDeathResetable(IDeathResetable resetable)
-    { resetOnDeath.Add(resetable); }
+    { resetOnDeath.Add(resetable);}
+
+    public static void RemoveDeathResetable(IDeathResetable resetable)
+    {
+        resetOnDeath.Remove(resetable);
+    }
 
 
     static public void PhillRespawned()
