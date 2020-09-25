@@ -88,7 +88,7 @@ public class FrogDeath : MonoBehaviour {
             transform.position = spawnpoint;
             wave.GetComponent<Wave>().ResetWave();
             GM.splitManager.currentTime = 0;
-            GM.currentLevel.FrogRespawned();
+            GM.LevelRestart();
         }
 
         //particles

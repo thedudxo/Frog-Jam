@@ -121,7 +121,7 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
     }
 
 
-    public void RespawnReset()
+    public void PhillRespawned()
     {
         //Loop through all zones to check which zone your in now, since you died and got sent backwards
         zonePlayerDiedIn = currentZoneIndex;

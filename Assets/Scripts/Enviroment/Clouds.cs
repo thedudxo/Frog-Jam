@@ -26,7 +26,7 @@ public class Clouds : MonoBehaviour, IRespawnResetable
         }
     }
 
-    public void RespawnReset()
+    public void PhillRespawned()
     {
         //foreach (Cloud cloud in fluffyClouds)
         //{

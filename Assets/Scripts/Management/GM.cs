@@ -14,6 +14,8 @@ public static class GM {
     public static GameMusic gameMusic;
 
     static List<IRespawnResetable> resetOnRespawn = new List<IRespawnResetable>();
+    static List<ILevelRestartResetable> resetOnLevelRestart = new List<ILevelRestartResetable>();
+    static List<IDeathResetable> resetOnDeath = new List<IDeathResetable>();
 
     public static readonly float CameraVeiwRangeApprox = 18;
     public static readonly string playerTag = "Phill";
@@ -29,31 +31,45 @@ public static class GM {
 
     public static GameState gameState = GameState.alive;
 
+
+
+    //________________________________________________________________________________\\
+    // Various methods called to objects when respawning/restarting/dying
+    public static void AddRespawnResetable(IRespawnResetable resetable)
+        { resetOnRespawn.Add(resetable); }
+
+    public static void AddLevelRestartResetable(ILevelRestartResetable resetable)
+        { resetOnLevelRestart.Add(resetable); }
+
+    public static void AddDeathResetable(IDeathResetable resetable)
+    { resetOnDeath.Add(resetable); }
+
+
     static public void PhillRespawned()
     {
-        foreach(IRespawnResetable resetable in resetOnRespawn)
-        {
-            resetable.RespawnReset();
-        }
-
+        foreach (IRespawnResetable resetable in resetOnRespawn)
+            { resetable.PhillRespawned(); }
         CurrentRespawnCount++;
     }
 
-    static public void PhillDied()
+    public static void LevelRestart()
     {
-        comboCounter.CheckCombo();
+        foreach (ILevelRestartResetable resetable in resetOnLevelRestart)
+        { resetable.PhillRestartedLevel(); }
     }
 
-    //these have a method called whenever phill RESPAWNS
-    public static void AddRespawnResetable(IRespawnResetable resetable)
+    public static void PhillDied()
     {
-        resetOnRespawn.Add(resetable);
+        comboCounter.CheckCombo();
+        foreach (IDeathResetable resetable in resetOnDeath)
+        { resetable.PhillDied(); }
     }
+
+    //________________________________________________________________________________\\
 
     public static void QuitToMenu()
     {
         SceneManager.LoadScene(0);
-
         resetOnRespawn = new List<IRespawnResetable>(); //reset or else the list will grow
     }
 

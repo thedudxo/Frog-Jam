@@ -21,7 +21,7 @@ public class RememberCollisions : MonoBehaviour, IRespawnResetable
         }
     }
 
-    public void RespawnReset()
+    public void PhillRespawned()
     {
         HasCollided = false;
     }

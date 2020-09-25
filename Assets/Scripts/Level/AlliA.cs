@@ -50,7 +50,7 @@ public class AlliA : MonoBehaviour, IRespawnResetable {
     }
 
 
-    public void RespawnReset()
+    public void PhillRespawned()
     {
         transform.position = spawnPos;
         speed = startSpeed;

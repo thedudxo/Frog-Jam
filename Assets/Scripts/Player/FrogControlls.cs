@@ -150,7 +150,7 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
 
     }
 
-    public void RespawnReset()
+    public void PhillRespawned()
     {
         jumpKeyTime = 0;
     }

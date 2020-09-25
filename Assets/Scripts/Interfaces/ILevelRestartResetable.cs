@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IRespawnResetable
+public interface ILevelRestartResetable
 {
-    void RespawnReset();
+    void PhillRestartedLevel();
+
 }

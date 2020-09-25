@@ -48,7 +48,7 @@ public class Split : MonoBehaviour, IRespawnResetable
         }
     }
 
-    public void RespawnReset()
+    public void PhillRespawned()
     {
         triggeredThisLife = false;
     }

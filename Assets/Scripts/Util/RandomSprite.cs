@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomSprite : MonoBehaviour
+public class RandomSprite : MonoBehaviour, ILevelRestartResetable
 {
     [SerializeField] GameObject objectToSwap;
     [SerializeField] List<Sprite> sprites;
@@ -15,19 +15,22 @@ public class RandomSprite : MonoBehaviour
     {
         spriteRenderer = objectToSwap.GetComponent<SpriteRenderer>();
 
-        if (randomOnStart) { randomSprite(); }
+        if (randomOnStart) { RandomiseSprite(); }
 
-        GM.currentLevel.randomSprites.Add(this); //added for frog jam
+        GM.AddLevelRestartResetable(this);
     }
 
-    public void randomSprite()
+    public void PhillRestartedLevel()
     {
-        
+        RandomiseSprite();
+    }
+
+    public void RandomiseSprite()
+    {
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Count)];
     }
 
-
-    public void specificSprite(int index)
+    public void SpecificSprite(int index)
     {
         spriteRenderer.sprite = sprites[index];
     }

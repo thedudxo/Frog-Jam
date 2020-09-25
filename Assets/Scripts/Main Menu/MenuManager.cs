@@ -26,4 +26,9 @@ public class MenuManager : MonoBehaviour
         menu.SetActive(true);
         currentActive = menu;
     }
+
+    public void quitGame()
+    {
+        Application.Quit();
+    }
 }

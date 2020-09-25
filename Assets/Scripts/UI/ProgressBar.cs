@@ -36,7 +36,7 @@ public class ProgressBar : MonoBehaviour, IRespawnResetable
         }
     }
 
-    public void RespawnReset()
+    public void PhillRespawned()
     {
         checkPersonalBest();
         looseProgress();
