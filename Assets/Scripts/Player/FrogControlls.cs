@@ -25,6 +25,10 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
     [SerializeField] private float jumpTimerBuff = 2;
     [SerializeField] private float minJumpAmmount = 0.2f;
 
+    private bool canJump = false;
+    private float airTime = 0; //time since phill last touched something
+    private float maxAnimationAirTime = 1.5f; // time where the landing animation gets maximum squish
+
     [Header("UI")]
     [SerializeField] Slider powerBar;
 
@@ -34,9 +38,9 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
     private int layermask;
     private float jumpKeyTime = 0;
 
-    private bool canJump = false;
-    private float currentSpriteSwapTime = 0;
-    private readonly float spriteSwapMinWaitTime = .1f;
+
+    private float currentSpriteSwapTime = 0; //probably obsolete
+    private readonly float spriteSwapMinWaitTime = .1f; //probably obsolete
 
     private Ray2D jumpRay;
 
@@ -66,11 +70,21 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
 
         //can the frog jump?
         if (rb.velocity.magnitude <= Vector2.zero.magnitude + 2f) // not moving too fast
-            { canJump = true; }
+            {
+            if(canJump == false){ // the frame where phill landed
+                //landing animation
+                float airTimeNormalised = Mathf.Clamp(airTime, 0, maxAnimationAirTime) / maxAnimationAirTime;
+                animator.SetFloat("AirTime", airTimeNormalised);
+                airTime = 0;
+                }
+            canJump = true;
+            }
         else
-            { canJump = false; }
+            {
+            canJump = false;
+            airTime += Time.deltaTime;
+            }
         animator.SetBool("Landed", canJump);
-
 
         powerBar.value = jumpKeyTime * jumpTimerBuff;
 
@@ -82,7 +96,7 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
 
         if (Input.GetKeyDown(jumpKey))
         {
-            animator.SetTrigger("ChargeJump");
+            animator.SetBool("ChargingJump", true);
         }
 
         if (Input.GetKey(jumpKey))
@@ -95,12 +109,14 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
         jumpPower = Mathf.Clamp(jumpPower, minJumpAmmount, maxJumpTime);
 
         //get a normalised version and use it to set the animation blend tree
-        float jumpPowerNormalised = (jumpPower - minJumpAmmount) / (maxJumpTime - minJumpAmmount);
+        float jumpPowerNormalised = (jumpPower - minJumpAmmount) / (maxJumpTime - minJumpAmmount); //this is wrong probably
+        Debug.Log(jumpPowerNormalised);
         animator.SetFloat("JumpPower", jumpPowerNormalised);
 
         if (Input.GetKeyUp(jumpKey))
         {
             animator.SetTrigger("ReleaseJump");
+            animator.SetBool("ChargingJump", false);
             animator.SetFloat("JumpPowerAtKeyRelease", jumpPowerNormalised);
             if (canJump)
             {
