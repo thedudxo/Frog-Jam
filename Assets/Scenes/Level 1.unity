@@ -26874,7 +26874,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8322174571511716059}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.441, y: -2.7, z: 0}
+  m_LocalPosition: {x: -28.441, y: -2.86, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 867927039}
@@ -26922,12 +26922,13 @@ MonoBehaviour:
   frogSpriteObject: {fileID: 5148930124507098425}
   jumpKey: 32
   DebugKillKey: 113
+  animator: {fileID: 5335917812720519218}
   jumpForce: 400
   maxJumpTime: 1
   jumpTimerBuff: 4
   minJumpAmmount: 0.2
-  drawRays: 0
   powerBar: {fileID: 2048041297}
+  drawRays: 0
 --- !u!50 &8322174571511716070
 Rigidbody2D:
   serializedVersion: 4

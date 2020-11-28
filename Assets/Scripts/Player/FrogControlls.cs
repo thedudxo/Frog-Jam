@@ -7,21 +7,29 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
 
 
     Rigidbody2D rb;
+    [Header("Sprites")]
     [SerializeField] private Sprite jumpSprite;
     [SerializeField] private Sprite restSprite;
     [SerializeField] private GameObject frogSpriteObject;
 
+    [Header("Controlls")]
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
     [SerializeField] private KeyCode DebugKillKey = KeyCode.Q;
 
+    [Header("Animation")]
+    [SerializeField] Animator animator;
+
+    [Header("Physics")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float maxJumpTime;
     [SerializeField] private float jumpTimerBuff = 2;
     [SerializeField] private float minJumpAmmount = 0.2f;
 
-    [SerializeField] bool drawRays = false;
-
+    [Header("UI")]
     [SerializeField] Slider powerBar;
+
+    [Header("Debug")]
+    [SerializeField] bool drawRays = false;
 
     private int layermask;
     private float jumpKeyTime = 0;
@@ -58,45 +66,37 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
 
         //can the frog jump?
         if (rb.velocity.magnitude <= Vector2.zero.magnitude + 2f) // not moving too fast
-        {
-            canJump = true;
-        }
+            { canJump = true; }
         else
-        {
-            canJump = false;
-        }
-        //currentSpriteSwapTime += Time.deltaTime;
-        //if(currentSpriteSwapTime > spriteSwapMinWaitTime)
-        //{
-        //    
-        //    currentSpriteSwapTime = 0;
-        //}
+            { canJump = false; }
+        animator.SetBool("Landed", canJump);
+
 
         powerBar.value = jumpKeyTime * jumpTimerBuff;
 
 
-        if (canJump) {
-            frogSpriteObject.GetComponent<SpriteRenderer>().sprite = restSprite;
-        }
-        else {
-            frogSpriteObject.GetComponent<SpriteRenderer>().sprite = jumpSprite;
+        if (canJump)
+            { frogSpriteObject.GetComponent<SpriteRenderer>().sprite = restSprite;}
+        else
+            { frogSpriteObject.GetComponent<SpriteRenderer>().sprite = jumpSprite;}
 
+        if (Input.GetKeyDown(jumpKey))
+        {
+            animator.SetTrigger("ChargeJump");
         }
 
         if (Input.GetKey(jumpKey))
-        {
-            jumpKeyTime += Time.deltaTime;
-        }
+            { jumpKeyTime += Time.deltaTime; }
 
         if (Input.GetKeyUp(jumpKey))
         {
+            animator.SetTrigger("ReleaseJump");
             if (canJump)
             {
                 jumpKeyTime *= jumpTimerBuff;
                 jumpKeyTime = Mathf.Clamp(jumpKeyTime, minJumpAmmount, maxJumpTime);
                 rb.AddForce(new Vector2(jumpForce * jumpKeyTime, jumpForce * jumpKeyTime));
                 CollidedSinceLastJump = false;
-
             }
             jumpKeyTime = 0;
         }
@@ -117,33 +117,17 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         CollidedSinceLastJump = true;
-
-        //colisions++;
-        //if (colisions > 0) { canJump = true; }
-        //Debug.Log(colisions);
     }
-
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    colisions--;
-    //    if (colisions == 0) { canJump = false; }
-    //    Debug.Log(colisions);
-    //}
 
     private void FixedUpdate()
     {
 
-        Vector2 rayPos1 = new Vector2(transform.position.x - 1.1f, transform.position.y);
-        Vector2 rayPos2 = new Vector2(transform.position.x + 1.1f, transform.position.y);
-        Vector2 rayPos3 = new Vector2(transform.position.x - 1.1f, transform.position.y - 1f);
-
-        //canJump = 
-        //       Physics2D.Raycast(rayPos1, Vector2.down, 0.9f, layermask) 
-        //    || Physics2D.Raycast(rayPos2, Vector2.down, 0.9f, layermask) 
-        //    || Physics2D.Raycast(rayPos3, Vector2.right,2.2f , layermask);
-
         if (drawRays)
         {
+            Vector2 rayPos1 = new Vector2(transform.position.x - 1.1f, transform.position.y);
+            Vector2 rayPos2 = new Vector2(transform.position.x + 1.1f, transform.position.y);
+            Vector2 rayPos3 = new Vector2(transform.position.x - 1.1f, transform.position.y - 1f);
+
             Debug.DrawRay(rayPos1, Vector2.down, Color.magenta, layermask); Debug.DrawRay(rayPos2, Vector2.down, Color.magenta, layermask);
             Debug.DrawRay(rayPos3, new Vector2(2.2f, 0), Color.magenta, layermask);
         }
