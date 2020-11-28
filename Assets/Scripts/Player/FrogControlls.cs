@@ -85,28 +85,25 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
             animator.SetTrigger("ChargeJump");
         }
 
+        if (Input.GetKey(jumpKey))
+            {
+            jumpKeyTime += Time.deltaTime;
+            }
+
         //get a value between min/max ammount representing the strengh of the jump
         float jumpPower = jumpKeyTime * jumpTimerBuff;
         jumpPower = Mathf.Clamp(jumpPower, minJumpAmmount, maxJumpTime);
 
         //get a normalised version and use it to set the animation blend tree
-        float jumpPowerNormalised = (jumpPower - minJumpAmmount) / (maxJumpTime - minJumpAmmount)  ;
+        float jumpPowerNormalised = (jumpPower - minJumpAmmount) / (maxJumpTime - minJumpAmmount);
         animator.SetFloat("JumpPower", jumpPowerNormalised);
-
-        if (Input.GetKey(jumpKey))
-            {
-            jumpKeyTime += Time.deltaTime;
-
-            //animator.SetFloat("JumpPower",);
-            }
 
         if (Input.GetKeyUp(jumpKey))
         {
             animator.SetTrigger("ReleaseJump");
+            animator.SetFloat("JumpPowerAtKeyRelease", jumpPowerNormalised);
             if (canJump)
             {
-                //jumpKeyTime *= jumpTimerBuff;
-                //jumpKeyTime = Mathf.Clamp(jumpKeyTime, minJumpAmmount, maxJumpTime);
                 rb.AddForce(new Vector2(jumpForce * jumpPower, jumpForce * jumpPower));
                 CollidedSinceLastJump = false;
             }
