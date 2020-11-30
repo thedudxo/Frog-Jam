@@ -25,9 +25,9 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    private AudioClip GetClip(string name)
+    private AudioClip SearchForClip(string name)
     {
-        Debug.Log("Searching " + audioSources.Count + " audioclips for " + name +". its more efficient to save the audiosource somewhere with GetAudioSource()");
+        Debug.Log("Searching " + audioSources.Count + " audioclips for " + name);
 
         foreach (AudioClip clip in audioSources)
         {
@@ -37,17 +37,18 @@ public class AudioManager : MonoBehaviour
         throw new System.Exception("Could not find Audioclip: " + name);
     }
 
-    public void PlaySound(string name)
-    {  GetClip(name).audioSource.Play(); }
+    
+    //public void PlaySound(string name)
+    //{  SearchForClip(name).audioSource.Play(); }
 
-    public void PauseSound(string name)
-    {  GetClip(name).audioSource.Pause(); }
+    //public void PauseSound(string name)
+    //{  SearchForClip(name).audioSource.Pause(); }
 
-    public void UnPauseSound(string name)
-    {  GetClip(name).audioSource.UnPause();}
+    //public void UnPauseSound(string name)
+    //{  SearchForClip(name).audioSource.UnPause();}
 
     public AudioClip GetAudioClip(string name)
     {
-        return GetClip(name);
+        return SearchForClip(name);
     }
 }

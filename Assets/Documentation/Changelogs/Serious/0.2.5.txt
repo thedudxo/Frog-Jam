@@ -1,22 +1,25 @@
 0.2.5 - summary
 
-_________________________
+===============
 
 New Features:
+ - Jumping animation
+- improved jump accuracy when making small jumps
 
-_________________________
+===============
 
 New Art:
 
-_________________________
+===============
 
 Changes:
 
 - Fishing hole now counts any death near it as a catch
-_________________________
+
+===============
 
 Fixes:
 
-_________________________
+===============
 
 Known Issues:

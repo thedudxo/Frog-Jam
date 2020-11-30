@@ -21,12 +21,11 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
 
     [Header("Physics")]
     private float jumpForce = 400; 
-    //private float jumpTimerBuff = 4; // ???
     private float jumpKeyTime = 0; //how long the jump key has been held down
-    private float maxJumpKeyTime = .2f;  //how long the key must be heled to get max power
-    float jumpTimeNormalised = 0; // current jump power
-    private float minJumpPower = 0.3f; //the smallest jump you can make
-    private float jumpKeyTimeMinThreshold = 0.1f; //if jump key is heled for less than this time jump will be minimum power
+    private float maxJumpKeyTime = .22f;  //how long the key must be heled to get max power
+    float jumpTimeNormalised = 0; // how long the key was held 0 to 1
+    private float minJumpTimeNormalised = .18f; //the smallest jump you can make
+    private float jumpKeyTimeMinThreshold = 0.3f; //if jump key is heled for less than this time jump will be minimum power
 
 
     private bool canJump = false;
@@ -96,37 +95,29 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
             animator.SetBool("ChargingJump", true);
         }
 
-        float jumpCharge = jumpKeyTime;
-        powerBar.value = jumpTimeNormalised;
+
 
         if (Input.GetKey(jumpKey))
             {
             jumpKeyTime += Time.deltaTime;
-            //if (jumpKeyTime < jumpKeyTimeMinThreshold)
-            //{
-            //    jumpCharge = 0;
-            //}
         }
-
-        //get a value between min/max ammount representing the strengh of the jump
-        //jumpTimeNormalised = jumpCharge * jumpTimerBuff;
-        //jumpTimeNormalised = Mathf.Clamp(jumpTimeNormalised, minJumpPower, maxJumpKeyTime);
-
-        //get a normalised version and use it to set the animation blend tree
-        //float jumpPowerNormalised = (jumpTimeNormalised - minJumpPower) / (maxJumpKeyTime - minJumpPower);
-        //Debug.Log(jumpPowerNormalised);
-
 
         if (Input.GetKeyUp(jumpKey))
         {
             //do jump
-
             animator.SetTrigger("ReleaseJump");
             animator.SetBool("ChargingJump", false);
             animator.SetFloat("JumpPowerAtKeyRelease", jumpTimeNormalised);
 
             if (canJump) 
             {
+                //if jump key is heled for less than this time jump will be minimum power
+                //increases accuracy when player intends to make small jumps
+                if ((jumpTimeNormalised < jumpKeyTimeMinThreshold))
+                {
+                    jumpTimeNormalised = minJumpTimeNormalised;
+                }
+
                 rb.AddForce(new Vector2(jumpForce * jumpTimeNormalised, jumpForce * jumpTimeNormalised));
                 CollidedSinceLastJump = false;
             }
@@ -136,9 +127,9 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
 
         //get normalised jump time
         jumpTimeNormalised = Mathf.Clamp((jumpKeyTime / maxJumpKeyTime), 0, 1);
-        Debug.Log(jumpTimeNormalised);
 
         animator.SetFloat("JumpPower", jumpTimeNormalised);
+        powerBar.value = jumpTimeNormalised;
 
         if (Input.GetKeyDown(DebugKillKey))
         {
