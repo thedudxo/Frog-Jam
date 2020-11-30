@@ -1278,10 +1278,12 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 0cbc6cc1261b1fe47961628a813896b7, type: 3}
   - {fileID: 4900000, guid: 0a4d5439f91453942b57e9030d802f71, type: 3}
   - {fileID: 4900000, guid: 69b0e344bbfe4114e82a075887a6f287, type: 3}
+  - {fileID: 4900000, guid: 084da53af46abc44499247693d778fb4, type: 3}
   stupidChangelogs:
   - {fileID: 4900000, guid: 6336c3ddfb668a34b84f22c4bbb8bea4, type: 3}
   - {fileID: 4900000, guid: f822c834a555b3449875cc44f08b40d8, type: 3}
   - {fileID: 4900000, guid: 0dcc4eb19abd4d54681562d750176490, type: 3}
+  - {fileID: 4900000, guid: 93180da89743930459e43eb057c69d94, type: 3}
   displayText: {fileID: 189414137}
   dropdown: {fileID: 1794188965}
 --- !u!1 &301131388
@@ -1974,7 +1976,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1473312037}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2699,7 +2701,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 591555380}
   m_Direction: 2
   m_Value: 0.9858861
-  m_Size: 0.1424189
+  m_Size: 0.10885575
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4463,7 +4465,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 0.2.4
+  m_Text: 0.2.5
 --- !u!222 &1324634465
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4997,7 +4999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 56.618553}
+  m_AnchoredPosition: {x: 0, y: 58.834373}
   m_SizeDelta: {x: 0, y: 4677.75}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1473312036
@@ -5962,6 +5964,8 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: 0.2.5
+      m_Image: {fileID: 0}
     - m_Text: 0.2.4
       m_Image: {fileID: 0}
     - m_Text: 0.2.3

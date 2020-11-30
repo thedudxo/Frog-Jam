@@ -30,6 +30,10 @@ public class FrogDeath : MonoBehaviour {
     [SerializeField] Animator animator;
     [SerializeField] GameObject[] thingsToHideWhileDead;
 
+    //audio
+    AudioClip deathFartSounds;
+    AudioClip respawnPopSound;
+
     private void Awake()
     {
         FrogManager.frogDeath = this;
@@ -43,6 +47,10 @@ public class FrogDeath : MonoBehaviour {
         spawnpoint = transform.position;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        //audio
+        respawnPopSound = GM.audioManager.GetAudioClip("RespawnPop");
+        deathFartSounds = GM.audioManager.GetAudioClip("DeathFart");
     }
 
 
@@ -103,10 +111,11 @@ public class FrogDeath : MonoBehaviour {
         FrogManager.frogCamera.followPhill = true;                                                  //camera follows again
         foreach (GameObject obj in thingsToHideWhileDead)  { obj.SetActive(true); }                 //unhide all the sprites
 
-        GM.audioManager.PlaySound("RespawnPop");
+        
+        respawnPopSound.audioSource.Play();
+
         //an attempt to fix the jumping after respawing bug. might be caused because velocity is 0 when you respawn 
         //so have one frame where you can jump
-        //.AddForce(new Vector2(0, -0.1f));
         rb.velocity = new Vector2(0, -1f);
         GM.gameState = GM.GameState.alive;
         GM.PhillRespawned();
@@ -134,7 +143,7 @@ public class FrogDeath : MonoBehaviour {
 
         //audio
         GetComponent<FrogMetaBloodSplater>().startSplatter();
-        GM.audioManager.PlaySound("DeathFart" + Random.Range(1,4));
+        deathFartSounds.getRandomAudioSource().Play();
         GM.gameMusic.DetuneMusic();
 
         //misc

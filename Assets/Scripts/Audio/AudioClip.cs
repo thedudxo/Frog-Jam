@@ -6,6 +6,7 @@ using UnityEngine;
 public class AudioClip
 {
     [SerializeField] public AudioSource audioSource;
+    [SerializeField] public List<AudioSource> audioSources;
     [SerializeField] public string name;
 
     public float MaxVolume { get; private set; }
@@ -19,6 +20,11 @@ public class AudioClip
     public void Startup()
     {
         MaxVolume = audioSource.volume;
+    }
+
+    public AudioSource getRandomAudioSource()
+    {
+        return audioSources[Random.Range(0, audioSources.Count - 1)];
     }
 
 }
