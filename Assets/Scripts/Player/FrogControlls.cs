@@ -20,11 +20,12 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
     [SerializeField] Animator animator;
 
     [Header("Physics")]
-    private float jumpForce = 400;
-    private float jumpTimerBuff = 4; 
+    private float jumpForce = 400; 
+    //private float jumpTimerBuff = 4; // ???
     private float jumpKeyTime = 0; //how long the jump key has been held down
-    private float maxJumpTime = 1; 
-    private float minJumpPower = 0.2f; //the smallest jump you can make
+    private float maxJumpKeyTime = .2f;  //how long the key must be heled to get max power
+    float jumpTimeNormalised = 0; // current jump power
+    private float minJumpPower = 0.3f; //the smallest jump you can make
     private float jumpKeyTimeMinThreshold = 0.1f; //if jump key is heled for less than this time jump will be minimum power
 
 
@@ -40,9 +41,6 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
 
     private int layermask;
 
-    //private float currentSpriteSwapTime = 0; //probably obsolete
-    //private readonly float spriteSwapMinWaitTime = .1f; //probably obsolete
-
     private Ray2D jumpRay;
 
     public bool CollidedSinceLastJump { get; private set; } = true;
@@ -56,8 +54,8 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
         rb = GetComponent<Rigidbody2D>();
         layermask = LayerMask.GetMask("Ground");
 
-        powerBar.minValue = minJumpPower;
-        powerBar.maxValue = maxJumpTime;
+        powerBar.minValue = 0;
+        powerBar.maxValue = 1;
 
         GM.AddRespawnResetable(this);
     }
@@ -66,8 +64,6 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
     void Update() {
 
         if (GM.gameState != GM.GameState.alive) { return; }
-
-        //currentSpriteSwapTime += Time.deltaTime;
 
         //can the frog jump?
         if (rb.velocity.magnitude <= Vector2.zero.magnitude + 2f) // not moving too fast
@@ -101,39 +97,48 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
         }
 
         float jumpCharge = jumpKeyTime;
-        powerBar.value = jumpCharge; //* jumpTimerBuff;
+        powerBar.value = jumpTimeNormalised;
 
         if (Input.GetKey(jumpKey))
             {
             jumpKeyTime += Time.deltaTime;
-
-            if (jumpKeyTime < jumpKeyTimeMinThreshold)
-            {
-                jumpCharge = 0;
-            }
+            //if (jumpKeyTime < jumpKeyTimeMinThreshold)
+            //{
+            //    jumpCharge = 0;
+            //}
         }
 
         //get a value between min/max ammount representing the strengh of the jump
-        float jumpPower = jumpCharge * jumpTimerBuff;
-        jumpPower = Mathf.Clamp(jumpPower, minJumpPower, maxJumpTime);
+        //jumpTimeNormalised = jumpCharge * jumpTimerBuff;
+        //jumpTimeNormalised = Mathf.Clamp(jumpTimeNormalised, minJumpPower, maxJumpKeyTime);
 
         //get a normalised version and use it to set the animation blend tree
-        float jumpPowerNormalised = (jumpPower - minJumpPower) / (maxJumpTime - minJumpPower);
-        Debug.Log(jumpPowerNormalised);
-        animator.SetFloat("JumpPower", jumpPowerNormalised);
+        //float jumpPowerNormalised = (jumpTimeNormalised - minJumpPower) / (maxJumpKeyTime - minJumpPower);
+        //Debug.Log(jumpPowerNormalised);
+
 
         if (Input.GetKeyUp(jumpKey))
         {
+            //do jump
+
             animator.SetTrigger("ReleaseJump");
             animator.SetBool("ChargingJump", false);
-            animator.SetFloat("JumpPowerAtKeyRelease", jumpPowerNormalised);
-            if (canJump)
+            animator.SetFloat("JumpPowerAtKeyRelease", jumpTimeNormalised);
+
+            if (canJump) 
             {
-                rb.AddForce(new Vector2(jumpForce * jumpPower, jumpForce * jumpPower));
+                rb.AddForce(new Vector2(jumpForce * jumpTimeNormalised, jumpForce * jumpTimeNormalised));
                 CollidedSinceLastJump = false;
             }
+
             jumpKeyTime = 0;
         }
+
+        //get normalised jump time
+        jumpTimeNormalised = Mathf.Clamp((jumpKeyTime / maxJumpKeyTime), 0, 1);
+        Debug.Log(jumpTimeNormalised);
+
+        animator.SetFloat("JumpPower", jumpTimeNormalised);
 
         if (Input.GetKeyDown(DebugKillKey))
         {
