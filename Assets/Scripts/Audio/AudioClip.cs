@@ -3,26 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class AudioClip
+public class AudioClip : MonoBehaviour
 {
-    [SerializeField] public AudioSource audioSource;
     [SerializeField] public List<AudioSource> audioSources;
-    [SerializeField] public string name;
-
-    public float MaxVolume { get; private set; }
+    [SerializeField] public string audioName;
 
 
-    public AudioClip(string name)
+    public void Start()
     {
-        this.name = name;
+        GM.audioManager.AddAudioClip(this);
     }
 
-    public void Startup()
-    {
-        MaxVolume = audioSource.volume;
-    }
-
-    public AudioSource getRandomAudioSource()
+    public AudioSource GetRandomAudioSource()
     {
         return audioSources[Random.Range(0, audioSources.Count - 1)];
     }

@@ -44,6 +44,9 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
 
     public bool CollidedSinceLastJump { get; private set; } = true;
 
+    //sounds
+    AudioClip frogLanding, frogJumping;
+
     private void Awake()
     {
         FrogManager.frogControlls = this;
@@ -55,6 +58,9 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
 
         powerBar.minValue = 0;
         powerBar.maxValue = 1;
+
+        frogLanding = GM.audioManager.GetAudioClip("FrogLanding");
+        frogJumping = GM.audioManager.GetAudioClip("FrogJumping");
 
         GM.AddRespawnResetable(this);
     }
@@ -72,6 +78,8 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
                 float airTimeNormalised = Mathf.Clamp(airTime, 0, maxAnimationAirTime) / maxAnimationAirTime;
                 animator.SetFloat("AirTime", airTimeNormalised);
                 airTime = 0;
+
+                frogLanding.GetRandomAudioSource().Play();
                 }
             canJump = true;
             }
@@ -108,6 +116,8 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
             animator.SetTrigger("ReleaseJump");
             animator.SetBool("ChargingJump", false);
             animator.SetFloat("JumpPowerAtKeyRelease", jumpTimeNormalised);
+
+            frogJumping.GetRandomAudioSource().Play();
 
             if (canJump) 
             {

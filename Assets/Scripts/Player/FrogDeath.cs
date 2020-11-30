@@ -112,7 +112,7 @@ public class FrogDeath : MonoBehaviour {
         foreach (GameObject obj in thingsToHideWhileDead)  { obj.SetActive(true); }                 //unhide all the sprites
 
         
-        respawnPopSound.audioSource.Play();
+        respawnPopSound.audioSources[0].Play();
 
         //an attempt to fix the jumping after respawing bug. might be caused because velocity is 0 when you respawn 
         //so have one frame where you can jump
@@ -143,7 +143,7 @@ public class FrogDeath : MonoBehaviour {
 
         //audio
         GetComponent<FrogMetaBloodSplater>().startSplatter();
-        deathFartSounds.getRandomAudioSource().Play();
+        deathFartSounds.GetRandomAudioSource().Play();
         GM.gameMusic.DetuneMusic();
 
         //misc

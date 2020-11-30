@@ -4,7 +4,8 @@
 
 New Features:
  - Jumping animation
-- improved jump accuracy when making small jumps
+ - improved jump accuracy when making small jumps
+ - sounds when jumping
 
 ===============
 

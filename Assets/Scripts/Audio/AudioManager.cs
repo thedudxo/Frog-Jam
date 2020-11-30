@@ -4,51 +4,33 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] float effectsVolume; //does nothing Right now
-
-    [Header("FrogSounds")]
-    [SerializeField] List<AudioClip> audioSources;
+    List<AudioClip> AudioClips = new List<AudioClip>();
 
 
     void Awake()
     {
         GM.audioManager = this;
-        foreach (AudioClip clip in audioSources)
-        {
-            clip.Startup();
-        }
     }
 
     private void Start()
     {
 
     }
-
-    private AudioClip SearchForClip(string name)
-    {
-        Debug.Log("Searching " + audioSources.Count + " audioclips for " + name);
-
-        foreach (AudioClip clip in audioSources)
-        {
-            if (clip.name == name) { return clip; }
-        }
-
-        throw new System.Exception("Could not find Audioclip: " + name);
-    }
-
     
-    //public void PlaySound(string name)
-    //{  SearchForClip(name).audioSource.Play(); }
-
-    //public void PauseSound(string name)
-    //{  SearchForClip(name).audioSource.Pause(); }
-
-    //public void UnPauseSound(string name)
-    //{  SearchForClip(name).audioSource.UnPause();}
+    public void AddAudioClip(AudioClip clip)
+    {
+        AudioClips.Add(clip);
+    }
 
     public AudioClip GetAudioClip(string name)
     {
-        return SearchForClip(name);
+        Debug.Log("Searching " + AudioClips.Count + " audioclips for " + name);
+
+        foreach (AudioClip clip in AudioClips)
+        {
+            if (clip.audioName == name) { return clip; }
+        }
+
+        throw new System.Exception("Could not find Audioclip: " + name);
     }
 }
