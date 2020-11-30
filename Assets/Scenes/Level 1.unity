@@ -14774,8 +14774,8 @@ PolygonCollider2D:
       - {x: -1.9753647, y: -1.1947112}
       - {x: -1.8271303, y: -1.8152118}
       - {x: -1.5736294, y: -2.2067266}
-      - {x: -1.417141, y: -2.2814274}
-      - {x: 1.7366695, y: -2.2814326}
+      - {x: -1.3299751, y: -2.3009462}
+      - {x: 1.734066, y: -2.276228}
 --- !u!1 &1975888926
 GameObject:
   m_ObjectHideFlags: 0
@@ -26923,10 +26923,6 @@ MonoBehaviour:
   jumpKey: 32
   DebugKillKey: 113
   animator: {fileID: 5335917812720519218}
-  jumpForce: 400
-  maxJumpTime: 1
-  jumpTimerBuff: 4
-  minJumpAmmount: 0.2
   powerBar: {fileID: 2048041297}
   drawRays: 0
 --- !u!50 &8322174571511716070
