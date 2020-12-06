@@ -14,7 +14,7 @@ public class CleanJumpOverObsticle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        //remeber if the player has collided with these objects since dying
         if (collision.gameObject.tag == GM.playerTag)
         {
 
@@ -24,7 +24,6 @@ public class CleanJumpOverObsticle : MonoBehaviour
                 if (remember.HasCollided)
                 {
                     collided = true;
-                    Debug.Log("Playerrrr");
                 }
             }
 

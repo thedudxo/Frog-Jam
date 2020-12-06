@@ -24,7 +24,7 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
     private float jumpKeyTime = 0; //how long the jump key has been held down
     private float maxJumpKeyTime = .22f;  //how long the key must be heled to get max power
     float jumpTimeNormalised = 0; // how long the key was held 0 to 1
-    private float minJumpTimeNormalised = .18f; //the smallest jump you can make
+    private float minJumpTimeNormalised = .15f; //the smallest jump you can make
     private float jumpKeyTimeMinThreshold = 0.3f; //if jump key is heled for less than this time jump will be minimum power
 
 

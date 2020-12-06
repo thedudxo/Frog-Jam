@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip GetAudioClip(string name)
     {
-        Debug.Log("Searching " + AudioClips.Count + " audioclips for " + name);
+        //Debug.Log("Searching " + AudioClips.Count + " audioclips for " + name);
 
         foreach (AudioClip clip in AudioClips)
         {

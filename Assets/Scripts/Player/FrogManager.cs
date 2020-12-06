@@ -8,6 +8,7 @@ public static class FrogManager
     public static FrogControlls frogControlls;
     public static FrogDeath frogDeath;
     public static FrogMetaBloodSplater frogMetaBloodSplater;
+    public static FrogDynamicEffects frogDynamicEffects;
 
     public static GameObject frog;
 }
