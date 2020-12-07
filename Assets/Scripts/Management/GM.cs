@@ -22,7 +22,7 @@ public static class GM {
     public static int CurrentRespawnCount { get; private set; } = 1;
     public static bool sendAnyalitics = true;
 
-    public enum GameState
+   public enum GameState
     {
         alive,
         dead,

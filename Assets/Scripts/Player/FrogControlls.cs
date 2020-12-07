@@ -19,7 +19,7 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
     [Header("Animation")]
     [SerializeField] Animator animator;
 
-    [Header("Physics")]
+    [Header("Jumping")]
     private float jumpForce = 400; 
     private float jumpKeyTime = 0; //how long the jump key has been held down
     private float maxJumpKeyTime = .22f;  //how long the key must be heled to get max power
@@ -27,10 +27,17 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
     private float minJumpTimeNormalised = .15f; //the smallest jump you can make
     private float jumpKeyTimeMinThreshold = 0.3f; //if jump key is heled for less than this time jump will be minimum power
 
+    //grounded detection
+    [SerializeField] Transform groundedDetectionBox;
+    Vector2 groundedBoxCenter, groundedBoxSize;
+    float groundedBoxAngle;
+    int groundedMask;
+    bool IsGrounded => Physics2D.OverlapBox(groundedBoxCenter, groundedBoxSize, groundedBoxAngle, groundedMask);
 
     private bool canJump = false;
     private float airTime = 0; //time since phill last touched something
     private float maxAnimationAirTime = 1.5f; // time where the landing animation gets maximum squish
+
 
     [Header("UI")]
     [SerializeField] Slider powerBar;
@@ -63,15 +70,26 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
         frogJumping = GM.audioManager.GetAudioClip("FrogJumping");
 
         GM.AddRespawnResetable(this);
+
+
+
+        groundedBoxSize = new Vector2(
+            groundedDetectionBox.localScale.x * transform.localScale.x,
+            groundedDetectionBox.localScale.y * transform.localScale.y );
+        groundedBoxAngle = groundedDetectionBox.rotation.z;
+        groundedMask = LayerMask.GetMask("Ground");
     }
 
+
+    
 
     void Update() {
 
         if (GM.gameState != GM.GameState.alive) { return; }
 
         //can the frog jump?
-        if (rb.velocity.magnitude <= Vector2.zero.magnitude + 2f) // not moving too fast
+        groundedBoxCenter = groundedDetectionBox.position;
+        if (IsGrounded)
             {
             if(canJump == false){ // the frame where phill landed
                 //landing animation

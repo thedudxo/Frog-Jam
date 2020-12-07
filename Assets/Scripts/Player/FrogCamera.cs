@@ -10,6 +10,8 @@ public class FrogCamera : MonoBehaviour
     public bool followPhill = true;
 
     float maxY = -1.85f; //camera wont go above this
+    float ClosestWaveOffset = 4; // camera will move towards the wave as it approaches
+    float waveDistanceAtClosetOffset = 8;
 
     private void Awake()
     {
@@ -25,6 +27,9 @@ public class FrogCamera : MonoBehaviour
     {
         if (followPhill)
         {
+            //float targetX = 
+            //float targetY = 
+
             //how much to move by
             float moveX = (transform.position.x - player.transform.position.x - centerOffset.x) ;
             float moveY = (transform.position.y - Mathf.Min(player.transform.position.y,maxY) - centerOffset.y) ;

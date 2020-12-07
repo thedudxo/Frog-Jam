@@ -7,12 +7,13 @@ New Features:
  - Improved jump accuracy when making small jumps
  - Sounds when jumping
  - Air particles when going fast
- - Phill is now slightly bouncy and slippery
+ - Phill is now slightly bouncy and slippery. this allows chaining jumps for extra speed and distance.
 
 ===============
 
 New Art:
 - Air particles
+- squishy jumping sounds
 
 ===============
 
@@ -21,6 +22,7 @@ Changes:
 - Fishing hole now counts any death near it as a catch
 - Camera now has a max height
 - Camera is positioned higher up and further right
+- canjump detection uses colliders again, has some "coyotie time"
 
 ===============
 
@@ -31,3 +33,4 @@ Fixes:
 
 Known Issues:
 - music zones occasionaly throw errors
+- Phill occasionaly launches forwards but not up whith particular timed jumps

@@ -10,10 +10,9 @@ public class FrogDynamicEffects : MonoBehaviour
 
 
     [SerializeField] ParticleSystem airParticles;
-    [SerializeField] GameObject debugCube;
-    float airP_MaxEmmisonRate = 10;
-    float AirEffects_MaxVelocity = 8f; // the velocity of the frogs rigidbody where particles will be max
-    float AirEffects_MinVelocity = 4f; // velicities smaller than this wont have effetcs
+    readonly float airP_MaxEmmisonRate = 10;
+    readonly float AirEffects_MaxVelocity = 12f; // the velocity of the frogs rigidbody where particles will be max
+    readonly float AirEffects_MinVelocity = 7.5f; // velicities smaller than this wont have effetcs
 
     //modules the script will edit
     ParticleSystem.MainModule airP_main;
@@ -46,9 +45,6 @@ public class FrogDynamicEffects : MonoBehaviour
         //make particles emit from the direction frog is traveling
         float angle = Mathf.Atan2(rb.velocity.x, -rb.velocity.y) * Mathf.Rad2Deg; //use sohcatoa to get the angle frog is traveling at
         airP_shape.rotation = new Vector3(0, 0, angle - 90);
-
-        //make particles face the right way
-        //airP_main.startRotation = angle +90;
 
     }
 }
