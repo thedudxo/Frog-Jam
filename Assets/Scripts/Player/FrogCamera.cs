@@ -27,17 +27,20 @@ public class FrogCamera : MonoBehaviour
     {
         if (followPhill)
         {
-            //float targetX = 
-            //float targetY = 
+            float targetX = (player.transform.position.x + centerOffset.x);
+            float targetY = (Mathf.Min(player.transform.position.y, maxY) + centerOffset.y);
+
+            //wave weight
+
 
             //how much to move by
-            float moveX = (transform.position.x - player.transform.position.x - centerOffset.x) ;
-            float moveY = (transform.position.y - Mathf.Min(player.transform.position.y,maxY) - centerOffset.y) ;
+            float moveX = (targetX - transform.position.x) * acceleration;
+            float moveY = (targetY - transform.position.y) * acceleration;
 
             //move camera
             transform.position = new Vector3(
-                (transform.position.x - moveX * acceleration),
-                (transform.position.y - moveY * acceleration),
+                transform.position.x + moveX ,
+                transform.position.y + moveY ,
                 transform.position.z);
         }
     }

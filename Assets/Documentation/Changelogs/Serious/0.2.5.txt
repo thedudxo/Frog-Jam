@@ -23,6 +23,7 @@ Changes:
 - Camera now has a max height
 - Camera is positioned higher up and further right
 - canjump detection uses colliders again, has some "coyotie time"
+- removed the first aligator between the stopsign and "floppy birb" 
 
 ===============
 
