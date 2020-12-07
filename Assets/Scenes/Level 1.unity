@@ -10846,7 +10846,7 @@ GameObject:
   - component: {fileID: 1237552536}
   - component: {fileID: 1237552537}
   m_Layer: 0
-  m_Name: Splits
+  m_Name: SplitManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12643,7 +12643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1502873936
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20779,7 +20779,7 @@ GameObject:
   - component: {fileID: 2020549043}
   - component: {fileID: 2020549044}
   m_Layer: 0
-  m_Name: Audio
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32877,7 +32877,7 @@ Transform:
   - {fileID: 2128676297}
   - {fileID: 2544048215938826104}
   m_Father: {fileID: 8322174572349124578}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8322174572349124576
 GameObject:
@@ -32929,8 +32929,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8322174572556114832}
   - {fileID: 8322174572314341257}
+  - {fileID: 8322174572556114832}
   - {fileID: 8322174571285801737}
   - {fileID: 1237552536}
   - {fileID: 2020549042}
@@ -33096,7 +33096,7 @@ RectTransform:
   - {fileID: 1478898278}
   - {fileID: 8322174572598821165}
   m_Father: {fileID: 8322174572349124578}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
