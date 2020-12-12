@@ -5,9 +5,10 @@ using UnityEngine;
 public class FrogCamera : MonoBehaviour
 {
     [SerializeField] GameObject player;
-    Vector3 centerOffset;
     [SerializeField] float acceleration;
-    public bool followPhill = true;
+    [SerializeField] bool followPhill = true;
+
+    Vector3 centerOffset;
 
     float maxY = -1.85f; //camera wont go above this
     float ClosestWaveOffset = 4; // camera will move towards the wave as it approaches
