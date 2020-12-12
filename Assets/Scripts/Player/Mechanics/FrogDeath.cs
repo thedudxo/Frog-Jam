@@ -108,7 +108,7 @@ public class FrogDeath : MonoBehaviour {
         rb.gravityScale = 1;                                                                        //turn on gravity
         GetComponent<PolygonCollider2D>().enabled = true;                                           //turn on collisions
         wave.GetComponent<Wave>().waveCurrentSpeed = wave.GetComponent<Wave>().waveStartSpeed;      //wave speed reset, still here incase acceleration is ever turned on   
-        FrogManager.frogCamera.followPhill = true;                                                  //camera follows again
+        FrogManager.frogCamera.target.SetTarget(transform);                                                //camera follows again
         foreach (GameObject obj in thingsToHideWhileDead)  { obj.SetActive(true); }                 //unhide all the sprites
 
         
@@ -129,9 +129,8 @@ public class FrogDeath : MonoBehaviour {
         //these get changed back when respawning
         GM.gameState = GM.GameState.dead;
         rb.gravityScale = 0;
-        //spriteRenderer.enabled = false;
         GetComponent<PolygonCollider2D>().enabled = false;
-        FrogManager.frogCamera.followPhill = false;
+        FrogManager.frogCamera.target.SetTarget(transform.position);
         //those get changed back when respawning
 
         rb.velocity = Vector3.zero;
