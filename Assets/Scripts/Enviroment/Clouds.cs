@@ -12,6 +12,7 @@ public class Clouds : MonoBehaviour, IRespawnResetable
     [SerializeField] float spawnDistanceInFrontOfCamera;
     [SerializeField] float respawnDistanceVariance;
     [SerializeField] int desiredAmmountOfCloudsOnScreen = 3;
+    [SerializeField] Transform playerCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -51,8 +52,7 @@ public class Clouds : MonoBehaviour, IRespawnResetable
 
         //Debug.Log("ONSCREEN: " + cloudsOnScreen);
 
-        //camera x position
-        float cameraX = FrogManager.frogCamera.transform.position.x;
+        float cameraX = playerCamera.position.x;
 
         //work out if/where each cloud should be moved to
         foreach (Cloud cloud in fluffyClouds)

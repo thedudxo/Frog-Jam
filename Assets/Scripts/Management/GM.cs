@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public static class GM {
 
+    public delegate void VoidBoolDelg(bool b);
+
     public static ProgressBar progressBar; //referenced by analitics when quit game, should probably be moved
     public static ComboCounter comboCounter;
     public static Level currentLevel;
@@ -18,22 +20,23 @@ public static class GM {
     static List<IDeathResetable> resetOnDeath = new List<IDeathResetable>();
 
     public static readonly float CameraVeiwRangeApprox = 18;
-    public static readonly string playerTag = "Phill";
     public static int CurrentRespawnCount { get; private set; } = 1;
     public static bool sendAnyalitics = true;
 
-   public enum GameState
+    public const string playerTag = "Phill";
+    public const string enemyAligator = "Enemy";
+
+    public enum GameState
     {
-        alive,
-        dead,
+        playingLevel,
         finishedLevel
     }
 
-    public static GameState gameState = GameState.alive;
+    public static GameState gameState = GameState.playingLevel;
 
 
 
-    //________________________________________________________________________________\\
+
     // Various methods called to objects when respawning/restarting/dying
     public static void AddRespawnResetable(IRespawnResetable resetable)
         { resetOnRespawn.Add(resetable); }
@@ -70,7 +73,6 @@ public static class GM {
         { resetable.PhillDied(); }
     }
 
-    //________________________________________________________________________________\\
 
     public static void QuitToMenu()
     {

@@ -4,36 +4,30 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour {
 
-    [SerializeField] public float waveStartSpeed;
-    //[SerializeField] private float waveAcceleration; 
-    //Waves really dont work this way but whatever, Maybie this wave has rocket thrusters on the back of it.
-
-
     [SerializeField] float waveApproachingMusicMaxDistance = 5;
     bool waveIsClose = false;
 
     Vector2 spawnPosition;
-    public float waveCurrentSpeed;
+   const float speed = 5f;
 
     // Use this for initialization
     void Start () {
         spawnPosition = transform.position;
-        waveCurrentSpeed = waveStartSpeed;
     }
 
     private void Update()
     {
+        transform.position = new Vector2(transform.position.x + (speed * Time.deltaTime), transform.position.y);
     }
 
-    private void FixedUpdate()
+
+    public void Setback(float ammount)
     {
-        transform.position = new Vector2(transform.position.x + waveCurrentSpeed, transform.position.y);
-        //waveCurrentSpeed += waveAcceleration;
+        transform.position = new Vector2 (transform.position.x - ammount, transform.position.y);
     }
 
-    public void ResetWave()
-    {
-        waveCurrentSpeed = waveStartSpeed;
+    public void Restart()
+    { 
         transform.position = spawnPosition;
     }
 }

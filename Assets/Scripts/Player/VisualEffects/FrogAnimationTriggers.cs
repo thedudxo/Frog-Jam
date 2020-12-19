@@ -4,20 +4,10 @@ using UnityEngine;
 
 public class FrogAnimationTriggers : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] Frog frog;
 
     public void DeathAnimationFinished()
     {
-        FrogManager.frogDeath.DeathAnimationFinished();
+        frog.showFrogVisuals(false);
     }
 }

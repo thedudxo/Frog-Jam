@@ -19,6 +19,8 @@ public class Level : MonoBehaviour
     public GameObject wave;
     [SerializeField] GameObject winScreen;
 
+    [SerializeField] Frog frogController;
+
     private void Awake()
     {
         GM.currentLevel = this;
@@ -27,10 +29,10 @@ public class Level : MonoBehaviour
 
     private void Update()
     {
-        GameObject frog = FrogManager.frog;
+        GameObject frog = FrogManager.frog.gameObject;
 
         // got to the end of the level (won game)
-        if (frog.transform.position.x >= endX && GM.gameState == GM.GameState.alive)
+        if (frog.transform.position.x >= endX && GM.gameState == GM.GameState.playingLevel)
         {
             winScreen.SetActive(true);
             GM.gameState = GM.GameState.finishedLevel;
@@ -42,8 +44,8 @@ public class Level : MonoBehaviour
         if (GM.gameState == GM.GameState.finishedLevel && Input.GetKeyDown(KeyCode.Q))
         {
             winScreen.SetActive(false);
-            GM.gameState = GM.GameState.alive;
-            FrogManager.frogDeath.KillPhill(true);
+            GM.gameState = GM.GameState.playingLevel;
+            frogController.ResetFrog();
         }
     }
 

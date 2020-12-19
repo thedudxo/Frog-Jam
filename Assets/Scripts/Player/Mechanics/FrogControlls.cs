@@ -14,7 +14,7 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
 
     [Header("Controlls")]
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
-    [SerializeField] private KeyCode DebugKillKey = KeyCode.Q;
+
 
     [Header("Animation")]
     [SerializeField] Animator animator;
@@ -85,7 +85,7 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
 
     void Update() {
 
-        if (GM.gameState != GM.GameState.alive) { return; }
+        if (GM.gameState != GM.GameState.playingLevel) { return; }
 
         //can the frog jump?
         groundedBoxCenter = groundedDetectionBox.position;
@@ -159,11 +159,7 @@ public class FrogControlls : MonoBehaviour, IRespawnResetable {
         animator.SetFloat("JumpPower", jumpTimeNormalised);
         powerBar.value = jumpTimeNormalised;
 
-        if (Input.GetKeyDown(DebugKillKey))
-        {
-            FrogManager.frogDeath.KillPhill();
-            Statistics.suicideDeaths++;
-        }
+
 
         //quit to menu
         if (Input.GetKeyDown(KeyCode.Escape))

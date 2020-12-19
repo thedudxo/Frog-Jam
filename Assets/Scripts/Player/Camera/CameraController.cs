@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrogCamera : MonoBehaviour
+public class CameraController
 {
     readonly float defaultAcceleration = 0.05f;
     public float acceleration;
-    public CameraTarget target;
 
+    public CameraTarget target;
     Vector2 targetPos;
     Vector2 centerOffset;
+    Transform transform;
 
-    float maxY = -1.85f; //camera wont go above this
-    float ClosestWaveOffset = 4; // camera will move towards the wave as it approaches
-    float waveDistanceAtClosetOffset = 8;
+    float maxY = -1.85f;
 
-    private void Awake()
-    {
-        FrogManager.frogCamera = this;
-    }
+    // TODO: camera will move towards the wave as it approaches
+    //float ClosestWaveOffset = 4; 
+    //float waveDistanceAtClosetOffset = 8;
 
-    void Start()
+    public CameraController(Transform cameraTransform, CameraTarget cameraTarget)
     {
         acceleration = defaultAcceleration;
+        transform = cameraTransform;
+
+        target = cameraTarget;
 
         if(target == null) target = new CameraTarget();
         Vector3 targetStart = target.GetPos();
@@ -30,13 +31,13 @@ public class FrogCamera : MonoBehaviour
         centerOffset = (transform.position - targetStart);
     }
 
-    private void Update()
+    public void FindTargetPos()
     {
        targetPos = target.GetPos();
     }
 
     //moving the camera in Update causes jitteryness
-    private void FixedUpdate()
+    public void moveTowardsTarget()
     {
 
         float offsetTargetX = (targetPos.x + centerOffset.x);

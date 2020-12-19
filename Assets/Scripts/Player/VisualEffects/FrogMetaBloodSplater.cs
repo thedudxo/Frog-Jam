@@ -20,7 +20,7 @@ public class FrogMetaBloodSplater : MonoBehaviour
         }
     }
 
-    public void startSplatter()
+    public void StartSplatter()
     {
         var colour = splatter.color;
         colour.a = startAlpha;

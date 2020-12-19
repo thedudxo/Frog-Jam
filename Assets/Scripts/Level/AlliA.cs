@@ -40,15 +40,6 @@ public class AlliA : MonoBehaviour, IRespawnResetable {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Phill" && !freindly)
-        {
-            FrogManager.frogDeath.KillPhill();
-            Statistics.aligatorDeaths++;
-        }
-    }
-
 
     public void PhillRespawned()
     {

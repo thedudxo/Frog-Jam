@@ -6,8 +6,6 @@ public class MusicZone : MonoBehaviour
 {
     //marks a spot where the next bit of music should be queued up to start playing
 
-
-
     [SerializeField]  UnityEngine.AudioClip normalClip, detuneClip, waveClip; //clips
     AudioSource normalAudioSource, detuneAudioSource, waveAudioSource;        //sources
     [SerializeField] int position;                                            //which number zone this is
@@ -122,7 +120,7 @@ public class MusicZone : MonoBehaviour
         waveAudioSource.timeSamples = sample;
     }
 
-    public void updateWaveAudio()
+    public void UpdateWaveAudio()
     {
 
         float wavePos = GM.currentLevel.wave.transform.position.x;

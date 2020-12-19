@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameMusic : MonoBehaviour, IRespawnResetable
 {
+
+
     //DETUNE
     float detuneDurationSeconds = 1;
     float detuneTimer = 1000;
@@ -99,7 +101,7 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
             }
         }
 
-        currentZone.updateWaveAudio();
+        currentZone.UpdateWaveAudio();
 
         //DEBUG UI
         { 

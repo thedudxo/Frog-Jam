@@ -18,40 +18,40 @@ public class CameraTarget
 
     public CameraTarget(Transform t)
     {
-        SetTarget(t);
+        Set(t);
     }
 
     public CameraTarget(Vector3 v)
     {
-        SetTarget(v);
+        Set(v);
     }
 
     public CameraTarget(Vector2 v)
     {
-        SetTarget(v);
+        Set(v);
     }
 
 
 
-    public void SetTarget(Transform t)
+    public void Set(Transform t)
     {
         targetType = TargetType.transform;
         targetTransform = t;
         if (targetVector == null) targetVector = new Vector2();
     }
 
-    public void SetTarget(Vector3 pos)
+    public void Set(Vector3 pos)
     {
-        SetTarget(new Vector2(pos.x, pos.y));
+        Set(new Vector2(pos.x, pos.y));
     }
 
-    public void SetTarget(Vector2 pos)
+    public void Set(Vector2 pos)
     {
         targetType = TargetType.vector2;
         targetVector = pos;
     }
 
-    public void SetTarget(float xPos, float YPos)
+    public void Set(float xPos, float YPos)
     {
         targetType = TargetType.vector2;
         if (targetVector == null) targetVector = new Vector2();
