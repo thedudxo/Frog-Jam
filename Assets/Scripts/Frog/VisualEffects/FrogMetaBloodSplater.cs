@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FrogMetaBloodSplater : MonoBehaviour
+public class FrogBloodSplater
 {
-    [SerializeField] Image splatter;
-    [SerializeField] float startAlpha;
-    [SerializeField] float decayAlpha;
+    Image splatter;
+    const float startAlpha =.9f;
+    const float decayAlpha =.03f;
 
+    public FrogBloodSplater(Image splatter)
+    {
+        this.splatter = splatter;
+    }
 
-    void Update()
+    public void Update()
     {
         if(splatter.color.a >= 0)
         {
-            var colour = splatter.color;
+            Color colour = splatter.color;
             colour.a -= decayAlpha;
             splatter.color = colour;
         }
@@ -22,7 +26,7 @@ public class FrogMetaBloodSplater : MonoBehaviour
 
     public void StartSplatter()
     {
-        var colour = splatter.color;
+        Color colour = splatter.color;
         colour.a = startAlpha;
         splatter.color = colour;
     }

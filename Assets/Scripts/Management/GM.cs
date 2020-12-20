@@ -24,7 +24,7 @@ public static class GM {
     public static bool sendAnyalitics = true;
 
     public const string playerTag = "Phill";
-    public const string enemyAligator = "Enemy";
+    public const string enemyAligator = "EnemyAligator";
 
     public enum GameState
     {

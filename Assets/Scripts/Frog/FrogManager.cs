@@ -5,9 +5,9 @@ using UnityEngine;
 public static class FrogManager
 {
     public static FrogControlls frogControlls;
-    public static FrogMetaBloodSplater frogMetaBloodSplater;
+    public static FrogBloodSplater frogMetaBloodSplater;
     public static FrogDynamicEffects frogDynamicEffects;
 
-    public static Frog frog;
+    public static Frog.Frog frog;
 
 }

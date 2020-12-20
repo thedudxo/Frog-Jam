@@ -19,7 +19,7 @@ public class Level : MonoBehaviour
     public GameObject wave;
     [SerializeField] GameObject winScreen;
 
-    [SerializeField] Frog frogController;
+    [SerializeField] Frog.Frog frogController;
 
     private void Awake()
     {

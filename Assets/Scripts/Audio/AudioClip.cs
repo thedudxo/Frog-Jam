@@ -19,4 +19,9 @@ public class AudioClip : MonoBehaviour
         return audioSources[Random.Range(0, audioSources.Count - 1)];
     }
 
+    public void PlayRandom()
+    {
+        audioSources[Random.Range(0, audioSources.Count - 1)].Play();
+    }
+
 }

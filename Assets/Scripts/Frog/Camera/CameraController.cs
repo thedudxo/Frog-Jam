@@ -31,13 +31,13 @@ public class CameraController
         centerOffset = (transform.position - targetStart);
     }
 
-    public void FindTargetPos()
+    public void Update()
     {
        targetPos = target.GetPos();
     }
 
     //moving the camera in Update causes jitteryness
-    public void moveTowardsTarget()
+    public void MoveTowardsTarget()
     {
 
         float offsetTargetX = (targetPos.x + centerOffset.x);
