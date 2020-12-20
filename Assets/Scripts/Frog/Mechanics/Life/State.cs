@@ -33,7 +33,7 @@ namespace Frog.Life
             else
                 Restart();
 
-            frog.VfxManager.ShowFrogVisuals(true);
+            frog.VfxManager.RespawnEffects();
             frog.respawnSounds.PlayRandom();
             ToggleComponents(true);
         }

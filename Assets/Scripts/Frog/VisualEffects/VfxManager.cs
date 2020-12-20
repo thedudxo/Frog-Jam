@@ -48,6 +48,18 @@ namespace Frog
             bloodSplater.StartSplatter();
         }
 
+        public void RespawnEffects()
+        {
+            ShowFrogVisuals(true);
+
+            respawnParticles.gameObject.transform.position = new Vector3(
+                transform.position.x, 
+                transform.position.y, 
+                respawnParticles.transform.position.z);
+
+            respawnParticles.Emit(respawnEmit);
+        }
+
         public void ShowFrogVisuals(bool show)
         {
             foreach (GameObject visual in visuals)
