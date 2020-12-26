@@ -11,8 +11,8 @@ public class Level : MonoBehaviour
     [SerializeField] float spawnPlatformEndX;
     [HideInInspector] public float spawnPlatformLength;
 
-    [Header("Debug UI")]
-    [SerializeField] float gizmoYOffset = 0; //avoid drawing on the canvas boundry
+    [Header("Editior UI")]
+    [SerializeField] float gizmoYOffset = 0;
     [SerializeField] float gizmoScale = 1;
 
     [Header("Assigniees")]
@@ -61,7 +61,5 @@ public class Level : MonoBehaviour
         Gizmos.DrawSphere(startDraw, gizmoScale);
         Gizmos.DrawSphere(spawnIndicatior, gizmoScale);
         Gizmos.DrawSphere(endDraw, gizmoScale);
-
-
     }
 }

@@ -15,7 +15,7 @@ public class Wave : MonoBehaviour {
         spawnPosition = transform.position;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         transform.position = new Vector2(transform.position.x + (speed * Time.deltaTime), transform.position.y);
     }

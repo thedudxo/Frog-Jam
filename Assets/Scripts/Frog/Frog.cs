@@ -19,7 +19,7 @@ namespace Frog
         // managed classes setups
 
         [SerializeField] Camera playerCamera;
-        [HideInInspector] CameraController cameraController;
+        [HideInInspector] CameraTracker cameraController;
         [HideInInspector] public Transform CameraTransform { get; private set; }
         [HideInInspector] public CameraTarget CameraTarget { get; private set; }
 
@@ -50,7 +50,7 @@ namespace Frog
         private void Initalise()
         {
             CameraTarget = new CameraTarget(transform);
-            cameraController = new CameraController(playerCamera.transform, CameraTarget);
+            cameraController = new CameraTracker(this);
             VfxManager = new VfxManager(this);
             lifeController = new LifeController(this);
         }
@@ -69,7 +69,7 @@ namespace Frog
 
         private void Start()
         {
-
+            
         }
 
         private void Update()
