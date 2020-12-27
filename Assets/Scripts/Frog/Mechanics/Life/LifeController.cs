@@ -8,13 +8,15 @@ namespace Frog.Life
     {
         RespawnTimer respawnTimer;
         DeathConditions deathConditions;
-        State state;
+
+        LifeStateControlls state;
+            public void Restart() { state.Restart(); }
 
         public LifeController(Frog frog)
         {
             respawnTimer = new RespawnTimer();
             deathConditions = new DeathConditions(frog.transform, frog.currentCollisions);
-            state = new State(frog);
+            state = new LifeStateControlls(frog);
         }
 
         bool alive = true;
@@ -47,6 +49,7 @@ namespace Frog.Life
                     break;
             }
         }
+
 
     }
 

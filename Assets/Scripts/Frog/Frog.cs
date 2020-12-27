@@ -90,6 +90,6 @@ namespace Frog
         private void OnTriggerExit2D(Collider2D collision) { currentCollisions.Remove(collision.gameObject); }
         private void OnCollisionExit2D(Collision2D collision) { currentCollisions.Remove(collision.gameObject); }
 
-        public void ResetFrog() { Initalise(); } //doesnt actually do what level.cs wants (restart the level)
+        public void RestartLevel() { lifeController.Restart(); }
     }
 }

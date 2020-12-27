@@ -9,7 +9,7 @@ public class ProgressBar : MonoBehaviour, IRespawnResetable
     [SerializeField] Slider waveProgressBar;
     [SerializeField] Slider personalBest;
     [SerializeField] Slider progressLost;
-    [SerializeField] Level level;
+    [SerializeField] Level.Level level;
     [SerializeField] float progressLostDecaySpeed;
 
     private void Start()
@@ -21,8 +21,8 @@ public class ProgressBar : MonoBehaviour, IRespawnResetable
     // Update is called once per frame
     void Update()
     {
-        playerProgressBar.value = (FrogManager.frog.transform.position.x - level.startX) / (level.endX - level.startX);
-        waveProgressBar.value   = (level.wave.transform.position.x   - level.startX) / (level.endX - level.startX);
+        playerProgressBar.value = (FrogManager.frog.transform.position.x - level.startLength) / (level.end - level.startLength);
+        waveProgressBar.value   = (level.wave.transform.position.x   - level.startLength) / (level.end - level.startLength);
 
         //update looseProgressBar
         if (progressLost.gameObject.activeInHierarchy)

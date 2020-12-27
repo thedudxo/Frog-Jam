@@ -3,19 +3,8 @@ using static Frog.Life.DeathConditions;
 
 namespace Frog.Life
 {
-    class State
+    class LifeStateControlls
     {
-        public State(Frog frog)
-        {
-            this.frog = frog;
-            this.rb = frog.rb;
-            this.collider = frog.collider;
-            this.cameraTarget = frog.CameraTarget;
-            this.transform = frog.transform;
-
-            levelStart = transform.position;
-        }
-
         Vector2 levelStart;
         const float respawnSetBack = 25;
         const int respawnHeight = 5;
@@ -25,6 +14,17 @@ namespace Frog.Life
         Collider2D collider;
         CameraTarget cameraTarget;
         Transform transform;
+
+        public LifeStateControlls(Frog frog)
+        {
+            this.frog = frog;
+            this.rb = frog.rb;
+            this.collider = frog.collider;
+            this.cameraTarget = frog.CameraTarget;
+            this.transform = frog.transform;
+
+            levelStart = transform.position;
+        }
 
         public void Respawn(DeathType deathType)
         {
@@ -67,7 +67,7 @@ namespace Frog.Life
             }
         }
 
-        bool FrogIsOnStartPlatform => transform.position.x < (levelStart.x + GM.currentLevel.spawnPlatformLength);
+        bool FrogIsOnStartPlatform => transform.position.x < (levelStart.x + GM.currentLevel.startLength);
 
         public void Setback()
         {
@@ -85,6 +85,7 @@ namespace Frog.Life
 
         public void Restart()
         {
+            rb.velocity = Vector3.zero;
             transform.position = levelStart;
             frog.wave.Restart();
             GM.splitManager.currentTime = 0;

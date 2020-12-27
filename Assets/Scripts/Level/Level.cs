@@ -2,64 +2,98 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level : MonoBehaviour
+namespace Level
 {
-
-    [Header("Level Dimensions")]
-    public float startX = 0;
-    public float endX = 100;
-    [SerializeField] float spawnPlatformEndX;
-    [HideInInspector] public float spawnPlatformLength;
-
-    [Header("Editior UI")]
-    [SerializeField] float gizmoYOffset = 0;
-    [SerializeField] float gizmoScale = 1;
-
-    [Header("Assigniees")]
-    public GameObject wave;
-    [SerializeField] GameObject winScreen;
-
-    [SerializeField] Frog.Frog frogController;
-
-    private void Awake()
+    public class Level : MonoBehaviour
     {
-        GM.currentLevel = this;
-        spawnPlatformLength = spawnPlatformEndX - startX;
-    }
+        [SerializeField] EditorSettings editorSettings;
+        [SerializeField] GameObject endObject;
 
-    private void Update()
-    {
-        GameObject frog = FrogManager.frog.gameObject;
+        [Header("Level Dimensions")]
+        [SerializeField] public float end = 100;
+        [SerializeField] public float startLength = 15;
+        const float start = 0;
 
-        // got to the end of the level (won game)
-        if (frog.transform.position.x >= endX && GM.gameState == GM.GameState.playingLevel)
+        [Header("Assigniees")]
+        [SerializeField] public GameObject wave;
+        [SerializeField] GameObject winScreen;
+        [SerializeField] Frog.Frog frog;
+
+        //stats
+        Timer timer = new Timer();
+        int deaths;
+        int? pbDeaths;
+
+        /*level needs to:
+         *players should:
+            track their own time + deaths
+        */
+
+        private void OnValidate()
         {
-            winScreen.SetActive(true);
+            endObject.transform.position = new Vector3(end, 0, 0);
+        }
+
+        private void Awake()
+        {
+            GM.currentLevel = this;
+        }
+
+        bool PlayerGotToTheEnd => frog.transform.position.x >= end;
+        bool PlayerInputRestart => Input.GetKeyDown(KeyCode.Q);
+        private void Update()
+        {
+            switch (GM.gameState)
+            {
+                case GM.GameState.playingLevel:
+                    timer.Update();
+                    if (PlayerGotToTheEnd) FinishLevel();
+                    break;
+
+                case GM.GameState.finishedLevel:
+                    if (PlayerInputRestart) RestartLevel();
+                    break;
+            }
+        }
+
+        private void RestartLevel()
+        {
+            timer.Reset();
+            GM.levelEndScreen.Disable();
+            GM.gameState = GM.GameState.playingLevel;
+            frog.RestartLevel();
+        }
+
+        private void FinishLevel()
+        {
+            timer.CheckForNewPB();
             GM.gameState = GM.GameState.finishedLevel;
+            EnableEndScreen();
             FrogManager.frog.GetComponent<Rigidbody2D>().gravityScale = 0;
             FrogManager.frog.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
 
-        //restart after winning
-        if (GM.gameState == GM.GameState.finishedLevel && Input.GetKeyDown(KeyCode.Q))
+        private void EnableEndScreen()
         {
-            winScreen.SetActive(false);
-            GM.gameState = GM.GameState.playingLevel;
-            frogController.ResetFrog();
+            pbDeaths = Mathf.Min(pbDeaths ?? int.MaxValue, deaths);
+            GM.levelEndScreen.Enable(timer.Time, (float)timer.PbTime, deaths, (int)pbDeaths);
         }
-    }
 
-    private void OnDrawGizmos()
-    {
-        Vector3 startDraw = new Vector3(startX, gizmoYOffset, 0);
-        Vector3 endDraw = new Vector3(endX, gizmoYOffset, 0);
-        Vector3 spawnIndicatior = new Vector3(spawnPlatformEndX, gizmoYOffset, 0);
+        private void OnDrawGizmos()
+        {
+            float gizmoYOffset = editorSettings.gizmoYOffset;
+            float gizmoScale = editorSettings.gizmoScale;
 
-        Gizmos.color = Color.red;
+            Vector3 startDraw = new Vector3(start, gizmoYOffset, 0);
+            Vector3 endDraw = new Vector3(end, gizmoYOffset, 0);
+            Vector3 spawnIndicatior = new Vector3(startLength, gizmoYOffset, 0);
 
-        Gizmos.DrawLine(startDraw, endDraw);
-        Gizmos.DrawSphere(startDraw, gizmoScale);
-        Gizmos.DrawSphere(spawnIndicatior, gizmoScale);
-        Gizmos.DrawSphere(endDraw, gizmoScale);
+            Gizmos.color = Color.red;
+
+            Gizmos.DrawLine(startDraw, endDraw);
+            Gizmos.DrawSphere(startDraw, gizmoScale);
+            Gizmos.DrawSphere(spawnIndicatior, gizmoScale);
+            Gizmos.DrawSphere(endDraw, gizmoScale);
+        }
     }
 }
