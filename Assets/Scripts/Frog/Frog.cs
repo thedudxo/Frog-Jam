@@ -1,58 +1,64 @@
-﻿using System;
-using System.Collections;
+﻿using Frog.Life;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Frog.Life;
 
 namespace Frog
 {
     public class Frog : MonoBehaviour
     {
+        [Header("unrefactored")]
         //unrefactored stuff
-        [SerializeField] FrogControlls frogControlls;
         [SerializeField] FrogBloodSplater frogMetaBloodSplater;
         [SerializeField] FrogDynamicEffects frogDynamicEffects;
         [SerializeField] public Wave wave;
 
 
-        // managed classes setups
+        LifeController lifeController;
+        [HideInInspector] public VfxManager vfxManager;
+        Controlls controlls;
+        CameraTracker cameraController;
 
+
+        [Header("Camera")]
         [SerializeField] Camera playerCamera;
-        [HideInInspector] CameraTracker cameraController;
-        [HideInInspector] public Transform CameraTransform { get; private set; }
-        [HideInInspector] public CameraTarget CameraTarget { get; private set; }
-
-        [HideInInspector] LifeController lifeController;
-        [HideInInspector] public VfxManager VfxManager { get; private set; }
-
-        //assinged in inspector
 
         [Header("vfx")]
-        [SerializeField] public ParticleSystem respawnParticles;
-        [SerializeField] public ParticleSystem deathParticles;
-        [SerializeField] public List<GameObject> visuals;
-        [SerializeField] public Image bloodSplatter;
+        public ParticleSystem respawnParticles;
+        public ParticleSystem deathParticles;
+        public List<GameObject> visuals;
+        public Image bloodSplatter;
 
         [Header("animation")]
-        [SerializeField] public Animator animator;
+        public Animator animator;
+
+        [Header("Sprites")]
+        public SpriteRenderer spriteRenderer;
+        public Sprite jumpSprite;
+        public Sprite restSprite;
+
+        [Header("UI")]
+        public Slider powerBar;
 
         [Header("audio")]
-        [SerializeField] public AudioClip deathSounds;
-        [SerializeField] public AudioClip respawnSounds;
-        [SerializeField] public AudioClip jumpSounds;
-        [SerializeField] public AudioClip landSounds;
+        public AudioClip deathSounds;
+        public AudioClip respawnSounds;
+        public AudioClip jumpSounds;
+        public AudioClip landSounds;
 
-        //assigned in awake
+        //Initalised
         [HideInInspector] public Rigidbody2D rb;
         [HideInInspector] new public Collider2D collider;
+        [HideInInspector] public Transform CameraTransform { get; private set; }
+        [HideInInspector] public CameraTarget CameraTarget { get; private set; }
 
         private void Initalise()
         {
             CameraTarget = new CameraTarget(transform);
             cameraController = new CameraTracker(this);
-            VfxManager = new VfxManager(this);
+            vfxManager = new VfxManager(this);
             lifeController = new LifeController(this);
+            controlls = new Controlls(this);
         }
 
         private void Awake()
@@ -76,7 +82,8 @@ namespace Frog
         {
             cameraController.Update();
             lifeController.Update();
-            VfxManager.Update();
+            vfxManager.Update();
+            controlls.Update();
         }
 
         private void FixedUpdate()
@@ -84,11 +91,17 @@ namespace Frog
             cameraController.MoveTowardsTarget();
         }
 
+
         [HideInInspector] public List<GameObject> currentCollisions = new List<GameObject>();
         private void OnTriggerEnter2D(Collider2D collision) { currentCollisions.Add(collision.gameObject); }
-        private void OnCollisionEnter2D(Collision2D collision) { currentCollisions.Add(collision.gameObject); }
         private void OnTriggerExit2D(Collider2D collision) { currentCollisions.Remove(collision.gameObject); }
         private void OnCollisionExit2D(Collision2D collision) { currentCollisions.Remove(collision.gameObject); }
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            currentCollisions.Add(collision.gameObject);
+            controlls.OnCollisionEnter2D();
+        }
+
 
         public void RestartLevel() { lifeController.Restart(); }
     }

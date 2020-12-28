@@ -33,7 +33,7 @@ namespace Frog.Life
             else
                 Restart();
 
-            frog.VfxManager.RespawnEffects();
+            frog.vfxManager.RespawnEffects();
             frog.respawnSounds.PlayRandom();
             ToggleComponents(true);
         }
@@ -42,7 +42,7 @@ namespace Frog.Life
         {
             ToggleComponents(false);
             Statistics.totalDeaths++;
-            frog.VfxManager.DeathEffects();
+            frog.vfxManager.DeathEffects();
             frog.deathSounds.PlayRandom();
             GM.gameMusic.DetuneMusic();
             GM.PhillDied();

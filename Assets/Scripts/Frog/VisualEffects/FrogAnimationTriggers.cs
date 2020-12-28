@@ -10,7 +10,7 @@ namespace Frog
 
         public void DeathAnimationFinished()
         {
-            frog.VfxManager.ShowFrogVisuals(false);
+            frog.vfxManager.ShowFrogVisuals(false);
         }
     }
 }
