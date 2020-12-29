@@ -34560,7 +34560,6 @@ GameObject:
   - component: {fileID: 8322174571511716065}
   - component: {fileID: 8322174571511716070}
   - component: {fileID: 8322174571511716061}
-  - component: {fileID: 8322174571511716069}
   - component: {fileID: 8322174571511716060}
   - component: {fileID: 1958854822}
   m_Layer: 0
@@ -34595,7 +34594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402b230c23ee6d64c93e56ec0951712e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frogControlls: {fileID: 8322174571511716069}
   frogDynamicEffects: {fileID: 8322174571511716060}
   wave: {fileID: 8322174571285801743}
   playerCamera: {fileID: 8322174572786960848}
@@ -34607,6 +34605,10 @@ MonoBehaviour:
   - {fileID: 1091330891}
   bloodSplatter: {fileID: 325029910}
   animator: {fileID: 5335917812720519218}
+  spriteRenderer: {fileID: 3903022578623202839}
+  jumpSprite: {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
+  restSprite: {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
+  powerBar: {fileID: 2048041297}
   deathSounds: {fileID: 211964108}
   respawnSounds: {fileID: 672690356}
   jumpSounds: {fileID: 1388738539}
@@ -34633,26 +34635,6 @@ Transform:
   m_Father: {fileID: 2544048215938826104}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8322174571511716069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8322174571511716059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3722a98c83210ca498d567c1f1b361a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpSprite: {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
-  restSprite: {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
-  frogSpriteObject: {fileID: 5148930124507098425}
-  jumpKey: 32
-  animator: {fileID: 5335917812720519218}
-  groundedDetectionBox: {fileID: 828936407}
-  powerBar: {fileID: 2048041297}
-  drawRays: 0
 --- !u!50 &8322174571511716070
 Rigidbody2D:
   serializedVersion: 4

@@ -5,14 +5,12 @@ using UnityEngine.UI;
 
 namespace Frog
 {
-    public class Controlls : IRespawnResetable
+    public class Controlls
     {
         KeyCode jumpKey = KeyCode.Space;
 
-        [Header("Animation")]
-        [SerializeField] Animator animator;
+        Animator animator;
 
-        [Header("Jumping")]
         private float jumpForce = 400;
         private float jumpKeyTime = 0; //how long the jump key has been held down
         private float maxJumpKeyTime = .22f;  //how long the key must be heled to get max power
@@ -21,7 +19,7 @@ namespace Frog
         private float jumpKeyTimeMinThreshold = 0.3f; //if jump key is heled for less than this time jump will be minimum power
 
         //grounded detection
-        [SerializeField] Transform groundedDetectionBox;
+        Transform groundDetectionBox;
         Vector2 groundedBoxCenter, groundedBoxSize;
         float groundedBoxAngle;
         int groundedMask;
@@ -38,7 +36,7 @@ namespace Frog
         Frog frog;
 
         //sounds
-        AudioClip frogLanding, frogJumping;
+       AudioClip landSounds, jumpSounds;
 
         public Controlls(Frog frog)
         {
@@ -49,18 +47,18 @@ namespace Frog
             frog.powerBar.minValue = 0;
             frog.powerBar.maxValue = 1;
 
-            frogLanding = GM.audioManager.GetAudioClip("FrogLanding");
-            frogJumping = GM.audioManager.GetAudioClip("FrogJumping");
+            landSounds = frog.landSounds;
+            jumpSounds = frog.jumpSounds;
 
-            GM.AddRespawnResetable(this);
+            groundDetectionBox = frog.groundedDetectionBox;
+            animator = frog.animator;
 
-
-            Vector2 GDBScale = groundedDetectionBox.localScale;
+            Vector2 GDBScale = groundDetectionBox.localScale;
             Vector2 frogScale = frog.transform.localScale;
             groundedBoxSize = new Vector2(
                 GDBScale.x * frogScale.x,
                 GDBScale.y * frogScale.y);
-            groundedBoxAngle = groundedDetectionBox.rotation.z;
+            groundedBoxAngle = groundDetectionBox.rotation.z;
             groundedMask = LayerMask.GetMask("Ground");
         }
 
@@ -74,7 +72,7 @@ namespace Frog
             if (GM.gameState != GM.GameState.playingLevel) { return; }
 
             //can the frog jump?
-            groundedBoxCenter = groundedDetectionBox.position;
+            groundedBoxCenter = groundDetectionBox.position;
             if (IsGrounded)
             {
                 if (canJump == false)
@@ -84,7 +82,7 @@ namespace Frog
                     animator.SetFloat("AirTime", airTimeNormalised);
                     airTime = 0;
 
-                    frogLanding.GetRandomAudioSource().Play();
+                    landSounds.GetRandomAudioSource().Play();
                 }
                 canJump = true;
             }
@@ -122,7 +120,7 @@ namespace Frog
                 animator.SetBool("ChargingJump", false);
                 animator.SetFloat("JumpPowerAtKeyRelease", jumpTimeNormalised);
 
-                frogJumping.GetRandomAudioSource().Play();
+                jumpSounds.GetRandomAudioSource().Play();
 
                 if (canJump)
                 {
@@ -160,7 +158,7 @@ namespace Frog
             CollidedSinceLastJump = true;
         }
 
-        public void PhillRespawned()
+        public void Respawn()
         {
             jumpKeyTime = 0;
         }

@@ -46,6 +46,9 @@ namespace Frog
         public AudioClip jumpSounds;
         public AudioClip landSounds;
 
+        [Header("Jumpbox")]
+        public Transform groundedDetectionBox;
+
         //Initalised
         [HideInInspector] public Rigidbody2D rb;
         [HideInInspector] new public Collider2D collider;
@@ -84,6 +87,11 @@ namespace Frog
             lifeController.Update();
             vfxManager.Update();
             controlls.Update();
+        }
+
+        public void Respawn()
+        {
+            controlls.Respawn();
         }
 
         private void FixedUpdate()
