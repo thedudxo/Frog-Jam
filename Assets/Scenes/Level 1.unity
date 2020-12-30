@@ -1315,7 +1315,7 @@ Transform:
   - {fileID: 1773161246}
   - {fileID: 74602725}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &211335147
 GameObject:
@@ -2529,7 +2529,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &391627096
 GameObject:
@@ -11348,7 +11348,7 @@ Transform:
   m_LocalScale: {x: 2088.862, y: 6.221966, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1069930616 stripped
 Transform:
@@ -11738,7 +11738,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1102796220
 GameObject:
@@ -12298,7 +12298,7 @@ Transform:
   - {fileID: 877098751}
   - {fileID: 1618754817}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1191325648
 GameObject:
@@ -12554,7 +12554,7 @@ Transform:
   - {fileID: 1274667300}
   - {fileID: 185579322}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1214848564
 MonoBehaviour:
@@ -12623,7 +12623,7 @@ Transform:
   m_Children:
   - {fileID: 2094486608}
   m_Father: {fileID: 8322174572349124578}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1237552537
 MonoBehaviour:
@@ -22858,7 +22858,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8322174572349124578}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2020549043
 MonoBehaviour:
@@ -34124,7 +34124,7 @@ PrefabInstance:
     - target: {fileID: 6845528737088511096, guid: d33e19f2edac4ba479b254da022c42ae,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6845528737088511096, guid: d33e19f2edac4ba479b254da022c42ae,
         type: 3}
@@ -34413,7 +34413,7 @@ Transform:
   - {fileID: 287720280}
   - {fileID: 1611600868}
   m_Father: {fileID: 8322174572349124578}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &8322174571285801738
 BoxCollider2D:
@@ -34560,7 +34560,6 @@ GameObject:
   - component: {fileID: 8322174571511716065}
   - component: {fileID: 8322174571511716070}
   - component: {fileID: 8322174571511716061}
-  - component: {fileID: 8322174571511716060}
   - component: {fileID: 1958854822}
   m_Layer: 0
   m_Name: Phill the Frog
@@ -34569,19 +34568,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8322174571511716060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8322174571511716059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7d15333d14e444ba76e8b248ed6f8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  airParticles: {fileID: 788181676}
 --- !u!114 &8322174571511716061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34594,11 +34580,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402b230c23ee6d64c93e56ec0951712e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frogDynamicEffects: {fileID: 8322174571511716060}
   wave: {fileID: 8322174571285801743}
   playerCamera: {fileID: 8322174572786960848}
   respawnParticles: {fileID: 2020713797}
   deathParticles: {fileID: 1551111630}
+  airParticles: {fileID: 788181676}
   visuals:
   - {fileID: 1901434248}
   - {fileID: 867927038}
@@ -35209,13 +35195,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8322174572314341256}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.24, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8322174572786960853}
   - {fileID: 2128676297}
   - {fileID: 2544048215938826104}
-  m_Father: {fileID: 8322174572349124578}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8322174572349124576
@@ -35247,14 +35233,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8322174572314341257}
   - {fileID: 8322174572556114832}
   - {fileID: 8322174571285801737}
   - {fileID: 1237552536}
   - {fileID: 2020549042}
   - {fileID: 2135365466}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8322174572349124579
 MonoBehaviour:
@@ -35414,7 +35399,7 @@ RectTransform:
   - {fileID: 1478898278}
   - {fileID: 8322174572598821165}
   m_Father: {fileID: 8322174572349124578}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
