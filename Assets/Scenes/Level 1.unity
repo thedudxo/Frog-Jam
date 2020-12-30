@@ -34613,6 +34613,7 @@ MonoBehaviour:
   respawnSounds: {fileID: 672690356}
   jumpSounds: {fileID: 1388738539}
   landSounds: {fileID: 1007534530}
+  groundedDetectionBox: {fileID: 828936407}
   rb: {fileID: 0}
   collider: {fileID: 0}
   currentCollisions: []

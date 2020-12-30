@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Frog
+namespace Frog.Vfx
 {
-    public class VfxManager
+    public class VfxController
     {
         Animator animator;
         Transform transform;
@@ -16,9 +16,10 @@ namespace Frog
         const int respawnEmit = 5;
         const int deathEmit = 25;
 
-        FrogBloodSplater bloodSplater;
+        BloodSplater bloodSplater;
+        AirParticles airParticles;
 
-        public VfxManager(Frog frog)
+        public VfxController(Frog frog)
         {
             this.animator = frog.animator;
             this.transform = frog.transform;
@@ -26,12 +27,14 @@ namespace Frog
             this.deathParticles = frog.deathParticles;
             this.visuals = frog.visuals;
 
-            bloodSplater = new FrogBloodSplater(frog.bloodSplatter);
+            bloodSplater = new BloodSplater(frog.bloodSplatter);
+            airParticles = new AirParticles(frog);
         }
 
         public void Update()
         {
             bloodSplater.Update();
+            airParticles.Update();
         }
 
         public void DeathEffects()

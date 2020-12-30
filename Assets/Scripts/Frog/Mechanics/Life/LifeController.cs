@@ -27,8 +27,6 @@ namespace Frog.Life
         {
             if (GM.gameState == finishedLevel) { return; }
 
-
-
             switch (alive)
             {
                 case true:

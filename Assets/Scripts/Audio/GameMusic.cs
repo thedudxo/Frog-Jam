@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class GameMusic : MonoBehaviour, IRespawnResetable
 {
-
-
     //DETUNE
     float detuneDurationSeconds = 1;
     float detuneTimer = 1000;

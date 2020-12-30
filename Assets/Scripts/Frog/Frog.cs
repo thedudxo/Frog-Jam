@@ -1,4 +1,5 @@
 ﻿using Frog.Life;
+using Frog.Vfx;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,13 +10,13 @@ namespace Frog
     {
         [Header("unrefactored")]
         //unrefactored stuff
-        [SerializeField] FrogBloodSplater frogMetaBloodSplater;
-        [SerializeField] FrogDynamicEffects frogDynamicEffects;
+        [SerializeField] BloodSplater frogMetaBloodSplater;
+        [SerializeField] AirParticles frogDynamicEffects;
         [SerializeField] public Wave wave;
 
 
         LifeController lifeController;
-        [HideInInspector] public VfxManager vfxManager;
+        [HideInInspector] public VfxController vfxManager;
         Controlls controlls;
         CameraTracker cameraController;
 
@@ -26,6 +27,7 @@ namespace Frog
         [Header("vfx")]
         public ParticleSystem respawnParticles;
         public ParticleSystem deathParticles;
+        public ParticleSystem airParticles;
         public List<GameObject> visuals;
         public Image bloodSplatter;
 
@@ -59,7 +61,7 @@ namespace Frog
         {
             CameraTarget = new CameraTarget(transform);
             cameraController = new CameraTracker(this);
-            vfxManager = new VfxManager(this);
+            vfxManager = new VfxController(this);
             lifeController = new LifeController(this);
             controlls = new Controlls(this);
         }
