@@ -57,7 +57,7 @@ public class MusicZone : MonoBehaviour
 
     public bool IsPlayerPastZoneStart()
     {
-        if (FrogManager.frog.transform.position.x > transform.position.x)
+        if (SingletonThatNeedsToBeRemoved.frog.transform.position.x > transform.position.x)
         {
             return true;
         }
@@ -124,7 +124,7 @@ public class MusicZone : MonoBehaviour
     {
 
         float wavePos = GM.currentLevel.wave.transform.position.x;
-        float frogPos = FrogManager.frog.transform.position.x;
+        float frogPos = SingletonThatNeedsToBeRemoved.frog.transform.position.x;
 
         float distanceNormalised = 1 - Mathf.Clamp01((frogPos - (wavePos + bufferInFrontOfWave)) / (waveMusicDistance));
         waveAudioSource.volume = distanceNormalised;

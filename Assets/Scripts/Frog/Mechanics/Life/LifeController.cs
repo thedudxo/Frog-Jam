@@ -12,7 +12,7 @@ namespace Frog.Life
         LifeStateControlls state;
             public void Restart() { state.Restart(); }
 
-        public LifeController(Frog frog)
+        public LifeController(FrogController frog)
         {
             respawnTimer = new RespawnTimer();
             deathConditions = new DeathConditions(frog.transform, frog.currentCollisions);

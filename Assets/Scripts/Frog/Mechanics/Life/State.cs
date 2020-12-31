@@ -9,13 +9,13 @@ namespace Frog.Life
         const float respawnSetBack = 25;
         const int respawnHeight = 5;
 
-        Frog frog;
+        FrogController frog;
         Rigidbody2D rb;
         Collider2D collider;
         CameraTarget cameraTarget;
         Transform transform;
 
-        public LifeStateControlls(Frog frog)
+        public LifeStateControlls(FrogController frog)
         {
             this.frog = frog;
             this.rb = frog.rb;

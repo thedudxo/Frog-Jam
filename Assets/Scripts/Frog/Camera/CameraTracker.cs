@@ -20,7 +20,7 @@ namespace Frog {
         const float WaveMinDist = 10;
         const float waveMaXDist = 30;
 
-        public CameraTracker(Frog frog)
+        public CameraTracker(FrogController frog)
         {
             camTransform = frog.CameraTransform;
             waveTransform = frog.wave.transform;

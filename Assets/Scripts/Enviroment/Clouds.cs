@@ -68,7 +68,7 @@ public class Clouds : MonoBehaviour, IRespawnResetable
                 if (cloudsOnScreen < desiredAmmountOfCloudsOnScreen)
                 {
                     //generate a new position in veiw of the camera, but not too far behind
-                    float newXPosition = Random.Range(FrogManager.frog.transform.position.x, FrogManager.frog.transform.position.x + 20);
+                    float newXPosition = Random.Range(SingletonThatNeedsToBeRemoved.frog.transform.position.x, SingletonThatNeedsToBeRemoved.frog.transform.position.x + 20);
 
                     //move the cloud to its new spot, onscreen
                     cloud.transform.position = new Vector2(newXPosition, cloud.transform.position.y);

@@ -34586,9 +34586,9 @@ MonoBehaviour:
   deathParticles: {fileID: 1551111630}
   airParticles: {fileID: 788181676}
   visuals:
+  - {fileID: 2048041295}
   - {fileID: 1901434248}
   - {fileID: 867927038}
-  - {fileID: 1091330891}
   bloodSplatter: {fileID: 325029910}
   animator: {fileID: 5335917812720519218}
   spriteRenderer: {fileID: 3903022578623202839}

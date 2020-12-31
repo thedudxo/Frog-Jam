@@ -21,7 +21,7 @@ public class ProgressBar : MonoBehaviour, IRespawnResetable
     // Update is called once per frame
     void Update()
     {
-        playerProgressBar.value = (FrogManager.frog.transform.position.x - level.startLength) / (level.end - level.startLength);
+        playerProgressBar.value = (SingletonThatNeedsToBeRemoved.frog.transform.position.x - level.startLength) / (level.end - level.startLength);
         waveProgressBar.value   = (level.wave.transform.position.x   - level.startLength) / (level.end - level.startLength);
 
         //update looseProgressBar

@@ -6,7 +6,7 @@ namespace Frog
 {
     public class FrogAnimationTriggers : MonoBehaviour
     {
-        [SerializeField] Frog frog;
+        [SerializeField] FrogController frog;
 
         public void DeathAnimationFinished()
         {

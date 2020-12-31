@@ -17,7 +17,7 @@ namespace Frog.Vfx
         ParticleSystem.EmissionModule particleEmission;
         ParticleSystem.ShapeModule particleShape;
 
-        public AirParticles(Frog frog)
+        public AirParticles(FrogController frog)
         {
             rb = frog.GetComponent<Rigidbody2D>();
             airParticles = frog.airParticles;

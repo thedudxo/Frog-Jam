@@ -17,7 +17,7 @@ namespace Level
         [Header("Assigniees")]
         [SerializeField] public GameObject wave;
         [SerializeField] GameObject winScreen;
-        [SerializeField] Frog.Frog frog;
+        [SerializeField] Frog.FrogController frog;
 
         //stats
         Timer timer = new Timer();
@@ -69,8 +69,8 @@ namespace Level
             timer.CheckForNewPB();
             GM.gameState = GM.GameState.finishedLevel;
             EnableEndScreen();
-            FrogManager.frog.GetComponent<Rigidbody2D>().gravityScale = 0;
-            FrogManager.frog.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            SingletonThatNeedsToBeRemoved.frog.GetComponent<Rigidbody2D>().gravityScale = 0;
+            SingletonThatNeedsToBeRemoved.frog.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
 
         private void EnableEndScreen()

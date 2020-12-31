@@ -43,7 +43,7 @@ public class Split : MonoBehaviour, IRespawnResetable
             //particles
             ParticleSystem SplitParticles = GM.splitManager.newPBParticles;
             SplitParticles.gameObject.transform.position = new Vector3(
-                FrogManager.frog.transform.position.x, FrogManager.frog.transform.position.y, SplitParticles.gameObject.transform.position.z);
+                SingletonThatNeedsToBeRemoved.frog.transform.position.x, SingletonThatNeedsToBeRemoved.frog.transform.position.y, SplitParticles.gameObject.transform.position.z);
             SplitParticles.Emit(GM.splitManager.particleBurstCount);
         }
     }

@@ -33,12 +33,12 @@ namespace Frog
 
         public bool CollidedSinceLastJump { get; private set; } = true;
 
-        Frog frog;
+        FrogController frog;
 
         //sounds
        AudioClip landSounds, jumpSounds;
 
-        public Controlls(Frog frog)
+        public Controlls(FrogController frog)
         {
             this.frog = frog;
 

@@ -19,7 +19,7 @@ namespace Frog.Vfx
         BloodSplater bloodSplater;
         AirParticles airParticles;
 
-        public VfxController(Frog frog)
+        public VfxController(FrogController frog)
         {
             this.animator = frog.animator;
             this.transform = frog.transform;

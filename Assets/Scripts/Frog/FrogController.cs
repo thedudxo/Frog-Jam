@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Frog
 {
-    public class Frog : MonoBehaviour
+    public class FrogController : MonoBehaviour
     {
         [Header("unrefactored")]
         //unrefactored stuff
@@ -59,6 +59,7 @@ namespace Frog
 
         private void Initalise()
         {
+            FrogManager.AddFrog(this);
             CameraTarget = new CameraTarget(transform);
             cameraController = new CameraTracker(this);
             vfxManager = new VfxController(this);
@@ -73,7 +74,7 @@ namespace Frog
             CameraTransform = playerCamera.transform;
 
             //get rid of this at some point
-            FrogManager.frog = this;
+            SingletonThatNeedsToBeRemoved.frog = this;
 
             Initalise();
         }
