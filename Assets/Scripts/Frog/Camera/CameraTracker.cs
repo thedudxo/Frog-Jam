@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Frog {
+namespace FrogScripts {
     public class CameraTracker
     {
 
@@ -20,7 +20,7 @@ namespace Frog {
         const float WaveMinDist = 10;
         const float waveMaXDist = 30;
 
-        public CameraTracker(FrogController frog)
+        public CameraTracker(Frog frog)
         {
             camTransform = frog.CameraTransform;
             waveTransform = frog.wave.transform;

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Frog
+namespace FrogScripts
 {
     public class FrogAnimationTriggers : MonoBehaviour
     {
-        [SerializeField] FrogController frog;
+        [SerializeField] Frog frog;
 
         public void DeathAnimationFinished()
         {

@@ -1,40 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace Frog.Vfx
+namespace FrogScripts.Vfx
 {
-    public class VfxController
+    public class VfxController : MonoBehaviour
     {
-        Animator animator;
-        Transform transform;
+        [SerializeField] Animator animator;
+        [SerializeField] public Rigidbody2D rb;
 
-        List<GameObject> visuals;
+        [Header("Particles")]
+        [SerializeField] public ParticleSystem respawnParticles;
+        [SerializeField] public ParticleSystem deathParticles;
+        [SerializeField] public ParticleSystem airParticles;
 
-        ParticleSystem respawnParticles;
-        ParticleSystem deathParticles;
+        [Header("visuals")]
+        [SerializeField] public List<GameObject> visuals;
+        [SerializeField] public Image bloodSplatterImage;
+
         const int respawnEmit = 5;
         const int deathEmit = 25;
 
-        BloodSplater bloodSplater;
-        AirParticles airParticles;
+        ImageFadeout bloodSplaterController;
+        AirParticleController airParticleController;
 
-        public VfxController(FrogController frog)
+        public void Start()
         {
-            this.animator = frog.animator;
-            this.transform = frog.transform;
-            this.respawnParticles = frog.respawnParticles;
-            this.deathParticles = frog.deathParticles;
-            this.visuals = frog.visuals;
 
-            bloodSplater = new BloodSplater(frog.bloodSplatter);
-            airParticles = new AirParticles(frog);
+            bloodSplaterController = new ImageFadeout(bloodSplatterImage);
+            airParticleController = new AirParticleController(this);
         }
 
         public void Update()
         {
-            bloodSplater.Update();
-            airParticles.Update();
+            bloodSplaterController.Update();
+            airParticleController.Update();
         }
 
         public void DeathEffects()
@@ -48,7 +49,7 @@ namespace Frog.Vfx
 
             deathParticles.Emit(deathEmit);
 
-            bloodSplater.StartSplatter();
+            bloodSplaterController.StartFade();
         }
 
         public void RespawnEffects()

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Frog.Vfx
+namespace FrogScripts.Vfx
 {
-    public class AirParticles
+    public class AirParticleController
     {
-        Rigidbody2D rb;
         ParticleSystem airParticles;
 
         const float emitRate = 10;
@@ -17,10 +16,13 @@ namespace Frog.Vfx
         ParticleSystem.EmissionModule particleEmission;
         ParticleSystem.ShapeModule particleShape;
 
-        public AirParticles(FrogController frog)
+        VfxController vfx;
+        Rigidbody2D rb;
+
+        public AirParticleController(VfxController vfx)
         {
-            rb = frog.GetComponent<Rigidbody2D>();
-            airParticles = frog.airParticles;
+            airParticles = vfx.airParticles;
+            rb = vfx.rb;
 
             particleMain = airParticles.main;
             particleEmission = airParticles.emission;

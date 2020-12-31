@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Frog
+namespace FrogScripts
 {
     public class Controlls
     {
@@ -33,12 +33,12 @@ namespace Frog
 
         public bool CollidedSinceLastJump { get; private set; } = true;
 
-        FrogController frog;
+        Frog frog;
 
         //sounds
        AudioClip landSounds, jumpSounds;
 
-        public Controlls(FrogController frog)
+        public Controlls(Frog frog)
         {
             this.frog = frog;
 

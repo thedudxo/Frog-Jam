@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using static Frog.Life.DeathConditions;
+using static FrogScripts.Life.DeathConditions;
 
-namespace Frog.Life
+namespace FrogScripts.Life
 {
     class LifeStateControlls
     {
@@ -9,13 +9,13 @@ namespace Frog.Life
         const float respawnSetBack = 25;
         const int respawnHeight = 5;
 
-        FrogController frog;
+        Frog frog;
         Rigidbody2D rb;
         Collider2D collider;
         CameraTarget cameraTarget;
         Transform transform;
 
-        public LifeStateControlls(FrogController frog)
+        public LifeStateControlls(Frog frog)
         {
             this.frog = frog;
             this.rb = frog.rb;

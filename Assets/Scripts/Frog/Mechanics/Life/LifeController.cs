@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using static Frog.Life.DeathConditions;
+using static FrogScripts.Life.DeathConditions;
 
-namespace Frog.Life
+namespace FrogScripts.Life
 {
     public class LifeController
     {
@@ -12,7 +12,7 @@ namespace Frog.Life
         LifeStateControlls state;
             public void Restart() { state.Restart(); }
 
-        public LifeController(FrogController frog)
+        public LifeController(Frog frog)
         {
             respawnTimer = new RespawnTimer();
             deathConditions = new DeathConditions(frog.transform, frog.currentCollisions);

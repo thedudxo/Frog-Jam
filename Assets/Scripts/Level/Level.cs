@@ -17,7 +17,7 @@ namespace Level
         [Header("Assigniees")]
         [SerializeField] public GameObject wave;
         [SerializeField] GameObject winScreen;
-        [SerializeField] Frog.FrogController frog;
+        [SerializeField] FrogScripts.Frog frog;
 
         //stats
         Timer timer = new Timer();

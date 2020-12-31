@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Frog.Life
+namespace FrogScripts.Life
 {
     public class DeathConditions
     {

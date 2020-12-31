@@ -1,35 +1,24 @@
-﻿using Frog.Life;
-using Frog.Vfx;
+﻿using FrogScripts.Life;
+using FrogScripts.Vfx;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Frog
+namespace FrogScripts
 {
-    public class FrogController : MonoBehaviour
+    public class Frog : MonoBehaviour
     {
         [Header("unrefactored")]
-        //unrefactored stuff
-        [SerializeField] BloodSplater frogMetaBloodSplater;
-        [SerializeField] AirParticles frogDynamicEffects;
         [SerializeField] public Wave wave;
 
-
+        [Header("Components")]
+        public VfxController vfxManager;
         LifeController lifeController;
-        [HideInInspector] public VfxController vfxManager;
         Controlls controlls;
         CameraTracker cameraController;
 
-
         [Header("Camera")]
         [SerializeField] Camera playerCamera;
-
-        [Header("vfx")]
-        public ParticleSystem respawnParticles;
-        public ParticleSystem deathParticles;
-        public ParticleSystem airParticles;
-        public List<GameObject> visuals;
-        public Image bloodSplatter;
 
         [Header("animation")]
         public Animator animator;
@@ -51,7 +40,7 @@ namespace Frog
         [Header("Jumpbox")]
         public Transform groundedDetectionBox;
 
-        //Initalised
+        //Initalised stuff
         [HideInInspector] public Rigidbody2D rb;
         [HideInInspector] new public Collider2D collider;
         [HideInInspector] public Transform CameraTransform { get; private set; }
@@ -62,7 +51,6 @@ namespace Frog
             FrogManager.AddFrog(this);
             CameraTarget = new CameraTarget(transform);
             cameraController = new CameraTracker(this);
-            vfxManager = new VfxController(this);
             lifeController = new LifeController(this);
             controlls = new Controlls(this);
         }
@@ -73,22 +61,13 @@ namespace Frog
             collider = GetComponent<Collider2D>();
             CameraTransform = playerCamera.transform;
 
-            //get rid of this at some point
-            SingletonThatNeedsToBeRemoved.frog = this;
-
             Initalise();
-        }
-
-        private void Start()
-        {
-            
         }
 
         private void Update()
         {
             cameraController.Update();
             lifeController.Update();
-            vfxManager.Update();
             controlls.Update();
         }
 
@@ -101,7 +80,6 @@ namespace Frog
         {
             cameraController.MoveTowardsTarget();
         }
-
 
         [HideInInspector] public List<GameObject> currentCollisions = new List<GameObject>();
         private void OnTriggerEnter2D(Collider2D collision) { currentCollisions.Add(collision.gameObject); }
