@@ -6,11 +6,11 @@ namespace Frog
 {
     public class FrogAnimationTriggers : MonoBehaviour
     {
-        [SerializeField] Frog frog;
+        [SerializeField] FrogController frog;
 
         public void DeathAnimationFinished()
         {
-            frog.VfxManager.ShowFrogVisuals(false);
+            frog.vfxManager.ShowFrogVisuals(false);
         }
     }
 }

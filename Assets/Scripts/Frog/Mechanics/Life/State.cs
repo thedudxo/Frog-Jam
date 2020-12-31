@@ -9,13 +9,13 @@ namespace Frog.Life
         const float respawnSetBack = 25;
         const int respawnHeight = 5;
 
-        Frog frog;
+        FrogController frog;
         Rigidbody2D rb;
         Collider2D collider;
         CameraTarget cameraTarget;
         Transform transform;
 
-        public LifeStateControlls(Frog frog)
+        public LifeStateControlls(FrogController frog)
         {
             this.frog = frog;
             this.rb = frog.rb;
@@ -33,7 +33,7 @@ namespace Frog.Life
             else
                 Restart();
 
-            frog.VfxManager.RespawnEffects();
+            frog.vfxManager.RespawnEffects();
             frog.respawnSounds.PlayRandom();
             ToggleComponents(true);
         }
@@ -42,7 +42,7 @@ namespace Frog.Life
         {
             ToggleComponents(false);
             Statistics.totalDeaths++;
-            frog.VfxManager.DeathEffects();
+            frog.vfxManager.DeathEffects();
             frog.deathSounds.PlayRandom();
             GM.gameMusic.DetuneMusic();
             GM.PhillDied();

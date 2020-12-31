@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class GameMusic : MonoBehaviour, IRespawnResetable
 {
-
-
     //DETUNE
     float detuneDurationSeconds = 1;
     float detuneTimer = 1000;
@@ -112,7 +110,7 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
 
             float currentZonePosX = musicZones[currentZoneIndex].gameObject.transform.position.x;
             float nextZonePosX = musicZones[Mathf.Clamp(currentZoneIndex + 1, 0, musicZones.Length - 1)].gameObject.transform.position.x;
-            float playerPosX = FrogManager.frog.transform.position.x;
+            float playerPosX = SingletonThatNeedsToBeRemoved.frog.transform.position.x;
             float distanceBetweenZones = nextZonePosX - currentZonePosX;
             float progressThroughZone = playerPosX - currentZonePosX;
             float progressNormalised = progressThroughZone / distanceBetweenZones;

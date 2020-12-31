@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Frog;
+
+public static class SingletonThatNeedsToBeRemoved
+{
+    public static FrogController frog;
+}
 
 public static class FrogManager
 {
-    public static FrogControlls frogControlls;
-    public static FrogBloodSplater frogMetaBloodSplater;
-    public static FrogDynamicEffects frogDynamicEffects;
+    static List<FrogController> Frogs = new List<FrogController>();
 
-    public static Frog.Frog frog;
-
+    static public void AddFrog(FrogController frog)
+    {
+        Frogs.Add(frog);
+    }
 }
