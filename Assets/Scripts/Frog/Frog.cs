@@ -17,10 +17,6 @@ namespace FrogScripts
         [SerializeField] public CameraController cameraController;
         [SerializeField] public Controlls controlls;
 
-        [HideInInspector] public Transform CameraTransform { get; private set; }
-        [HideInInspector] public CameraTarget CameraTarget { get; private set; }
-
-
         private void Awake()
         {
             FrogManager.AddFrog(this);

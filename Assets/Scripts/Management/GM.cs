@@ -14,7 +14,6 @@ public static class GM {
     public static SplitManager splitManager;
     public static AudioManager audioManager;
     public static GameMusic gameMusic;
-    public static LevelEndScreen levelEndScreen;
 
     static List<IRespawnResetable> resetOnRespawn = new List<IRespawnResetable>();
     static List<ILevelRestartResetable> resetOnLevelRestart = new List<ILevelRestartResetable>();

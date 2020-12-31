@@ -16,18 +16,6 @@ namespace Level
 
         [Header("Assigniees")]
         [SerializeField] public GameObject wave;
-        [SerializeField] GameObject winScreen;
-        [SerializeField] FrogScripts.Frog frog;
-
-        //stats
-        Timer timer = new Timer();
-        int deaths;
-        int? pbDeaths;
-
-        /*level needs to:
-         *players should:
-            track their own time + deaths
-        */
 
         private void OnValidate()
         {
@@ -37,46 +25,6 @@ namespace Level
         private void Awake()
         {
             GM.currentLevel = this;
-        }
-
-        bool PlayerGotToTheEnd => frog.transform.position.x >= end;
-        bool PlayerInputRestart => Input.GetKeyDown(KeyCode.Q);
-        private void Update()
-        {
-            switch (GM.gameState)
-            {
-                case GM.GameState.playingLevel:
-                    timer.Update();
-                    if (PlayerGotToTheEnd) FinishLevel();
-                    break;
-
-                case GM.GameState.finishedLevel:
-                    if (PlayerInputRestart) RestartLevel();
-                    break;
-            }
-        }
-
-        private void RestartLevel()
-        {
-            timer.Reset();
-            GM.levelEndScreen.Disable();
-            GM.gameState = GM.GameState.playingLevel;
-            frog.RestartLevel();
-        }
-
-        private void FinishLevel()
-        {
-            timer.CheckForNewPB();
-            GM.gameState = GM.GameState.finishedLevel;
-            EnableEndScreen();
-            SingletonThatNeedsToBeRemoved.frog.GetComponent<Rigidbody2D>().gravityScale = 0;
-            SingletonThatNeedsToBeRemoved.frog.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        }
-
-        private void EnableEndScreen()
-        {
-            pbDeaths = Mathf.Min(pbDeaths ?? int.MaxValue, deaths);
-            GM.levelEndScreen.Enable(timer.Time, (float)timer.PbTime, deaths, (int)pbDeaths);
         }
 
         private void OnDrawGizmos()

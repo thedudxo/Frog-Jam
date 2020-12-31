@@ -8,11 +8,6 @@ public class LevelEndScreen : MonoBehaviour
 
     const string timeFormat = "F3";
 
-    private void Awake()
-    {
-        GM.levelEndScreen = this;
-    }
-
     public void Enable(float time, float pbTime, int deaths, int pbDeaths)
     {
         endScreen.SetActive(true);
