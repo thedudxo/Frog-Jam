@@ -5,53 +5,53 @@ using UnityEngine.UI;
 
 namespace FrogScripts
 {
-    public class Controlls
+    public class Controlls : MonoBehaviour
     {
-        KeyCode jumpKey = KeyCode.Space;
+        [SerializeField] KeyCode jumpKey = KeyCode.Space;
+        [SerializeField] Animator animator;
+        [SerializeField] Frog frog;
+        [SerializeField] Rigidbody2D rb;
+        
+        [Header("Audio")]
+        [SerializeField] AudioClip landSounds;
+        [SerializeField] AudioClip jumpSounds;
 
-        Animator animator;
+        [Header("Sprites")]
+        public SpriteRenderer spriteRenderer;
+        public Sprite jumpSprite;
+        public Sprite restSprite;
 
-        private float jumpForce = 400;
-        private float jumpKeyTime = 0; //how long the jump key has been held down
-        private float maxJumpKeyTime = .22f;  //how long the key must be heled to get max power
-        float jumpTimeNormalised = 0; // how long the key was held 0 to 1
-        private float minJumpTimeNormalised = .15f; //the smallest jump you can make
-        private float jumpKeyTimeMinThreshold = 0.3f; //if jump key is heled for less than this time jump will be minimum power
+        [Header("UI")]
+        public Slider powerBar;
+
+        const float jumpForce = 400;
+              float jumpKeyTime = 0; //how long the jump key has been held down
+        const float maxJumpKeyTime = .22f;  //how long the key must be heled to get max power
+              float jumpTimeNormalised = 0; // how long the key was held 0 to 1
+        const float minJumpTimeNormalised = .15f; //the smallest jump you can make
+        const float jumpKeyTimeMinThreshold = 0.3f; //if jump key is heled for less than this time jump will be minimum power
 
         //grounded detection
-        Transform groundDetectionBox;
+        [SerializeField] Transform groundDetectionBox;
         Vector2 groundedBoxCenter, groundedBoxSize;
         float groundedBoxAngle;
         int groundedMask;
         
 
-        private bool canJump = false;
-        private float airTime = 0; //time since phill last touched something
-        private float maxAnimationAirTime = 1.5f; // time where the landing animation gets maximum squish
+        bool canJump = false;
+        float airTime = 0; //time since phill last touched something
+        float maxAnimationAirTime = 1.5f; // time where the landing animation gets maximum squish
 
         private int layermask;
 
         public bool CollidedSinceLastJump { get; private set; } = true;
 
-        Frog frog;
-
-        //sounds
-       AudioClip landSounds, jumpSounds;
-
-        public Controlls(Frog frog)
+        void Start()
         {
-            this.frog = frog;
-
             layermask = LayerMask.GetMask("Ground");
 
-            frog.powerBar.minValue = 0;
-            frog.powerBar.maxValue = 1;
-
-            landSounds = frog.landSounds;
-            jumpSounds = frog.jumpSounds;
-
-            groundDetectionBox = frog.groundedDetectionBox;
-            animator = frog.animator;
+            powerBar.minValue = 0;
+            powerBar.maxValue = 1;
 
             Vector2 GDBScale = groundDetectionBox.localScale;
             Vector2 frogScale = frog.transform.localScale;
@@ -66,7 +66,7 @@ namespace FrogScripts
 
         bool IsGrounded => Physics2D.OverlapBox(groundedBoxCenter, groundedBoxSize, groundedBoxAngle, groundedMask);
 
-        public void Update()
+        void Update()
         {
 
             if (GM.gameState != GM.GameState.playingLevel) { return; }
@@ -94,12 +94,10 @@ namespace FrogScripts
             animator.SetBool("Landed", canJump);
 
 
-
-
             if (canJump)
-            { frog.spriteRenderer.sprite = frog.restSprite; }
+            { spriteRenderer.sprite = restSprite; }
             else
-            { frog.spriteRenderer.sprite = frog.jumpSprite; }
+            { spriteRenderer.sprite = jumpSprite; }
 
             if (Input.GetKeyDown(jumpKey))
             {
@@ -131,7 +129,7 @@ namespace FrogScripts
                         jumpTimeNormalised = minJumpTimeNormalised;
                     }
 
-                    frog.rb.AddForce(new Vector2(jumpForce * jumpTimeNormalised, jumpForce * jumpTimeNormalised));
+                    rb.AddForce(new Vector2(jumpForce * jumpTimeNormalised, jumpForce * jumpTimeNormalised));
                     CollidedSinceLastJump = false;
                 }
 
@@ -142,7 +140,7 @@ namespace FrogScripts
             jumpTimeNormalised = Mathf.Clamp((jumpKeyTime / maxJumpKeyTime), 0, 1);
 
             animator.SetFloat("JumpPower", jumpTimeNormalised);
-            frog.powerBar.value = jumpTimeNormalised;
+            powerBar.value = jumpTimeNormalised;
 
 
 

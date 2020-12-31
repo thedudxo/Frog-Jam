@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace FrogScripts {
-    public class CameraTracker
+    public class CameraController : MonoBehaviour
     {
+        [SerializeField] private new Camera camera;
+        [SerializeField] Frog frog;
 
-        public CameraTarget target;
+        [HideInInspector] public CameraTarget target;
+
         Vector2 targetPos;
         Vector2 centerOffset;
         Transform camTransform;
@@ -20,22 +23,25 @@ namespace FrogScripts {
         const float WaveMinDist = 10;
         const float waveMaXDist = 30;
 
-        public CameraTracker(Frog frog)
+        void Start()
         {
-            camTransform = frog.CameraTransform;
+            camTransform = camera.transform;
             waveTransform = frog.wave.transform;
 
-            target = frog.CameraTarget;
-
-            if (target == null) target = new CameraTarget();
+            target = new CameraTarget(transform);
             Vector3 targetStart = target.GetPos();
 
             centerOffset = (camTransform.position - targetStart);
         }
 
-        public void Update()
+        private void Update()
         {
             targetPos = target.GetPos();
+        }
+
+        private void FixedUpdate()
+        {
+            MoveTowardsTarget();
         }
 
         float WaveTrackOffsetX
@@ -49,7 +55,6 @@ namespace FrogScripts {
                return waveDistanceXNormal * WaveOffsetWeight;
             }
         }
-
 
         public void MoveTowardsTarget()
         {

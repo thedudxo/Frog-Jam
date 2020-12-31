@@ -1,28 +1,27 @@
 ﻿using UnityEngine;
 using static FrogScripts.Life.DeathConditions;
+using FrogScripts.Vfx;
 
 namespace FrogScripts.Life
 {
-    class LifeStateControlls
+    class LifeStateControlls : MonoBehaviour
     {
         Vector2 levelStart;
         const float respawnSetBack = 25;
         const int respawnHeight = 5;
 
-        Frog frog;
-        Rigidbody2D rb;
-        Collider2D collider;
-        CameraTarget cameraTarget;
-        Transform transform;
+        [SerializeField] Frog frog;
+        [SerializeField] VfxController vfx;
+        [SerializeField] Rigidbody2D rb;
+        [SerializeField] new Collider2D collider;
+        [SerializeField] new Transform transform;
 
-        public LifeStateControlls(Frog frog)
+        [Header("audio")]
+        [SerializeField]  public AudioClip deathSounds;
+        [SerializeField]  public AudioClip respawnSounds;
+
+        public void Start()
         {
-            this.frog = frog;
-            this.rb = frog.rb;
-            this.collider = frog.collider;
-            this.cameraTarget = frog.CameraTarget;
-            this.transform = frog.transform;
-
             levelStart = transform.position;
         }
 
@@ -33,8 +32,8 @@ namespace FrogScripts.Life
             else
                 Restart();
 
-            frog.vfxManager.RespawnEffects();
-            frog.respawnSounds.PlayRandom();
+            vfx.RespawnEffects();
+            respawnSounds.PlayRandom();
             ToggleComponents(true);
         }
 
@@ -42,8 +41,8 @@ namespace FrogScripts.Life
         {
             ToggleComponents(false);
             Statistics.totalDeaths++;
-            frog.vfxManager.DeathEffects();
-            frog.deathSounds.PlayRandom();
+            vfx.DeathEffects();
+            deathSounds.PlayRandom();
             GM.gameMusic.DetuneMusic();
             GM.PhillDied();
         }
@@ -55,7 +54,7 @@ namespace FrogScripts.Life
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.gravityScale = 1;
                 collider.enabled = true;
-                cameraTarget.Set(transform);
+                frog.cameraController.target.Set(transform);
             }
 
             else
@@ -63,7 +62,7 @@ namespace FrogScripts.Life
                 rb.velocity = Vector2.zero;
                 rb.gravityScale = 0;
                 collider.enabled = false;
-                cameraTarget.Set(transform.position);
+                frog.cameraController.target.Set(transform.position);
             }
         }
 

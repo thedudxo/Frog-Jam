@@ -4,24 +4,24 @@ using static FrogScripts.Life.DeathConditions;
 
 namespace FrogScripts.Life
 {
-    public class LifeController
+    public class LifeController : MonoBehaviour
     {
+        [SerializeField] Frog frog;
+
         RespawnTimer respawnTimer;
         DeathConditions deathConditions;
-
-        LifeStateControlls state;
-            public void Restart() { state.Restart(); }
-
-        public LifeController(Frog frog)
+        [SerializeField] LifeStateControlls stateControlls;
+            
+        void Start()
         {
             respawnTimer = new RespawnTimer();
-            deathConditions = new DeathConditions(frog.transform, frog.currentCollisions);
-            state = new LifeStateControlls(frog);
+            deathConditions = new DeathConditions(transform, frog.currentCollisions);
         }
 
         bool alive = true;
         const GM.GameState finishedLevel = GM.GameState.finishedLevel;
         DeathType deathType = DeathType.none;
+
 
         public void Update()
         {
@@ -33,7 +33,7 @@ namespace FrogScripts.Life
                     deathType = deathConditions.Check();
                     if (deathType != DeathType.none)
                     {
-                        state.Die();
+                        stateControlls.Die();
                         alive = false;
                     }
                     break;
@@ -41,15 +41,16 @@ namespace FrogScripts.Life
                 case false:
                     if (respawnTimer.ShouldRespawnNow())
                     {
-                        state.Respawn(deathType);
+                        stateControlls.Respawn(deathType);
                         alive = true;
                     }
                     break;
             }
         }
 
-
+        public void Restart()
+        {
+            stateControlls.Restart();
+        }
     }
-
-    
 }
