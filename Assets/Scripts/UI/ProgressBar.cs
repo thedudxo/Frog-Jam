@@ -12,16 +12,19 @@ public class ProgressBar : MonoBehaviour, IRespawnResetable
     [SerializeField] Level.Level level;
     [SerializeField] float progressLostDecaySpeed;
 
+    [SerializeField] FrogManager frogManager;
+
     private void Start()
     {
         GM.progressBar = this; //referenced by analitics when quit game, should probably be moved
         GM.AddRespawnResetable(this);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        playerProgressBar.value = (SingletonThatNeedsToBeRemoved.frog.transform.position.x - level.startLength) / (level.end - level.startLength);
+        float frogPosX = frog.transform.position.x;
+
+        playerProgressBar.value = (frogPosX - level.startLength) / (level.end - level.startLength);
         waveProgressBar.value   = (level.wave.transform.position.x   - level.startLength) / (level.end - level.startLength);
 
         //update looseProgressBar

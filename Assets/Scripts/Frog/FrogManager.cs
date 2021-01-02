@@ -5,17 +5,15 @@ using FrogScripts;
 
 public static class SingletonThatNeedsToBeRemoved
 {
-    public static Frog frog;
+    //public static Frog frog;
 }
 
-public static class FrogManager
+public class FrogManager : MonoBehaviour
 {
-    static List<Frog> Frogs = new List<Frog>();
+    [SerializeField] public List<Frog> Frogs { get; private set; } = new List<Frog>();
 
-    static public void AddFrog(Frog frog)
+    public void AddFrog(Frog frog)
     {
         Frogs.Add(frog);
     }
-
-
 }

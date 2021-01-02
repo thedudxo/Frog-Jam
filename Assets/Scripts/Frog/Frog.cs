@@ -12,6 +12,7 @@ namespace FrogScripts
         [SerializeField] public Wave wave;
 
         [Header("Components")]
+        [SerializeField] public FrogManager frogManager;
         [SerializeField] public VfxController vfxManager;
         [SerializeField] public LifeController lifeController;
         [SerializeField] public CameraController cameraController;
@@ -19,7 +20,7 @@ namespace FrogScripts
 
         private void Awake()
         {
-            FrogManager.AddFrog(this);
+            frogManager.AddFrog(this);
         }
 
         public void Respawn()
