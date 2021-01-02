@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using LevelScripts;
 using UnityEngine;
 
 namespace FrogScripts {
@@ -10,9 +9,7 @@ namespace FrogScripts {
         [SerializeField] Rigidbody2D rb;
         LevelStats levelStats = new LevelStats();
 
-        [SerializeField] Level.Level currentLevel;
-
-        bool PlayerGotToTheEnd => frog.transform.position.x >= currentLevel.end;
+        bool PlayerGotToTheEnd => frog.transform.position.x >= frog.currentLevel.end;
         bool PlayerInputRestart => Input.GetKeyDown(KeyCode.Q);
 
         bool playingLevel = true;

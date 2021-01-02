@@ -2,7 +2,7 @@
 using FrogScripts.Vfx;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using LevelScripts;
 
 namespace FrogScripts
 {
@@ -10,6 +10,9 @@ namespace FrogScripts
     {
         [Header("unrefactored")]
         [SerializeField] public Wave wave;
+
+        [Header("make dynamic later")]
+        [SerializeField] public Level currentLevel;
 
         [Header("Components")]
         [SerializeField] public FrogManager frogManager;
