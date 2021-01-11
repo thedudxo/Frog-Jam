@@ -24,7 +24,7 @@ namespace FrogScripts
         [Header("UI")]
         public Slider powerBar;
 
-        const float jumpForce = 400;
+        const float jumpForce = 40;
               float jumpKeyTime = 0; //how long the jump key has been held down
         const float maxJumpKeyTime = .22f;  //how long the key must be heled to get max power
               float jumpTimeNormalised = 0; // how long the key was held 0 to 1

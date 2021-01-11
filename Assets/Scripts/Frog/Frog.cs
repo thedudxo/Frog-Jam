@@ -8,11 +8,9 @@ namespace FrogScripts
 {
     public class Frog : MonoBehaviour
     {
-        [Header("unrefactored")]
-        [SerializeField] public Wave wave;
-
         [Header("make dynamic later")]
         [SerializeField] public Level currentLevel;
+        [SerializeField] public Wave wave;
 
         [Header("Components")]
         [SerializeField] public FrogManager frogManager;

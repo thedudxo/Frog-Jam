@@ -32,7 +32,7 @@ public class OnQuitGame : MonoBehaviour
                 {"Suicide Deaths"  , Statistics.suicideDeaths },
 
                 {"Session Time"  , Statistics.timeInSession },
-                {"Personal Best" , GM.progressBar.GetPersonalBest() },
+                //{"Personal Best" , GM.progressBar.GetPersonalBest() },
                 });
 
     }

@@ -5,7 +5,7 @@ using FrogScripts;
 
 public static class SingletonThatNeedsToBeRemoved
 {
-    //public static Frog frog;
+    public static Frog frog;
 }
 
 public class FrogManager : MonoBehaviour

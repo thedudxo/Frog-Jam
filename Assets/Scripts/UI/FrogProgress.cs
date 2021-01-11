@@ -7,7 +7,6 @@ namespace FrogScripts {
     public class FrogProgress : MonoBehaviour
     {
         [SerializeField] Frog frog;
-        //[SerializeField] ProgressBar progressBar;
 
         [SerializeField] Slider playerProgressBar;
         [SerializeField] Slider progressLost;
@@ -28,6 +27,8 @@ namespace FrogScripts {
              * each players bar displays themselves emphasised over the other players
              * colours in this players progress & progrees lost behind all players
              */
+
+
             float frogPosX = frog.transform.position.x;
             playerProgressBar.value = (frogPosX - level.startLength) / (level.end - level.startLength);
 
