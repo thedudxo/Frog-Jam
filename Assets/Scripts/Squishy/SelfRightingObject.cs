@@ -17,11 +17,10 @@ public class SelfRightingObject : MonoBehaviour
 
     [SerializeField] Rigidbody2D rb;
 
-    const float uprightRads = 0;
+    const float desiredRads = 0;
     const float maxTourqe = 5f;
     const float pi = Mathf.PI;
 
-    float currentRotation;
     float currentRadians;
     float radsToUpright;
     float desiredDirection;
@@ -34,8 +33,6 @@ public class SelfRightingObject : MonoBehaviour
     private void FixedUpdate()
     {
         CalculateVariables();
-
-        DecideIfUpright();
 
         if (notUpright)
         {
@@ -53,7 +50,6 @@ public class SelfRightingObject : MonoBehaviour
 
     private void CalculateVariables()
     {
-        currentRotation = rb.transform.rotation.eulerAngles.z % 360;
         currentRadians = (rb.transform.rotation.eulerAngles.z % 360) * Mathf.Deg2Rad;
 
         RadsToUpright();
@@ -62,6 +58,7 @@ public class SelfRightingObject : MonoBehaviour
         timeToStop                       = Mathf.Abs(angularMomentum / maxTourqe);
         TourqeToUprightNow();
         appliedTorque                    = Mathf.Min(torqueToUprightNow, maxTourqe);
+        DecideIfUpright();
     }
 
     private void RadsToUpright()
@@ -69,9 +66,12 @@ public class SelfRightingObject : MonoBehaviour
         bool onLeftSide = currentRadians < pi;
 
         if (onLeftSide)
-            radsToUpright = uprightRads - (currentRotation * Mathf.Deg2Rad);
+            radsToUpright = desiredRads - currentRadians;
         else
-            radsToUpright = uprightRads - (-(180 - (currentRotation % 180)) * Mathf.Deg2Rad);
+        {
+            float radsInverted = pi - (currentRadians % pi);
+            radsToUpright = desiredRads + radsInverted;
+        }
     }
 
     private void DesiredDirection()
@@ -93,11 +93,10 @@ public class SelfRightingObject : MonoBehaviour
     {
         const float tolerance = 0.1f;
 
-        bool withinUpperTolerance = currentRadians < uprightRads + tolerance;
-        bool withinLowerTolerance = currentRadians > uprightRads - tolerance;
+        bool withinUpperTolerance = currentRadians < desiredRads + tolerance;
+        bool withinLowerTolerance = currentRadians > desiredRads - tolerance;
 
         notUpright = !(withinUpperTolerance && withinLowerTolerance);
-
     }
 
     private void SpeedUp()
