@@ -660,7 +660,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: a252fcee77cf39048889264c8ed5b0de, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -673,14 +673,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8226234765143871671}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.8580649, w: 0.5135413}
+  m_LocalPosition: {x: 0, y: 13.7, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 96608869751823845}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 118.2}
 --- !u!1 &8226234765143871671
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +693,7 @@ GameObject:
   - component: {fileID: 8226234765143871626}
   - component: {fileID: 96608869792467146}
   - component: {fileID: 8226234765143871672}
+  - component: {fileID: 8226234765143871673}
   m_Layer: 0
   m_Name: Phill the Frog
   m_TagString: Phill
@@ -709,9 +710,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 8226234765143871671}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f956868e5ca87f4681b9e85cb322512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 8226234765143871626}
+--- !u!114 &8226234765143871673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8226234765143871671}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94eb609a58546fb4d80b2729dff53a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  squisher: {fileID: 34281202}
-  squishiee: {fileID: 8226234765143871671}
+  squisher: {fileID: 0}
+  squishiee: {fileID: 0}
   rb: {fileID: 8226234765143871626}
