@@ -15,8 +15,7 @@ public class SelfRightingObject : MonoBehaviour
 
     [SerializeField] Rigidbody2D rb;
 
-    const float desiredRads = 0;
-    const float maxTourqe = 5f;
+    [SerializeField] float maxTourqe = 5f;
     const float pi = Mathf.PI;
 
     float currentRadians;
@@ -24,35 +23,53 @@ public class SelfRightingObject : MonoBehaviour
     float desiredDirection;
     float angularMomentum;
     float torqueToUprightNow;
-    bool notUpright;
+    bool upright;
 
     private void FixedUpdate()
     {
-        CalculateVariables();
+        if (ShouldSelfRight())
+        {
+            CalculateVariables();
 
-        if (notUpright)
-        {
-            if (WillOvershoot())
+            if (!upright)
+            {
+                if (WillOvershoot())
+                    SlowDown();
+                else
+                    SpeedUp();
+
+            }
+            else if (Moving)
+            {
                 SlowDown();
-            else
-                SpeedUp();
-            
+            }
         }
-        else if (Moving)
-        {
-            SlowDown();
-        }
+    }
+
+    private bool ShouldSelfRight()
+    {
+        currentRadians = (rb.transform.localEulerAngles.z % 360) * Mathf.Deg2Rad;
+        DecideIfUpright();
+        if (upright && rb.angularVelocity == 0) return false;
+        else return true;
+    }
+
+    private void DecideIfUpright()
+    {
+        const float tolerance = 0.1f;
+
+        bool withinUpperTolerance = currentRadians < tolerance;
+        bool withinLowerTolerance = currentRadians > -tolerance;
+
+        upright = withinUpperTolerance && withinLowerTolerance;
     }
 
     private void CalculateVariables()
     {
-        currentRadians = (rb.transform.rotation.eulerAngles.z % 360) * Mathf.Deg2Rad;
-
         RadsToUpright();
         DesiredDirection();
         angularMomentum                  = rb.mass * rb.angularVelocity * Mathf.Deg2Rad;
         TourqeToUprightNow();
-        DecideIfUpright();
     }
 
     private void RadsToUpright()
@@ -60,17 +77,19 @@ public class SelfRightingObject : MonoBehaviour
         bool onLeftSide = currentRadians < pi;
 
         if (onLeftSide)
-            radsToUpright = desiredRads - currentRadians;
+            radsToUpright = -currentRadians;
         else
         {
-            float radsInverted = pi - (currentRadians % pi);
-            radsToUpright = desiredRads + radsInverted;
+            float currentRadsInverted = pi - (currentRadians % pi);
+            radsToUpright = -currentRadsInverted;
         }
     }
 
     private void DesiredDirection()
     {
-        if (currentRadians < pi) desiredDirection = -1;
+        bool onLeftSide = currentRadians < pi;
+
+        if (onLeftSide) desiredDirection = -1;
         else desiredDirection = 1;
     }
 
@@ -82,27 +101,14 @@ public class SelfRightingObject : MonoBehaviour
         torqueToUprightNow = Mathf.Abs(rb.mass * acceleration);
     }
 
-
-    private void DecideIfUpright()
-    {
-        const float tolerance = 0.1f;
-
-        bool withinUpperTolerance = currentRadians < desiredRads + tolerance;
-        bool withinLowerTolerance = currentRadians > desiredRads - tolerance;
-
-        notUpright = !(withinUpperTolerance && withinLowerTolerance);
-    }
-
     private void SpeedUp()
     {
-        Debug.Log("speeding up");
         float appliedTorque = Mathf.Min(torqueToUprightNow, maxTourqe);
         rb.AddTorque(appliedTorque * desiredDirection);
     }
 
     private void SlowDown()
     {
-        Debug.Log("Slowing Down");
         // torque = mass * angularVelocityRadians / Time
         float tourqueToStop = Mathf.Abs(angularMomentum) / Time.fixedDeltaTime;
 
