@@ -2,8 +2,7 @@
 
 public class SelfRightingObject : MonoBehaviour
 {
-    #region formulas
-    /*
+    /* Formulas
     torque = force * lever length 
     torque = force * 1 https://docs.unity3d.com/ScriptReference/Rigidbody2D.AddTorque.html
     torque = force
@@ -13,7 +12,6 @@ public class SelfRightingObject : MonoBehaviour
     torque = mass * angularVelocityRadians / Time
     time = ( mass * angularVelocityRadians ) / torque
     */
-    #endregion
 
     [SerializeField] Rigidbody2D rb;
 
@@ -25,8 +23,6 @@ public class SelfRightingObject : MonoBehaviour
     float radsToUpright;
     float desiredDirection;
     float angularMomentum;
-    float timeToStop;
-    float appliedTorque;
     float torqueToUprightNow;
     bool notUpright;
 
@@ -36,15 +32,15 @@ public class SelfRightingObject : MonoBehaviour
 
         if (notUpright)
         {
-            if (NotGoingToOvershoot)
-                SpeedUp();
-
-            else
+            if (WillOvershoot())
                 SlowDown();
+            else
+                SpeedUp();
+            
         }
         else if (Moving)
         {
-            Stop();
+            SlowDown();
         }
     }
 
@@ -55,9 +51,7 @@ public class SelfRightingObject : MonoBehaviour
         RadsToUpright();
         DesiredDirection();
         angularMomentum                  = rb.mass * rb.angularVelocity * Mathf.Deg2Rad;
-        timeToStop                       = Mathf.Abs(angularMomentum / maxTourqe);
         TourqeToUprightNow();
-        appliedTorque                    = Mathf.Min(torqueToUprightNow, maxTourqe);
         DecideIfUpright();
     }
 
@@ -76,8 +70,8 @@ public class SelfRightingObject : MonoBehaviour
 
     private void DesiredDirection()
     {
-        if (currentRadians < pi) desiredDirection = 1;
-        else desiredDirection = -1;
+        if (currentRadians < pi) desiredDirection = -1;
+        else desiredDirection = 1;
     }
 
 
@@ -101,28 +95,43 @@ public class SelfRightingObject : MonoBehaviour
 
     private void SpeedUp()
     {
+        Debug.Log("speeding up");
+        float appliedTorque = Mathf.Min(torqueToUprightNow, maxTourqe);
         rb.AddTorque(appliedTorque * desiredDirection);
     }
 
     private void SlowDown()
     {
-        rb.AddTorque(appliedTorque * -desiredDirection);
-    }
-
-    private void Stop()
-    {
+        Debug.Log("Slowing Down");
         // torque = mass * angularVelocityRadians / Time
-        float tourqueToStop = angularMomentum / Time.fixedDeltaTime;
-        rb.AddTorque(-tourqueToStop);
+        float tourqueToStop = Mathf.Abs(angularMomentum) / Time.fixedDeltaTime;
+
+        float appliedTorque = Mathf.Min(tourqueToStop, maxTourqe);
+
+        float direction;
+        if (rb.angularVelocity > 0) direction = 1;
+        else direction = -1;
+
+        rb.AddTorque(appliedTorque * -direction);
     }
 
     bool Moving => rb.angularVelocity > 1;
-    bool NotGoingToOvershoot => (TimeUntillUpright() <= timeToStop);
+
+    private bool WillOvershoot()
+    {
+        if (angularMomentum == 0) return false;
+
+        float timeUntillUpright = TimeUntillUpright();
+        float timeToStop = Mathf.Abs(angularMomentum / maxTourqe);
+
+        return timeUntillUpright <= timeToStop;
+    }
 
     private float TimeUntillUpright()
     {
         //v  = d/t      vt = d      t  = d/v
         float angularVelocityRads = rb.angularVelocity * Mathf.Deg2Rad;
+
         float time = radsToUpright / angularVelocityRads;
 
         bool movingTowardsUpright = !((radsToUpright >= 0) ^ (angularVelocityRads >= 0));
