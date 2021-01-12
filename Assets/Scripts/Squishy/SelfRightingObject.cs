@@ -29,7 +29,7 @@ public class SelfRightingObject : MonoBehaviour
     float timeToStop;
     float appliedTorque;
     float torqueToUprightNow;
-    bool upright;
+    bool notUpright;
 
     private void FixedUpdate()
     {
@@ -37,11 +37,13 @@ public class SelfRightingObject : MonoBehaviour
 
         DecideIfUpright();
 
-        if (!upright)
+        if (notUpright)
         {
-            if (NotGoingToOvershoot) SpeedUp();
+            if (NotGoingToOvershoot)
+                SpeedUp();
 
-            else SlowDown();
+            else
+                SlowDown();
         }
         else if (Moving)
         {
@@ -94,7 +96,7 @@ public class SelfRightingObject : MonoBehaviour
         bool withinUpperTolerance = currentRadians < uprightRads + tolerance;
         bool withinLowerTolerance = currentRadians > uprightRads - tolerance;
 
-        upright = withinUpperTolerance && withinLowerTolerance;
+        notUpright = !(withinUpperTolerance && withinLowerTolerance);
 
     }
 
