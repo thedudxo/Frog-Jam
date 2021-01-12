@@ -29,6 +29,8 @@ public class SelfRightingObject : MonoBehaviour
     float appliedTorque;
     float torqueToUprightNow;
 
+    bool upright;
+
 
     private float TimeUntillUpright()
     {
@@ -75,12 +77,23 @@ public class SelfRightingObject : MonoBehaviour
         torqueToUprightNow = Mathf.Abs(rb.mass * acceleration);
     }
 
-    private void FindAppliedTorque()
+    private void DecideAppliedTorque()
     {
         appliedTorque = Mathf.Min(torqueToUprightNow, maxTourqe);
     }
 
-    private void FixedUpdate()
+    private void DecideIfUpright()
+    {
+        const float tolerance = 0.1f;
+
+        bool withinUpperTolerance = currentRotation * Mathf.Deg2Rad < uprightRads + tolerance;
+        bool withinLowerTolerance = currentRotation * Mathf.Deg2Rad > uprightRads - tolerance;
+
+        upright = withinUpperTolerance && withinLowerTolerance;
+
+    }
+
+    private void CalculateVariables()
     {
         currentRotation = rb.transform.rotation.eulerAngles.z % 360;
         //float currentRotationRads = (rb.transform.rotation.eulerAngles.z % 360) * Mathf.Deg2Rad;
@@ -90,14 +103,16 @@ public class SelfRightingObject : MonoBehaviour
         FindAngularMomentum();
         FindTimeToStop();
         FindTourqeToUprightNow();
-        FindAppliedTorque();
+    }
 
+    private void FixedUpdate()
+    {
+        CalculateVariables();
 
-        const float tolerance = 0.1f;
-        bool notUpright = currentRotation * Mathf.Deg2Rad > uprightRads + tolerance || currentRotation * Mathf.Deg2Rad < uprightRads - tolerance;
+        DecideAppliedTorque();
+        DecideIfUpright();
 
-
-        if (notUpright)
+        if (!upright)
         {
             //Debug.Log(TimeUntillUpright() + " >= " + timeToStop);
             if (TimeUntillUpright() <= timeToStop) //not going to overshoot
