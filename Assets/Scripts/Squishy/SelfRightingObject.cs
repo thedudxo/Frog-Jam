@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SelfRightingObject : MonoBehaviour
 {
+    #region formulas
     /*
     torque = force * lever length 
     torque = force * 1 https://docs.unity3d.com/ScriptReference/Rigidbody2D.AddTorque.html
@@ -14,6 +13,7 @@ public class SelfRightingObject : MonoBehaviour
     torque = mass * angularVelocityRadians / Time
     time = ( mass * angularVelocityRadians ) / torque
     */
+    #endregion
 
     [SerializeField] Rigidbody2D rb;
 
@@ -28,9 +28,26 @@ public class SelfRightingObject : MonoBehaviour
     float timeToStop;
     float appliedTorque;
     float torqueToUprightNow;
-
     bool upright;
 
+    private void FixedUpdate()
+    {
+        CalculateVariables();
+
+        DecideAppliedTorque();
+        DecideIfUpright();
+
+        if (!upright)
+        {
+            if (NotGoingToOvershoot) SpeedUp();
+
+            else SlowDown();
+        }
+        else if (Moving)
+        {
+            Stop();
+        }
+    }
 
     private float TimeUntillUpright()
     {
@@ -105,30 +122,24 @@ public class SelfRightingObject : MonoBehaviour
         FindTourqeToUprightNow();
     }
 
-    private void FixedUpdate()
+    private void SpeedUp()
     {
-        CalculateVariables();
-
-        DecideAppliedTorque();
-        DecideIfUpright();
-
-        if (!upright)
-        {
-            //Debug.Log(TimeUntillUpright() + " >= " + timeToStop);
-            if (TimeUntillUpright() <= timeToStop) //not going to overshoot
-            {
-                rb.AddTorque(appliedTorque * desiredDirection);
-            }
-            else // allready going to fast
-            {
-                rb.AddTorque(appliedTorque * -desiredDirection);
-            }
-        }
-        else if (rb.angularVelocity > 1)
-        {
-            // torque = mass * angularVelocityRadians / Time
-            float tourqueToStop = angularMomentum / Time.fixedDeltaTime;
-            rb.AddTorque(-tourqueToStop);
-        }
+        rb.AddTorque(appliedTorque * desiredDirection);
     }
+
+    private void SlowDown()
+    {
+        rb.AddTorque(appliedTorque * -desiredDirection);
+    }
+
+    private void Stop()
+    {
+        // torque = mass * angularVelocityRadians / Time
+        float tourqueToStop = angularMomentum / Time.fixedDeltaTime;
+        rb.AddTorque(-tourqueToStop);
+    }
+
+    bool Moving => rb.angularVelocity > 1;
+    bool NotGoingToOvershoot => (TimeUntillUpright() <= timeToStop);
+
 }
