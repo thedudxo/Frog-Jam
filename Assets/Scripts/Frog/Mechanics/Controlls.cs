@@ -24,7 +24,8 @@ namespace FrogScripts
         [Header("UI")]
         public Slider powerBar;
 
-        const float jumpForce = 40;
+        [SerializeField] float jumpForce = 1000;
+        [SerializeField] float horizontalJumpForce = 300;
               float jumpKeyTime = 0; //how long the jump key has been held down
         const float maxJumpKeyTime = .22f;  //how long the key must be heled to get max power
               float jumpTimeNormalised = 0; // how long the key was held 0 to 1
@@ -129,7 +130,8 @@ namespace FrogScripts
                         jumpTimeNormalised = minJumpTimeNormalised;
                     }
 
-                    rb.AddForce(new Vector2(jumpForce * jumpTimeNormalised, jumpForce * jumpTimeNormalised));
+                    rb.AddForce(new Vector2(horizontalJumpForce * jumpTimeNormalised, jumpForce * jumpTimeNormalised));
+                    rb.AddTorque(-45);
                     CollidedSinceLastJump = false;
                 }
 
