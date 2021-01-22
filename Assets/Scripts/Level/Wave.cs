@@ -8,7 +8,7 @@ public class Wave : MonoBehaviour {
     bool waveIsClose = false;
 
     Vector2 spawnPosition;
-   const float speed = 5f;
+   const float speed = 8f;
 
     // Use this for initialization
     void Start () {

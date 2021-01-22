@@ -19,7 +19,7 @@ namespace LevelScripts
 
         private void OnValidate()
         {
-            endObject.transform.position = new Vector3(end, 0, 0);
+            endObject.transform.position = new Vector3(end, endObject.transform.position.y, endObject.transform.position.z);
         }
 
         private void Awake()

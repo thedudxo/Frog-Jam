@@ -12,10 +12,6 @@ public class RestingAligaytor : Aligaytor
     private void Start()
     {
         restPos = rb.position.x;
-
-        //testing
-        restPos = rb.position.x - 10;
-        //rb.AddForce(new Vector2(50, 0));
     }
 
     bool AtPos => AtPosition(transform.position.x, restPos, restPosTolerance);
@@ -24,9 +20,6 @@ public class RestingAligaytor : Aligaytor
 
     private void FixedUpdate()
     {
-        //testing
-        //rb.AddForce(new Vector2(-2, 0));
-
         if (AtPos)
         {
             Debug.Log("atPos");
@@ -41,34 +34,17 @@ public class RestingAligaytor : Aligaytor
 
     void SlowDown()
     {
-        //Debug.Log("slowdown");
         float forceToStop = Mathf.Abs(ForceToStop(rb.mass, rb.velocity.x));
         float force = Mathf.Min(forceToStop, maxAcceleration);
 
         force = force * -Direction(rb.velocity.x);
 
-        Debug.Log(force);
         rb.AddForce(new Vector2(force, 0));
     }
 
     void Accelerate()
     {
-        //Debug.Log("accelerate");
         Vector2 force = new Vector2(maxAcceleration * Direction, 0);
         rb.AddForce(force);
     }
-
-
-
-    /* 
-     * compare f to maxF, pick smallest
-     * f=force to stop right now, t = time.fixedDeltaTime
-     * f=ma
-     * f=m(v/t)
-     * f=m((d/t)/t)
-     * f=m(d/t^2)
-     * 
-     * maxF = m*aligaytor.acceleration
-     */
-
 }
