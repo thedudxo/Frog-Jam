@@ -10,7 +10,7 @@ namespace FrogScripts.Life
         const KeyCode suicideKey = KeyCode.Q;
         List<GameObject> currentCollisions;
 
-        const float deathBellowY = -5;
+        const float deathBellowY = -6.5f;
 
         public enum DeathType { none, setback, restart }
 

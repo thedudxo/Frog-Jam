@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class AlliA : MonoBehaviour, IRespawnResetable {
 
-    public float patrollRange;
-    public float speed;
-    private float startSpeed;
-    public bool freindly = false;
-    Vector2 spawnPos;
-    
+    [SerializeField] float patrollRange;
+    [SerializeField] float speed;
+    [SerializeField] bool freindly = false;
+    [SerializeField] Rigidbody2D rb;
 
-	// Use this for initialization
-	void Start () {
+    Vector2 spawnPos;
+    float startSpeed;
+
+
+    // Use this for initialization
+    void Start () {
         spawnPos = transform.position;
         startSpeed = speed;
         GetComponent<SpriteRenderer>().flipX = true;
@@ -21,7 +23,9 @@ public class AlliA : MonoBehaviour, IRespawnResetable {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        transform.position = new Vector2(transform.position.x + speed, transform.position.y);
+        //transform.position = new Vector2(transform.position.x + speed, transform.position.y);
+        Vector2 pos = new Vector2(transform.position.x + speed, transform.position.y);
+        rb.MovePosition(pos);
         if (speed > 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;

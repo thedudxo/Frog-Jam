@@ -56,7 +56,7 @@ public class SelfRightingObject : MonoBehaviour
 
     private void DecideIfUpright()
     {
-        const float tolerance = 0.1f;
+        const float tolerance = 0.01f;
 
         bool withinUpperTolerance = currentRadians < tolerance;
         bool withinLowerTolerance = currentRadians > -tolerance;
