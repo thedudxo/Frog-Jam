@@ -38,7 +38,6 @@ namespace FrogScripts
             currentCollisions.Add(collision.gameObject);
         }
 
-
         public void RestartLevel() { lifeController.Restart(); }
     }
 }

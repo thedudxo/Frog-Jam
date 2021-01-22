@@ -9,7 +9,6 @@ public static class GM {
     public delegate void VoidBoolDelg(bool b);
 
     public static ProgressBar progressBar; //referenced by analitics when quit game, should probably be moved
-    public static ComboCounter comboCounter;
     public static LevelScripts.Level currentLevel;
     public static SplitManager splitManager;
     public static AudioManager audioManager;
@@ -69,7 +68,6 @@ public static class GM {
 
     public static void PhillDied()
     {
-        comboCounter.CheckCombo();
         foreach (IDeathResetable resetable in resetOnDeath)
         { resetable.PhillDied(); }
     }

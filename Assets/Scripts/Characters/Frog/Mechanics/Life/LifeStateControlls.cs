@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using static FrogScripts.Life.DeathConditions;
 using FrogScripts.Vfx;
+using System.Collections.Generic;
 
 namespace FrogScripts.Life
 {
@@ -20,6 +21,12 @@ namespace FrogScripts.Life
         [SerializeField]  public AudioClip deathSounds;
         [SerializeField]  public AudioClip respawnSounds;
 
+        [Header("Subscripions")]
+        [SerializeField] public List<INotifyOnDeath> toNotifyOnDeath;
+        [SerializeField] public List<INotifyOnSetback> toNotifyOnSetback;
+        [SerializeField] public List<INotifyOnRestart> toNotifyOnRestart;
+        [SerializeField] public List<INotifyOnAnyRespawn> toNotifyOnAnyRespawn;
+
         public void Start()
         {
             levelStart = transform.position;
@@ -35,6 +42,9 @@ namespace FrogScripts.Life
             vfx.RespawnEffects();
             respawnSounds.PlayRandom();
             ToggleComponents(true);
+
+
+            foreach (INotifyOnAnyRespawn notify in toNotifyOnDeath) notify.OnAnyRespawn();
         }
 
         public void Die()
@@ -45,6 +55,8 @@ namespace FrogScripts.Life
             deathSounds.PlayRandom();
             GM.gameMusic.DetuneMusic();
             GM.PhillDied();
+
+            foreach (INotifyOnDeath notify in toNotifyOnDeath) notify.OnDeath();
         }
 
         void ToggleComponents(bool alive)
@@ -80,6 +92,8 @@ namespace FrogScripts.Life
             }
 
             frog.wave.Setback(respawnSetBack);
+
+            foreach (INotifyOnSetback notify in toNotifyOnSetback) notify.OnSetback();
         }
 
         public void Restart()
@@ -89,6 +103,8 @@ namespace FrogScripts.Life
             frog.wave.Restart();
             GM.splitManager.currentTime = 0;
             GM.LevelRestart();
+
+            foreach (INotifyOnRestart notify in toNotifyOnRestart) notify.OnRestart();
         }
     }
 }
