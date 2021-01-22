@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Clouds : MonoBehaviour, IRespawnResetable
+public class Clouds : MonoBehaviour
 {
 
     [SerializeField] List<Cloud> fluffyClouds = new List<Cloud>();
@@ -19,24 +19,10 @@ public class Clouds : MonoBehaviour, IRespawnResetable
     {
         //maxDistanceBehindCamera += FrogManager.frogDeath.respawnSetBack;
 
-        GM.AddRespawnResetable(this);
-
         foreach(Cloud cloud in fluffyClouds)
         {
             cloud.speed = Random.Range(averageSpeed - speedVariance, averageSpeed + speedVariance);
         }
-    }
-
-    public void PhillRespawned()
-    {
-        //foreach (Cloud cloud in fluffyClouds)
-        //{
-        //    cloud.transform.position = new Vector2(
-        //        cloud.transform.position.x - FrogManager.frogDeath.respawnSetBack,
-        //        cloud.transform.position.y
-        //        );
-        //}
-            
     }
 
     private void Update()

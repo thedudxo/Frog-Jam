@@ -10,11 +10,10 @@ public static class GM {
 
     public static ProgressBar progressBar; //referenced by analitics when quit game, should probably be moved
     public static ComboCounter comboCounter;
-    public static Level.Level currentLevel;
+    public static LevelScripts.Level currentLevel;
     public static SplitManager splitManager;
     public static AudioManager audioManager;
     public static GameMusic gameMusic;
-    public static LevelEndScreen levelEndScreen;
 
     static List<IRespawnResetable> resetOnRespawn = new List<IRespawnResetable>();
     static List<ILevelRestartResetable> resetOnLevelRestart = new List<ILevelRestartResetable>();
