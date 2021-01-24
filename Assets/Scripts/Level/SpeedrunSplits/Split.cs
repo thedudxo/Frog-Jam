@@ -2,63 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Analytics;
+using FrogScripts.UI;
 
-public class Split : MonoBehaviour, IRespawnResetable
+public class Split : MonoBehaviour
 {
-    [SerializeField] string splitName;
-    [SerializeField] Text bestTimeText;
-    [SerializeField] Text title;
-    decimal bestTime;
+    [SerializeField] public string Name;
+    [SerializeField] ParticleSystem newPBParticles;
+    [SerializeField] SplitManager splitManager;
 
-    bool triggeredThisLife = false;
+    List<SplitUI> splitUIs;
 
-    // Start is called before the first frame update
-    void Start()
+    public void AddSplitUI(SplitUI splitUI)
     {
-        title.text = splitName;
-        GM.AddRespawnResetable(this);
+        splitUIs.Add(splitUI);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == GM.playerTag && ! triggeredThisLife)
+        bool collisionIsPlayer = collision.gameObject.tag == GM.playerTag;
+
+        if (collisionIsPlayer)
         {
-
-            triggeredThisLife = true;
-
-            if (GM.splitManager.currentTime < bestTime || bestTime == 0)
+            foreach(SplitUI splitUI in splitUIs)
             {
-                if (bestTime == 0 && GM.sendAnyalitics) {  //first time
-                    Analytics.CustomEvent("First Time at " + splitName, new Dictionary<string, object>
-                { {"Time", GM.splitManager.currentTime}
-                });
-                }
-
-                bestTime = GM.splitManager.currentTime;
-                bestTimeText.text = decimal.Round(bestTime, 2) + " sec";
+                splitUI.ReachedSplit();
             }
-
-
-            //particles
-            ParticleSystem SplitParticles = GM.splitManager.newPBParticles;
-            SplitParticles.gameObject.transform.position = new Vector3(
-                SingletonThatNeedsToBeRemoved.frog.transform.position.x, SingletonThatNeedsToBeRemoved.frog.transform.position.y, SplitParticles.gameObject.transform.position.z);
-            SplitParticles.Emit(GM.splitManager.particleBurstCount);
         }
     }
 
-    public void PhillRespawned()
+    public void EmitParticles()
     {
-        triggeredThisLife = false;
+        const int ParticleEmitAmmount = 20;
+        newPBParticles.Emit(ParticleEmitAmmount);
     }
 
-    public string getSplitName()
+
+
+    public string GetSplitName()
     {
-        return splitName;
+        return Name;
     }
 
-    public decimal getBestTime()
+    public float GetBestTime()
     {
         return bestTime;
     }

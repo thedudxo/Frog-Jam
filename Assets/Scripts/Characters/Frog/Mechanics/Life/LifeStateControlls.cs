@@ -21,12 +21,6 @@ namespace FrogScripts.Life
         [SerializeField]  public AudioClip deathSounds;
         [SerializeField]  public AudioClip respawnSounds;
 
-        [Header("Subscripions")]
-        [SerializeField] public List<INotifyOnDeath> toNotifyOnDeath;
-        [SerializeField] public List<INotifyOnSetback> toNotifyOnSetback;
-        [SerializeField] public List<INotifyOnRestart> toNotifyOnRestart;
-        [SerializeField] public List<INotifyOnAnyRespawn> toNotifyOnAnyRespawn;
-
         public void Start()
         {
             levelStart = transform.position;
@@ -44,7 +38,7 @@ namespace FrogScripts.Life
             ToggleComponents(true);
 
 
-            foreach (INotifyOnAnyRespawn notify in toNotifyOnDeath) notify.OnAnyRespawn();
+            foreach (INotifyOnAnyRespawn notify in  frog.toNotifyOnDeath) notify.OnAnyRespawn();
         }
 
         public void Die()
@@ -54,9 +48,8 @@ namespace FrogScripts.Life
             vfx.DeathEffects();
             deathSounds.PlayRandom();
             GM.gameMusic.DetuneMusic();
-            GM.PhillDied();
 
-            foreach (INotifyOnDeath notify in toNotifyOnDeath) notify.OnDeath();
+            foreach (INotifyOnDeath notify in frog.toNotifyOnDeath) notify.OnDeath();
         }
 
         void ToggleComponents(bool alive)
@@ -93,7 +86,7 @@ namespace FrogScripts.Life
 
             frog.wave.Setback(respawnSetBack);
 
-            foreach (INotifyOnSetback notify in toNotifyOnSetback) notify.OnSetback();
+            foreach (INotifyOnSetback notify in frog.toNotifyOnSetback) notify.OnSetback();
         }
 
         public void Restart()
@@ -102,9 +95,8 @@ namespace FrogScripts.Life
             transform.position = levelStart;
             frog.wave.Restart();
             GM.splitManager.currentTime = 0;
-            GM.LevelRestart();
 
-            foreach (INotifyOnRestart notify in toNotifyOnRestart) notify.OnRestart();
+            foreach (INotifyOnRestart notify in frog.toNotifyOnRestart) notify.OnRestart();
         }
     }
 }

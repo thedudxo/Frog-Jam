@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class SplitManager : MonoBehaviour
 {
-    public decimal currentTime = 0;
+    //manages all the split locations in a level
+
+    public float currentTime = 0;
     [SerializeField] Text timer;
     public ParticleSystem newPBParticles;
     public int particleBurstCount = 20;
@@ -20,7 +22,7 @@ public class SplitManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime += (decimal) Time.deltaTime;
-        timer.text = decimal.Round(currentTime, 2) + "";
+        currentTime += Time.deltaTime;
+        timer.text = decimal.Round((decimal)currentTime, 2) + "";
     }
 }
