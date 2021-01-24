@@ -2,14 +2,16 @@
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
+using LevelScripts;
 
-namespace FrogScripts.UI
+namespace FrogScripts
 {
-    public class SplitUI : MonoBehaviour
+    public class FrogSplitTracker : MonoBehaviour, INotifyOnAnyRespawn
     {
         //instantiate these with a prefab
         Text bestTimeText;
         Text title;
+        FrogSplitManager frogSplitManager;
 
         string name;
 
@@ -27,36 +29,30 @@ namespace FrogScripts.UI
 
         public void ReachedSplit()
         {
-
+            if (triggeredThisLife) return;
             triggeredThisLife = true;
 
-            if (FirstTimeHere)
-            {  
-                TrackFirstTimeAnalyitic();
-                UpdateUI();
-            }
+            bestTime = frogSplitManager.currentTime;
+            bestTimeText.text = bestTime.ToString("f2") + " sec";
 
-            else if (BeatBestTime || bestTime == 0)
-            {
-                UpdateUI();
-            }
+            if (FirstTimeHere) TrackFirstTimeAnalyitic();
         }
 
-        void UpdateUI()
-        {
-            bestTime = GM.splitManager.currentTime;
-            bestTimeText.text = decimal.Round(bestTime, 2) + " sec";
-        }
 
         void TrackFirstTimeAnalyitic()
         {
             if (!GM.sendAnyalitics) return;
 
             Dictionary<string, object> info = new Dictionary<string, object>
-                { {"Time", GM.splitManager.currentTime}
+                { {"Time", frogSplitManager.currentTime}
                 };
 
             Analytics.CustomEvent("First Time at " + name, info);
+        }
+
+        public void OnAnyRespawn()
+        {
+            triggeredThisLife = false;
         }
     }
 }

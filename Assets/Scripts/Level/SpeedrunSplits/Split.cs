@@ -4,47 +4,50 @@ using UnityEngine;
 using UnityEngine.UI;
 using FrogScripts.UI;
 
-public class Split : MonoBehaviour
+namespace LevelScripts
 {
-    [SerializeField] public string Name;
-    [SerializeField] ParticleSystem newPBParticles;
-    [SerializeField] SplitManager splitManager;
-
-    List<SplitUI> splitUIs;
-
-    public void AddSplitUI(SplitUI splitUI)
+    public class Split : MonoBehaviour
     {
-        splitUIs.Add(splitUI);
-    }
+        [SerializeField] public string Name;
+        [SerializeField] ParticleSystem newPBParticles;
+        [SerializeField] SplitManager splitManager;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        bool collisionIsPlayer = collision.gameObject.tag == GM.playerTag;
+        List<FrogSplitTracker> splitUIs;
 
-        if (collisionIsPlayer)
+        public void AddSplitUI(FrogSplitTracker splitUI)
         {
-            foreach(SplitUI splitUI in splitUIs)
+            splitUIs.Add(splitUI);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            bool collisionIsPlayer = collision.gameObject.tag == GM.playerTag;
+
+            if (collisionIsPlayer)
             {
-                splitUI.ReachedSplit();
+                foreach (FrogSplitTracker splitUI in splitUIs)
+                {
+                    splitUI.ReachedSplit();
+                }
             }
         }
-    }
 
-    public void EmitParticles()
-    {
-        const int ParticleEmitAmmount = 20;
-        newPBParticles.Emit(ParticleEmitAmmount);
-    }
-
+        public void EmitParticles()
+        {
+            const int ParticleEmitAmmount = 20;
+            newPBParticles.Emit(ParticleEmitAmmount);
+        }
 
 
-    public string GetSplitName()
-    {
-        return Name;
-    }
 
-    public float GetBestTime()
-    {
-        return bestTime;
+        public string GetSplitName()
+        {
+            return Name;
+        }
+
+        public float GetBestTime()
+        {
+            return bestTime;
+        }
     }
 }

@@ -3,26 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SplitManager : MonoBehaviour
+namespace LevelScripts
 {
-    //manages all the split locations in a level
-
-    public float currentTime = 0;
-    [SerializeField] Text timer;
-    public ParticleSystem newPBParticles;
-    public int particleBurstCount = 20;
-    public Split[] splits;
-
-    // Start is called before the first frame update
-    void Start()
+    public class SplitManager : MonoBehaviour
     {
-        GM.splitManager = this;
-    }
+        //manages all the split locations in a level
+        //instance per level
 
-    // Update is called once per frame
-    void Update()
-    {
-        currentTime += Time.deltaTime;
-        timer.text = decimal.Round((decimal)currentTime, 2) + "";
+        [SerializeField] Text timer;
+        [SerializeField] public Split[] splits;
+
+
+        void Update()
+        {
+            timer.text = currentTime.ToString("f2");
+        }
     }
 }

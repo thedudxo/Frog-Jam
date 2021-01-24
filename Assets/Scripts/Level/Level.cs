@@ -7,19 +7,20 @@ namespace LevelScripts
     public class Level : MonoBehaviour
     {
         [SerializeField] EditorSettings editorSettings;
-        [SerializeField] GameObject endObject;
+        [SerializeField] GameObject objective;
 
         [Header("Level Dimensions")]
         [SerializeField] public float end = 100;
         [SerializeField] public float startLength = 15;
         const float start = 0;
 
-        [Header("Assigniees")]
+        [Header("Components")]
         [SerializeField] public GameObject wave;
+        [SerializeField] public SplitManager splitManager;
 
         private void OnValidate()
         {
-            endObject.transform.position = new Vector3(end, endObject.transform.position.y, endObject.transform.position.z);
+            objective.transform.position = new Vector3(end, objective.transform.position.y, objective.transform.position.z);
         }
 
         private void Awake()
