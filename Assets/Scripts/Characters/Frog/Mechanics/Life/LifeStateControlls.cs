@@ -94,7 +94,6 @@ namespace FrogScripts.Life
             rb.velocity = Vector3.zero;
             transform.position = levelStart;
             frog.wave.Restart();
-            GM.splitManager.currentTime = 0;
 
             foreach (INotifyOnRestart notify in frog.toNotifyOnRestart) notify.OnRestart();
         }
