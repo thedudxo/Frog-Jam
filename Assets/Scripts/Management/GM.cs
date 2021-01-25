@@ -29,16 +29,6 @@ public static class GM {
     public static GameState gameState = GameState.playingLevel;
 
 
-
-    // Various methods called to objects when respawning/restarting/dying
-    public static void AddRespawnResetable(IRespawnResetable resetable)
-        { resetOnRespawn.Add(resetable); }
-
-    public static void AddLevelRestartResetable(ILevelRestartResetable resetable)
-        { resetOnLevelRestart.Add(resetable); }
-
-
-
     public static void QuitToMenu()
     {
         SceneManager.LoadScene(0);
