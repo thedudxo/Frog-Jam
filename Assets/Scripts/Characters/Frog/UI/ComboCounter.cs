@@ -7,20 +7,18 @@ public class ComboCounter : MonoBehaviour
 {
 
     [SerializeField] Text comboText;
-    [SerializeField] string comboPrefix = "x";
+    [SerializeField] string comboSuffix = "x";
     [SerializeField] float maxComboTime;
 
     float currentComboTime;
     int combo = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
-        GM.comboCounter = this;
+        //GM.comboCounter = this;
         comboText.text = "";
     }
 
-    // Update is called once per frame
     void Update()
     {
         currentComboTime += Time.deltaTime;
@@ -35,7 +33,7 @@ public class ComboCounter : MonoBehaviour
     public void CheckCombo()
     {
         combo++;
-        comboText.text = combo + comboPrefix;
+        comboText.text = combo + comboSuffix;
         currentComboTime = 0;
     }
 }

@@ -11,8 +11,9 @@ namespace FrogScripts
         public bool ShouldRespawnNow()
         {
             respawnWaitTimer += Time.deltaTime;
+            bool isBeat = true; // GM.gameMusic.IsBeatFrame;
 
-            if (GM.gameMusic.IsBeatFrame && respawnWaitTimer >= respawnWaitSeconds)
+            if (isBeat && respawnWaitTimer >= respawnWaitSeconds)
             {
                 respawnWaitTimer = 0;
                 return true;

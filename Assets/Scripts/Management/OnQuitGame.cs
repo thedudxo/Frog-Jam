@@ -6,22 +6,21 @@ using UnityEngine.Analytics;
 public class OnQuitGame : MonoBehaviour
 {
 
+    //[SerializeField] SplitManager splitManager;
+
     private void OnApplicationQuit()
     {
-        if(GM.splitManager = null)
-        {
-            Debug.Log("no split manager, not sending stats");
-            return;
-        }
         if (!GM.sendAnyalitics) { return; }
 
         //move to end of level, when theres more levels
-        foreach(Split split in GM.splitManager.splits)
-        {
-            Analytics.CustomEvent("Best Time when quit at " + split.getSplitName(), new Dictionary<string, object>
-                { {"Time", split.getBestTime() }
-                });
-        }
+
+        //doesnt work with multiplayer
+        //foreach(Split split in splitManager.splits)
+        //{
+        //    Analytics.CustomEvent("Best Time when quit at " + split.GetSplitName(), new Dictionary<string, object>
+        //        { {"Time", split.GetBestTime() }
+        //        });
+        //}
 
         Analytics.CustomEvent("Endgame Stats", new Dictionary<string, object>{
                 {"Total Deaths"    , Statistics.totalDeaths },

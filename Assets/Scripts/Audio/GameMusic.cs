@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameMusic : MonoBehaviour, IRespawnResetable
+public class GameMusic : MonoBehaviour
 {
     //DETUNE
     float detuneDurationSeconds = 1;
@@ -35,7 +35,6 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
     private void Awake()
     {
         GM.gameMusic = this;
-        GM.AddRespawnResetable(this);
 
 
         //Beatmatching
@@ -57,6 +56,7 @@ public class GameMusic : MonoBehaviour, IRespawnResetable
 
     void Update()
     {
+        return;
 
         musicTime = (AudioSettings.dspTime - dspStartTime) - musicStartDelay;
 

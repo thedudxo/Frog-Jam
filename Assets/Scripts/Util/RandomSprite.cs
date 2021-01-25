@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomSprite : MonoBehaviour, ILevelRestartResetable
+public class RandomSprite : MonoBehaviour
 {
     [SerializeField] GameObject objectToSwap;
     [SerializeField] List<Sprite> sprites;
@@ -17,7 +17,6 @@ public class RandomSprite : MonoBehaviour, ILevelRestartResetable
 
         if (randomOnStart) { RandomiseSprite(); }
 
-        GM.AddLevelRestartResetable(this);
     }
 
     public void PhillRestartedLevel()

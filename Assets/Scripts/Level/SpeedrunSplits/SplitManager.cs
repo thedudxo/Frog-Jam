@@ -1,26 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class SplitManager : MonoBehaviour
+
+namespace LevelScripts
 {
-    public decimal currentTime = 0;
-    [SerializeField] Text timer;
-    public ParticleSystem newPBParticles;
-    public int particleBurstCount = 20;
-    public Split[] splits;
-
-    // Start is called before the first frame update
-    void Start()
+    public class SplitManager : MonoBehaviour
     {
-        GM.splitManager = this;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        currentTime += (decimal) Time.deltaTime;
-        timer.text = decimal.Round(currentTime, 2) + "";
+        [SerializeField] public Split[] splits;
     }
 }

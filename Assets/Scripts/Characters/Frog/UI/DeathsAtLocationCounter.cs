@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FrogScripts;
 
-public class DeathsAtLocationCounter : MonoBehaviour, IDeathResetable
+public class DeathsAtLocationCounter : MonoBehaviour, INotifyOnDeath
 {
     private int deaths = 0;
     [SerializeField] Text deathcounter;
 
-    bool playerAtDeathCounterLocation = false;
-
-
-
-    void IDeathResetable.PhillDied()
+    void INotifyOnDeath.OnDeath()
     {
         deaths++;
         Statistics.deathsAtThatHole++; //TODO: make more dynamic for future uses in other levels
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
         deathcounter.text = "" + deaths;
         if (deaths > 99)
         {
@@ -24,30 +26,19 @@ public class DeathsAtLocationCounter : MonoBehaviour, IDeathResetable
         }
     }
 
-    IEnumerator TriggerExit()
-    {
-        yield return null;
-
-        GM.RemoveDeathResetable(this);
-        playerAtDeathCounterLocation = false;
-    }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == GM.playerTag)
         {
-            //delay by a frame because execution order will cause this to run meaning PhillDied() never gets called
-            StartCoroutine("TriggerExit");
+            collision.GetComponent<Frog>().UnscubscribeOnDeath(this);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == GM.playerTag)
+        if (collision.gameObject.CompareTag(GM.playerTag))
         {
-
-            GM.AddDeathResetable(this);
-            playerAtDeathCounterLocation = true;
+            collision.GetComponent<Frog>().SubscribeOnDeath(this);
         }
     }
 

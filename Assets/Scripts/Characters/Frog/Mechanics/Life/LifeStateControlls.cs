@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using static FrogScripts.Life.DeathConditions;
 using FrogScripts.Vfx;
+using System.Collections.Generic;
 
 namespace FrogScripts.Life
 {
@@ -27,6 +28,7 @@ namespace FrogScripts.Life
 
         public void Respawn(DeathType deathType)
         {
+            Debug.Log("respawning");
             if (deathType == DeathType.setback)
                 Setback();
             else
@@ -35,6 +37,9 @@ namespace FrogScripts.Life
             vfx.RespawnEffects();
             respawnSounds.PlayRandom();
             ToggleComponents(true);
+
+
+            foreach (INotifyOnAnyRespawn notify in  frog.toNotifyOnAnyRespawn) notify.OnAnyRespawn();
         }
 
         public void Die()
@@ -44,7 +49,8 @@ namespace FrogScripts.Life
             vfx.DeathEffects();
             deathSounds.PlayRandom();
             GM.gameMusic.DetuneMusic();
-            GM.PhillDied();
+
+            foreach (INotifyOnDeath notify in frog.toNotifyOnDeath) notify.OnDeath();
         }
 
         void ToggleComponents(bool alive)
@@ -80,6 +86,8 @@ namespace FrogScripts.Life
             }
 
             frog.wave.Setback(respawnSetBack);
+
+            foreach (INotifyOnSetback notify in frog.toNotifyOnSetback) notify.OnSetback();
         }
 
         public void Restart()
@@ -87,8 +95,8 @@ namespace FrogScripts.Life
             rb.velocity = Vector3.zero;
             transform.position = levelStart;
             frog.wave.Restart();
-            GM.splitManager.currentTime = 0;
-            GM.LevelRestart();
+
+            foreach (INotifyOnRestart notify in frog.toNotifyOnRestart) notify.OnRestart();
         }
     }
 }

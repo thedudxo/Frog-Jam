@@ -2,64 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Analytics;
+using FrogScripts;
 
-public class Split : MonoBehaviour, IRespawnResetable
+namespace LevelScripts
 {
-    [SerializeField] string splitName;
-    [SerializeField] Text bestTimeText;
-    [SerializeField] Text title;
-    decimal bestTime;
-
-    bool triggeredThisLife = false;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Split : MonoBehaviour
     {
-        title.text = splitName;
-        GM.AddRespawnResetable(this);
-    }
+        [SerializeField] public string Name { get; private set; }
+        [SerializeField] ParticleSystem newPBParticles;
+        [SerializeField] SplitManager splitManager;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == GM.playerTag && ! triggeredThisLife)
+        List<FrogSplitTracker> splitUIs = new List<FrogSplitTracker>();
+
+        public void AddSplitUI(FrogSplitTracker splitUI)
         {
-
-            triggeredThisLife = true;
-
-            if (GM.splitManager.currentTime < bestTime || bestTime == 0)
-            {
-                if (bestTime == 0 && GM.sendAnyalitics) {  //first time
-                    Analytics.CustomEvent("First Time at " + splitName, new Dictionary<string, object>
-                { {"Time", GM.splitManager.currentTime}
-                });
-                }
-
-                bestTime = GM.splitManager.currentTime;
-                bestTimeText.text = decimal.Round(bestTime, 2) + " sec";
-            }
-
-
-            //particles
-            ParticleSystem SplitParticles = GM.splitManager.newPBParticles;
-            SplitParticles.gameObject.transform.position = new Vector3(
-                SingletonThatNeedsToBeRemoved.frog.transform.position.x, SingletonThatNeedsToBeRemoved.frog.transform.position.y, SplitParticles.gameObject.transform.position.z);
-            SplitParticles.Emit(GM.splitManager.particleBurstCount);
+            splitUIs.Add(splitUI);
         }
-    }
 
-    public void PhillRespawned()
-    {
-        triggeredThisLife = false;
-    }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            bool collisionIsPlayer = collision.gameObject.tag == GM.playerTag;
 
-    public string getSplitName()
-    {
-        return splitName;
-    }
+            if (collisionIsPlayer)
+            {
+                foreach (FrogSplitTracker splitUI in splitUIs)
+                {
+                    splitUI.ReachedSplit();
+                }
+            }
+        }
 
-    public decimal getBestTime()
-    {
-        return bestTime;
+        public void EmitNewPBParticles()
+        {
+            const int ParticleEmitAmmount = 20;
+            newPBParticles.Emit(ParticleEmitAmmount);
+        }
+
+        public bool IsPastSplit(float Xposition)
+        {
+            float splitXPos = transform.position.x;
+
+            return Xposition > splitXPos;
+        }
+
     }
 }

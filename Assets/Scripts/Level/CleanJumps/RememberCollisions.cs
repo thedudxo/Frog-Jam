@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RememberCollisions : MonoBehaviour, IRespawnResetable
+public class RememberCollisions : MonoBehaviour//, IRespawnResetable
 {
 
     [SerializeField] string collisionToRemember = GM.playerTag;
@@ -10,7 +10,7 @@ public class RememberCollisions : MonoBehaviour, IRespawnResetable
 
     private void Start()
     {
-        GM.AddRespawnResetable(this);
+        //GM.AddRespawnResetable(this);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
