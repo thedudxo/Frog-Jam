@@ -28,6 +28,7 @@ namespace FrogScripts.Life
 
         public void Respawn(DeathType deathType)
         {
+            Debug.Log("respawning");
             if (deathType == DeathType.setback)
                 Setback();
             else
@@ -49,7 +50,7 @@ namespace FrogScripts.Life
             deathSounds.PlayRandom();
             GM.gameMusic.DetuneMusic();
 
-            foreach (INotifyOnDeath notify in frog.toNotifyOnDeath) Debug.Log("thing"); //notify.OnDeath();
+            foreach (INotifyOnDeath notify in frog.toNotifyOnDeath) notify.OnDeath();
         }
 
         void ToggleComponents(bool alive)

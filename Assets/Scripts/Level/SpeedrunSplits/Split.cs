@@ -12,7 +12,7 @@ namespace LevelScripts
         [SerializeField] ParticleSystem newPBParticles;
         [SerializeField] SplitManager splitManager;
 
-        List<FrogSplitTracker> splitUIs;
+        List<FrogSplitTracker> splitUIs = new List<FrogSplitTracker>();
 
         public void AddSplitUI(FrogSplitTracker splitUI)
         {

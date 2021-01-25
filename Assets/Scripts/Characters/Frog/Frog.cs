@@ -20,10 +20,10 @@ namespace FrogScripts
         [SerializeField] public Controlls controlls;
 
         [Header("Initial Subscripions")]
-        [SerializeField] public List<INotifyOnDeath> toNotifyOnDeath;
-        [SerializeField] public List<INotifyOnSetback> toNotifyOnSetback;
-        [SerializeField] public List<INotifyOnRestart> toNotifyOnRestart;
-        [SerializeField] public List<INotifyOnAnyRespawn> toNotifyOnAnyRespawn;
+        [SerializeField] public List<INotifyOnDeath> toNotifyOnDeath = new List<INotifyOnDeath>();
+        [SerializeField] public List<INotifyOnSetback> toNotifyOnSetback = new List<INotifyOnSetback>();
+        [SerializeField] public List<INotifyOnRestart> toNotifyOnRestart = new List<INotifyOnRestart>();
+        [SerializeField] public List<INotifyOnAnyRespawn> toNotifyOnAnyRespawn = new List<INotifyOnAnyRespawn>();
 
         private void Awake()
         {

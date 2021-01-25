@@ -22,7 +22,6 @@ public class RestingAligaytor : Aligaytor
     {
         if (AtPos)
         {
-            Debug.Log("atPos");
             if(rb.velocity.x != 0) SlowDown();
         }
         else
