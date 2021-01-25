@@ -11,8 +11,10 @@ namespace LevelScripts
         [SerializeField] public string Name { get; private set; }
         [SerializeField] ParticleSystem newPBParticles;
         [SerializeField] SplitManager splitManager;
+        [SerializeField] Canvas playerCopyCanvas;
 
         List<FrogSplitTracker> splitUIs = new List<FrogSplitTracker>();
+
 
         public void AddSplitUI(FrogSplitTracker splitUI)
         {

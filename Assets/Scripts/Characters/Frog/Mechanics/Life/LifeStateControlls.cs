@@ -28,7 +28,6 @@ namespace FrogScripts.Life
 
         public void Respawn(DeathType deathType)
         {
-            Debug.Log("respawning");
             if (deathType == DeathType.setback)
                 Setback();
             else
