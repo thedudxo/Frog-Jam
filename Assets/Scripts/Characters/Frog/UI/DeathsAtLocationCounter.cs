@@ -36,7 +36,7 @@ public class DeathsAtLocationCounter : MonoBehaviour, INotifyOnDeath
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == GM.playerTag)
+        if (collision.gameObject.CompareTag(GM.playerTag))
         {
             collision.GetComponent<Frog>().SubscribeOnDeath(this);
         }

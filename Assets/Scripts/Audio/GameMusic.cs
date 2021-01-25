@@ -56,6 +56,7 @@ public class GameMusic : MonoBehaviour
 
     void Update()
     {
+        return;
 
         musicTime = (AudioSettings.dspTime - dspStartTime) - musicStartDelay;
 

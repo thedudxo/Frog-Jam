@@ -27,6 +27,8 @@ public class Clouds : MonoBehaviour
 
     private void Update()
     {
+        return;
+
         int cloudsOnScreen = 0;
         foreach (Cloud cloud in fluffyClouds)
         {
@@ -36,9 +38,8 @@ public class Clouds : MonoBehaviour
             }
         }
 
-        //Debug.Log("ONSCREEN: " + cloudsOnScreen);
-
         float cameraX = playerCamera.position.x;
+        
 
         //work out if/where each cloud should be moved to
         foreach (Cloud cloud in fluffyClouds)

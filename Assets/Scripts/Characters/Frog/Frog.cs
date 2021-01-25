@@ -35,6 +35,8 @@ namespace FrogScripts
             controlls.Respawn();
         }
 
+        public void RestartLevel() { lifeController.Restart(); }
+
         #region collisions
         [HideInInspector] public List<GameObject> currentCollisions = new List<GameObject>();
         private void OnTriggerEnter2D(Collider2D collision)
@@ -52,7 +54,6 @@ namespace FrogScripts
         #endregion
 
         #region events
-        public void RestartLevel() { lifeController.Restart(); }
 
         public void SubscribeOnDeath(INotifyOnDeath subscriber)
         {

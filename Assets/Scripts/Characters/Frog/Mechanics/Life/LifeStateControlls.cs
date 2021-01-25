@@ -38,7 +38,7 @@ namespace FrogScripts.Life
             ToggleComponents(true);
 
 
-            foreach (INotifyOnAnyRespawn notify in  frog.toNotifyOnDeath) notify.OnAnyRespawn();
+            foreach (INotifyOnAnyRespawn notify in  frog.toNotifyOnAnyRespawn) notify.OnAnyRespawn();
         }
 
         public void Die()
@@ -49,7 +49,7 @@ namespace FrogScripts.Life
             deathSounds.PlayRandom();
             GM.gameMusic.DetuneMusic();
 
-            foreach (INotifyOnDeath notify in frog.toNotifyOnDeath) notify.OnDeath();
+            foreach (INotifyOnDeath notify in frog.toNotifyOnDeath) Debug.Log("thing"); //notify.OnDeath();
         }
 
         void ToggleComponents(bool alive)

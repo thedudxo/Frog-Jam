@@ -20,6 +20,7 @@ namespace LevelScripts
 
         private void OnValidate()
         {
+            if (objective == null) return;
             objective.transform.position = new Vector3(end, objective.transform.position.y, objective.transform.position.z);
         }
 
