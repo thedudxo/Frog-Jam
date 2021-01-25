@@ -6,7 +6,7 @@ using UnityEngine.Analytics;
 public class OnQuitGame : MonoBehaviour
 {
 
-    [SerializeField] SplitManager splitManager;
+    //[SerializeField] SplitManager splitManager;
 
     private void OnApplicationQuit()
     {

@@ -12,19 +12,23 @@ namespace FrogScripts
         Text bestTimeText;
         Text title;
         FrogSplitManager frogSplitManager;
+        Frog frog;
 
+        public Split Split { get; private set; }
         string name;
 
         float bestTime;
         bool triggeredThisLife = false;
 
-        public void Setup(Split split)
+        public void Setup(Split split, FrogSplitManager frogSplitManager)
         {
             title.text = split.Name;
             split.AddSplitUI(this);
+            this.frogSplitManager = frogSplitManager;
+            frog = frogSplitManager.frog;
         }
 
-        bool BeatBestTime => frog.TimeInCurrentSplit < bestTime;
+        bool BeatBestTime => frogSplitManager.currentSplitTime < bestTime;
         bool FirstTimeHere => bestTime == 0;
 
         public void ReachedSplit()
@@ -32,7 +36,7 @@ namespace FrogScripts
             if (triggeredThisLife) return;
             triggeredThisLife = true;
 
-            bestTime = frogSplitManager.currentTime;
+            bestTime = frogSplitManager.currentSplitTime;
             bestTimeText.text = bestTime.ToString("f2") + " sec";
 
             if (FirstTimeHere) TrackFirstTimeAnalyitic();
@@ -44,7 +48,7 @@ namespace FrogScripts
             if (!GM.sendAnyalitics) return;
 
             Dictionary<string, object> info = new Dictionary<string, object>
-                { {"Time", frogSplitManager.currentTime}
+                { {"Time", frogSplitManager.currentSplitTime }
                 };
 
             Analytics.CustomEvent("First Time at " + name, info);
@@ -54,5 +58,7 @@ namespace FrogScripts
         {
             triggeredThisLife = false;
         }
+
+
     }
 }

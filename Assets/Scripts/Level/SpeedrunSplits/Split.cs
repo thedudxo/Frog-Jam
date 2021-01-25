@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using FrogScripts.UI;
+using FrogScripts;
 
 namespace LevelScripts
 {
     public class Split : MonoBehaviour
     {
-        [SerializeField] public string Name;
+        [SerializeField] public string Name { get; private set; }
         [SerializeField] ParticleSystem newPBParticles;
         [SerializeField] SplitManager splitManager;
 
@@ -32,22 +32,18 @@ namespace LevelScripts
             }
         }
 
-        public void EmitParticles()
+        public void EmitNewPBParticles()
         {
             const int ParticleEmitAmmount = 20;
             newPBParticles.Emit(ParticleEmitAmmount);
         }
 
-
-
-        public string GetSplitName()
+        public bool IsPastSplit(float Xposition)
         {
-            return Name;
+            float splitXPos = transform.position.x;
+
+            return Xposition > splitXPos;
         }
 
-        public float GetBestTime()
-        {
-            return bestTime;
-        }
     }
 }
