@@ -50,14 +50,8 @@ public static class PhysicsUtil1D
 
     public static bool AtPosition(float currentPosition, float desiredPosition, float tolerance)
     {
-        //Debug.Log(currentPosition+" , "+(desiredPosition + tolerance));
-
         bool inUpperBound = currentPosition < desiredPosition + tolerance;
         bool inLowerBound = currentPosition > desiredPosition - tolerance;
-
-        //Debug.Log(
-        //       "In Upper Bound: " + inUpperBound +
-        //    "\n In Lower Bound: " + inLowerBound);
 
         return inUpperBound && inLowerBound;
     }
@@ -71,12 +65,6 @@ public static class PhysicsUtil1D
 
         bool willOvershoot = timeToStop > timeToPos;
 
-        //Debug.Log(
-        //    "willOvershoot: " + willOvershoot + 
-        //    "\n timeToStop: " + timeToStop +
-        //    "\n timeToPos: "  + timeToPos);
-        if (willOvershoot) Debug.Log("Overshooting");
         return willOvershoot;
-
     }
 }
