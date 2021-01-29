@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 namespace FrogScripts
 {
-    public class FrogSplitManager : MonoBehaviour, INotifyOnSetback
+    public class FrogSplitTrackerManager : MonoBehaviour, INotifyOnSetback
     {
-        [SerializeField] GameObject splitUIPrefab;
+        [Header("Components")]
         [SerializeField] public Frog frog;
-
+        [SerializeField] FrogTime frogTime;
 
         SplitManager splitManager;
 
-        List<FrogSplitTracker> trackers = new List<FrogSplitTracker>();
+        List<FrogSplitTracker> splitReferences = new List<FrogSplitTracker>();
         bool inCurrentSplit = false;
         int nextSplit = 0;
         [HideInInspector]public float currentSplitTime { get; private set; } = 0;
@@ -32,26 +32,34 @@ namespace FrogScripts
          *  nextSplit = 0 
          */
 
+        private void Update()
+        {
+            currentSplitTime = frogTime.CurrentLevelTime;
+        }
+
         private void Start()
         {
             splitManager = frog.currentLevel.splitManager;
+            SetupSplitUIs();
         }
 
         public void SetupSplitUIs()
         {
             foreach(Split split in splitManager.splits)
             {
-                FrogSplitTracker splitTracker = Instantiate(splitUIPrefab).GetComponent<FrogSplitTracker>();
+                FrogSplitTracker splitTracker = Instantiate(split.playerCopyCanvas).GetComponent<FrogSplitTracker>();
+                splitTracker.gameObject.SetActive(true);
+                splitTracker.gameObject.transform.position = split.playerCopyCanvas.transform.position;
 
                 splitTracker.Setup(split, this);
 
-                trackers.Add(splitTracker);
+                splitReferences.Add(splitTracker);
             }
         }
 
         public void OnSetback()
         {
-            foreach(FrogSplitTracker tracker in trackers)
+            foreach(FrogSplitTracker tracker in splitReferences)
             {
                 bool frogPassedSplit = tracker.Split.IsPastSplit(frog.transform.position.x);
 

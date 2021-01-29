@@ -18,6 +18,7 @@ namespace FrogScripts
         [SerializeField] public LifeController lifeController;
         [SerializeField] public CameraController cameraController;
         [SerializeField] public Controlls controlls;
+        [SerializeField] public SplitManager splitManager;
 
         [Header("Initial Subscripions")]
         [SerializeField] public List<INotifyOnDeath> toNotifyOnDeath = new List<INotifyOnDeath>();
@@ -25,9 +26,11 @@ namespace FrogScripts
         [SerializeField] public List<INotifyOnRestart> toNotifyOnRestart = new List<INotifyOnRestart>();
         [SerializeField] public List<INotifyOnAnyRespawn> toNotifyOnAnyRespawn = new List<INotifyOnAnyRespawn>();
 
+        int ID;
+
         private void Awake()
         {
-            frogManager.AddFrog(this);
+            ID = frogManager.AddFrog(this);
         }
 
         public void Respawn()

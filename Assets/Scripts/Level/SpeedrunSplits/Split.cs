@@ -11,25 +11,43 @@ namespace LevelScripts
         [SerializeField] public string Name { get; private set; }
         [SerializeField] ParticleSystem newPBParticles;
         [SerializeField] SplitManager splitManager;
-        [SerializeField] Canvas playerCopyCanvas;
+        [SerializeField] public Canvas playerCopyCanvas;
+        [SerializeField] Text title;
 
-        List<FrogSplitTracker> splitUIs = new List<FrogSplitTracker>();
+        List<ISplitReferencer> references = new List<ISplitReferencer>();
 
 
-        public void AddSplitUI(FrogSplitTracker splitUI)
+        private void Start()
         {
-            splitUIs.Add(splitUI);
+            playerCopyCanvas.gameObject.SetActive(false);
+            Name = title.text;
+        }
+
+        public void AddSplitReferencer(ISplitReferencer splitReferencer)
+        {
+            references.Add(splitReferencer);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            bool collisionIsPlayer = collision.gameObject.tag == GM.playerTag;
+            /*
+             * find which player just collided
+             * notify that player
+             */
+
+            GameObject obj = collision.gameObject;
+
+            bool collisionIsPlayer = obj.tag == GM.playerTag;
 
             if (collisionIsPlayer)
             {
-                foreach (FrogSplitTracker splitUI in splitUIs)
+                foreach (ISplitReferencer splitUI in references)
                 {
-                    splitUI.ReachedSplit();
+                    if (obj.GetComponent<Frog>() == splitUI.Frog)
+                    {
+                        splitUI.ReachedSplit();
+                        break;
+                    }
                 }
             }
         }
