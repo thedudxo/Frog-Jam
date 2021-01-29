@@ -26,6 +26,10 @@ namespace FrogScripts.Life
             levelStart = transform.position;
         }
 
+        private void Update()
+        {
+            Debug.Log(frog.wave,frog.wave);
+        }
         public void Respawn(DeathType deathType)
         {
             if (deathType == DeathType.setback)
@@ -93,6 +97,8 @@ namespace FrogScripts.Life
         {
             rb.velocity = Vector3.zero;
             transform.position = levelStart;
+
+            Debug.Log(frog, frog);
             frog.wave.Restart();
 
             foreach (INotifyOnRestart notify in frog.toNotifyOnRestart) notify.OnRestart();

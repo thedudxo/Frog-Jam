@@ -2,32 +2,23 @@
 
 namespace FrogScripts
 {
-    public class LevelStats
+    public class LevelStats : MonoBehaviour
     {
-        public int deaths;
+        [SerializeField] FrogTime frogTime;
+
+        [HideInInspector] public int deaths;
         private int PbDeaths;
 
-        public float Time { get; private set; } = 0;
         public float? PbTime { get; private set; } = null;
 
-        public LevelStats()
+        void Start()
         {
             PbDeaths = 999999999;
         }
 
-        public void Update()
-        {
-            Time += UnityEngine.Time.deltaTime;
-        }
-
         public void CheckForPBTime()
         {
-            PbTime = Mathf.Min(PbTime ?? float.MaxValue, Time);
-        }
-
-        public void ResetTimer()
-        {
-            Time = 0;
+            PbTime = Mathf.Min(PbTime ?? float.MaxValue, frogTime.CurrentLevelTime);
         }
 
         public int GetPbDeaths()

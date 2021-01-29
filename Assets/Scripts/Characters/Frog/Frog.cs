@@ -35,7 +35,11 @@ namespace FrogScripts
             controlls.Respawn();
         }
 
-        public void RestartLevel() { lifeController.Restart(); }
+        public void RestartLevel() 
+        {
+            Debug.Log(wave, this);
+            lifeController.Restart(); 
+        }
 
         #region collisions
         [HideInInspector] public List<GameObject> currentCollisions = new List<GameObject>();

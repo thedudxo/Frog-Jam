@@ -9,15 +9,15 @@ namespace FrogScripts
     {
         [SerializeField] GameObject splitUIPrefab;
         [SerializeField] public Frog frog;
-        [SerializeField] Text timer;
+
 
         SplitManager splitManager;
 
         List<FrogSplitTracker> trackers = new List<FrogSplitTracker>();
-        public float currentSplitTime { get; private set; } = 0;
         bool inCurrentSplit = false;
         int nextSplit = 0;
-        bool timing = false;
+        [HideInInspector]public float currentSplitTime { get; private set; } = 0;
+
 
         /*
          * when reaching the end of the split:
@@ -35,16 +35,6 @@ namespace FrogScripts
         private void Start()
         {
             splitManager = frog.currentLevel.splitManager;
-        }
-
-
-        void Update()
-        {
-            if (timing)
-            {
-                timer.text = currentSplitTime.ToString("f2");
-            }
-
         }
 
         public void SetupSplitUIs()

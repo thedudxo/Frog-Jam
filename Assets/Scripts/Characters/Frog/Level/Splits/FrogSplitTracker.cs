@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
 using LevelScripts;
+using UnityEngine.UI;
 
 namespace FrogScripts
 {
