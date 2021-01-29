@@ -48,8 +48,10 @@ namespace FrogScripts
             foreach(Split split in splitManager.splits)
             {
                 FrogSplitTracker splitTracker = Instantiate(split.playerCopyCanvas).GetComponent<FrogSplitTracker>();
-                splitTracker.gameObject.SetActive(true);
-                splitTracker.gameObject.transform.position = split.playerCopyCanvas.transform.position;
+                GameObject obj = splitTracker.gameObject;
+                obj.SetActive(true);
+                obj.transform.position = split.playerCopyCanvas.transform.position;
+                obj.layer = LayerMask.NameToLayer(frog.UILayer);
 
                 splitTracker.Setup(split, this);
 

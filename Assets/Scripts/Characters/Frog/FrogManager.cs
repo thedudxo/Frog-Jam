@@ -12,9 +12,8 @@ public class FrogManager : MonoBehaviour
 {
     [SerializeField] public List<Frog> Frogs { get; private set; } = new List<Frog>();
 
-    public int AddFrog(Frog frog)
+    public void AddFrog(Frog frog)
     {
         Frogs.Add(frog);
-        return Frogs.Count - 1 ;
     }
 }

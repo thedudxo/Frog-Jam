@@ -20,17 +20,17 @@ namespace FrogScripts
         [SerializeField] public Controlls controlls;
         [SerializeField] public SplitManager splitManager;
 
-        [Header("Initial Subscripions")]
-        [SerializeField] public List<INotifyOnDeath> toNotifyOnDeath = new List<INotifyOnDeath>();
-        [SerializeField] public List<INotifyOnSetback> toNotifyOnSetback = new List<INotifyOnSetback>();
-        [SerializeField] public List<INotifyOnRestart> toNotifyOnRestart = new List<INotifyOnRestart>();
-        [SerializeField] public List<INotifyOnAnyRespawn> toNotifyOnAnyRespawn = new List<INotifyOnAnyRespawn>();
+        [HideInInspector] public List<INotifyOnDeath> toNotifyOnDeath = new List<INotifyOnDeath>();
+        [HideInInspector] public List<INotifyOnSetback> toNotifyOnSetback = new List<INotifyOnSetback>();
+        [HideInInspector] public List<INotifyOnRestart> toNotifyOnRestart = new List<INotifyOnRestart>();
+        [HideInInspector] public List<INotifyOnAnyRespawn> toNotifyOnAnyRespawn = new List<INotifyOnAnyRespawn>();
 
-        int ID;
+        [Header("Player UI layer")]
+        [SerializeField] public string UILayer;
 
         private void Awake()
         {
-            ID = frogManager.AddFrog(this);
+            frogManager.AddFrog(this);
         }
 
         public void Respawn()
@@ -40,12 +40,12 @@ namespace FrogScripts
 
         public void RestartLevel() 
         {
-            Debug.Log(wave, this);
             lifeController.Restart(); 
         }
 
         #region collisions
         [HideInInspector] public List<GameObject> currentCollisions = new List<GameObject>();
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             currentCollisions.Add(collision.gameObject);

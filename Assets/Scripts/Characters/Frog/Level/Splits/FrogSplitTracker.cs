@@ -48,7 +48,6 @@ namespace FrogScripts
         public void OnAnyRespawn()
         {
             triggeredThisLife = false;
-            Debug.Log(triggeredThisLife);
         }
 
         void TrackFirstTimeAnalyitic()
