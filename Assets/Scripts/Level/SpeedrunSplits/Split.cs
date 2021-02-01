@@ -6,16 +6,26 @@ using FrogScripts;
 
 namespace LevelScripts
 {
+    public interface ISplitEffect
+    {
+        void ReachedSplit();
+        int TriggerInstanceID { get; set; }
+    }
+
     public class Split : MonoBehaviour
     {
-        [SerializeField] public string Name { get; private set; }
-        [SerializeField] ParticleSystem newPBParticles;
+        [Header("Manager")]
         [SerializeField] SplitManager splitManager;
-        [SerializeField] public Canvas playerCopyCanvas;
+
+        [Header("GameObjects")]
+        [SerializeField] ParticleSystem newPBParticles;
         [SerializeField] Text title;
+        [SerializeField] public Canvas playerCopyCanvas;
 
-        List<ISplitReferencer> references = new List<ISplitReferencer>();
+        public string Name { get; private set; }
+        const int ParticleEmitAmmount = 20;
 
+        List<ISplitEffect> effects = new List<ISplitEffect>();
 
         private void Start()
         {
@@ -23,29 +33,30 @@ namespace LevelScripts
             Name = title.text;
         }
 
-        public void AddSplitReferencer(ISplitReferencer splitReferencer)
+        public void AddSplitEffect(ISplitEffect effect)
         {
-            references.Add(splitReferencer);
+            if (this.effects.Contains(effect))
+            {
+                Debug.Log(effect + "  allready exists in list", this);
+                return;
+            }
+            this.effects.Add(effect);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            /*
-             * find which player just collided
-             * notify that player
-             */
-
             GameObject obj = collision.gameObject;
+            bool isPlayer = obj.tag == GM.playerTag;
 
-            bool collisionIsPlayer = obj.tag == GM.playerTag;
-
-            if (collisionIsPlayer)
+            if (isPlayer)
             {
-                foreach (ISplitReferencer splitUI in references)
+                foreach (ISplitEffect effect in effects)
                 {
-                    if (obj.GetComponent<Frog>() == splitUI.Frog)
+                    Debug.Log("Collision.Gameobject ID: " + collision.gameObject.GetInstanceID(), this);
+                    bool collisionHasThisEffect = collision.gameObject.GetInstanceID() == effect.TriggerInstanceID;
+                    if (collisionHasThisEffect)
                     {
-                        splitUI.ReachedSplit();
+                        effect.ReachedSplit();
                         break;
                     }
                 }
@@ -54,7 +65,6 @@ namespace LevelScripts
 
         public void EmitNewPBParticles()
         {
-            const int ParticleEmitAmmount = 20;
             newPBParticles.Emit(ParticleEmitAmmount);
         }
 

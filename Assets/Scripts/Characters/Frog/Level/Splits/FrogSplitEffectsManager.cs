@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace FrogScripts
 {
-    public class FrogSplitTrackerManager : MonoBehaviour, INotifyOnSetback
+    public class FrogSplitEffectsManager : MonoBehaviour, INotifyOnSetback
     {
         [Header("Components")]
         [SerializeField] public Frog frog;
@@ -13,7 +13,7 @@ namespace FrogScripts
 
         SplitManager splitManager;
 
-        List<FrogSplitTracker> splitReferences = new List<FrogSplitTracker>();
+        List<FrogSplitEffects> splitReferences = new List<FrogSplitEffects>();
         bool inCurrentSplit = false;
         int nextSplit = 0;
         [HideInInspector]public float currentSplitTime { get; private set; } = 0;
@@ -40,14 +40,14 @@ namespace FrogScripts
         private void Start()
         {
             splitManager = frog.currentLevel.splitManager;
-            SetupSplitUIs();
+            SetupSplitEffects();
         }
 
-        public void SetupSplitUIs()
+        public void SetupSplitEffects()
         {
             foreach(Split split in splitManager.splits)
             {
-                FrogSplitTracker splitTracker = Instantiate(split.playerCopyCanvas).GetComponent<FrogSplitTracker>();
+                FrogSplitEffects splitTracker = Instantiate(split.playerCopyCanvas).GetComponent<FrogSplitEffects>();
                 GameObject obj = splitTracker.gameObject;
                 obj.SetActive(true);
                 obj.transform.position = split.playerCopyCanvas.transform.position;
@@ -59,9 +59,10 @@ namespace FrogScripts
             }
         }
 
+
         public void OnSetback()
         {
-            foreach(FrogSplitTracker tracker in splitReferences)
+            foreach(FrogSplitEffects tracker in splitReferences)
             {
                 bool frogPassedSplit = tracker.Split.IsPastSplit(frog.transform.position.x);
 
