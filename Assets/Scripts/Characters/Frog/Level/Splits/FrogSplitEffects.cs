@@ -10,7 +10,7 @@ namespace FrogScripts
     {
         //instantiate these with a prefab
         [SerializeField] Text bestTimeText;
-        FrogSplitEffectsManager frogSplitManager;
+        FrogSplitEffectsManager splitManager;
         public Frog Frog { get; set; }
         public int TriggerInstanceID { get; set; }
 
@@ -22,14 +22,14 @@ namespace FrogScripts
         public void Setup(Split split, FrogSplitEffectsManager frogSplitManager)
         {
             split.AddSplitEffect(this);
-            this.frogSplitManager = frogSplitManager;
+            this.splitManager = frogSplitManager;
             Frog = frogSplitManager.frog;
             Frog.SubscribeOnAnyRespawn(this);
             TriggerInstanceID = Frog.gameObject.GetInstanceID();
             Debug.Log("Split effect ID: " + TriggerInstanceID, this);
         }
 
-        bool BeatBestTime => frogSplitManager.currentSplitTime < bestTime;
+        bool BeatBestTime => splitManager.currentSplitTime < bestTime;
         bool FirstTimeHere => bestTime == 0;
 
         public void ReachedSplit()
@@ -37,16 +37,16 @@ namespace FrogScripts
             if (triggeredThisLife) return;
             triggeredThisLife = true;
 
+            if (FirstTimeHere) TrackFirstTimeAnalyitic();
+
             if (BeatBestTime)
             {
-                bestTime = frogSplitManager.currentSplitTime;
+                bestTime = splitManager.currentSplitTime;
                 bestTimeText.text = bestTime.ToString("f2") + " sec";
-                Split.EmitNewPBParticles();
+
+
+                splitManager.EmitPBParticles();
             }
-
-
-
-            if (FirstTimeHere) TrackFirstTimeAnalyitic();
         }
 
         public void OnAnyRespawn()
@@ -59,7 +59,7 @@ namespace FrogScripts
             if (!GM.sendAnyalitics) return;
 
             Dictionary<string, object> info = new Dictionary<string, object>
-                { {"Time", frogSplitManager.currentSplitTime }
+                { {"Time", splitManager.currentSplitTime }
                 };
 
             Analytics.CustomEvent("First Time at " + name, info);

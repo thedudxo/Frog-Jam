@@ -18,12 +18,10 @@ namespace LevelScripts
         [SerializeField] SplitManager splitManager;
 
         [Header("GameObjects")]
-        [SerializeField] ParticleSystem newPBParticles;
         [SerializeField] Text title;
         [SerializeField] public Canvas playerCopyCanvas;
 
         public string Name { get; private set; }
-        const int ParticleEmitAmmount = 20;
 
         List<ISplitEffect> effects = new List<ISplitEffect>();
 
@@ -61,11 +59,6 @@ namespace LevelScripts
                     }
                 }
             }
-        }
-
-        public void EmitNewPBParticles()
-        {
-            newPBParticles.Emit(ParticleEmitAmmount);
         }
 
         public bool IsPastSplit(float Xposition)

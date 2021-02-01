@@ -10,6 +10,9 @@ namespace FrogScripts
         [Header("Components")]
         [SerializeField] public Frog frog;
         [SerializeField] FrogTime frogTime;
+        [SerializeField] ParticleSystem newPBParticles;
+        const int ParticleEmitAmmount = 20;
+        Transform newPBParticlesTransform;
 
         SplitManager splitManager;
 
@@ -41,6 +44,7 @@ namespace FrogScripts
         {
             splitManager = frog.currentLevel.splitManager;
             SetupSplitEffects();
+            newPBParticlesTransform = newPBParticles.transform;
         }
 
         public void SetupSplitEffects()
@@ -59,7 +63,6 @@ namespace FrogScripts
             }
         }
 
-
         public void OnSetback()
         {
             foreach(FrogSplitEffects tracker in splitReferences)
@@ -71,6 +74,12 @@ namespace FrogScripts
 
                 }
             }
+        }
+
+        public void EmitPBParticles()
+        {
+            newPBParticlesTransform.position = frog.transform.position;
+            newPBParticles.Emit(ParticleEmitAmmount);
         }
     }
 }
