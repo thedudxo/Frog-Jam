@@ -50,7 +50,6 @@ namespace LevelScripts
             {
                 foreach (ISplitEffect effect in effects)
                 {
-                    Debug.Log("Collision.Gameobject ID: " + collision.gameObject.GetInstanceID(), this);
                     bool collisionHasThisEffect = collision.gameObject.GetInstanceID() == effect.TriggerInstanceID;
                     if (collisionHasThisEffect)
                     {

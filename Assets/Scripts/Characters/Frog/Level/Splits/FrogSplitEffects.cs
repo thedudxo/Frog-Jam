@@ -10,48 +10,57 @@ namespace FrogScripts
     {
         //instantiate these with a prefab
         [SerializeField] Text bestTimeText;
-        FrogSplitEffectsManager splitManager;
+        FrogSplitEffectsManager splitEffectsManager;
         public Frog Frog { get; set; }
         public int TriggerInstanceID { get; set; }
-
         public Split Split { get; private set; }
 
         float bestTime = float.MaxValue;
         bool triggeredThisLife = false;
 
+
+
+        public bool isActive = true;
+
         public void Setup(Split split, FrogSplitEffectsManager frogSplitManager)
         {
             split.AddSplitEffect(this);
-            this.splitManager = frogSplitManager;
+            this.Split = split;
+            this.splitEffectsManager = frogSplitManager;
             Frog = frogSplitManager.frog;
             Frog.SubscribeOnAnyRespawn(this);
             TriggerInstanceID = Frog.gameObject.GetInstanceID();
-            Debug.Log("Split effect ID: " + TriggerInstanceID, this);
         }
 
-        bool BeatBestTime => splitManager.currentSplitTime < bestTime;
+        bool BeatBestTime => splitEffectsManager.currentSplitTime < bestTime;
         bool FirstTimeHere => bestTime == 0;
 
         public void ReachedSplit()
         {
-            if (triggeredThisLife) return;
+            if (triggeredThisLife || !isActive) return;
             triggeredThisLife = true;
 
             if (FirstTimeHere) TrackFirstTimeAnalyitic();
 
             if (BeatBestTime)
             {
-                bestTime = splitManager.currentSplitTime;
+                bestTime = splitEffectsManager.currentSplitTime;
                 bestTimeText.text = bestTime.ToString("f2") + " sec";
 
 
-                splitManager.EmitPBParticles();
+                splitEffectsManager.EmitPBParticles();
             }
+
+            splitEffectsManager.ReachedNextSplit();
         }
 
         public void OnAnyRespawn()
         {
             triggeredThisLife = false;
+            if (splitEffectsManager.PreviousSplitActive(this))
+            {
+
+            }
         }
 
         void TrackFirstTimeAnalyitic()
@@ -59,7 +68,7 @@ namespace FrogScripts
             if (!GM.sendAnyalitics) return;
 
             Dictionary<string, object> info = new Dictionary<string, object>
-                { {"Time", splitManager.currentSplitTime }
+                { {"Time", splitEffectsManager.currentSplitTime }
                 };
 
             Analytics.CustomEvent("First Time at " + name, info);

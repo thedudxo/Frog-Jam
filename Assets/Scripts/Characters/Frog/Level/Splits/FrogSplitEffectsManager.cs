@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace FrogScripts
 {
-    public class FrogSplitEffectsManager : MonoBehaviour, INotifyOnSetback
+    public class FrogSplitEffectsManager : MonoBehaviour, INotifyOnSetback, INotifyOnRestart
     {
         [Header("Components")]
         [SerializeField] public Frog frog;
@@ -16,19 +16,20 @@ namespace FrogScripts
 
         SplitManager splitManager;
 
-        List<FrogSplitEffects> splitReferences = new List<FrogSplitEffects>();
+        List<FrogSplitEffects> splitEffects = new List<FrogSplitEffects>();
         bool inCurrentSplit = false;
-        int nextSplit = 0;
+        public FrogSplitEffects nextSplit;
         [HideInInspector]public float currentSplitTime { get; private set; } = 0;
 
 
         /*
          * when reaching the end of the split:
          *  increment nextSplit by 1
-         *  timeInCurrentSplit = 0
+         *  currentSplitTime = 0
          *  
          * when frog setback
          *  check what split were in now by:
+         *      split.IsPastSplit(float Xposition)
          *   
          *  
          * when Frog Restart
@@ -37,13 +38,19 @@ namespace FrogScripts
 
         private void Update()
         {
-            currentSplitTime = frogTime.CurrentLevelTime;
+            currentSplitTime += Time.deltaTime;
         }
 
         private void Start()
         {
+            frog.SubscribeOnRestart(this);
+            frog.SubscribeOnSetback(this);
+
             splitManager = frog.currentLevel.splitManager;
+
             SetupSplitEffects();
+            nextSplit = splitEffects[0];
+
             newPBParticlesTransform = newPBParticles.transform;
         }
 
@@ -59,15 +66,15 @@ namespace FrogScripts
 
                 splitTracker.Setup(split, this);
 
-                splitReferences.Add(splitTracker);
+                splitEffects.Add(splitTracker);
             }
         }
 
         public void OnSetback()
         {
-            foreach(FrogSplitEffects tracker in splitReferences)
+            foreach(FrogSplitEffects effect in splitEffects)
             {
-                bool frogPassedSplit = tracker.Split.IsPastSplit(frog.transform.position.x);
+                bool frogPassedSplit = effect.Split.IsPastSplit(frog.transform.position.x);
 
                 if (frogPassedSplit)
                 {
@@ -76,10 +83,33 @@ namespace FrogScripts
             }
         }
 
+        public void ReachedNextSplit()
+        {
+            Debug.Log("reached me");
+
+            int currentSplitIndex = splitEffects.IndexOf(nextSplit);
+            nextSplit = splitEffects[currentSplitIndex + 1];
+            currentSplitTime = 0;
+        }
+
+        public bool PreviousSplitActive(FrogSplitEffects effect)
+        {
+            int currentPos = splitEffects.IndexOf(effect);
+            if (currentPos == 0) return false;
+            int previousPositon = currentPos - 1;
+            return splitEffects[previousPositon].isActive;
+        }
+
         public void EmitPBParticles()
         {
             newPBParticlesTransform.position = frog.transform.position;
             newPBParticles.Emit(ParticleEmitAmmount);
+        }
+
+        public void OnRestart()
+        {
+            currentSplitTime = 0;
+            nextSplit = splitEffects[0];
         }
     }
 }
