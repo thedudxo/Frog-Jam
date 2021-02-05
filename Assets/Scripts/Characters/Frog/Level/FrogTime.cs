@@ -9,7 +9,6 @@ namespace FrogScripts
     {
         [SerializeField] Frog frog;
         [SerializeField] Text timer;
-        bool timing = true;
         [HideInInspector] public float CurrentLevelTime { get; private set; } = 0;
 
         private void Start()
@@ -19,8 +18,8 @@ namespace FrogScripts
 
         void Update()
         {
-            if (!timing) return;
-            CurrentLevelTime += Time.deltaTime;
+            if (!frog.OnStartingPlatform)
+                CurrentLevelTime += Time.deltaTime;
             timer.text = CurrentLevelTime.ToString("f1");
         }
 

@@ -6,6 +6,7 @@ namespace FrogScripts {
     {
         [SerializeField] Frog frog;
         [SerializeField] LevelStats levelStats;
+        [SerializeField] SplitEffectsManager splitFX;
         [SerializeField] FrogTime frogTime;
 
         [SerializeField] LevelEndScreen levelEndScreen;
@@ -18,8 +19,7 @@ namespace FrogScripts {
         bool playingLevel = true;
 
         private void Update()
-        {
-
+        { 
             switch (playingLevel)
             {
                 case true:
@@ -51,7 +51,7 @@ namespace FrogScripts {
 
         private void EnableEndScreen()
         {
-            levelEndScreen.Enable(frogTime.CurrentLevelTime, (float) levelStats.PbTime, levelStats.deaths, levelStats.GetPbDeaths());
+            levelEndScreen.Enable(frogTime.CurrentLevelTime, (float) levelStats.PbTime, splitFX.TotalSplitTime);
         }
     }
 }

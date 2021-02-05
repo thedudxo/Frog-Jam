@@ -16,7 +16,7 @@ public class ProgressBar : MonoBehaviour
 
     void Update()
     {
-        waveProgressBar.value   = (level.wave.transform.position.x   - level.startLength) / (level.end - level.startLength);
+        //waveProgressBar.value   = (level.wave.transform.position.x   - level.startLength) / (level.end - level.startLength);
     }
 
 

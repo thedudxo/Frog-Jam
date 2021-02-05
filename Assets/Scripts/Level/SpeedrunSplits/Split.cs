@@ -14,7 +14,7 @@ namespace LevelScripts
 
     public class Split : MonoBehaviour
     {
-        [Header("Manager")]
+        [Header("Manager - Don't forget to add this to the list on the manager")]
         [SerializeField] SplitManager splitManager;
 
         [Header("GameObjects")]
@@ -45,12 +45,13 @@ namespace LevelScripts
         {
             GameObject obj = collision.gameObject;
             bool isPlayer = obj.tag == GM.playerTag;
+            int objInstanceID = obj.GetInstanceID();
 
             if (isPlayer)
             {
                 foreach (ISplitEffect effect in effects)
                 {
-                    bool collisionHasThisEffect = collision.gameObject.GetInstanceID() == effect.TriggerInstanceID;
+                    bool collisionHasThisEffect = objInstanceID == effect.TriggerInstanceID;
                     if (collisionHasThisEffect)
                     {
                         effect.ReachedSplit();
@@ -59,13 +60,5 @@ namespace LevelScripts
                 }
             }
         }
-
-        public bool IsPastSplit(float Xposition)
-        {
-            float splitXPos = transform.position.x;
-
-            return Xposition > splitXPos;
-        }
-
     }
 }

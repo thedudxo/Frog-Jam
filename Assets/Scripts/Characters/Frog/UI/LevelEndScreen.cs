@@ -1,24 +1,26 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 
-public class LevelEndScreen : MonoBehaviour
+namespace FrogScripts
 {
-    [SerializeField] Text timeTaken, pbTimeTaken, deathCount, pbDeathCount;
-    [SerializeField] GameObject endScreen;
-
-    const string timeFormat = "F3";
-
-    public void Enable(float time, float pbTime, int deaths, int pbDeaths)
+    public class LevelEndScreen : MonoBehaviour
     {
-        endScreen.SetActive(true);
-        timeTaken.text = time.ToString(timeFormat);
-        pbTimeTaken.text = pbTime.ToString(timeFormat);
-        deathCount.text = deaths.ToString();
-        pbDeathCount.text = pbDeaths.ToString();
-    }
+        [SerializeField] Text timeTaken, pbTimeTaken, splitsSum;
+        [SerializeField] GameObject endScreen;
 
-    public void Disable()
-    {
-        endScreen.SetActive(false);
+        const string timeFormat = "F3";
+
+        public void Enable(float time, float pbTime, float splitsSum)
+        {
+            endScreen.SetActive(true);
+            timeTaken.text = time.ToString(timeFormat);
+            pbTimeTaken.text = pbTime.ToString(timeFormat);
+            this.splitsSum.text = splitsSum.ToString(timeFormat);
+        }
+
+        public void Disable()
+        {
+            endScreen.SetActive(false);
+        }
     }
 }

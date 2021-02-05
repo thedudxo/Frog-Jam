@@ -28,6 +28,8 @@ namespace FrogScripts
         [Header("Player UI layer")]
         [SerializeField] public string UILayer;
 
+        public bool OnStartingPlatform => transform.position.x < currentLevel.startLength;
+
         private void Awake()
         {
             frogManager.AddFrog(this);
