@@ -43,13 +43,14 @@ namespace FrogScripts.Life
 
         public void Die()
         {
-            ToggleComponents(false);
             Statistics.totalDeaths++;
-            vfx.DeathEffects();
             deathSounds.PlayRandom();
             GM.gameMusic.DetuneMusic();
 
             foreach (INotifyOnDeath notify in frog.toNotifyOnDeath) notify.OnDeath();
+
+            ToggleComponents(false);
+            vfx.DeathEffects();
         }
 
         void ToggleComponents(bool alive)
