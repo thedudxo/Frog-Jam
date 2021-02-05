@@ -75,7 +75,7 @@ namespace FrogScripts
                 {
                     SplitEffect previousSplit = splitEffects[i - 1];
 
-                    if (previousSplit.FrogIsPast)
+                    if (previousSplit.CharacterIsPast)
                         effect.triggeredThisLife = true;
                     else
                         effect.triggeredThisLife = false;

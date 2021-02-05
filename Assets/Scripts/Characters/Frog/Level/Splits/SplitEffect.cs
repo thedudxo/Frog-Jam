@@ -6,27 +6,28 @@ using UnityEngine.UI;
 
 namespace FrogScripts
 {
-    public class SplitEffect : MonoBehaviour, ISplitEffect
+
+    public class SplitEffect : MonoBehaviour
     {
         [SerializeField] Text bestTimeText;
         SplitEffectsManager SplitFXMngr;
 
-        [HideInInspector] public int TriggerInstanceID { get; set; }
         [HideInInspector] public float BestTime { get; private set; } = float.MaxValue;
         [HideInInspector] public bool triggeredThisLife = false;
 
-        Transform frogTransform;
+        [HideInInspector] public Transform CharacterTransform { get; set; }
+        [HideInInspector] public int CharacterInstanceID { get; set; }
         float splitXPos;
-        public bool FrogIsPast => frogTransform.position.x > splitXPos;
+        public bool CharacterIsPast => CharacterTransform.position.x > splitXPos;
 
 
-        public void Setup(Split split, SplitEffectsManager frogSplitManager)
+        public virtual void Setup(Split split, SplitEffectsManager SplitFXMngr)
         {
             split.AddSplitEffect(this);
-            this.SplitFXMngr = frogSplitManager;
+            this.SplitFXMngr = SplitFXMngr;
 
-            frogTransform = SplitFXMngr.frog.transform;
-            TriggerInstanceID = SplitFXMngr.frog.gameObject.GetInstanceID();
+            CharacterTransform = SplitFXMngr.frog.transform;
+            CharacterInstanceID = SplitFXMngr.frog.gameObject.GetInstanceID();
 
             splitXPos = split.transform.position.x;
         }
