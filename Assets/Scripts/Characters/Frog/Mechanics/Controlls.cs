@@ -106,7 +106,6 @@ namespace FrogScripts
             }
 
 
-
             if (Input.GetKey(jumpKey))
             {
                 jumpKeyTime += Time.deltaTime;

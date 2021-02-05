@@ -8,42 +8,75 @@ namespace LevelScripts
 {
     public class Split : MonoBehaviour
     {
-        [SerializeField] public string Name { get; private set; }
-        [SerializeField] ParticleSystem newPBParticles;
+        [Header("Manager - Don't forget to add this to the list on the manager")]
         [SerializeField] SplitManager splitManager;
 
-        List<FrogSplitTracker> splitUIs = new List<FrogSplitTracker>();
+        enum DetectionType { trigger, transform}
+        [Header("params")]
+        [SerializeField] DetectionType detectionType = DetectionType.trigger;
+        [SerializeField] float DetectionXPos;
 
-        public void AddSplitUI(FrogSplitTracker splitUI)
+        [Header("GameObjects")]
+        [SerializeField] Text title;
+        [SerializeField] public Canvas playerCopyCanvas;
+
+        public string Name { get; private set; }
+
+        List<SplitEffect> effects = new List<SplitEffect>();
+
+        private void Start()
         {
-            splitUIs.Add(splitUI);
+            playerCopyCanvas.gameObject.SetActive(false);
+            Name = title.text;
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        public void AddSplitEffect(SplitEffect effect)
         {
-            bool collisionIsPlayer = collision.gameObject.tag == GM.playerTag;
-
-            if (collisionIsPlayer)
+            if (this.effects.Contains(effect))
             {
-                foreach (FrogSplitTracker splitUI in splitUIs)
+                Debug.Log(effect + "  allready exists in list", this);
+                return;
+            }
+            this.effects.Add(effect);
+        }
+
+        private void Update()
+        {
+            if (detectionType != DetectionType.transform)
+                return;
+
+            foreach(SplitEffect effect in effects)
+            {
+                bool characterPastSplit = effect.CharacterTransform.position.x > DetectionXPos;
+
+                if (characterPastSplit && !effect.triggeredThisLife)
                 {
-                    splitUI.ReachedSplit();
+                    effect.ReachedSplit();
                 }
             }
         }
 
-        public void EmitNewPBParticles()
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            const int ParticleEmitAmmount = 20;
-            newPBParticles.Emit(ParticleEmitAmmount);
+            if (detectionType != DetectionType.trigger)
+                return;
+
+            GameObject obj = collision.gameObject;
+            bool isPlayer = obj.tag == GM.playerTag;
+            int objInstanceID = obj.GetInstanceID();
+
+            if (isPlayer)
+            {
+                foreach (SplitEffect effect in effects)
+                {
+                    bool collisionHasThisEffect = objInstanceID == effect.CharacterInstanceID;
+                    if (collisionHasThisEffect)
+                    {
+                        effect.ReachedSplit();
+                        break;
+                    }
+                }
+            }
         }
-
-        public bool IsPastSplit(float Xposition)
-        {
-            float splitXPos = transform.position.x;
-
-            return Xposition > splitXPos;
-        }
-
     }
 }

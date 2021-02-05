@@ -5,9 +5,13 @@ namespace FrogScripts {
     public class FrogLevelControlls : MonoBehaviour
     {
         [SerializeField] Frog frog;
+        [SerializeField] LevelStats levelStats;
+        [SerializeField] SplitEffectsManager splitFX;
+        [SerializeField] FrogTime frogTime;
+
         [SerializeField] LevelEndScreen levelEndScreen;
         [SerializeField] Rigidbody2D rb;
-        LevelStats levelStats = new LevelStats();
+
 
         bool PlayerGotToTheEnd => frog.transform.position.x >= frog.currentLevel.end;
         bool PlayerInputRestart => Input.GetKeyDown(KeyCode.Q);
@@ -15,9 +19,7 @@ namespace FrogScripts {
         bool playingLevel = true;
 
         private void Update()
-        {
-            levelStats.Update();
-
+        { 
             switch (playingLevel)
             {
                 case true:
@@ -32,7 +34,6 @@ namespace FrogScripts {
 
         public void RestartLevel()
         {
-            levelStats.ResetTimer();
             levelEndScreen.Disable();
             GM.gameState = GM.GameState.playingLevel;
             playingLevel = true;
@@ -50,7 +51,7 @@ namespace FrogScripts {
 
         private void EnableEndScreen()
         {
-            levelEndScreen.Enable(levelStats.Time, (float) levelStats.PbTime, levelStats.deaths, levelStats.GetPbDeaths());
+            levelEndScreen.Enable(frogTime.CurrentLevelTime, (float) levelStats.PbTime, splitFX.TotalSplitTime);
         }
     }
 }

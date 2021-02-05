@@ -1,113 +1,123 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DirectedGraph GraphDirection="LeftToRight" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
+    <Node Id="(@1 @10 Type=FrogTime)" Category="CodeSchema_Class" Bounds="618.228249223071,-215.899475097656,90.9366666666665,26" CodeSchemaProperty_IsPublic="True" CommonLabel="FrogTime" Icon="Microsoft.VisualStudio.Class.Public" Label="FrogTime" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Level/FrogTime.cs StartLineNumber=7 StartCharacterOffset=17 EndLineNumber=7 EndCharacterOffset=25)" />
     <Node Id="(@1 Type=Changelog)" Category="CodeSchema_Class" Bounds="497.557905424085,19.884964086398,98.4633333333334,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Changelog" Icon="Microsoft.VisualStudio.Class.Public" Label="Changelog" SourceLocation="(Assembly=&quot;file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Main Menu/Changelog.cs&quot; StartLineNumber=5 StartCharacterOffset=13 EndLineNumber=5 EndCharacterOffset=22)" UseManualLocation="True" />
-    <Node Id="(@1 Type=ComboCounter)" Category="CodeSchema_Class" Bounds="535.240973438235,-538.569640736888,122.436666666668,26" CodeSchemaProperty_IsPublic="True" CommonLabel="ComboCounter" Icon="Microsoft.VisualStudio.Class.Public" Label="ComboCounter" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/UI/ComboCounter.cs StartLineNumber=5 StartCharacterOffset=13 EndLineNumber=5 EndCharacterOffset=25)" />
-    <Node Id="(@1 Type=DeathsAtLocationCounter)" Category="CodeSchema_Class" Bounds="554.670973438235,-482.569640736888,177.233333333334,26" CodeSchemaProperty_IsPublic="True" CommonLabel="DeathsAtLocationCounter" Icon="Microsoft.VisualStudio.Class.Public" Label="DeathsAtLocationCounter" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/UI/DeathsAtLocationCounter.cs StartLineNumber=6 StartCharacterOffset=13 EndLineNumber=6 EndCharacterOffset=36)" />
-    <Node Id="(@1 Type=GameTimer)" Category="CodeSchema_Class" Bounds="-8.03589322842807,242.430359263112,101.933333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="GameTimer" Icon="Microsoft.VisualStudio.Class.Public" Label="GameTimer" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Management/GameTimer.cs StartLineNumber=4 StartCharacterOffset=13 EndLineNumber=4 EndCharacterOffset=22)" />
-    <Node Id="(@1 Type=LevelEndScreen)" Category="CodeSchema_Class" Bounds="401.454306771568,-482.569640736888,123.216666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="LevelEndScreen" Icon="Microsoft.VisualStudio.Class.Public" Label="LevelEndScreen" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/UI/LevelEndScreen.cs StartLineNumber=3 StartCharacterOffset=13 EndLineNumber=3 EndCharacterOffset=27)" />
+    <Node Id="(@1 Type=ComboCounter)" Category="CodeSchema_Class" Bounds="586.513459548865,-208.734909548213,122.436666666668,26" CodeSchemaProperty_IsPublic="True" CommonLabel="ComboCounter" Icon="Microsoft.VisualStudio.Class.Public" Label="ComboCounter" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/UI/ComboCounter.cs StartLineNumber=5 StartCharacterOffset=13 EndLineNumber=5 EndCharacterOffset=25)" UseManualLocation="True" />
+    <Node Id="(@1 Type=DeathsAtLocationCounter)" Category="CodeSchema_Class" Bounds="452.726792882198,-96.7349095482128,177.233333333334,26" CodeSchemaProperty_IsPublic="True" CommonLabel="DeathsAtLocationCounter" Icon="Microsoft.VisualStudio.Class.Public" Label="DeathsAtLocationCounter" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/UI/DeathsAtLocationCounter.cs StartLineNumber=6 StartCharacterOffset=13 EndLineNumber=6 EndCharacterOffset=36)" UseManualLocation="True" />
+    <Node Id="(@1 Type=GameTimer)" Category="CodeSchema_Class" Bounds="79.3553722047714,260.404703180543,101.933333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="GameTimer" Icon="Microsoft.VisualStudio.Class.Public" Label="GameTimer" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Management/GameTimer.cs StartLineNumber=4 StartCharacterOffset=13 EndLineNumber=4 EndCharacterOffset=22)" />
+    <Node Id="(@1 Type=LevelEndScreen)" Category="CodeSchema_Class" Bounds="452.726792882198,-152.734909548213,123.216666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="LevelEndScreen" Icon="Microsoft.VisualStudio.Class.Public" Label="LevelEndScreen" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/UI/LevelEndScreen.cs StartLineNumber=3 StartCharacterOffset=13 EndLineNumber=3 EndCharacterOffset=27)" UseManualLocation="True" />
     <Node Id="(@1 Type=LoadLevel)" Category="CodeSchema_Class" Bounds="373.856812544085,19.884964086398,93.71,26" CodeSchemaProperty_IsPublic="True" CommonLabel="LoadLevel" Icon="Microsoft.VisualStudio.Class.Public" Label="LoadLevel" SourceLocation="(Assembly=&quot;file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Main Menu/LoadLevel.cs&quot; StartLineNumber=5 StartCharacterOffset=13 EndLineNumber=5 EndCharacterOffset=22)" UseManualLocation="True" />
     <Node Id="(@1 Type=MenuManager)" Category="CodeSchema_Class" Bounds="373.856812544085,75.880932086398,118.93,26" CodeSchemaProperty_IsPublic="True" CommonLabel="MenuManager" Icon="Microsoft.VisualStudio.Class.Public" Label="MenuManager" SourceLocation="(Assembly=&quot;file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Main Menu/MenuManager.cs&quot; StartLineNumber=4 StartCharacterOffset=13 EndLineNumber=4 EndCharacterOffset=24)" UseManualLocation="True" />
-    <Node Id="(@1 Type=OnQuitGame)" Category="CodeSchema_Class" Bounds="-8.03589322842814,186.430359263112,110.6,26" CodeSchemaProperty_IsPublic="True" CommonLabel="OnQuitGame" Icon="Microsoft.VisualStudio.Class.Public" Label="OnQuitGame" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Management/OnQuitGame.cs StartLineNumber=5 StartCharacterOffset=13 EndLineNumber=5 EndCharacterOffset=23)" />
-    <Node Id="(@1 Type=PhysicsUtil1D)" Category="CodeSchema_Class" Bounds="62.9392077221911,354.464741300672,111.96,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="PhysicsUtil1D" Icon="Microsoft.VisualStudio.Class.Public" Label="PhysicsUtil1D" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Util/Physics/PhysicsUtil1D.cs StartLineNumber=3 StartCharacterOffset=20 EndLineNumber=3 EndCharacterOffset=33)" />
-    <Node Id="(@1 Type=ProgressBar)" Category="CodeSchema_Class" Bounds="401.454306771568,-538.569640736888,103.786666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="ProgressBar" Icon="Microsoft.VisualStudio.Class.Public" Label="ProgressBar" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/UI/ProgressBar.cs StartLineNumber=5 StartCharacterOffset=13 EndLineNumber=5 EndCharacterOffset=24)" />
-    <Node Id="(@1 Type=RestingAligaytor)" Category="CodeSchema_Class" Bounds="511.491465135404,229.01915717632,127.83,26" CodeSchemaProperty_IsPublic="True" CommonLabel="RestingAligaytor" Icon="Microsoft.VisualStudio.Class.Public" Label="RestingAligaytor" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Aligaytor/RestingAligaytor.cs StartLineNumber=5 StartCharacterOffset=13 EndLineNumber=5 EndCharacterOffset=29)" />
+    <Node Id="(@1 Type=OnQuitGame)" Category="CodeSchema_Class" Bounds="79.3554436405581,204.404702860543,110.6,26" CodeSchemaProperty_IsPublic="True" CommonLabel="OnQuitGame" Icon="Microsoft.VisualStudio.Class.Public" Label="OnQuitGame" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Management/OnQuitGame.cs StartLineNumber=5 StartCharacterOffset=13 EndLineNumber=5 EndCharacterOffset=23)" />
+    <Node Id="(@1 Type=PhysicsUtil1D)" Category="CodeSchema_Class" Bounds="62.9448647082868,409.536903429568,111.96,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="PhysicsUtil1D" Icon="Microsoft.VisualStudio.Class.Public" Label="PhysicsUtil1D" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Util/Physics/PhysicsUtil1D.cs StartLineNumber=3 StartCharacterOffset=20 EndLineNumber=3 EndCharacterOffset=33)" />
+    <Node Id="(@1 Type=ProgressBar)" Category="CodeSchema_Class" Bounds="452.726792882198,-208.734909548213,103.786666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="ProgressBar" Icon="Microsoft.VisualStudio.Class.Public" Label="ProgressBar" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/UI/ProgressBar.cs StartLineNumber=5 StartCharacterOffset=13 EndLineNumber=5 EndCharacterOffset=24)" UseManualLocation="True" />
     <Node Id="(@1 Type=ScrollNoStretch)" Category="CodeSchema_Class" Bounds="373.856812544086,131.876900086398,122.843333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="ScrollNoStretch" Icon="Microsoft.VisualStudio.Class.Public" Label="ScrollNoStretch" SourceLocation="(Assembly=&quot;file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Main Menu/ScrollNoStretch.cs&quot; StartLineNumber=5 StartCharacterOffset=13 EndLineNumber=5 EndCharacterOffset=28)" UseManualLocation="True" />
-    <Node Id="(@1 Type=SelfRightingObject)" Category="CodeSchema_Class" Bounds="123.897540104905,242.430359263112,139.976666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SelfRightingObject" Icon="Microsoft.VisualStudio.Class.Public" Label="SelfRightingObject" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Squishy/SelfRightingObject.cs StartLineNumber=2 StartCharacterOffset=13 EndLineNumber=2 EndCharacterOffset=31)" />
-    <Node Id="(@1 Type=Split)" Category="CodeSchema_Class" Bounds="801.90440677157,180.079413615463,64.3066666666673,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Split" Icon="Microsoft.VisualStudio.Class.Public" Label="Split" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Level/SpeedrunSplits/Split.cs StartLineNumber=6 StartCharacterOffset=13 EndLineNumber=6 EndCharacterOffset=18)" />
-    <Node Id="(@1 Type=Statistics)" Category="CodeSchema_Class" Bounds="62.9562909551668,298.416804547708,86.8366666666666,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="Statistics" Icon="Microsoft.VisualStudio.Class.Public" Label="Statistics" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Management/Statistics.cs StartLineNumber=4 StartCharacterOffset=20 EndLineNumber=4 EndCharacterOffset=30)" />
-    <Node Id="(@1 Type=Wave)" Category="CodeSchema_Class" Bounds="132.564206771572,186.430359263112,69.8700000000026,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Wave" Icon="Microsoft.VisualStudio.Class.Public" Label="Wave" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Level/Wave.cs StartLineNumber=4 StartCharacterOffset=13 EndLineNumber=4 EndCharacterOffset=17)" />
-    <Node Id="@10" Category="CodeSchema_Class" Bounds="522.465973438236,110.430359263112,88.4266666666663,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Controlls" Icon="Microsoft.VisualStudio.Class.Public" Label="Controlls" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Mechanics/Controlls.cs StartLineNumber=7 StartCharacterOffset=17 EndLineNumber=7 EndCharacterOffset=26)" />
-    <Node Id="@11" Category="CodeSchema_Class" Bounds="572.984306771567,-251.569640736888,129.763333333336,26" CodeSchemaProperty_IsPublic="True" CommonLabel="DeathConditions" Icon="Microsoft.VisualStudio.Class.Public" Label="DeathConditions" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Mechanics/Life/DeathConditions.cs StartLineNumber=6 StartCharacterOffset=17 EndLineNumber=6 EndCharacterOffset=32)" />
-    <Node Id="@12" Category="CodeSchema_Class" Bounds="286.32430677157,-116.569640736888,65.1299999999974,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Frog" Icon="Microsoft.VisualStudio.Class.Public" Label="Frog" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Frog.cs StartLineNumber=8 StartCharacterOffset=17 EndLineNumber=8 EndCharacterOffset=21)" />
-    <Node Id="@13" Category="CodeSchema_Class" Bounds="556.027640104902,-771.569640736888,161.803333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="FrogAnimationTriggers" Icon="Microsoft.VisualStudio.Class.Public" Label="FrogAnimationTriggers" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/VisualEffects/FrogAnimationTriggers.cs StartLineNumber=6 StartCharacterOffset=17 EndLineNumber=6 EndCharacterOffset=38)" />
-    <Node Id="@14" Category="CodeSchema_Class" Bounds="496.972640104902,54.430359263112,139.413333333334,26" CodeSchemaProperty_IsPublic="True" CommonLabel="FrogLevelControlls" Icon="Microsoft.VisualStudio.Class.Public" Label="FrogLevelControlls" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Level/FrogLevelControlls.cs StartLineNumber=4 StartCharacterOffset=17 EndLineNumber=4 EndCharacterOffset=35)" />
-    <Node Id="@15" Category="CodeSchema_Class" Bounds="578.545973438236,-828.569640736888,116.766666666666,26" CodeSchemaProperty_IsPublic="True" CommonLabel="ImageFadeout" Icon="Microsoft.VisualStudio.Class.Public" Label="ImageFadeout" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/VisualEffects/ImageFadeout.cs StartLineNumber=6 StartCharacterOffset=17 EndLineNumber=6 EndCharacterOffset=29)" />
-    <Node Id="@16" Category="CodeSchema_Class" Bounds="26.040873438238,17.506556565007,67.8566666666666,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Level" Icon="Microsoft.VisualStudio.Class.Public" Label="Level" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Level/Level.cs StartLineNumber=6 StartCharacterOffset=17 EndLineNumber=6 EndCharacterOffset=22)" />
-    <Node Id="@17" Category="CodeSchema_Class" Bounds="520.090973438235,-1.569640736888,93.1766666666663,26" CodeSchemaProperty_IsPublic="True" CommonLabel="LevelStats" Icon="Microsoft.VisualStudio.Class.Public" Label="LevelStats" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Stats.cs StartLineNumber=4 StartCharacterOffset=17 EndLineNumber=4 EndCharacterOffset=27)" />
-    <Node Id="@18" Category="CodeSchema_Class" Bounds="428.732640104902,-308.569640736888,112.373333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="LifeController" Icon="Microsoft.VisualStudio.Class.Public" Label="LifeController" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Mechanics/Life/LifeController.cs StartLineNumber=6 StartCharacterOffset=17 EndLineNumber=6 EndCharacterOffset=31)" />
-    <Node Id="@19" Category="CodeSchema_Class" Bounds="571.105973438235,-308.569640736888,133.52,26" CodeSchemaProperty_IsInternal="True" CommonLabel="LifeStateControlls" Icon="Microsoft.VisualStudio.Class.Internal" Label="LifeStateControlls" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Mechanics/Life/LifeStateControlls.cs StartLineNumber=7 StartCharacterOffset=10 EndLineNumber=7 EndCharacterOffset=28)" />
-    <Node Id="@2" Category="CodeSchema_Class" Bounds="293.874306771572,242.430359263112,88.8033333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Aligaytor" Icon="Microsoft.VisualStudio.Class.Public" Label="Aligaytor" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Aligaytor/Aligaytor.cs StartLineNumber=4 StartCharacterOffset=13 EndLineNumber=4 EndCharacterOffset=22)" />
-    <Node Id="@20" Category="CodeSchema_Class" Bounds="578.965973438236,-365.569640736888,117.799999999999,26" CodeSchemaProperty_IsPublic="True" CommonLabel="RespawnTimer" Icon="Microsoft.VisualStudio.Class.Public" Label="RespawnTimer" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Mechanics/Life/RespawnTimer.cs StartLineNumber=5 StartCharacterOffset=17 EndLineNumber=5 EndCharacterOffset=29)" />
-    <Node Id="@21" Category="CodeSchema_Class" Bounds="574.494306771569,-614.569640736888,75.743333333332,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SplitUI" Icon="Microsoft.VisualStudio.Class.Public" Label="SplitUI" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Level/Splits/SplitUI.cs StartLineNumber=7 StartCharacterOffset=17 EndLineNumber=7 EndCharacterOffset=24)" />
-    <Node Id="@22" Category="CodeSchema_Class" Bounds="421.454306771568,-614.569640736888,123.040000000001,26.0000000000001" CodeSchemaProperty_IsPublic="True" CommonLabel="SplitUIManager" Icon="Microsoft.VisualStudio.Class.Public" Label="SplitUIManager" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Level/Splits/SplitUIManager.cs StartLineNumber=5 StartCharacterOffset=17 EndLineNumber=5 EndCharacterOffset=31)" />
-    <Node Id="@23" Category="CodeSchema_Class" Bounds="415.527640104902,-828.569640736888,110.5,26" CodeSchemaProperty_IsPublic="True" CommonLabel="VfxController" Icon="Microsoft.VisualStudio.Class.Public" Label="VfxController" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/VisualEffects/VfxController.cs StartLineNumber=7 StartCharacterOffset=17 EndLineNumber=7 EndCharacterOffset=30)" />
-    <Node Id="@3" Category="CodeSchema_Class" Bounds="509.64930677157,-78.569640736888,114.059999999998,26" CodeSchemaProperty_IsPublic="True" CommonLabel="CameraTarget" Icon="Microsoft.VisualStudio.Class.Public" Label="CameraTarget" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Camera/CameraTarget.cs StartLineNumber=4 StartCharacterOffset=13 EndLineNumber=4 EndCharacterOffset=25)" />
-    <Node Id="@4" Category="CodeSchema_Class" Bounds="143.897640104904,-116.569640736888,112.426666666666,26" CodeSchemaProperty_IsPublic="True" CommonLabel="FrogManager" Icon="Microsoft.VisualStudio.Class.Public" Label="FrogManager" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/FrogManager.cs StartLineNumber=10 StartCharacterOffset=13 EndLineNumber=10 EndCharacterOffset=24)" />
-    <Node Id="@5" Category="CodeSchema_Class" Bounds="-98.0458932284282,99.4433846353113,60.01,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="GM" Icon="Microsoft.VisualStudio.Class.Public" Label="GM" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Management/GM.cs StartLineNumber=6 StartCharacterOffset=20 EndLineNumber=6 EndCharacterOffset=22)" />
-    <Node Id="@6" Category="CodeSchema_Class" Bounds="369.88803180207,186.430359263112,111.603333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SplitManager" Icon="Microsoft.VisualStudio.Class.Public" Label="SplitManager" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Level/SpeedrunSplits/SplitManager.cs StartLineNumber=5 StartCharacterOffset=13 EndLineNumber=5 EndCharacterOffset=25)" />
-    <Node Id="@7" Category="CodeSchema_Class" Bounds="563.482640104902,-885.569640736888,146.893333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="AirParticleController" Icon="Microsoft.VisualStudio.Class.Public" Label="AirParticleController" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/VisualEffects/AirParticles.cs StartLineNumber=6 StartCharacterOffset=17 EndLineNumber=6 EndCharacterOffset=38)" />
-    <Node Id="@9" Category="CodeSchema_Class" Bounds="499.572640104902,-134.569640736888,134.213333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="CameraController" Icon="Microsoft.VisualStudio.Class.Public" Label="CameraController" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Camera/CameraController.cs StartLineNumber=5 StartCharacterOffset=17 EndLineNumber=5 EndCharacterOffset=33)" />
-    <Node Id="Camera" Bounds="479.572640104902,-174.569640736888,174.213333333333,142" Group="Expanded" LayoutSettings="TopToBottom" />
-    <Node Id="Frog" Bounds="123.897640104904,-965.569640736888,648.006666666665,1122" Group="Expanded" LayoutSettings="LeftToRight" UseManualLocation="True" />
-    <Node Id="Life" Bounds="408.732640104902,-405.569640736888,315.893333333333,200" Group="Expanded" />
-    <Node Id="MainMenu" Bounds="-8.03589322842819,-37.4934434349929,100.5,25" Group="Collapsed" Label="Main Menu" />
-    <Node Id="SplitUI" Bounds="401.454306771568,-654.569640736888,268.783333333333,86.0000000000001" Group="Expanded" Label="SplitUI" />
-    <Node Id="Static" Category="Comment" Bounds="-17.0607922823475,298.503362260672,50,25.96" />
-    <Node Id="UI" Bounds="381.454306771568,-694.569640736888,370.450000000001,258" Group="Expanded" />
-    <Node Id="VFX" Bounds="395.527640104902,-925.569640736888,342.303333333333,200" Group="Expanded" />
+    <Node Id="(@1 Type=SelfRightingObject)" Category="CodeSchema_Class" Bounds="219.955572204771,332.101803548198,139.976666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SelfRightingObject" Icon="Microsoft.VisualStudio.Class.Public" Label="SelfRightingObject" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Squishy/SelfRightingObject.cs StartLineNumber=2 StartCharacterOffset=13 EndLineNumber=2 EndCharacterOffset=31)" />
+    <Node Id="(@1 Type=Statistics)" Category="CodeSchema_Class" Bounds="62.9449647082868,353.536803429568,86.8366666666666,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="Statistics" Icon="Microsoft.VisualStudio.Class.Public" Label="Statistics" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Management/Statistics.cs StartLineNumber=4 StartCharacterOffset=20 EndLineNumber=4 EndCharacterOffset=30)" />
+    <Node Id="(@1 Type=Wave)" Category="CodeSchema_Class" Bounds="219.948945424791,216.188387312322,69.8700000000027,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Wave" Icon="Microsoft.VisualStudio.Class.Public" Label="Wave" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Level/Wave.cs StartLineNumber=4 StartCharacterOffset=13 EndLineNumber=4 EndCharacterOffset=17)" />
+    <Node Id="@11" Category="CodeSchema_Class" Bounds="437.339569848905,-124.942184754342,134.213333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="CameraController" Icon="Microsoft.VisualStudio.Class.Public" Label="CameraController" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Camera/CameraController.cs StartLineNumber=5 StartCharacterOffset=17 EndLineNumber=5 EndCharacterOffset=33)" UseManualLocation="True" />
+    <Node Id="@12" Category="CodeSchema_Class" Bounds="708.406711137134,140.100601196289,88.4266666666663,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Controlls" Icon="Microsoft.VisualStudio.Class.Public" Label="Controlls" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Mechanics/Controlls.cs StartLineNumber=7 StartCharacterOffset=17 EndLineNumber=7 EndCharacterOffset=26)" />
+    <Node Id="@13" Category="CodeSchema_Class" Bounds="572.984306771567,-252.866589607398,129.763333333336,26" CodeSchemaProperty_IsPublic="True" CommonLabel="DeathConditions" Icon="Microsoft.VisualStudio.Class.Public" Label="DeathConditions" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Mechanics/Life/DeathConditions.cs StartLineNumber=6 StartCharacterOffset=17 EndLineNumber=6 EndCharacterOffset=32)" UseManualLocation="True" />
+    <Node Id="@14" Category="CodeSchema_Class" Bounds="503.098348913828,-27.8993663787842,65.1299999999974,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Frog" Icon="Microsoft.VisualStudio.Class.Public" Label="Frog" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Frog.cs StartLineNumber=8 StartCharacterOffset=17 EndLineNumber=8 EndCharacterOffset=21)" />
+    <Node Id="@15" Category="CodeSchema_Class" Bounds="576.93789414178,-480.261568847179,161.803333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="FrogAnimationTriggers" Icon="Microsoft.VisualStudio.Class.Public" Label="FrogAnimationTriggers" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/VisualEffects/FrogAnimationTriggers.cs StartLineNumber=6 StartCharacterOffset=17 EndLineNumber=6 EndCharacterOffset=38)" UseManualLocation="True" />
+    <Node Id="@16" Category="CodeSchema_Class" Bounds="618.228334468839,-159.899347395827,139.413333333334,26" CodeSchemaProperty_IsPublic="True" CommonLabel="FrogLevelControlls" Icon="Microsoft.VisualStudio.Class.Public" Label="FrogLevelControlls" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Level/FrogLevelControlls.cs StartLineNumber=4 StartCharacterOffset=17 EndLineNumber=4 EndCharacterOffset=35)" />
+    <Node Id="@17" Category="CodeSchema_Class" Bounds="599.456135922379,-537.261568847179,116.766666666666,26" CodeSchemaProperty_IsPublic="True" CommonLabel="ImageFadeout" Icon="Microsoft.VisualStudio.Class.Public" Label="ImageFadeout" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/VisualEffects/ImageFadeout.cs StartLineNumber=6 StartCharacterOffset=17 EndLineNumber=6 EndCharacterOffset=29)" UseManualLocation="True" />
+    <Node Id="@18" Category="CodeSchema_Class" Bounds="122.098876653891,148.404702540543,67.8566666666666,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Level" Icon="Microsoft.VisualStudio.Class.Public" Label="Level" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Level/Level.cs StartLineNumber=6 StartCharacterOffset=17 EndLineNumber=6 EndCharacterOffset=22)" />
+    <Node Id="@19" Category="CodeSchema_Class" Bounds="739.164981400806,-215.899447395827,93.1766666666663,26" CodeSchemaProperty_IsPublic="True" CommonLabel="LevelStats" Icon="Microsoft.VisualStudio.Class.Public" Label="LevelStats" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Stats.cs StartLineNumber=4 StartCharacterOffset=17 EndLineNumber=4 EndCharacterOffset=27)" />
+    <Node Id="@2" Category="CodeSchema_Class" Bounds="402.935367878193,335.037586471659,88.8033333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Aligaytor" Icon="Microsoft.VisualStudio.Class.Public" Label="Aligaytor" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Aligaytor/Aligaytor.cs StartLineNumber=4 StartCharacterOffset=13 EndLineNumber=4 EndCharacterOffset=22)" UseManualLocation="True" />
+    <Node Id="@20" Category="CodeSchema_Class" Bounds="428.732640104902,-309.866589607398,112.373333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="LifeController" Icon="Microsoft.VisualStudio.Class.Public" Label="LifeController" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Mechanics/Life/LifeController.cs StartLineNumber=6 StartCharacterOffset=17 EndLineNumber=6 EndCharacterOffset=31)" UseManualLocation="True" />
+    <Node Id="@21" Category="CodeSchema_Class" Bounds="571.105973438235,-309.866589607398,133.52,26" CodeSchemaProperty_IsInternal="True" CommonLabel="LifeStateControlls" Icon="Microsoft.VisualStudio.Class.Internal" Label="LifeStateControlls" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Mechanics/Life/LifeStateControlls.cs StartLineNumber=7 StartCharacterOffset=10 EndLineNumber=7 EndCharacterOffset=28)" UseManualLocation="True" />
+    <Node Id="@22" Category="CodeSchema_Class" Bounds="578.965973438235,-366.866589607398,117.799999999999,26" CodeSchemaProperty_IsPublic="True" CommonLabel="RespawnTimer" Icon="Microsoft.VisualStudio.Class.Public" Label="RespawnTimer" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Mechanics/Life/RespawnTimer.cs StartLineNumber=5 StartCharacterOffset=17 EndLineNumber=5 EndCharacterOffset=29)" UseManualLocation="True" />
+    <Node Id="@23" Category="CodeSchema_Class" Bounds="791.268309851327,-291.899703979492,75.743333333332,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SplitUI" Icon="Microsoft.VisualStudio.Class.Public" Label="SplitUI" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Level/Splits/SplitUI.cs StartLineNumber=7 StartCharacterOffset=17 EndLineNumber=7 EndCharacterOffset=24)" />
+    <Node Id="@24" Category="CodeSchema_Class" Bounds="638.228309851326,-291.89972205403,123.040000000001,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SplitUIManager" Icon="Microsoft.VisualStudio.Class.Public" Label="SplitUIManager" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Level/Splits/SplitUIManager.cs StartLineNumber=5 StartCharacterOffset=17 EndLineNumber=5 EndCharacterOffset=31)" />
+    <Node Id="@25" Category="CodeSchema_Class" Bounds="436.437873186376,-537.261568847179,110.5,26" CodeSchemaProperty_IsPublic="True" CommonLabel="VfxController" Icon="Microsoft.VisualStudio.Class.Public" Label="VfxController" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/VisualEffects/VfxController.cs StartLineNumber=7 StartCharacterOffset=17 EndLineNumber=7 EndCharacterOffset=30)" UseManualLocation="True" />
+    <Node Id="@3" Category="CodeSchema_Class" Bounds="447.416236515573,-68.9420836648647,114.059999999998,26" CodeSchemaProperty_IsPublic="True" CommonLabel="CameraTarget" Icon="Microsoft.VisualStudio.Class.Public" Label="CameraTarget" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Camera/CameraTarget.cs StartLineNumber=4 StartCharacterOffset=13 EndLineNumber=4 EndCharacterOffset=25)" UseManualLocation="True" />
+    <Node Id="@4" Category="CodeSchema_Class" Bounds="360.67167237981,-27.8993633389472,112.426666666666,26" CodeSchemaProperty_IsPublic="True" CommonLabel="FrogManager" Icon="Microsoft.VisualStudio.Class.Public" Label="FrogManager" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/FrogManager.cs StartLineNumber=10 StartCharacterOffset=13 EndLineNumber=10 EndCharacterOffset=24)" />
+    <Node Id="@5" Category="CodeSchema_Class" Bounds="-10.654656039442,173.753763296156,60.01,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="GM" Icon="Microsoft.VisualStudio.Class.Public" Label="GM" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Management/GM.cs StartLineNumber=6 StartCharacterOffset=20 EndLineNumber=6 EndCharacterOffset=22)" />
+    <Node Id="@6" Category="CodeSchema_Class" Bounds="521.761381207744,335.04063177045,127.83,26.0000000000001" CodeSchemaProperty_IsPublic="True" CommonLabel="RestingAligaytor" Icon="Microsoft.VisualStudio.Class.Public" Label="RestingAligaytor" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Aligaytor/RestingAligaytor.cs StartLineNumber=5 StartCharacterOffset=13 EndLineNumber=5 EndCharacterOffset=29)" UseManualLocation="True" />
+    <Node Id="@7" Category="CodeSchema_Class" Bounds="795.017746728416,-490.84531025212,64.3066666666673,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Split" Icon="Microsoft.VisualStudio.Class.Public" Label="Split" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Level/SpeedrunSplits/Split.cs StartLineNumber=6 StartCharacterOffset=13 EndLineNumber=6 EndCharacterOffset=18)" UseManualLocation="True" />
+    <Node Id="@8" Category="CodeSchema_Class" Bounds="653.414426822818,-490.84531025212,111.603333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SplitManager" Icon="Microsoft.VisualStudio.Class.Public" Label="SplitManager" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Level/SpeedrunSplits/SplitManager.cs StartLineNumber=5 StartCharacterOffset=13 EndLineNumber=5 EndCharacterOffset=25)" UseManualLocation="True" />
+    <Node Id="@9" Category="CodeSchema_Class" Bounds="584.392894141779,-594.261568847179,146.893333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="AirParticleController" Icon="Microsoft.VisualStudio.Class.Public" Label="AirParticleController" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/VisualEffects/AirParticles.cs StartLineNumber=6 StartCharacterOffset=17 EndLineNumber=6 EndCharacterOffset=38)" UseManualLocation="True" />
+    <Node Id="Aligaytor" Bounds="389.932338871438,332.101803388198,87.8033333333333,25" Group="Collapsed" UseManualLocation="True" />
+    <Node Id="Camera" Bounds="712.405014887007,84.6006331839521,80.4300000000001,25" Group="Collapsed" LayoutSettings="TopToBottom" />
+    <Node Id="Frog" Bounds="340.67167237981,-411.900022054031,586.339970804849,598.00072325032" Group="Expanded" LayoutSettings="LeftToRight" UseManualLocation="True" />
+    <Node Id="Level" Bounds="598.228249223071,-371.899922054031,308.783393961588,258.000674658203" Group="Expanded" />
+    <Node Id="Life" Bounds="723.325014887007,28.6006331839521,58.5900000000001,25" Group="Collapsed" />
+    <Node Id="MainMenu" Bounds="79.3553722047715,93.4047022205435,100.5,25" Group="Collapsed" Label="Main Menu" />
+    <Node Id="SplitUI" Bounds="618.228309851326,-331.89982205403,268.783333333333,86.0002180745383" Group="Expanded" Label="Splits" />
+    <Node Id="Splits" Bounds="633.414412291704,-530.845383100667,245.91000032,86.0002001599998" Group="Expanded" Label="Splits" UseManualLocation="True" />
+    <Node Id="Static" Category="Comment" Bounds="-17.0551352917137,353.536803429568,50,25.96" />
+    <Node Id="UI" Bounds="726.901681553673,-27.3993668160479,51.4366666666667,25" Group="Collapsed" />
+    <Node Id="VFX" Bounds="722.425014887007,-83.3993668160479,60.3900000000001,25" Group="Collapsed" />
   </Nodes>
   <Links>
-    <Link Source="@12" Target="@10" Bounds="329.877685546875,-90.5696411132813,193.095642089844,197.805145263672" />
-    <Link Source="@12" Target="@14" Bounds="337.727142333984,-90.5696411132813,202.706939697266,139.888168334961" />
-    <Link Source="@12" Target="@17" Bounds="346.900360107422,-90.5696411132813,183.604278564453,85.2112278938293" />
-    <Link Source="@12" Target="@18" Bounds="406.644737248047,-105.697601271972,137.659887523984,159.192281343475" />
-    <Link Source="@12" Target="@22" Bounds="399.686462030765,-409.957631418948,152.701869645119,463.452311490451" />
-    <Link Source="@12" Target="Camera" Bounds="351.454315185547,-103.569641113281,119.118316650391,0" />
-    <Link Source="@12" Target="UI" Bounds="-8937.1103515625,-9791.80859375,140.734375,61.1142578125" />
-    <Link Source="@12" Target="VFX" Bounds="320.084197998047,-720.61328125,87.5130920410156,604.043640136719" />
-    <Link Source="@16" Target="(@1 Type=SelfRightingObject)" Bounds="64.1970443725586,43.5065574645996,93.2480545043945,195.163013458252" />
-    <Link Source="@16" Target="(@1 Type=Wave)" Bounds="65.1091156005859,43.5065574645996,73.4572448730469,138.227909088135" />
-    <Link Source="@16" Target="@2" Bounds="65.1091156005859,43.5065574645996,244.887069702148,194.148731231689" />
-    <Link Source="@16" Target="@4" Bounds="-9021.10149276755,-10114.1072777344,46.4376246258744,238.650899834087" />
-    <Link Source="@16" Target="@6" Bounds="65.1091156005859,43.5065574645996,295.828475952148,149.101261138916" />
-    <Link Source="@18" Target="@11" Bounds="519.801879882813,-282.569641113281,74.7481689453125,27.8570556640625" />
-    <Link Source="@18" Target="@19" Bounds="541.10595703125,-295.569641113281,21,0" />
-    <Link Source="@18" Target="@20" Bounds="519.801879882813,-336.426696777344,74.7481689453125,27.8570556640625" />
-    <Link Source="@2" Target="(@1 Type=RestingAligaytor)" Bounds="382.677640104905,246.142141183551,119.828184314842,6.77702805758088" />
-    <Link Source="@22" Target="@21" Bounds="544.494323730469,-601.569641113281,21,0" />
-    <Link Source="@23" Target="@13" Bounds="508.671875,-802.569641113281,81.8502197265625,28.0795288085938" />
-    <Link Source="@23" Target="@15" Bounds="526.027648925781,-815.569641113281,43.518310546875,0" />
-    <Link Source="@23" Target="@7" Bounds="508.671875,-856.649169921875,81.8502197265625,28.0795288085938" />
-    <Link Source="@4" Target="@12" Bounds="256.324310302734,-103.569641113281,21,0" />
-    <Link Source="@5" Target="(@1 Type=GameTimer)" Bounds="-62.1535530090332,125.443382263184,72.9899091720581,112.723564147949" />
-    <Link Source="@5" Target="(@1 Type=OnQuitGame)" Bounds="-50.8088305384247,125.443384635311,73.6561037806671,55.5667285091845" />
-    <Link Source="@5" Target="@16" Bounds="-47.7309625270332,48.3584752051627,79.8100746471812,51.0849094301486" />
-    <Link Source="@5" Target="MainMenu" Bounds="-57.6119927646689,-5.47324361472316,84.1665440779111,104.916628250034" />
-    <Link Source="@6" Target="(@1 Type=Split)" Bounds="481.491365135404,193.719413922784,311.414129831951,4.84311701902138" />
-    <Link Source="@9" Target="@3" Bounds="566.679321289063,-108.569641113281,0,21" />
+    <Link Source="@11" Target="@3" Bounds="504.446258544922,-99.9421463012695,0,21.0000457763672" />
+    <Link Source="@14" Target="@12" Bounds="552.412536621094,-1.19187998771667,176.264038085938,137.408768415451" />
+    <Link Source="@14" Target="@16" Bounds="377.780149495381,-346.470248928547,190.889542369521,325.735307909164" />
+    <Link Source="@14" Target="@19" Bounds="376.030051567615,-402.03226234476,172.11900018802,381.297321325377" />
+    <Link Source="@14" Target="@20" Bounds="406.644737248047,-105.697601271972,137.659887523984,159.192281343475" />
+    <Link Source="@14" Target="@24" Bounds="399.686462030765,-409.957631418948,152.701869645119,463.452311490451" />
+    <Link Source="@14" Target="Camera" Bounds="560.806701660156,-1.19187998771667,159.56298828125,82.9261863231659" />
+    <Link Source="@14" Target="UI" Bounds="568.189208984375,-14.279411315918,149.67333984375,0" />
+    <Link Source="@14" Target="VFX" Bounds="568.189208984375,-60.5479202270508,145.490783691406,37.8063640594482" />
+    <Link Source="@18" Target="(@1 Type=SelfRightingObject)" Bounds="173.455078125,174.404663085938,102.267913818359,150.316284179688" />
+    <Link Source="@18" Target="(@1 Type=Wave)" Bounds="174.987411031986,174.404659109213,53.517831975799,36.6943200221859" />
+    <Link Source="@18" Target="@2" Bounds="170.411517302335,179.596411472371,247.869666486063,150.779321400342" />
+    <Link Source="@18" Target="@4" Bounds="-9021.10149276755,-10114.1072777344,46.4376246258744,238.650899834087" />
+    <Link Source="@18" Target="@8" Bounds="166.938528974369,-479.189371210549,526.760069034754,627.594030319762" />
+    <Link Source="@2" Target="@6" Bounds="491.749664306641,348.037200927734,21.0002136230469,0" />
+    <Link Source="@20" Target="@13" Bounds="519.801879882813,-284.866577148438,74.7481689453125,27.8570861816406" />
+    <Link Source="@20" Target="@21" Bounds="541.10595703125,-297.866577148438,21,0" />
+    <Link Source="@20" Target="@22" Bounds="519.801879882813,-338.723663330078,74.7481689453125,27.8570556640625" />
+    <Link Source="@24" Target="@23" Bounds="761.229187011719,-280.939025878906,21,0" />
+    <Link Source="@25" Target="@15" Bounds="529.582092285156,-512.261535644531,81.8502197265625,28.0795593261719" />
+    <Link Source="@25" Target="@17" Bounds="546.937866210938,-525.261596679688,43.518310546875,0" />
+    <Link Source="@25" Target="@9" Bounds="529.582092285156,-566.341125488281,81.8502197265625,28.0795288085938" />
+    <Link Source="@4" Target="@14" Bounds="473.059204101563,-14.279411315918,21,0" />
+    <Link Source="@5" Target="(@1 Type=GameTimer)" Bounds="35.9973025922129,199.753768920898,70.5819869560757,55.1121669623724" />
+    <Link Source="@5" Target="(@1 Type=OnQuitGame)" Bounds="49.353241577148,194.729858080955,27.6977735156935,7.36276990822324" />
+    <Link Source="@5" Target="@18" Bounds="49.353241577148,169.338357831397,63.8965364927782,11.8505457075523" />
+    <Link Source="@5" Target="MainMenu" Bounds="37.0768341199528,123.726574414446,68.2239805741958,50.0271945064529" />
+    <Link Source="@8" Target="@7" Bounds="765.017754923502,-477.845336914063,21,0" />
+    <Link Source="Aligaytor" Target="@2" Category="Contains" />
+    <Link Source="Aligaytor" Target="@6" Category="Contains" />
+    <Link Source="Camera" Target="@11" Category="Contains" />
     <Link Source="Camera" Target="@3" Category="Contains" />
-    <Link Source="Camera" Target="@9" Category="Contains" />
-    <Link Source="Frog" Target="@10" Category="Contains" />
     <Link Source="Frog" Target="@12" Category="Contains" />
     <Link Source="Frog" Target="@14" Category="Contains" />
-    <Link Source="Frog" Target="@17" Category="Contains" />
     <Link Source="Frog" Target="@4" Category="Contains" />
     <Link Source="Frog" Target="Camera" Category="Contains" />
+    <Link Source="Frog" Target="Level" Category="Contains" />
     <Link Source="Frog" Target="Life" Category="Contains" />
     <Link Source="Frog" Target="UI" Category="Contains" />
     <Link Source="Frog" Target="VFX" Category="Contains" />
-    <Link Source="Life" Target="@11" Category="Contains" />
-    <Link Source="Life" Target="@18" Category="Contains" />
-    <Link Source="Life" Target="@19" Category="Contains" />
+    <Link Source="Level" Target="(@1 @10 Type=FrogTime)" Category="Contains" />
+    <Link Source="Level" Target="@16" Category="Contains" />
+    <Link Source="Level" Target="@19" Category="Contains" />
+    <Link Source="Level" Target="SplitUI" Category="Contains" />
+    <Link Source="Life" Target="@13" Category="Contains" />
     <Link Source="Life" Target="@20" Category="Contains" />
+    <Link Source="Life" Target="@21" Category="Contains" />
+    <Link Source="Life" Target="@22" Category="Contains" />
     <Link Source="MainMenu" Target="(@1 Type=Changelog)" Category="Contains" />
     <Link Source="MainMenu" Target="(@1 Type=LoadLevel)" Category="Contains" />
     <Link Source="MainMenu" Target="(@1 Type=MenuManager)" Category="Contains" />
     <Link Source="MainMenu" Target="(@1 Type=ScrollNoStretch)" Category="Contains" />
-    <Link Source="SplitUI" Target="@21" Category="Contains" />
-    <Link Source="SplitUI" Target="@22" Category="Contains" />
-    <Link Source="Static" Target="(@1 Type=PhysicsUtil1D)" Bounds="32.3817529321235,323.847197117839,52.7063355150435,26.5858772943966" />
-    <Link Source="Static" Target="(@1 Type=Statistics)" Bounds="32.9161102987764,311.475204053911,21.000102063636,0.0142210542796875" />
+    <Link Source="SplitUI" Target="@23" Category="Contains" />
+    <Link Source="SplitUI" Target="@24" Category="Contains" />
+    <Link Source="Splits" Target="@7" Category="Contains" />
+    <Link Source="Splits" Target="@8" Category="Contains" />
+    <Link Source="Static" Target="(@1 Type=PhysicsUtil1D)" Bounds="32.4105073416334,378.902153924397,52.7063355150436,26.5858772943967" />
+    <Link Source="Static" Target="(@1 Type=Statistics)" Bounds="32.9448647082863,366.526988596033,21.0001025053408,0.0156692659617192" />
     <Link Source="UI" Target="(@1 Type=ComboCounter)" Category="Contains" />
     <Link Source="UI" Target="(@1 Type=DeathsAtLocationCounter)" Category="Contains" />
     <Link Source="UI" Target="(@1 Type=LevelEndScreen)" Category="Contains" />
     <Link Source="UI" Target="(@1 Type=ProgressBar)" Category="Contains" />
-    <Link Source="UI" Target="SplitUI" Category="Contains" />
-    <Link Source="VFX" Target="@13" Category="Contains" />
     <Link Source="VFX" Target="@15" Category="Contains" />
-    <Link Source="VFX" Target="@23" Category="Contains" />
-    <Link Source="VFX" Target="@7" Category="Contains" />
+    <Link Source="VFX" Target="@17" Category="Contains" />
+    <Link Source="VFX" Target="@25" Category="Contains" />
+    <Link Source="VFX" Target="@9" Category="Contains" />
   </Links>
   <Categories>
     <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Classes" />
@@ -156,24 +166,26 @@
     <Alias n="3" Id="(@1 Type=CameraTarget)" />
     <Alias n="4" Id="(@1 Type=FrogManager)" />
     <Alias n="5" Id="(@1 Type=GM)" />
-    <Alias n="6" Id="(@1 Type=SplitManager)" />
-    <Alias n="7" Id="(@1 Namespace=FrogScripts.Vfx Type=AirParticleController)" />
-    <Alias n="8" Id="Namespace=FrogScripts" />
-    <Alias n="9" Id="(@1 @8 Type=CameraController)" />
-    <Alias n="10" Id="(@1 @8 Type=Controlls)" />
-    <Alias n="11" Id="(@1 Namespace=FrogScripts.Life Type=DeathConditions)" />
-    <Alias n="12" Id="(@1 @8 Type=Frog)" />
-    <Alias n="13" Id="(@1 @8 Type=FrogAnimationTriggers)" />
-    <Alias n="14" Id="(@1 @8 Type=FrogLevelControlls)" />
-    <Alias n="15" Id="(@1 Namespace=FrogScripts.Vfx Type=ImageFadeout)" />
-    <Alias n="16" Id="(@1 Namespace=LevelScripts Type=Level)" />
-    <Alias n="17" Id="(@1 @8 Type=LevelStats)" />
-    <Alias n="18" Id="(@1 Namespace=FrogScripts.Life Type=LifeController)" />
-    <Alias n="19" Id="(@1 Namespace=FrogScripts.Life Type=LifeStateControlls)" />
-    <Alias n="20" Id="(@1 @8 Type=RespawnTimer)" />
-    <Alias n="21" Id="(@1 Namespace=FrogScripts.UI Type=SplitUI)" />
-    <Alias n="22" Id="(@1 Namespace=Assets.Scripts.Characters.Frog.Level.Splits Type=SplitUIManager)" />
-    <Alias n="23" Id="(@1 Namespace=FrogScripts.Vfx Type=VfxController)" />
+    <Alias n="6" Id="(@1 Type=RestingAligaytor)" />
+    <Alias n="7" Id="(@1 Type=Split)" />
+    <Alias n="8" Id="(@1 Type=SplitManager)" />
+    <Alias n="9" Id="(@1 Namespace=FrogScripts.Vfx Type=AirParticleController)" />
+    <Alias n="10" Id="Namespace=FrogScripts" />
+    <Alias n="11" Id="(@1 @10 Type=CameraController)" />
+    <Alias n="12" Id="(@1 @10 Type=Controlls)" />
+    <Alias n="13" Id="(@1 Namespace=FrogScripts.Life Type=DeathConditions)" />
+    <Alias n="14" Id="(@1 @10 Type=Frog)" />
+    <Alias n="15" Id="(@1 @10 Type=FrogAnimationTriggers)" />
+    <Alias n="16" Id="(@1 @10 Type=FrogLevelControlls)" />
+    <Alias n="17" Id="(@1 Namespace=FrogScripts.Vfx Type=ImageFadeout)" />
+    <Alias n="18" Id="(@1 Namespace=LevelScripts Type=Level)" />
+    <Alias n="19" Id="(@1 @10 Type=LevelStats)" />
+    <Alias n="20" Id="(@1 Namespace=FrogScripts.Life Type=LifeController)" />
+    <Alias n="21" Id="(@1 Namespace=FrogScripts.Life Type=LifeStateControlls)" />
+    <Alias n="22" Id="(@1 @10 Type=RespawnTimer)" />
+    <Alias n="23" Id="(@1 Namespace=FrogScripts.UI Type=SplitUI)" />
+    <Alias n="24" Id="(@1 Namespace=Assets.Scripts.Characters.Frog.Level.Splits Type=SplitUIManager)" />
+    <Alias n="25" Id="(@1 Namespace=FrogScripts.Vfx Type=VfxController)" />
   </IdentifierAliases>
   <Styles>
     <Style TargetType="Node" GroupLabel="Comment" ValueLabel="Has comment">
@@ -186,7 +198,7 @@
     </Style>
   </Styles>
   <Paths>
-    <Path Id="611926dd-aa26-534d-72de-d92ad8558e30.OutputPath" Value="D:\Users\Isaac\Personal\GameDev\Frog-Jam\Temp\bin\Debug\FrogJam.dll" />
-    <Path Id="611926dd-aa26-534d-72de-d92ad8558e30.OutputPathUri" Value="file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Temp/bin/Debug/FrogJam.dll" />
+    <Path Id="611926dd-aa26-534d-72de-d92ad8558e30.OutputPath" Value="D:\Users\Isaac\Personal\GameDev\Frog-Jam\Temp\Bin\Debug\FrogJam.dll" />
+    <Path Id="611926dd-aa26-534d-72de-d92ad8558e30.OutputPathUri" Value="file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Temp/Bin/Debug/FrogJam.dll" />
   </Paths>
 </DirectedGraph>
