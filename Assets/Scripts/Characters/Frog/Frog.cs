@@ -24,6 +24,7 @@ namespace FrogScripts
         [HideInInspector] public List<INotifyOnSetback> toNotifyOnSetback = new List<INotifyOnSetback>();
         [HideInInspector] public List<INotifyOnRestart> toNotifyOnRestart = new List<INotifyOnRestart>();
         [HideInInspector] public List<INotifyOnAnyRespawn> toNotifyOnAnyRespawn = new List<INotifyOnAnyRespawn>();
+        [HideInInspector] public List<INotifyOnEndLevel> toNotifyOnEndLevel = new List<INotifyOnEndLevel>();
 
         [Header("Player UI layer")]
         [SerializeField] public string UILayer;
@@ -98,6 +99,15 @@ namespace FrogScripts
         public void UnsubscribeOnAnyRespawn(INotifyOnAnyRespawn subscriber)
         {
             toNotifyOnAnyRespawn.Remove(subscriber);
+        }
+
+        public void SubscribeOnEndLevel(INotifyOnEndLevel subscriber)
+        {
+            toNotifyOnEndLevel.Add(subscriber);
+        }
+        public void UnsubscribeOnEndLevel(INotifyOnEndLevel subscriber)
+        {
+            toNotifyOnEndLevel.Remove(subscriber);
         }
         #endregion
     }

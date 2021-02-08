@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 namespace FrogScripts
 {
-
-    public class SplitEffect : MonoBehaviour
+    public class SplitEffect : MonoBehaviour, INotifyOnEndLevel
     {
         [SerializeField] Text bestTimeText;
         SplitEffectsManager SplitFXMngr;
@@ -20,17 +19,26 @@ namespace FrogScripts
         float splitXPos;
         public bool CharacterIsPast => CharacterTransform.position.x > splitXPos;
 
+        string splitName;
 
         public virtual void Setup(Split split, SplitEffectsManager SplitFXMngr)
         {
             split.AddSplitEffect(this);
             this.SplitFXMngr = SplitFXMngr;
+            Frog frog = SplitFXMngr.frog;
 
-            CharacterTransform = SplitFXMngr.frog.transform;
-            CharacterInstanceID = SplitFXMngr.frog.gameObject.GetInstanceID();
+            CharacterTransform = frog.transform;
+            CharacterInstanceID = frog.gameObject.GetInstanceID();
 
             splitXPos = split.transform.position.x;
+            splitName = split.SplitName;
+
+            if(split is SplitEnd)
+                frog.SubscribeOnEndLevel(this);
+                //bit messy but its only 3 lines instead of an entire new class to deal with
         }
+
+        public void OnEndLevel() => ReachedSplit();
 
         bool FirstTimeHere => BestTime == 0;
 
@@ -64,8 +72,7 @@ namespace FrogScripts
                 { {"Time", SplitFXMngr.CurrentSplitTime }
                 };
 
-            Analytics.CustomEvent("First Time at " + name, info);
+            Analytics.CustomEvent("First Time at " + splitName, info);
         }
-
     }
 }

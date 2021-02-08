@@ -71,7 +71,9 @@ namespace FrogScripts
             {
                 ++i;
 
-                if(i > 0)
+                bool notFirstInList = i > 0;
+
+                if (notFirstInList)
                 {
                     SplitEffect previousSplit = splitEffects[i - 1];
 

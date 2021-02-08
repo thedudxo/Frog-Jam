@@ -832,6 +832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathcounter: {fileID: 1687181907}
+  level: {fileID: 1188860045}
 --- !u!1001 &185309246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4135,7 +4136,6 @@ GameObject:
   - component: {fileID: 881157231}
   - component: {fileID: 881157234}
   - component: {fileID: 881157233}
-  - component: {fileID: 881157232}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -4163,23 +4163,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1.965929, y: -3.7914312}
   m_SizeDelta: {x: 4.25, y: 3.99}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &881157232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881157230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &881157233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5864,6 +5847,7 @@ MonoBehaviour:
   startLength: 15
   wave: {fileID: 8322174571285801742}
   splitManager: {fileID: 1237552537}
+  frogManager: {fileID: 1249019146}
 --- !u!1 &1191325648
 GameObject:
   m_ObjectHideFlags: 0
@@ -5999,22 +5983,22 @@ PrefabInstance:
     - target: {fileID: 6311799612257047874, guid: db98ff9b47d6e5d4d981d80fa72237aa,
         type: 3}
       propertyPath: m_Size.x
-      value: 2.7054176
+      value: 1.6496925
       objectReference: {fileID: 0}
     - target: {fileID: 6311799612257047874, guid: db98ff9b47d6e5d4d981d80fa72237aa,
         type: 3}
       propertyPath: m_Size.y
-      value: 8.784
+      value: 8.001307
       objectReference: {fileID: 0}
     - target: {fileID: 6311799612257047874, guid: db98ff9b47d6e5d4d981d80fa72237aa,
         type: 3}
       propertyPath: m_Offset.x
-      value: -1.0104427
+      value: -0.9922428
       objectReference: {fileID: 0}
     - target: {fileID: 6311799612257047874, guid: db98ff9b47d6e5d4d981d80fa72237aa,
         type: 3}
       propertyPath: m_Offset.y
-      value: 1.5209007
+      value: 1.9122477
       objectReference: {fileID: 0}
     - target: {fileID: 6311799612257047875, guid: db98ff9b47d6e5d4d981d80fa72237aa,
         type: 3}
@@ -6262,6 +6246,7 @@ MonoBehaviour:
   startLength: 15
   wave: {fileID: 8322174571285801742}
   splitManager: {fileID: 0}
+  frogManager: {fileID: 0}
 --- !u!4 &1232224841 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4487804159730660, guid: afe1246e1dbcdba4bad9b95b9c7a0a07,
