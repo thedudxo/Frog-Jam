@@ -35,7 +35,6 @@ namespace FrogScripts {
         public void RestartLevel()
         {
             levelEndScreen.Disable();
-            GM.gameState = GM.GameState.playingLevel;
             playingLevel = true;
             frog.RestartLevel();
         }

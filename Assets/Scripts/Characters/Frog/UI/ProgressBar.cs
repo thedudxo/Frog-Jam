@@ -11,7 +11,6 @@ public class ProgressBar : MonoBehaviour
 
     private void Start()
     {
-        GM.progressBar = this; //referenced by analitics when quit game, should probably be moved
     }
 
     void Update()

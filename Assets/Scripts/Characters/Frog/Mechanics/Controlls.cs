@@ -69,9 +69,6 @@ namespace FrogScripts
 
         void Update()
         {
-
-            if (GM.gameState != GM.GameState.playingLevel) { return; }
-
             //can the frog jump?
             groundedBoxCenter = groundDetectionBox.position;
             if (IsGrounded)
