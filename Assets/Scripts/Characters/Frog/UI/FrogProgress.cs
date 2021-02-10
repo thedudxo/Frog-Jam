@@ -4,21 +4,24 @@ using UnityEngine.UI;
 using LevelScripts;
 
 namespace FrogScripts {
-    public class FrogProgress : MonoBehaviour
+    public class FrogProgress : MonoBehaviour , INotifyOnAnyRespawn
     {
         [SerializeField] Frog frog;
 
         [SerializeField] Slider playerProgressBar;
         [SerializeField] Slider progressLost;
-        const float progressLostDecaySpeed = 0.005f;
+        const float progressLostDecaySpeed = 0.002f;
         [SerializeField] Slider personalBest;
+        [SerializeField] Slider waveProgressBar;
 
         Level level;
-
+        Transform waveTransform;
 
         private void Start()
         {
             level = frog.currentLevel;
+            waveTransform = level.wave.transform;
+            frog.SubscribeOnAnyRespawn(this);
         }
 
         private void Update()
@@ -29,22 +32,35 @@ namespace FrogScripts {
              */
 
 
-            float frogPosX = frog.transform.position.x;
-            playerProgressBar.value = (frogPosX - level.startLength) / (level.end - level.startLength);
+            PlayerProgress();
+            WaveProgress();
+            LooseProgress();
 
-            //update looseProgressBar
-            if (progressLost.gameObject.activeInHierarchy)
+            void PlayerProgress()
             {
-                progressLost.value -= progressLostDecaySpeed;
+                float frogPosX = frog.transform.position.x;
+                playerProgressBar.value = (frogPosX - level.startLength) / (level.end - level.startLength);
+            }
 
-                if (progressLost.value <= playerProgressBar.value)
+            void WaveProgress()
+            {
+                float wavePosX = waveTransform.position.x;
+                waveProgressBar.value = (wavePosX - level.startLength) / (level.end - level.startLength);
+            }
+
+            void LooseProgress()
+            {
+                if (progressLost.gameObject.activeInHierarchy)
                 {
-                    progressLost.gameObject.SetActive(false);
+                    progressLost.value -= progressLostDecaySpeed;
+
+                    if (progressLost.value <= playerProgressBar.value)
+                        progressLost.gameObject.SetActive(false);
                 }
             }
         }
 
-        public void FrogRespawned()
+        public void OnAnyRespawn()
         {
             CheckPersonalBest();
             LooseProgress();
@@ -53,26 +69,17 @@ namespace FrogScripts {
         void CheckPersonalBest()
         {
             if (!personalBest.gameObject.activeInHierarchy)
-            {
                 personalBest.gameObject.SetActive(true);
 
-            }
 
             if (personalBest.value < playerProgressBar.value)
-            {
                 personalBest.value = playerProgressBar.value;
-            }
         }
 
         void LooseProgress()
         {
             progressLost.gameObject.SetActive(true);
             progressLost.value = playerProgressBar.value;
-        }
-
-        public float GetPersonalBest()
-        {
-            return personalBest.value;
         }
     }
 }

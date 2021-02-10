@@ -102,7 +102,6 @@ namespace FrogScripts
                 animator.SetBool("ChargingJump", true);
             }
 
-
             if (Input.GetKey(jumpKey))
             {
                 jumpKeyTime += Time.deltaTime;
