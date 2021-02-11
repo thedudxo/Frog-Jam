@@ -35,13 +35,15 @@ namespace FrogScripts {
         public void RestartLevel()
         {
             levelEndScreen.Disable();
-            GM.gameState = GM.GameState.playingLevel;
             playingLevel = true;
             frog.RestartLevel();
         }
 
         public void FinishLevel()
         {
+            foreach (INotifyOnEndLevel subscriber in frog.toNotifyOnEndLevel)
+                subscriber.OnEndLevel();
+
             levelStats.CheckForPBTime();
             playingLevel = false;
             EnableEndScreen();

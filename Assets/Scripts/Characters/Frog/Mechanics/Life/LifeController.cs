@@ -19,14 +19,11 @@ namespace FrogScripts.Life
         }
 
         bool alive = true;
-        const GM.GameState finishedLevel = GM.GameState.finishedLevel;
         DeathType deathType = DeathType.none;
 
 
         public void Update()
         {
-            if (GM.gameState == finishedLevel) { return; }
-
             switch (alive)
             {
                 case true:

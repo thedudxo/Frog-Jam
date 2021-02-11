@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using FrogScripts;
+using LevelScripts;
 
 public class DeathsAtLocationCounter : MonoBehaviour, INotifyOnDeath
 {
     private int deaths = 0;
     [SerializeField] Text deathcounter;
+    [SerializeField] Level level;
 
     void INotifyOnDeath.OnDeath()
     {
@@ -29,17 +31,13 @@ public class DeathsAtLocationCounter : MonoBehaviour, INotifyOnDeath
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == GM.playerTag)
-        {
             collision.GetComponent<Frog>().UnscubscribeOnDeath(this);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(GM.playerTag))
-        {
             collision.GetComponent<Frog>().SubscribeOnDeath(this);
-        }
     }
 
    

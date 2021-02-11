@@ -17,6 +17,7 @@ namespace LevelScripts
         [Header("Components")]
         [SerializeField] public GameObject wave;
         [SerializeField] public SplitManager splitManager;
+        [SerializeField] public FrogManager frogManager;
 
         private void OnValidate()
         {

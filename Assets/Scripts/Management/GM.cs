@@ -8,7 +8,6 @@ public static class GM {
 
     public delegate void VoidBoolDelg(bool b);
 
-    public static ProgressBar progressBar; //referenced by analitics when quit game, should probably be moved
     public static LevelScripts.Level currentLevel;
     public static AudioManager audioManager;
     public static GameMusic gameMusic;
@@ -19,15 +18,6 @@ public static class GM {
 
     public const string playerTag = "Phill";
     public const string enemyAligator = "EnemyAligator";
-
-    public enum GameState
-    {
-        playingLevel,
-        finishedLevel
-    }
-
-    public static GameState gameState = GameState.playingLevel;
-
 
     public static void QuitToMenu()
     {

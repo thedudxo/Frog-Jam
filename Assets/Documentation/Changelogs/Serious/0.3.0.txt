@@ -1,0 +1,56 @@
+0.3 - Multiplayer
+
+===============
+
+New Features:
+
+ - Split screen multiplayer
+
+ - Frogs have rotation physics, will try to remain upright.
+ - Frogs are now slightly slippery. This allows chaining jumps for extra speed and distance
+ - Tapping the jump key will always result in the smallest possible jump
+ - Jumping animations
+ - Jumping Sounds
+ - Air particles when going fast
+
+ - Aligaytors are now always friendly
+ - Aligaytors have rotation physics
+ - Aligaytors can return to a starting position
+ - Aligaytors will carry you along with them rather than having to keep up yourself.
+
+ - Splits start tracking time when you pass the previous one.
+ - End screen displays total time of each splits personal best. Ie, your best possible time.
+ - End screen displays that runs time, and your personal best run.
+
+===============
+
+New Art:
+- Air particles
+- squishy jumping sounds
+- Sky background
+
+===============
+
+Changes:
+
+- Fishing hole counts any death near it as a catch
+- Camera has a max height
+- Camera is positioned higher up and further right
+- Canjump detection uses colliders again, has some "coyotie time"
+- Refactored a bunch of code
+- Bunch of changes to the level. should be completable in one sitting now.
+
+===============
+
+Fixes:
+- Phill doesn't get stuck on flat surfaces anymore
+- So many bugs caused by adding multiplayer functionality
+
+===============
+
+Known Issues:
+- music zones occasionaly get out of sync
+- the music kinda sucks tbh
+- Phill occasionaly launches forwards but not up whith particular timed jumps
+- Clouds sometimes pop up without animating
+- Aligaytors will sometimes be launched the other way from what you'd expect when you land on them. I think this is unity having some janky physics so i'm not sure i can fix this one properly.

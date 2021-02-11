@@ -23,4 +23,9 @@ namespace FrogScripts
     {
         void OnAnyRespawn();
     }
+
+    public interface INotifyOnEndLevel
+    {
+        void OnEndLevel();
+    }
 }
