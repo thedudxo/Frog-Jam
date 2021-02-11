@@ -22,12 +22,22 @@ namespace FrogScripts {
             level = frog.currentLevel;
             waveTransform = level.wave.transform;
             frog.SubscribeOnAnyRespawn(this);
+
+            AddOtherPlayers();
+
+            void AddOtherPlayers()
+            {
+                foreach(Frog frog in frog.frogManager.Frogs)
+                {
+
+                }
+            }
         }
 
         private void Update()
         {
-            /* each player has their own progress bar
-             * each players bar displays themselves emphasised over the other players
+            /* each player has their own progress bar - DONE
+             * each players bar displays themselves emphasised over the other players - NOT DONE
              * colours in this players progress & progrees lost behind all players
              */
 
@@ -64,22 +74,22 @@ namespace FrogScripts {
         {
             CheckPersonalBest();
             LooseProgress();
-        }
 
-        void CheckPersonalBest()
-        {
-            if (!personalBest.gameObject.activeInHierarchy)
-                personalBest.gameObject.SetActive(true);
+            void CheckPersonalBest()
+            {
+                if (!personalBest.gameObject.activeInHierarchy)
+                    personalBest.gameObject.SetActive(true);
 
 
-            if (personalBest.value < playerProgressBar.value)
-                personalBest.value = playerProgressBar.value;
-        }
+                if (personalBest.value < playerProgressBar.value)
+                    personalBest.value = playerProgressBar.value;
+            }
 
-        void LooseProgress()
-        {
-            progressLost.gameObject.SetActive(true);
-            progressLost.value = playerProgressBar.value;
+            void LooseProgress()
+            {
+                progressLost.gameObject.SetActive(true);
+                progressLost.value = playerProgressBar.value;
+            }
         }
     }
 }
