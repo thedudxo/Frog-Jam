@@ -16,7 +16,7 @@ namespace FrogScripts
 
         SplitManager splitManager;
 
-        List<SplitEffect> splitEffects = new List<SplitEffect>();
+        List<SplitEffect> splitEffects;
         [HideInInspector]public float CurrentSplitTime { get; set; } = 0;
         [HideInInspector] public float TotalSplitTime {
             get 
@@ -46,19 +46,21 @@ namespace FrogScripts
 
             void SetupSplitEffects()
             {
+                List<GameObject> SplitUITemplates = new List<GameObject>();
+
                 foreach (Split split in splitManager.splits)
+                    SplitUITemplates.Add(split.playerCopyCanvas.gameObject);
+
+                splitEffects = ObjectInstanceBuilder.Build<SplitEffect>(SplitUITemplates, SetPlayerLayer);
+
+                void SetPlayerLayer(GameObject obj)
                 {
-                    SplitEffect effect = Instantiate(split.playerCopyCanvas).GetComponent<SplitEffect>();
-
-                    GameObject obj = effect.gameObject;
-                    obj.SetActive(true);
-                    obj.transform.position = split.playerCopyCanvas.transform.position;
                     obj.layer = LayerMask.NameToLayer(frog.UILayer);
-
-                    effect.Setup(split, this);
-
-                    splitEffects.Add(effect);
                 }
+
+                foreach (SplitEffect effect in splitEffects)
+                    effect.Setup(this);
+                    //Debug.Log(effect, effect);
             }
         }
 

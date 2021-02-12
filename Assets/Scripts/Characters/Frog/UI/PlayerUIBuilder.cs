@@ -64,7 +64,7 @@ namespace FrogScripts
         {
             GameObject obj;
             obj = InstantiateTemplate(template);
-            extendSetup(obj);  //obj.layer = LayerMask.NameToLayer(frog.UILayer);
+            extendSetup(obj);
             return obj;
         }
     }
