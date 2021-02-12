@@ -60,11 +60,8 @@ namespace FrogScripts
 
                 foreach (SplitEffect effect in splitEffects)
                     effect.Setup(this);
-                    //Debug.Log(effect, effect);
             }
         }
-
-        
 
         private void Update()
         {
@@ -92,7 +89,6 @@ namespace FrogScripts
                 }
             }
         }
-
         public void OnRestart()
         {
             CurrentSplitTime = 0;
