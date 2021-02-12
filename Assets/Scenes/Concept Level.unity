@@ -2565,7 +2565,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 318, y: 310.13336}
+  m_AnchoredPosition: {x: 579, y: 83}
   m_SizeDelta: {x: 1097, y: 617}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &513072981
@@ -8018,7 +8018,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610165524}
   m_LocalRotation: {x: -0, y: -0, z: 0.037178207, w: -0.9993087}
-  m_LocalPosition: {x: 10.97, y: -0.37, z: 2.952322}
+  m_LocalPosition: {x: 10.89, y: -0.37, z: 2.952322}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 2010112439}
@@ -11166,6 +11166,11 @@ PrefabInstance:
       propertyPath: splitManager
       value: 
       objectReference: {fileID: 1237552537}
+    - target: {fileID: 443601917248430348, guid: e1ce6bf29dd167046995228830b8e77b,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 443601917479062481, guid: e1ce6bf29dd167046995228830b8e77b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -11676,6 +11681,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Flipy Birb
+      objectReference: {fileID: 0}
+    - target: {fileID: 6311799612257047874, guid: db98ff9b47d6e5d4d981d80fa72237aa,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.47415924
+      objectReference: {fileID: 0}
+    - target: {fileID: 6311799612257047874, guid: db98ff9b47d6e5d4d981d80fa72237aa,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 8.294057
+      objectReference: {fileID: 0}
+    - target: {fileID: 6311799612257047874, guid: db98ff9b47d6e5d4d981d80fa72237aa,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.50824356
+      objectReference: {fileID: 0}
+    - target: {fileID: 6311799612257047874, guid: db98ff9b47d6e5d4d981d80fa72237aa,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.24961519
       objectReference: {fileID: 0}
     - target: {fileID: 6311799612257047875, guid: db98ff9b47d6e5d4d981d80fa72237aa,
         type: 3}
@@ -12818,8 +12843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60353bbfef30a54f8be677695143253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveProgressBar: {fileID: 8322174572057236734}
-  level: {fileID: 1214848564}
 --- !u!114 &8322174572349124588
 MonoBehaviour:
   m_ObjectHideFlags: 0
