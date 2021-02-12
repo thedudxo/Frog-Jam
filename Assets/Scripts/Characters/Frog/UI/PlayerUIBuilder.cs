@@ -4,9 +4,9 @@ using UnityEngine;
 namespace FrogScripts
 {
 
-    public static class PlayerObjectInstanceBuilder
+    public static class ObjectInstanceBuilder
     {
-        const string nullError = "No component of given type on template object";
+        public delegate void ExtndGameObjSetup(GameObject obj);
 
         public static  void Build(List<GameObject> Templates)
         {
@@ -22,26 +22,49 @@ namespace FrogScripts
             foreach (GameObject template in Templates)
             {
                 GameObject obj = InstantiateTemplate(template);
+                AddToComponentList(components, obj);
+            }
+            return components;
+        }
+        public static List<TComponent> Build<TComponent>(List<GameObject> Templates, ExtndGameObjSetup extendSetup)
+            where TComponent : MonoBehaviour
+        {
+            List<TComponent> components = new List<TComponent>();
 
-                TComponent instance = obj.GetComponent<TComponent>();
-
-                if (instance == null)
-                    Debug.LogError(nullError);
-                else
-                    components.Add(instance);
+            foreach (GameObject template in Templates)
+            {
+                GameObject obj = InstantiateTemplate(template, extendSetup);
+                AddToComponentList(components, obj);
             }
             return components;
         }
 
+        private static void AddToComponentList<TComponent>(List<TComponent> components, GameObject obj) where TComponent : MonoBehaviour
+        {
+            TComponent instance = obj.GetComponent<TComponent>();
+
+            if (instance == null)
+                Debug.LogError("No component of given type on template object");
+            else
+                components.Add(instance);
+        }
+
         static GameObject InstantiateTemplate(GameObject template)
         {
-            GameObject obj = GameObject.Instantiate(template);
+            GameObject obj;
+            obj = GameObject.Instantiate(template);
 
             obj.SetActive(true);
             obj.transform.position = template.transform.position;
 
-            //obj.layer = LayerMask.NameToLayer(frog.UILayer);
+            return obj;
+        }
 
+        static GameObject InstantiateTemplate(GameObject template, ExtndGameObjSetup extendSetup)
+        {
+            GameObject obj;
+            obj = InstantiateTemplate(template);
+            extendSetup(obj);  //obj.layer = LayerMask.NameToLayer(frog.UILayer);
             return obj;
         }
     }
