@@ -38,15 +38,13 @@ public class CleanJumpOverObsticle : MonoBehaviour
 
     private void Update()
     {
-        if (timing)
+        if (!timing) return;
+
+        timer += Time.deltaTime;
+        if (timer >= displayTimeSeconds)
         {
-            timer += Time.deltaTime;
-            if (timer >= displayTimeSeconds)
-            {
-                congratulationsText.enabled = false;
-                timing = false;
-            }
+            congratulationsText.enabled = false;
+            timing = false;
         }
-        
     }
 }

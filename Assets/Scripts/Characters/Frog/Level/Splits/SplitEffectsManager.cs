@@ -1,6 +1,7 @@
 ﻿using LevelScripts;
 using System.Collections.Generic;
 using UnityEngine;
+using static ObjectInstanceBuilder;
 
 namespace FrogScripts
 {
@@ -51,7 +52,7 @@ namespace FrogScripts
                 foreach (Split split in splitManager.splits)
                     SplitUITemplates.Add(split.playerCopyCanvas.gameObject);
 
-                splitEffects = ObjectInstanceBuilder.Build<SplitEffect>(SplitUITemplates, SetPlayerLayer);
+                splitEffects = Build<SplitEffect>(SplitUITemplates, SetPlayerLayer);
 
                 void SetPlayerLayer(GameObject obj)
                 {
