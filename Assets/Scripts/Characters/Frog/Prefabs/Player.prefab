@@ -4870,6 +4870,61 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &5736840734545577112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4528491567384568240}
+  - component: {fileID: 164193441602028764}
+  m_Layer: 0
+  m_Name: Jump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4528491567384568240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5736840734545577112}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9174729617210768510}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &164193441602028764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5736840734545577112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3722a98c83210ca498d567c1f1b361a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 9174729618208786169}
+  frog: {fileID: 9174729617834607438}
+  rb: {fileID: 9174729618712038166}
+  landSounds: {fileID: 9174729617181033737}
+  jumpSounds: {fileID: 9174729616964550922}
+  spriteRenderer: {fileID: 9174729616963248092}
+  jumpSprite: {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
+  restSprite: {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
+  powerBar: {fileID: 9174729616823476525}
+  jumpForce: 600
+  horizontalJumpForce: 500
+  groundDetectionBox: {fileID: 9174729617090259637}
 --- !u!1 &9174729616672856725
 GameObject:
   m_ObjectHideFlags: 0
@@ -16819,6 +16874,7 @@ Transform:
   - {fileID: 9174729617477883987}
   - {fileID: 9174729618216640954}
   - {fileID: 9174729617197800312}
+  - {fileID: 4528491567384568240}
   m_Father: {fileID: 9174729618712038167}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26283,9 +26339,9 @@ GameObject:
   - component: {fileID: 9174729618712038166}
   - component: {fileID: 9174729618712038249}
   - component: {fileID: 9174729617834607438}
-  - component: {fileID: 9174729618712038251}
   - component: {fileID: 9174729618712038248}
   - component: {fileID: 9174729618712038250}
+  - component: {fileID: 1248141674805331836}
   m_Layer: 0
   m_Name: Phill the Frog
   m_TagString: Phill
@@ -26392,35 +26448,11 @@ MonoBehaviour:
   vfxManager: {fileID: 9174729618712038248}
   lifeController: {fileID: 9174729618216640956}
   cameraController: {fileID: 9174729618712038250}
-  controlls: {fileID: 9174729618712038251}
+  jumpController: {fileID: 164193441602028764}
   splitManager: {fileID: 0}
+  controlls: {fileID: 1248141674805331836}
   UILayer: Player1 UI
   currentCollisions: []
---- !u!114 &9174729618712038251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9174729618712038164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3722a98c83210ca498d567c1f1b361a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpKey: 32
-  animator: {fileID: 9174729618208786169}
-  frog: {fileID: 9174729617834607438}
-  rb: {fileID: 9174729618712038166}
-  landSounds: {fileID: 9174729617181033737}
-  jumpSounds: {fileID: 9174729616964550922}
-  spriteRenderer: {fileID: 9174729616963248092}
-  jumpSprite: {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
-  restSprite: {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
-  powerBar: {fileID: 9174729616823476525}
-  jumpForce: 600
-  horizontalJumpForce: 500
-  groundDetectionBox: {fileID: 9174729617090259637}
 --- !u!114 &9174729618712038248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26457,6 +26489,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 9174729618743871616}
   frog: {fileID: 9174729617834607438}
+--- !u!114 &1248141674805331836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174729618712038164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5271dedb5b8cf498ca25eecdee5436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpKey: 32
 --- !u!1 &9174729618743871617
 GameObject:
   m_ObjectHideFlags: 0

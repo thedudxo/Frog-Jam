@@ -12,13 +12,16 @@ namespace FrogScripts
         [SerializeField] public Level currentLevel;
         [SerializeField] public Wave wave;
 
-        [Header("Components")]
+        [Header("External Managers")]
         [SerializeField] public FrogManager frogManager;
+        [SerializeField] public SplitManager splitManager;
+
+        [Header("Components")]
         [SerializeField] public VfxController vfxManager;
         [SerializeField] public LifeController lifeController;
         [SerializeField] public CameraController cameraController;
+        [SerializeField] public JumpController jumpController;
         [SerializeField] public Controlls controlls;
-        [SerializeField] public SplitManager splitManager;
 
         [HideInInspector] public List<INotifyOnDeath> toNotifyOnDeath = new List<INotifyOnDeath>();
         [HideInInspector] public List<INotifyOnSetback> toNotifyOnSetback = new List<INotifyOnSetback>();
@@ -38,7 +41,7 @@ namespace FrogScripts
 
         public void Respawn()
         {
-            controlls.Respawn();
+            jumpController.Respawn();
         }
 
         public void RestartLevel() 

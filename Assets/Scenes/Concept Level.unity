@@ -10438,6 +10438,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1249019147}
     m_Modifications:
+    - target: {fileID: 877196846347547824, guid: ba5e897114e46934682a35e319227241,
+        type: 3}
+      propertyPath: jumpKey
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 877196846347547824, guid: ba5e897114e46934682a35e319227241,
+        type: 3}
+      propertyPath: suicideKey
+      value: 303
+      objectReference: {fileID: 0}
     - target: {fileID: 7074319546937313053, guid: ba5e897114e46934682a35e319227241,
         type: 3}
       propertyPath: m_AnchorMax.x
