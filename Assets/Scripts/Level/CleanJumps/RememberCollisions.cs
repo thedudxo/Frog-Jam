@@ -1,28 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FrogScripts;
+using System.Linq;
 
-public class RememberCollisions : MonoBehaviour//, IRespawnResetable
+public class RememberCollisions : MonoBehaviour, INotifyOnAnyRespawn
 {
-
-    [SerializeField] string collisionToRemember = GM.playerTag;
-    public bool HasCollided { get; private set; } = false;
+    public Dictionary<Frog, bool> FrogsCollided { get; private set; } = new Dictionary<Frog, bool>();
 
     private void Start()
     {
-        //GM.AddRespawnResetable(this);
+        foreach (Frog frog in FrogsCollided.Keys)
+            frog.SubscribeOnAnyRespawn(this);
     }
+
+    int ID(Collision2D collision) => collision.gameObject.GetInstanceID();
+    int ID(Frog frog) => frog.gameObject.GetInstanceID();
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       if(collision.gameObject.tag == collisionToRemember)
+        bool isPlayer = collision.gameObject.tag == GM.playerTag;
+        if (isPlayer)
         {
-            HasCollided = true;
+            foreach (Frog frog in FrogsCollided.Keys.ToList())
+            {
+                if (ID(collision) == ID(frog))
+                    FrogsCollided[frog] = true;
+            }
         }
     }
 
-    public void PhillRespawned()
+    public void OnAnyRespawn()
     {
-        HasCollided = false;
+        // can't modify a collection while looping over it, so makes a list of frogs first.
+        foreach (Frog frog in FrogsCollided.Keys.ToList())
+            FrogsCollided[frog] = false;
     }
 }
