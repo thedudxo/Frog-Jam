@@ -8,31 +8,42 @@ public class RememberCollisions : MonoBehaviour, INotifyOnAnyRespawn
 {
     public Dictionary<Frog, bool> FrogsCollided { get; private set; } = new Dictionary<Frog, bool>();
 
-    private void Start()
+    public void AddFrog(Frog frog)
     {
-        foreach (Frog frog in FrogsCollided.Keys)
-            frog.SubscribeOnAnyRespawn(this);
+        if (FrogsCollided.ContainsKey(frog))
+        {
+            Debug.LogWarning("Tried adding frog again...", frog);
+            Debug.LogWarning("...to remember collisions list", this);
+            return;
+        }
+        FrogsCollided.Add(frog, false);
+        frog.SubscribeOnAnyRespawn(this);
     }
 
     int ID(Collision2D collision) => collision.gameObject.GetInstanceID();
     int ID(Frog frog) => frog.gameObject.GetInstanceID();
 
+    bool IsPlayer(Collision2D collision) => collision.gameObject.tag == GM.playerTag;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        bool isPlayer = collision.gameObject.tag == GM.playerTag;
-        if (isPlayer)
+        if (IsPlayer(collision))
         {
-            foreach (Frog frog in FrogsCollided.Keys.ToList())
-            {
-                if (ID(collision) == ID(frog))
-                    FrogsCollided[frog] = true;
-            }
+            RememberCollidingFrog(collision);
+        }
+    }
+
+    void RememberCollidingFrog(Collision2D collision) 
+    {
+        foreach (Frog frog in FrogsCollided.Keys.ToList())
+        {
+            if (ID(collision) == ID(frog))
+                FrogsCollided[frog] = true;
         }
     }
 
     public void OnAnyRespawn()
     {
-        // can't modify a collection while looping over it, so makes a list of frogs first.
         foreach (Frog frog in FrogsCollided.Keys.ToList())
             FrogsCollided[frog] = false;
     }

@@ -52,12 +52,7 @@ namespace FrogScripts
                 foreach (Split split in splitManager.splits)
                     SplitUITemplates.Add(split.playerCopyCanvas.gameObject);
 
-                splitEffects = Build<SplitEffect>(SplitUITemplates, SetPlayerLayer);
-
-                void SetPlayerLayer(GameObject obj)
-                {
-                    obj.layer = LayerMask.NameToLayer(frog.UILayer);
-                }
+                splitEffects = CreateInstances<SplitEffect>(SplitUITemplates, frog.SetObjectUILayer);
 
                 foreach (SplitEffect effect in splitEffects)
                     effect.Setup(this);

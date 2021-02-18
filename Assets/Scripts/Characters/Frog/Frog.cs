@@ -22,6 +22,7 @@ namespace FrogScripts
         [SerializeField] public CameraController cameraController;
         [SerializeField] public JumpController jumpController;
         [SerializeField] public Controlls controlls;
+        [SerializeField] public FrogCleanJumpManager cleanJumpEffectsManager;
 
         [HideInInspector] public List<INotifyOnDeath> toNotifyOnDeath = new List<INotifyOnDeath>();
         [HideInInspector] public List<INotifyOnSetback> toNotifyOnSetback = new List<INotifyOnSetback>();
@@ -39,12 +40,17 @@ namespace FrogScripts
             frogManager.AddFrog(this);
         }
 
+        public void SetObjectUILayer(GameObject obj)
+        {
+            obj.layer = LayerMask.NameToLayer(UILayer);
+        }
+
         public void Respawn()
         {
             jumpController.Respawn();
         }
 
-        public void RestartLevel() 
+        public void RestartLevel() //might be a bit sphagetti
         {
             lifeController.Restart(); 
         }

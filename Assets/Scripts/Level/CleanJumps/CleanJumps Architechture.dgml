@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1 Type=CleanlyJumpableObstacle Member=rememberCollisions)" Category="CodeSchema_Field" Bounds="-9557,-9727,270.059999999998,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="rememberCollisions" Icon="Microsoft.VisualStudio.Field.Private" Label="rememberCollisions : RememberCollisions[]" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Level/CleanJumps/CleanlyJumpableObstacle.cs StartLineNumber=10 StartCharacterOffset=42 EndLineNumber=10 EndCharacterOffset=60)" UseManualLocation="True" />
+    <Node Id="(@1 Type=DisableOverTime)" Category="CodeSchema_Class" Bounds="-8742.79786458333,-9815.74328359375,130.806666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="DisableOverTime" Icon="Microsoft.VisualStudio.Class.Public" Label="DisableOverTime" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Level/CleanJumps/DisableOverTime.cs StartLineNumber=4 StartCharacterOffset=13 EndLineNumber=4 EndCharacterOffset=28)" UseManualLocation="True" />
+    <Node Id="@2" Category="CodeSchema_Class" Bounds="-9395.00014322917,-9803.50005,176.123333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="CleanlyJumpableObstacle" Icon="Microsoft.VisualStudio.Class.Public" Label="CleanlyJumpableObstacle" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Level/CleanJumps/CleanlyJumpableObstacle.cs StartLineNumber=6 StartCharacterOffset=13 EndLineNumber=6 EndCharacterOffset=36)" UseManualLocation="True" />
+    <Node Id="@3" Category="CodeSchema_Class" Bounds="-9008.03877604167,-9872.09506561922,156.753333333334,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="ObjectInstanceBuilder" Icon="Microsoft.VisualStudio.Class.Public" Label="ObjectInstanceBuilder" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/UI/PlayerUIBuilder.cs StartLineNumber=3 StartCharacterOffset=20 EndLineNumber=3 EndCharacterOffset=41)" UseManualLocation="True" />
+    <Node Id="@6" Category="CodeSchema_Method" Bounds="-9031.03876302083,-9816.09496561922,206.696666666667,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="Build" Icon="Microsoft.VisualStudio.Method.Public" Label="Build(List&lt;GameObject&gt;) : void" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/UI/PlayerUIBuilder.cs StartLineNumber=7 StartCharacterOffset=24 EndLineNumber=7 EndCharacterOffset=29)" UseManualLocation="True" />
+    <Node Id="@7" Category="CodeSchema_Method" Bounds="-8847.79796875,-9628.384665625,150.260000000002,26" CodeSchemaProperty_IsPublic="True" CommonLabel="EnableObject" Icon="Microsoft.VisualStudio.Method.Public" Label="EnableObject() : void" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Level/CleanJumps/DisableOverTime.cs StartLineNumber=12 StartCharacterOffset=16 EndLineNumber=12 EndCharacterOffset=28)" UseManualLocation="True" />
+    <Node Id="@8" Category="CodeSchema_Field" Bounds="-9026.00024088542,-9928.09516561922,190.923333333332,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="frogManager" Icon="Microsoft.VisualStudio.Field.Private" Label="frogManager : FrogManager" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Level/CleanJumps/CleanlyJumpableObstacle.cs StartLineNumber=8 StartCharacterOffset=33 EndLineNumber=8 EndCharacterOffset=44)" UseManualLocation="True" />
+    <Node Id="@9" Category="CodeSchema_Class" Bounds="-8842.49608072917,-9698.78308359375,128.443333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="CleanJumpEffect" Icon="Microsoft.VisualStudio.Class.Public" Label="CleanJumpEffect" SourceLocation="(Assembly=file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Assets/Scripts/Characters/Frog/Level/CleanJumpEffect.cs StartLineNumber=5 StartCharacterOffset=17 EndLineNumber=5 EndCharacterOffset=32)" UseManualLocation="True" />
+    <Node Id="Builds" Category="Comment" Bounds="-8885.34349470247,-9760.0942578125,51.6433333333334,25.9599999999991" UseManualLocation="True" />
+    <Node Id="Inherits" Category="Comment" Bounds="-8719.05271484375,-9754.74318359375,59.2900000000009,25.9599999999991" UseManualLocation="True" />
+    <Node Id="Template" Category="Comment" Bounds="-9129.1668280358,-9757.09457890596,160.98,41.9199999999983" Label="Template Gameobject with CleanJumpEffect" UseManualLocation="True" />
+    <Node Id="Triggers" Category="Comment" Bounds="-9094.5380859375,-9610.13466562556,62,25.9599999999991" UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="@2" Target="(@1 Type=CleanlyJumpableObstacle Member=rememberCollisions)" Category="Contains" Bounds="-9394.92806824915,-9777.5,68.4417511025003,45.5161663766539" />
+    <Link Source="@2" Target="@8" Category="Contains" Bounds="-9267.66569494092,-9899.26692557179,289.310273427023,95.7669255717865" />
+    <Link Source="@2" Target="Template" Bounds="-9245.18228368689,-9777.5,107.208470106441,22.5679409057975" />
+    <Link Source="@2" Target="Triggers" Bounds="-9290.57291445384,-9777.5,203.647247376901,161.767386804173" />
+    <Link Source="@3" Target="@6" Category="Contains" Bounds="-8929.20439883631,-9846.09506561922,0.739578307127886,21.0056731930454" />
+    <Link Source="@6" Target="Builds" Bounds="-8911.86005453595,-9790.0947265625,29.5769104585725,24.288738092464" />
+    <Link Source="@7" Target="@9" Bounds="-8776.52462022877,-9663.81148914831,2.8213456480953,35.4267235233074" />
+    <Link Source="@8" Target="@3" Bounds="-8930.33510952907,-9902.09516561922,0.328692543835132,21.0012021079383" />
+    <Link Source="@9" Target="Inherits" Bounds="-8757.63731105904,-9723.98620787658,40.0091901410542,25.2031242828325" />
+    <Link Source="Builds" Target="@9" Bounds="-8842.32614130417,-9734.1342578125,39.6472283632665,29.9287798851983" />
+    <Link Source="Inherits" Target="(@1 Type=DisableOverTime)" Bounds="-8686.85062521082,-9780.91288416941,5.15547898404111,26.1696408100343" />
+    <Link Source="Template" Target="Builds" Bounds="-8968.1868280358,-9745.09388835168,73.8592889233987,4.28721265592503" />
+    <Link Source="Triggers" Target="@7" Bounds="-9032.5380859375,-9610.11289818344,175.757742142321,11.0156673394413" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Classes" />
+    <Category Id="CodeSchema_Field" Label="Field" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="Fields" />
+    <Category Id="CodeSchema_Member" Label="Member" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="Members" />
+    <Category Id="CodeSchema_Method" Label="Method" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Link:Forward:CodeSchema_Calls" Icon="CodeSchema_Method" NavigationActionLabel="Methods" />
+    <Category Id="CodeSchema_Type" Label="Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Types" />
+    <Category Id="Comment" Label="Comment" Description="Represents a user defined comment on the diagram" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Comments" />
+    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPrivate" Label="Is Private" Description="Flag to indicate the scope is Private" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="Is Public" Description="Flag to indicate the scope is Public" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsStatic" Label="Is Static" Description="Flag to indicate the member is a static member" DataType="System.Boolean" />
+    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="SourceLocation" Label="Start Line Number" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="GenericArguments" Label="Generic Arguments" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" />
+    <Name Id="GenericParameterCount" Label="Generic Parameter Count" ValueType="System.String" />
+    <Name Id="Member" Label="Member" ValueType="System.Object" />
+    <Name Id="Name" Label="Name" ValueType="System.String" />
+    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
+    <Name Id="OverloadingParameters" Label="Parameter" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" Formatter="NameValueNoEscape" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(611926dd-aa26-534d-72de-d92ad8558e30.OutputPathUri)" />
+    <Alias n="2" Id="(@1 Type=CleanlyJumpableObstacle)" />
+    <Alias n="3" Id="(@1 Type=ObjectInstanceBuilder)" />
+    <Alias n="4" Uri="Assembly=file:///C:/Program Files/Unity/Hub/Editor/2020.1.16f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll" />
+    <Alias n="5" Uri="Assembly=file:///C:/Program Files/Unity/Hub/Editor/2020.1.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll" />
+    <Alias n="6" Id="(@1 Type=ObjectInstanceBuilder Member=(Name=Build OverloadingParameters=[(@4 Namespace=System.Collections.Generic Type=(Name=List GenericParameterCount=1 GenericArguments=[(@5 Namespace=UnityEngine Type=GameObject)]))]))" />
+    <Alias n="7" Id="(@1 Type=DisableOverTime Member=EnableObject)" />
+    <Alias n="8" Id="(@1 Type=CleanlyJumpableObstacle Member=frogManager)" />
+    <Alias n="9" Id="(@1 Namespace=FrogScripts Type=CleanJumpEffect)" />
+  </IdentifierAliases>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Comment" ValueLabel="Has comment">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
+    </Style>
+  </Styles>
+  <Paths>
+    <Path Id="611926dd-aa26-534d-72de-d92ad8558e30.OutputPathUri" Value="file:///D:/Users/Isaac/Personal/GameDev/Frog-Jam/Temp/Bin/Debug/FrogJam.dll" />
+  </Paths>
+</DirectedGraph>

@@ -11,7 +11,7 @@ public static class ObjectInstanceBuilder
             InstantiateTemplate(template);
     }
 
-    public static List<TComponent> Build<TComponent>(List<GameObject> Templates)
+    public static List<TComponent> CreateInstances<TComponent>(List<GameObject> Templates)
         where TComponent : MonoBehaviour
     {
         List < TComponent > components = new List<TComponent>();
@@ -23,7 +23,7 @@ public static class ObjectInstanceBuilder
         }
         return components;
     }
-    public static List<TComponent> Build<TComponent>(List<GameObject> Templates, ExtndGameObjSetup extendSetup)
+    public static List<TComponent> CreateInstances<TComponent>(List<GameObject> Templates, ExtndGameObjSetup extendSetup)
         where TComponent : MonoBehaviour
     {
         List<TComponent> components = new List<TComponent>();

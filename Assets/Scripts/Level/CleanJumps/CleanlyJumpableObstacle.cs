@@ -1,32 +1,65 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FrogScripts;
 using UnityEngine.UI;
 
-public class CleanJumpOverObsticle : MonoBehaviour
+public class CleanlyJumpableObstacle : MonoBehaviour
 {
+    [SerializeField] FrogManager frogManager;
+
     [SerializeField] RememberCollisions[] rememberCollisions;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //remeber if the player has collided with these objects since dying
-        if (collision.gameObject.tag == GM.playerTag)
-        {
+    [SerializeField] public GameObject templateCleanJumpEffect;
 
-            bool collided = false;
+
+    private void Start()
+    {
+        foreach(Frog frog in frogManager.Frogs)
+        {
             foreach(RememberCollisions remember in rememberCollisions)
             {
-                if (remember.HasCollided)
+                remember.AddFrog(frog);
+            }
+        }
+    }
+
+    void CheckJump(Frog frog)
+    {
+
+        if (JumpWasClean())
+        {
+            frog.cleanJumpEffectsManager.DoCleanJumpEffect(this);
+        }
+
+        bool JumpWasClean()
+        {
+            bool cleanJump = true;
+
+            foreach (RememberCollisions remember in rememberCollisions)
+            {
+                if (remember.FrogsCollided[frog])
                 {
-                    collided = true;
+                    cleanJump = false;
                 }
             }
 
-            if (!collided)
+            return cleanJump;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        bool isPlayer = collision.gameObject.tag == GM.playerTag;
+
+        if (isPlayer)
+        {
+            CheckJump(GetFrog());
+
+            Frog GetFrog()
             {
-                congratulationsText.enabled = true;
-                timer = 0;
-                timing = true;
+                int collisionID = collision.gameObject.GetInstanceID();
+                return frogManager.IDFrogs[collisionID];
             }
         }
     }
