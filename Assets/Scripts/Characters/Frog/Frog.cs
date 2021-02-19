@@ -42,7 +42,17 @@ namespace FrogScripts
 
         public void SetObjectUILayer(GameObject obj)
         {
-            obj.layer = LayerMask.NameToLayer(UILayer);
+
+            foreach(Transform child in obj.transform)
+                setLayer(child.gameObject);
+
+            setLayer(obj);
+
+            void setLayer(GameObject _obj)
+            {
+                _obj.layer = LayerMask.NameToLayer(UILayer);
+            }
+
         }
 
         public void Respawn()

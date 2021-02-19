@@ -4,62 +4,73 @@ using UnityEngine;
 using FrogScripts;
 using UnityEngine.UI;
 
-public class CleanlyJumpableObstacle : MonoBehaviour
+namespace LevelScripts
 {
-    [SerializeField] FrogManager frogManager;
-
-    [SerializeField] RememberCollisions[] rememberCollisions;
-
-    [SerializeField] public GameObject templateCleanJumpEffect;
-
-
-    private void Start()
+    public class CleanlyJumpableObstacle : MonoBehaviour
     {
-        foreach(Frog frog in frogManager.Frogs)
-        {
-            foreach(RememberCollisions remember in rememberCollisions)
-            {
-                remember.AddFrog(frog);
-            }
-        }
-    }
+        [SerializeField] Level level;
+        FrogManager frogManager;
 
-    void CheckJump(Frog frog)
-    {
+        [SerializeField] RememberCollisions[] rememberCollisions;
 
-        if (JumpWasClean())
+        [SerializeField] public GameObject templateCleanJumpEffect;
+
+        private void Awake()
         {
-            frog.cleanJumpEffectsManager.DoCleanJumpEffect(this);
+            frogManager = level.frogManager;
+            level.cleanJumps.Add(this);
         }
 
-        bool JumpWasClean()
+        private void Start()
         {
-            bool cleanJump = true;
+            templateCleanJumpEffect.SetActive(false);
 
-            foreach (RememberCollisions remember in rememberCollisions)
+            foreach (Frog frog in frogManager.Frogs)
             {
-                if (remember.FrogsCollided[frog])
+                foreach (RememberCollisions remember in rememberCollisions)
                 {
-                    cleanJump = false;
+                    remember.AddFrog(frog);
                 }
             }
-
-            return cleanJump;
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        bool isPlayer = collision.gameObject.tag == GM.playerTag;
-
-        if (isPlayer)
+        void CheckJump(Frog frog)
         {
-            CheckJump(GetFrog());
 
-            Frog GetFrog()
+            if (JumpWasClean())
             {
-                int collisionID = collision.gameObject.GetInstanceID();
-                return frogManager.IDFrogs[collisionID];
+                frog.cleanJumpEffectsManager.DoCleanJumpEffect(this);
+            }
+
+            bool JumpWasClean()
+            {
+                bool cleanJump = true;
+
+                foreach (RememberCollisions remember in rememberCollisions)
+                {
+                    if (remember.FrogsCollided[frog])
+                    {
+                        cleanJump = false;
+                    }
+                }
+
+                return cleanJump;
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            bool isPlayer = collision.gameObject.tag == GM.playerTag;
+
+            if (isPlayer)
+            {
+                CheckJump(GetFrog());
+
+                Frog GetFrog()
+                {
+                    int collisionID = collision.gameObject.GetInstanceID();
+                    return frogManager.IDFrogs[collisionID];
+                }
             }
         }
     }

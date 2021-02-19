@@ -10,10 +10,16 @@ public class DisableOverTime : MonoBehaviour
     bool notTiming => !obj.activeInHierarchy;
     bool timeUp => timer >= displayTimeSeconds;
 
+    private void Start()
+    {
+        obj.SetActive(false);
+    }
+
     public void EnableObject()
     {
         timer = 0;
         obj.SetActive(true);
+        Debug.Log(this,this);
     }
 
     private void Update()

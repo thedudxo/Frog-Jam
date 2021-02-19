@@ -53,6 +53,7 @@ public static class ObjectInstanceBuilder
 
         obj.SetActive(true);
         obj.transform.position = template.transform.position;
+        obj.transform.localScale = template.transform.lossyScale;
 
         return obj;
     }

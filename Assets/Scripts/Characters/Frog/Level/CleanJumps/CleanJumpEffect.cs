@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using LevelScripts;
 
 namespace FrogScripts
 {
@@ -7,10 +8,6 @@ namespace FrogScripts
     {
         [SerializeField] DisableOverTime goodJobText;
         [SerializeField] public CleanlyJumpableObstacle obstacle;
-        public void SetUp(Frog frog)
-        {
-            //frog.cleanJumpEffectsManager.AddManaged(this);
-        }
 
         public void DoEffects()
         {
