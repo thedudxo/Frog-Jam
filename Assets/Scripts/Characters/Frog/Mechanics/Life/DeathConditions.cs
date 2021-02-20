@@ -7,7 +7,7 @@ namespace FrogScripts.Life
     public class DeathConditions
     {
         Transform transform;
-        const KeyCode suicideKey = KeyCode.Q;
+        KeyCode suicideKey;
         List<GameObject> currentCollisions;
 
         const float deathBellowY = -6.5f;
@@ -15,9 +15,10 @@ namespace FrogScripts.Life
         public enum DeathType { none, setback, restart }
 
 
-        public DeathConditions(Transform frogTransform, List<GameObject> currentCollisions)
+        public DeathConditions(Frog frog, List<GameObject> currentCollisions)
         {
-            transform = frogTransform;
+            transform = frog.transform;
+            suicideKey = frog.controlls.suicideKey;
             this.currentCollisions = currentCollisions;
         }
 

@@ -7,7 +7,7 @@ namespace LevelScripts
 {
     public class SplitManager : MonoBehaviour
     {
-        [SerializeField] public Split[] splits;
+        [SerializeField] public List<Split> splits;
         [SerializeField] public FrogManager frogManager;
     }
 }

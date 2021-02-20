@@ -1,6 +1,7 @@
 ﻿using LevelScripts;
 using System.Collections.Generic;
 using UnityEngine;
+using static ObjectInstanceBuilder;
 
 namespace FrogScripts
 {
@@ -16,7 +17,7 @@ namespace FrogScripts
 
         SplitManager splitManager;
 
-        List<SplitEffect> splitEffects = new List<SplitEffect>();
+        List<SplitEffect> splitEffects;
         [HideInInspector]public float CurrentSplitTime { get; set; } = 0;
         [HideInInspector] public float TotalSplitTime {
             get 
@@ -31,30 +32,30 @@ namespace FrogScripts
 
         private void Start()
         {
-            frog.SubscribeOnRestart(this);
-            frog.SubscribeOnSetback(this);
-
-            splitManager = frog.currentLevel.splitManager;
-
-            SetupSplitEffects();
-
-            ParticleTransform = newPBParticles.transform;
-        }
-
-        public void SetupSplitEffects()
-        {
-            foreach(Split split in splitManager.splits)
+            SetupManager();
+            SetupSplitEffects();  
+            
+            void SetupManager()
             {
-                SplitEffect effect = Instantiate(split.playerCopyCanvas).GetComponent<SplitEffect>();
+                frog.SubscribeOnRestart(this);
+                frog.SubscribeOnSetback(this);
 
-                GameObject obj = effect.gameObject;
-                obj.SetActive(true);
-                obj.transform.position = split.playerCopyCanvas.transform.position;
-                obj.layer = LayerMask.NameToLayer(frog.UILayer);
+                splitManager = frog.currentLevel.splitManager;
 
-                effect.Setup(split, this);
+                ParticleTransform = newPBParticles.transform;
+            }
 
-                splitEffects.Add(effect);
+            void SetupSplitEffects()
+            {
+                List<GameObject> SplitUITemplates = new List<GameObject>();
+
+                foreach (Split split in splitManager.splits)
+                    SplitUITemplates.Add(split.playerCopyCanvas.gameObject);
+
+                splitEffects = CreateInstances<SplitEffect>(SplitUITemplates, frog.SetObjectUILayer);
+
+                foreach (SplitEffect effect in splitEffects)
+                    effect.Setup(this);
             }
         }
 
@@ -84,11 +85,11 @@ namespace FrogScripts
                 }
             }
         }
-
         public void OnRestart()
         {
             CurrentSplitTime = 0;
-            splitEffects[0].triggeredThisLife = false;
+            foreach(SplitEffect effect in splitEffects)
+                effect.triggeredThisLife = false;
         }
 
         public void EmitPBParticles()

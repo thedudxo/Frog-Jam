@@ -9,6 +9,7 @@ namespace FrogScripts
     public class SplitEffect : MonoBehaviour, INotifyOnEndLevel
     {
         [SerializeField] Text bestTimeText;
+        [SerializeField] Split split;
         SplitEffectsManager SplitFXMngr;
 
         [HideInInspector] public float BestTime { get; private set; } = float.MaxValue;
@@ -21,7 +22,7 @@ namespace FrogScripts
 
         string splitName;
 
-        public virtual void Setup(Split split, SplitEffectsManager SplitFXMngr)
+        public virtual void Setup(SplitEffectsManager SplitFXMngr)
         {
             split.AddSplitEffect(this);
             this.SplitFXMngr = SplitFXMngr;

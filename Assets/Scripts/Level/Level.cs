@@ -18,6 +18,7 @@ namespace LevelScripts
         [SerializeField] public GameObject wave;
         [SerializeField] public SplitManager splitManager;
         [SerializeField] public FrogManager frogManager;
+        [HideInInspector] public List<CleanlyJumpableObstacle> cleanJumps;
 
         private void OnValidate()
         {

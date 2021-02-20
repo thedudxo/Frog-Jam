@@ -1,28 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FrogScripts;
+using System.Linq;
 
-public class RememberCollisions : MonoBehaviour//, IRespawnResetable
+public class RememberCollisions : MonoBehaviour, INotifyOnAnyRespawn
 {
+    public Dictionary<Frog, bool> FrogsCollided { get; private set; } = new Dictionary<Frog, bool>();
 
-    [SerializeField] string collisionToRemember = GM.playerTag;
-    public bool HasCollided { get; private set; } = false;
-
-    private void Start()
+    public void AddFrog(Frog frog)
     {
-        //GM.AddRespawnResetable(this);
+        if (FrogsCollided.ContainsKey(frog))
+        {
+            Debug.LogWarning("Tried adding frog again...", frog);
+            Debug.LogWarning("...to remember collisions list", this);
+            return;
+        }
+        FrogsCollided.Add(frog, false);
+        frog.SubscribeOnAnyRespawn(this);
     }
+
+    int ID(Collision2D collision) => collision.gameObject.GetInstanceID();
+    int ID(Frog frog) => frog.gameObject.GetInstanceID();
+
+    bool IsPlayer(Collision2D collision) => collision.gameObject.tag == GM.playerTag;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       if(collision.gameObject.tag == collisionToRemember)
+        if (IsPlayer(collision))
         {
-            HasCollided = true;
+            RememberCollidingFrog(collision);
         }
     }
 
-    public void PhillRespawned()
+    void RememberCollidingFrog(Collision2D collision) 
     {
-        HasCollided = false;
+        foreach (Frog frog in FrogsCollided.Keys.ToList())
+        {
+            if (ID(collision) == ID(frog))
+                FrogsCollided[frog] = true;
+        }
+    }
+
+    public void OnAnyRespawn()
+    {
+        foreach (Frog frog in FrogsCollided.Keys.ToList())
+            FrogsCollided[frog] = false;
     }
 }

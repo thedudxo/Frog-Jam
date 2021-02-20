@@ -14,7 +14,7 @@ namespace FrogScripts {
 
 
         bool PlayerGotToTheEnd => frog.transform.position.x >= frog.currentLevel.end;
-        bool PlayerInputRestart => Input.GetKeyDown(KeyCode.Q);
+        bool PlayerInputRestart => Input.GetKeyDown(frog.controlls.suicideKey);
 
         bool playingLevel = true;
 

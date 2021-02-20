@@ -15,7 +15,7 @@ namespace FrogScripts.Life
         void Start()
         {
             respawnTimer = new RespawnTimer();
-            deathConditions = new DeathConditions(transform, frog.currentCollisions);
+            deathConditions = new DeathConditions(frog, frog.currentCollisions);
         }
 
         bool alive = true;

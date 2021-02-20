@@ -12,13 +12,17 @@ namespace FrogScripts
         [SerializeField] public Level currentLevel;
         [SerializeField] public Wave wave;
 
-        [Header("Components")]
+        [Header("External Managers")]
         [SerializeField] public FrogManager frogManager;
+        [SerializeField] public SplitManager splitManager;
+
+        [Header("Components")]
         [SerializeField] public VfxController vfxManager;
         [SerializeField] public LifeController lifeController;
         [SerializeField] public CameraController cameraController;
+        [SerializeField] public JumpController jumpController;
         [SerializeField] public Controlls controlls;
-        [SerializeField] public SplitManager splitManager;
+        [SerializeField] public FrogCleanJumpManager cleanJumpEffectsManager;
 
         [HideInInspector] public List<INotifyOnDeath> toNotifyOnDeath = new List<INotifyOnDeath>();
         [HideInInspector] public List<INotifyOnSetback> toNotifyOnSetback = new List<INotifyOnSetback>();
@@ -36,12 +40,27 @@ namespace FrogScripts
             frogManager.AddFrog(this);
         }
 
-        public void Respawn()
+        public void SetObjectUILayer(GameObject obj)
         {
-            controlls.Respawn();
+
+            foreach(Transform child in obj.transform)
+                setLayer(child.gameObject);
+
+            setLayer(obj);
+
+            void setLayer(GameObject _obj)
+            {
+                _obj.layer = LayerMask.NameToLayer(UILayer);
+            }
+
         }
 
-        public void RestartLevel() 
+        public void Respawn()
+        {
+            jumpController.Respawn();
+        }
+
+        public void RestartLevel() //might be a bit sphagetti
         {
             lifeController.Restart(); 
         }
