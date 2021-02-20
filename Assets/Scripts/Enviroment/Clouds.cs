@@ -14,7 +14,7 @@ public class Clouds : MonoBehaviour
     [SerializeField] int desiredAmmountOfCloudsOnScreen = 3;
     [SerializeField] Transform playerCamera;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         //maxDistanceBehindCamera += FrogManager.frogDeath.respawnSetBack;

@@ -15,7 +15,7 @@ public class TranslateSinEachFrame : MonoBehaviour
         sin += offset;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         sin += speed;
 

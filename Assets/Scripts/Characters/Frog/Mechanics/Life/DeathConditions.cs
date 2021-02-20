@@ -13,10 +13,11 @@ namespace FrogScripts.Life
         const float deathBellowY = -6.5f;
 
         public enum DeathType { none, setback, restart }
-
+        Frog frog;
 
         public DeathConditions(Frog frog, List<GameObject> currentCollisions)
         {
+            this.frog = frog;
             transform = frog.transform;
             suicideKey = frog.controlls.suicideKey;
             this.currentCollisions = currentCollisions;
@@ -39,12 +40,16 @@ namespace FrogScripts.Life
                 return DeathType.setback;
             }
 
-            DeathType touchingDeathType = CheckTouching();
-            if (touchingDeathType != DeathType.none)
+            if (!frog.OnStartingPlatform)
             {
-                return touchingDeathType;
-            }
 
+                DeathType touchingDeathType = CheckTouching();
+                if (touchingDeathType != DeathType.none)
+                {
+                    return touchingDeathType;
+                }
+
+            }
             return DeathType.none;
         }
 
