@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 4111498342055459398}
-  displayTimeSeconds: 3
+  displayTimeSeconds: 2
 --- !u!1 &3593016458274135467
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,6 +28,10 @@ public class DisableOverTime : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (timeUp) obj.SetActive(false);
+        if (timeUp)
+        {
+            obj.SetActive(false);
+            timer = 0;
+        }
     }
 }
