@@ -19,10 +19,11 @@ public static class GM {
     public const string playerTag = "Phill";
     public const string enemyAligator = "EnemyAligator";
 
+    public const float respawnSetBack = 25;
+
     public static void QuitToMenu()
     {
         SceneManager.LoadScene(0);
-        //resetOnRespawn = new List<IRespawnResetable>(); //reset or else the list will grow
     }
 
 }

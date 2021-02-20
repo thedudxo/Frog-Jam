@@ -27,6 +27,8 @@ namespace FrogScripts
         [HideInInspector] public List<INotifyOnDeath> toNotifyOnDeath = new List<INotifyOnDeath>();
         [HideInInspector] public List<INotifyOnSetback> toNotifyOnSetback = new List<INotifyOnSetback>();
         [HideInInspector] public List<INotifyOnRestart> toNotifyOnRestart = new List<INotifyOnRestart>();
+        [HideInInspector] public List<INotifyOnRestart> UnsubscribeToNotifyOnRestart = new List<INotifyOnRestart>();
+        [HideInInspector] public List<INotifyBeforeRestart> toNotifyBeforeRestart = new List<INotifyBeforeRestart>();
         [HideInInspector] public List<INotifyOnAnyRespawn> toNotifyOnAnyRespawn = new List<INotifyOnAnyRespawn>();
         [HideInInspector] public List<INotifyOnEndLevel> toNotifyOnEndLevel = new List<INotifyOnEndLevel>();
 
@@ -108,7 +110,16 @@ namespace FrogScripts
         }
         public void UnsubscribeOnRestart(INotifyOnRestart subscriber)
         {
-            toNotifyOnRestart.Remove(subscriber);
+            UnsubscribeToNotifyOnRestart.Add(subscriber);
+        }
+
+        public void SubscribeBeforeRestart(INotifyBeforeRestart subscriber)
+        {
+            toNotifyBeforeRestart.Add(subscriber);
+        }
+        public void UnsubscribeBeforeRestart(INotifyBeforeRestart subscriber)
+        {
+            toNotifyBeforeRestart.Remove(subscriber);
         }
 
         public void SubscribeOnAnyRespawn(INotifyOnAnyRespawn subscriber)

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace FrogScripts
 {
+
     public interface INotifyOnDeath
     {
         void OnDeath();
@@ -12,6 +13,11 @@ namespace FrogScripts
     public interface INotifyOnRestart
     {
         void OnRestart();
+    }
+
+    public interface INotifyBeforeRestart
+    {
+        void BeforeRestart();
     }
 
     public interface INotifyOnSetback

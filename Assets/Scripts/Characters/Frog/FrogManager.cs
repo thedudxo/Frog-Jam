@@ -19,4 +19,42 @@ public class FrogManager : MonoBehaviour
         Frogs.Add(frog);
         IDFrogs.Add(frog.gameObject.GetInstanceID(), frog);
     }
+
+    public Frog GetFrogFromGameobject(GameObject obj)
+    { 
+        if (obj.gameObject.CompareTag(GM.playerTag))
+        {
+            int collisionID = obj.gameObject.GetInstanceID();
+
+            if (IDFrogs.TryGetValue(collisionID, out Frog frog))
+            {
+                return frog;
+            }
+        }
+        return null;
+    }
+
+    public bool FrogIsFirst(Frog givenFrog)
+    {
+        if (! Frogs.Contains(givenFrog))
+        {
+            Debug.LogError("Given frog not managed by this", this);
+        }
+
+        bool isFirst = true;
+
+        foreach (Frog frog in Frogs)
+        {
+            if(frog != givenFrog)
+            {
+                bool givenFrogIsBehind = frog.transform.position.x > givenFrog.transform.position.x;
+                if (givenFrogIsBehind)
+                {
+                    isFirst = false;
+                }
+            }
+        }
+
+        return isFirst;
+    }
 }

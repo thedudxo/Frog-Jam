@@ -8,7 +8,6 @@ namespace FrogScripts.Life
     class LifeStateControlls : MonoBehaviour
     {
         Vector2 levelStart;
-        const float respawnSetBack = 25;
         const int respawnHeight = 5;
 
         [SerializeField] Frog frog;
@@ -76,7 +75,7 @@ namespace FrogScripts.Life
 
         public void Setback()
         {
-            Vector2 respawnPosition = new Vector2(transform.position.x - respawnSetBack, respawnHeight);
+            Vector2 respawnPosition = new Vector2(transform.position.x - GM.respawnSetBack, respawnHeight);
             transform.position = respawnPosition;
 
             if (FrogIsOnStartPlatform)
@@ -85,19 +84,30 @@ namespace FrogScripts.Life
                 return;
             }
 
-            frog.wave.Setback(respawnSetBack);
-
             foreach (INotifyOnSetback notify in frog.toNotifyOnSetback) notify.OnSetback();
         }
 
         public void Restart()
         {
+            foreach (INotifyBeforeRestart notify in frog.toNotifyBeforeRestart) notify.BeforeRestart();
+
             rb.velocity = Vector3.zero;
             transform.position = levelStart;
 
-            frog.wave.Restart();
+            sendRestartEvent();
 
-            foreach (INotifyOnRestart notify in frog.toNotifyOnRestart) notify.OnRestart();
+            void sendRestartEvent()
+            {
+                foreach (INotifyOnRestart notify in frog.toNotifyOnRestart)
+                {
+                    notify.OnRestart();
+                }
+
+                foreach (INotifyOnRestart unsubscribe in frog.UnsubscribeToNotifyOnRestart)
+                {
+                    frog.toNotifyOnRestart.Remove(unsubscribe);
+                }
+            }
         }
     }
 }
