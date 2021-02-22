@@ -2,61 +2,84 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cloud : MonoBehaviour
-{
-
-    public float speed;
-
-    public List<Renderer> renderers  = new List<Renderer>();
-    Animator animatior;
-    [SerializeField] GameObject spriteHolder;
-
-    float repositionCooldown = 1;
-    float lastRepositionTime = 0;
-
-    private void Start()
+namespace LevelScripts {
+    public class Cloud : MonoBehaviour
     {
-        animatior = spriteHolder.GetComponent<Animator>();
 
-        //add all the renderers to a list so we can check if anything is on screen
-        //gets the straws as well so that it is still counted as visible when phill gets lower
-        
+        public float speed;
+        const float averageSpeed = -0.02f;
+        const float speedVariance = 0.005f;
+        float RandomSpeed => Random.Range(averageSpeed - speedVariance, averageSpeed + speedVariance);
 
-        Renderer[] r = spriteHolder.transform.GetComponentsInChildren<Renderer>();
-        foreach(Renderer renderer in r)
+        Animator animatior;
+        [SerializeField] GameObject spriteHolder;
+        [SerializeField] Clouds cloudmanager;
+
+        static readonly Vector2 respawnWaitRange = new Vector2(1f, 3);
+        float respawnWait = 2;
+        float respawnTimer = 0;
+        float RandomRespawnTime => Random.Range(respawnWaitRange.x, respawnWaitRange.y);
+        bool respawning = false;
+
+        const float maxSpawnPastLevel = 5;
+        float spawnPos;
+
+        const float minResetPos = -20;
+        float resetPos;
+
+        const float minSpawnPositionDistance = 5;
+
+
+        private void Start()
         {
-            renderers.Add(renderer);
+            speed = RandomSpeed;
+            animatior = spriteHolder.GetComponent<Animator>();
+            PickNewPositions();
         }
-    }
 
-    public bool IsOnScreen()
-    {
-        bool onScreen = false;
-        foreach(Renderer i in renderers)
+        private void Update()
         {
-            if (i.isVisible)
+            if (transform.position.x < resetPos)
             {
-                onScreen = true;
+                Disappear();
+            }
+
+            if (respawning)
+            {
+                respawnTimer += Time.deltaTime;
+                if (respawnTimer > respawnWait)
+                {
+                    PopUp();
+                    respawning = false;
+                    respawnTimer = 0;
+                }
             }
         }
-        return onScreen;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position = new Vector2(transform.position.x + speed, transform.position.y);
-    }
-
-    public void PopUp()
-    {
-        if(Time.time > repositionCooldown + lastRepositionTime)
+        void FixedUpdate()
         {
-            animatior.SetTrigger("Hide");
-            lastRepositionTime = Time.time;
+            transform.position = new Vector2(transform.position.x + speed, transform.position.y);
         }
 
+        void PickNewPositions()
+        {
+            spawnPos = Random.Range(minResetPos + minSpawnPositionDistance, maxSpawnPastLevel + cloudmanager.level.end);
+            resetPos = Random.Range(minResetPos, spawnPos - minSpawnPositionDistance);
+        }
 
+        public void PopUp()
+        {
+            transform.position = new Vector2(spawnPos, transform.position.y);
+            animatior.SetTrigger("PopUp");
+
+        }
+
+        void Disappear()
+        {
+            animatior.SetTrigger("Disappear");
+            PickNewPositions();
+            respawnWait = RandomRespawnTime;
+            respawning = true;
+        }
     }
-
 }
