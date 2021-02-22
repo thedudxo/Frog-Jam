@@ -17,7 +17,7 @@ namespace LevelScripts {
 
         static readonly Vector2 respawnWaitRange = new Vector2(1f, 3);
         float respawnWait = 2;
-        float respawnTimer = 0;
+        public float respawnTimer = 0;
         float RandomRespawnTime => Random.Range(respawnWaitRange.x, respawnWaitRange.y);
         bool respawning = false;
 
@@ -26,8 +26,9 @@ namespace LevelScripts {
 
         const float minResetPos = -20;
         float resetPos;
+        bool pastResetPos => transform.position.x < resetPos;
 
-        const float minSpawnPositionDistance = 5;
+        const float minSpawnPositionDistance = 10;
 
 
         private void Start()
@@ -39,11 +40,6 @@ namespace LevelScripts {
 
         private void Update()
         {
-            if (transform.position.x < resetPos)
-            {
-                Disappear();
-            }
-
             if (respawning)
             {
                 respawnTimer += Time.deltaTime;
@@ -54,6 +50,12 @@ namespace LevelScripts {
                     respawnTimer = 0;
                 }
             }
+
+            else if (pastResetPos)
+            {
+                //Debug.Log($"POSITION: {transform.position.x} < {resetPos}");
+                Disappear();
+            }
         }
 
         void FixedUpdate()
@@ -63,23 +65,31 @@ namespace LevelScripts {
 
         void PickNewPositions()
         {
-            spawnPos = Random.Range(minResetPos + minSpawnPositionDistance, maxSpawnPastLevel + cloudmanager.level.end);
-            resetPos = Random.Range(minResetPos, spawnPos - minSpawnPositionDistance);
+            float minSpawnPos = minResetPos + minSpawnPositionDistance;
+            float maxSpawnPos = maxSpawnPastLevel + cloudmanager.level.end;
+            spawnPos = Random.Range(minSpawnPos, maxSpawnPos);
+
+            float maxResetPos = spawnPos - minSpawnPositionDistance;
+            resetPos = Random.Range(minResetPos, maxResetPos);
+
+            //Debug.Log($"SPAWN POS: {spawnPos}   RESET POS: {resetPos}");
         }
 
         public void PopUp()
         {
             transform.position = new Vector2(spawnPos, transform.position.y);
             animatior.SetTrigger("PopUp");
+            PickNewPositions();
+            //Debug.Log($"POPUP at {spawnPos}");
 
         }
 
         void Disappear()
         {
             animatior.SetTrigger("Disappear");
-            PickNewPositions();
             respawnWait = RandomRespawnTime;
             respawning = true;
+            //Debug.Log("DISAPPEAR");
         }
     }
 }

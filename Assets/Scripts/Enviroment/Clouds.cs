@@ -7,7 +7,5 @@ namespace LevelScripts {
     {
         [SerializeField] public Level level;
         [SerializeField] List<Cloud> fluffyClouds = new List<Cloud>();
-        [SerializeField] float respawnDistanceVariance;
-
     }
 }

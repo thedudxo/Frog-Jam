@@ -8837,7 +8837,6 @@ MonoBehaviour:
   - {fileID: 2129995959}
   - {fileID: 1614429243}
   - {fileID: 254407456}
-  respawnDistanceVariance: 10
 --- !u!4 &1710247146 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8428801162286610401, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
@@ -10032,6 +10031,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cloud (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428801162286610403, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8428801162286610415, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}
