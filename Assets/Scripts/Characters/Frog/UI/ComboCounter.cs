@@ -3,37 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ComboCounter : MonoBehaviour
-{
-
-    [SerializeField] Text comboText;
-    [SerializeField] string comboSuffix = "x";
-    [SerializeField] float maxComboTime;
-
-    float currentComboTime;
-    int combo = 0;
-
-    void Start()
+namespace FrogScripts {
+    public class ComboCounter : MonoBehaviour, INotifyOnDeath
     {
-        //GM.comboCounter = this;
-        comboText.text = "";
-    }
+        [SerializeField] Frog frog;
+        [SerializeField] Text comboText;
+        [SerializeField] string comboSuffix = "x";
+        float maxComboTime = 3;
 
-    void Update()
-    {
-        currentComboTime += Time.deltaTime;
+        float currentComboTime;
+        int combo = 0;
 
-        if (currentComboTime >= maxComboTime)
+        void Start()
         {
+            Debug.Log(frog, frog);
+            frog.SubscribeOnDeath(this);
             comboText.text = "";
-            combo = 0;
         }
-    }
 
-    public void CheckCombo()
-    {
-        combo++;
-        comboText.text = combo + comboSuffix;
-        currentComboTime = 0;
+        void Update()
+        {
+            currentComboTime += Time.deltaTime;
+
+            if (currentComboTime >= maxComboTime)
+            {
+                comboText.text = "";
+                combo = 0;
+            }
+        }
+
+        public void CheckCombo()
+        {
+            combo++;
+            comboText.text = combo + comboSuffix;
+            currentComboTime = 0;
+        }
+
+        public void OnDeath()
+        {
+            CheckCombo();
+        }
     }
 }
