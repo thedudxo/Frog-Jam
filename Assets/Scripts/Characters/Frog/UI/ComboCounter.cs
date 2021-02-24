@@ -16,7 +16,6 @@ namespace FrogScripts {
 
         void Start()
         {
-            Debug.Log(frog, frog);
             frog.SubscribeOnDeath(this);
             comboText.text = "";
         }

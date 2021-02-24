@@ -3,6 +3,7 @@ using FrogScripts.Vfx;
 using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
+using waveScripts;
 
 namespace FrogScripts
 {

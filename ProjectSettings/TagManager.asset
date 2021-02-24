@@ -8,6 +8,7 @@ TagManager:
   - Phill
   - DeathCount
   - EnemyAligator
+  - WaveSegment
   layers:
   - Default
   - TransparentFX
