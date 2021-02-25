@@ -11,6 +11,8 @@ namespace waveScripts
 
         Transform waveTransform;
         bool ReachedEndOfLevel => waveTransform.position.x > wave.level.end;
+        bool shouldRestart = false;
+
 
         private void Start()
         {
@@ -25,7 +27,10 @@ namespace waveScripts
 
         private void Update()
         {
-            if (ReachedEndOfLevel) Restart();
+            if (ReachedEndOfLevel) shouldRestart = true;
+
+            if (shouldRestart)
+                wave.BreakWave();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -42,7 +47,7 @@ namespace waveScripts
 
             if (hitFrog != null)
                 if (frogManager.FrogIsFirst(hitFrog))
-                    Restart();
+                    shouldRestart = true;
         }
     }
 }
