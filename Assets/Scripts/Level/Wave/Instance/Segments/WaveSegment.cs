@@ -12,7 +12,7 @@ namespace waveScripts
 
         bool segmentAtBreakpoint => transform.position.x > wave.breakPosition;
 
-        public void CheckSegment()
+        public void HideSegmentAtBreakpoint()
         {
             if (!hidden && segmentAtBreakpoint)
             {

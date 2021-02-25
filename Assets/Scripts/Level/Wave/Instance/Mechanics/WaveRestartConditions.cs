@@ -20,17 +20,15 @@ namespace waveScripts
             waveTransform = wave.transform;
         }
 
-        private void Restart()
-        {
-            wave.BreakWave();
-        }
-
         private void Update()
         {
             if (ReachedEndOfLevel) shouldRestart = true;
 
             if (shouldRestart)
+            {
+                shouldRestart = false;
                 wave.BreakWave();
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

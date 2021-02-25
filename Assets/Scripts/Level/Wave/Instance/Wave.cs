@@ -35,7 +35,7 @@ namespace waveScripts
                     break;
 
                 case State.breaking:
-                    waveSegments.CheckSegments();
+                    waveSegments.HideAtBreakpoint();
                     break;
             }
         }

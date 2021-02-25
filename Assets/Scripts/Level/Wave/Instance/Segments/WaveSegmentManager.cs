@@ -27,11 +27,11 @@ namespace waveScripts
             }
         }
 
-        public void CheckSegments()
+        public void HideAtBreakpoint()
         {
             foreach (WaveSegment segment in segments)
             {
-                segment.CheckSegment();
+                segment.HideSegmentAtBreakpoint();
             }
         }
 
