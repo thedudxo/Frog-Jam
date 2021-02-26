@@ -301,6 +301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wave Bit (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7564294140054876786, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
+        type: 3}
+      propertyPath: m_TagString
+      value: WaveSegment
+      objectReference: {fileID: 0}
     - target: {fileID: 7564294140054876789, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
         type: 3}
       propertyPath: m_RootOrder
@@ -419,6 +424,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wave Bit (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7564294140054876786, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
+        type: 3}
+      propertyPath: m_TagString
+      value: WaveSegment
+      objectReference: {fileID: 0}
     - target: {fileID: 7564294140054876789, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
         type: 3}
       propertyPath: m_RootOrder
@@ -521,6 +531,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wave Bit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564294140054876786, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
+        type: 3}
+      propertyPath: m_TagString
+      value: WaveSegment
       objectReference: {fileID: 0}
     - target: {fileID: 7564294140054876789, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
         type: 3}
@@ -694,6 +709,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wave End Bit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100407784636308365, guid: a44ab2fe4c4ba1a47a377671cde9d90d,
+        type: 3}
+      propertyPath: m_TagString
+      value: WaveSegment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a44ab2fe4c4ba1a47a377671cde9d90d, type: 3}
