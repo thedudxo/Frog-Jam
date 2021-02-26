@@ -17,7 +17,7 @@ namespace waveScripts
                 {
                     waiting = false;
                     waited = 0;
-                    wave.StartWave();
+                    wave.state = Wave.State.inactive;
                 }
             }
         }

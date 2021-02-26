@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using LevelScripts;
 
 namespace waveScripts
 {
@@ -18,6 +18,10 @@ namespace waveScripts
          * 
          * waves will break if there are no frogs ahead of them
          */
+
+        [SerializeField] public Level level;
+        [SerializeField] GameObject wavesParentComponent;
+        [SerializeField] GameObject wavePrefab;
 
         List<Wave> waves = new List<Wave>();
 
@@ -41,13 +45,32 @@ namespace waveScripts
 
         public void ReleaseWave()
         {
-            Debug.Log("got the event");
             if (canRelease)
             {
-                //wave.whatevs
+                GetInactiveWave().StartWave();
             }
 
             canRelease = false;
+        }
+
+        Wave GetInactiveWave()
+        {
+            Wave inactiveWave;
+
+            foreach (Wave wave in waves)
+            {
+                if(wave.state == Wave.State.inactive)
+                {
+                    inactiveWave = wave;
+                    return inactiveWave;
+                }
+            }
+
+            inactiveWave = Instantiate(wavePrefab).GetComponent<Wave>();
+            inactiveWave.Setup(this);
+            inactiveWave.transform.parent = wavesParentComponent.transform;
+            waves.Add(inactiveWave);
+            return inactiveWave;
         }
     }
 }

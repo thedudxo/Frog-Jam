@@ -7,8 +7,8 @@ namespace waveScripts
 {
     public class Wave : MonoBehaviour
     {
-
-        [SerializeField] public Level level;
+        public WaveManager manager;
+        public Level level;
         public FrogManager frogManager { get; private set; }
 
         [SerializeField] WaveRestartConditions waveRestartConditions;
@@ -17,13 +17,15 @@ namespace waveScripts
         public float breakPosition;
         public Vector2 spawnPosition;
 
-        public enum State { normal, breaking }
-        State state;
+        public enum State { normal, breaking, inactive }
+        public State state;
 
-        void Awake()
+        public void Setup(WaveManager manager)
         {
+            this.manager = manager;
+            level = manager.level;
             frogManager = level.frogManager;
-            state = State.normal;
+            state = State.inactive;
             spawnPosition = transform.position;
         }
 

@@ -86,7 +86,7 @@ MonoBehaviour:
   speed: {x: 0, y: 0.05, z: 0}
   intensity: {x: 0.1, y: 0.05, z: 0}
   offset: {x: 0, y: 20, z: 0}
-  offsetRandom: {x: 0, y: 360, z: 0}
+  offsetRandom: {x: 0, y: 20, z: 0}
   constrainPosition: 0
 --- !u!1 &7611813847098449006
 GameObject:
@@ -165,11 +165,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec740bede8a4c1c4a94c2afa0fd9a2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
   level: {fileID: 0}
   waveRestartConditions: {fileID: 4593063571467222575}
-  waveSegments: {fileID: 0}
+  waveSegments: {fileID: 4521138068764035582}
   breakPosition: 0
   spawnPosition: {x: 0, y: 0}
+  state: 0
 --- !u!114 &4925829147653793418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +241,7 @@ MonoBehaviour:
   speed: {x: 0, y: 0.05, z: 0}
   intensity: {x: 0.1, y: 0.05, z: 0}
   offset: {x: 0, y: 20, z: 0}
-  offsetRandom: {x: 0, y: 360, z: 0}
+  offsetRandom: {x: 0, y: 20, z: 0}
   constrainPosition: 0
 --- !u!114 &1935657181018321383
 MonoBehaviour:
@@ -270,7 +272,7 @@ MonoBehaviour:
   speed: {x: 0, y: 0.05, z: 0}
   intensity: {x: 0.1, y: 0.05, z: 0}
   offset: {x: 0, y: 20, z: 0}
-  offsetRandom: {x: 0, y: 360, z: 0}
+  offsetRandom: {x: 0, y: 20, z: 0}
   constrainPosition: 0
 --- !u!1001 &1935657180852064696
 PrefabInstance:
@@ -616,7 +618,7 @@ PrefabInstance:
     - target: {fileID: 203096439866420502, guid: a44ab2fe4c4ba1a47a377671cde9d90d,
         type: 3}
       propertyPath: offsetRandom.y
-      value: 360
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4100407784636308362, guid: a44ab2fe4c4ba1a47a377671cde9d90d,
         type: 3}

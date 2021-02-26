@@ -18,6 +18,8 @@ namespace waveScripts
         {
             frogManager = wave.frogManager;
             waveTransform = wave.transform;
+            Debug.Log(waveTransform);
+            Debug.Log(wave.level,wave.level);
         }
 
         private void Update()
