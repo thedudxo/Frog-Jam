@@ -11,6 +11,8 @@ public static class SingletonThatNeedsToBeRemoved
 public class FrogManager : MonoBehaviour
 {
     [SerializeField] public List<Frog> Frogs { get; private set; } = new List<Frog>();
+    public FrogManagerEvents events = new FrogManagerEvents();
+
 
     public Dictionary<int, Frog> IDFrogs = new Dictionary<int, Frog>();
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace FrogScripts
 {
-
     public interface INotifyOnDeath
     {
         void OnDeath();

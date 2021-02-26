@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
 using waveScripts;
+using static FrogScripts.FrogLocationTracker;
 
 namespace FrogScripts
 {
@@ -25,27 +26,22 @@ namespace FrogScripts
         [SerializeField] public Controlls controlls;
         [SerializeField] public FrogCleanJumpManager cleanJumpEffectsManager;
 
-        [HideInInspector] public List<INotifyOnDeath> toNotifyOnDeath = new List<INotifyOnDeath>();
-        [HideInInspector] public List<INotifyOnSetback> toNotifyOnSetback = new List<INotifyOnSetback>();
-        [HideInInspector] public List<INotifyOnRestart> toNotifyOnRestart = new List<INotifyOnRestart>();
-        [HideInInspector] public List<INotifyOnRestart> UnsubscribeToNotifyOnRestart = new List<INotifyOnRestart>();
-        [HideInInspector] public List<INotifyBeforeRestart> toNotifyBeforeRestart = new List<INotifyBeforeRestart>();
-        [HideInInspector] public List<INotifyOnAnyRespawn> toNotifyOnAnyRespawn = new List<INotifyOnAnyRespawn>();
-        [HideInInspector] public List<INotifyOnEndLevel> toNotifyOnEndLevel = new List<INotifyOnEndLevel>();
-
         [Header("Player UI layer")]
         [SerializeField] public string UILayer;
 
-        public bool OnStartingPlatform = true;
+
+        public Location location = Location.StartPlatform;
+        FrogLocationTracker locationTracker;
 
         private void Awake()
         {
             frogManager.AddFrog(this);
+            locationTracker = new FrogLocationTracker(this);
         }
 
         private void Update()
         {
-            OnStartingPlatform = transform.position.x < currentLevel.startLength;
+            locationTracker.CheckLocation();
         }
 
         public void SetObjectUILayer(GameObject obj)
@@ -91,6 +87,14 @@ namespace FrogScripts
         #endregion
 
         #region events
+
+        [HideInInspector] public List<INotifyOnDeath> toNotifyOnDeath = new List<INotifyOnDeath>();
+        [HideInInspector] public List<INotifyOnSetback> toNotifyOnSetback = new List<INotifyOnSetback>();
+        [HideInInspector] public List<INotifyOnRestart> toNotifyOnRestart = new List<INotifyOnRestart>();
+        [HideInInspector] public List<INotifyOnRestart> UnsubscribeToNotifyOnRestart = new List<INotifyOnRestart>();
+        [HideInInspector] public List<INotifyBeforeRestart> toNotifyBeforeRestart = new List<INotifyBeforeRestart>();
+        [HideInInspector] public List<INotifyOnAnyRespawn> toNotifyOnAnyRespawn = new List<INotifyOnAnyRespawn>();
+        [HideInInspector] public List<INotifyOnEndLevel> toNotifyOnEndLevel = new List<INotifyOnEndLevel>();
 
         public void SubscribeOnDeath(INotifyOnDeath subscriber)
         {

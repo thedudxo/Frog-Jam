@@ -4,12 +4,17 @@ using waveScripts;
 using FrogScripts;
 
 
-public class WaveFrogMediatior : MonoBehaviour
+public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
 {
     [SerializeField] WaveManager waveManager;
     [SerializeField] FrogManager frogManager;
 
-    public void FrogLeftStartPlatform()
+    private void Start()
+    {
+        frogManager.events.SubscribeAnyFrogLeftPlatform(this);
+    }
+
+    public void AnyFrogLeftPlatform()
     {
         waveManager.ReleaseWave();
     }

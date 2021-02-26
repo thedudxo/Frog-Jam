@@ -41,6 +41,7 @@ namespace waveScripts
 
         public void ReleaseWave()
         {
+            Debug.Log("got the event");
             if (canRelease)
             {
                 //wave.whatevs

@@ -19,7 +19,6 @@ public class DisableOverTime : MonoBehaviour
     {
         timer = 0;
         obj.SetActive(true);
-        Debug.Log(this,this);
     }
 
     private void Update()

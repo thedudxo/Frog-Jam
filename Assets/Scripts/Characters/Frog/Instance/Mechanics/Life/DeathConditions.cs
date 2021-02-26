@@ -40,7 +40,8 @@ namespace FrogScripts.Life
                 return DeathType.setback;
             }
 
-            if (!frog.OnStartingPlatform)
+            bool frogOnStartPlatform = frog.location == FrogLocationTracker.Location.StartPlatform;
+            if (frogOnStartPlatform == false)
             {
 
                 DeathType touchingDeathType = CheckTouching();
