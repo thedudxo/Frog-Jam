@@ -22,6 +22,7 @@ namespace waveScripts
         [SerializeField] public Level level;
         [SerializeField] GameObject wavesParentComponent;
         [SerializeField] GameObject wavePrefab;
+        [SerializeField] public WaveFrogMediatior frogMediatior;
 
         List<Wave> waves = new List<Wave>();
 

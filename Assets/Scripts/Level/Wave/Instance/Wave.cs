@@ -7,12 +7,14 @@ namespace waveScripts
 {
     public class Wave : MonoBehaviour
     {
+        public const string Tag = "Wave";
+
         public WaveManager manager;
         public Level level;
         public FrogManager frogManager { get; private set; }
 
-        [SerializeField] WaveRestartConditions waveRestartConditions;
-        [SerializeField] WaveSegmentManager waveSegments;
+        [SerializeField] public WaveRestartConditions restartConditions;
+        [SerializeField] public WaveSegmentManager segments;
 
         public float breakPosition;
         public Vector2 spawnPosition;
@@ -37,7 +39,7 @@ namespace waveScripts
                     break;
 
                 case State.breaking:
-                    waveSegments.HideAtBreakpoint();
+                    segments.HideAtBreakpoint();
                     break;
             }
         }
@@ -48,7 +50,7 @@ namespace waveScripts
             state = Wave.State.normal;
 
             transform.position = spawnPosition;
-            waveSegments.UnHideSegments();
+            segments.UnHideSegments();
         }
 
         public void BreakWave()

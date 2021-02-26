@@ -1,17 +1,20 @@
-﻿using UnityEngine;
+﻿
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace waveScripts
 {
     public class WaveSegmentManager : MonoBehaviour
     {
         [SerializeField] Wave wave;
-        const string segmentTag = "WaveSegment";
+        WaveFrogMediatior mediator;
+        public const string segmentTag = "WaveSegment";
         [SerializeField] public List<WaveSegment> segments = new List<WaveSegment>();
 
         private void Start()
         {
             GetSegmentsFromComponents();
+            mediator = wave.manager.frogMediatior;
 
             void GetSegmentsFromComponents()
             {
@@ -40,6 +43,17 @@ namespace waveScripts
             foreach (WaveSegment segment in segments)
             {
                 segment.UnHideSegement();
+            }
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag(GM.playerTag))
+            {
+                FrogScripts.Frog hitFrog = mediator.CheckIfHitFrog(collision);
+
+                if (hitFrog != null)
+                    if (mediator.CheckIfFrogIsFirst(hitFrog))
+                        wave.restartConditions.TriggerRestart();
             }
         }
     }

@@ -18,4 +18,15 @@ public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
     {
         waveManager.ReleaseWave();
     }
+    public Frog CheckIfHitFrog(Collider2D collision)
+    {
+        return frogManager.GetFrogFromGameobject(collision.gameObject);
+    }
+
+    public bool CheckIfFrogIsFirst(Frog frog)
+    {
+        if (frogManager.FrogIsFirst(frog)) return true;
+        else return false;
+            
+    }
 }
