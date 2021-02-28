@@ -24,7 +24,7 @@ namespace waveScripts
         [SerializeField] GameObject wavePrefab;
         [SerializeField] public WaveFrogMediatior frogMediatior;
 
-        List<Wave> waves = new List<Wave>();
+        public List<Wave> waves { get; private set; } = new List<Wave>();
 
         float waveReleaseCooldown = 2f;
         float releaseTimer = 0;

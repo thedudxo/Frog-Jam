@@ -33,7 +33,7 @@ namespace FrogScripts
                 if (OnStartingPlatform == false)
                 {
                     frog.location = Location.Level;
-                    frog.frogManager.events.TriggerAnyFrogLeftPlatform();
+                    frog.manager.events.TriggerAnyFrogLeftPlatform();
                 }
             }
         }

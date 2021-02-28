@@ -6,6 +6,7 @@ namespace waveScripts
     public class WaveRestartConditions : MonoBehaviour
     {
         [SerializeField] Wave wave;
+        WaveFrogMediatior frogMediator;
 
         Transform waveTransform;
         bool ReachedEndOfLevel => waveTransform.position.x > wave.level.end;
@@ -15,19 +16,31 @@ namespace waveScripts
         private void Start()
         {
             waveTransform = wave.transform;
+            frogMediator = wave.manager.frogMediatior;
         }
 
         private void Update()
         {
             if (wave.state == Wave.State.normal)
             {
-                if (ReachedEndOfLevel) shouldRestart = true;
+                CheckUpdateConditions();
 
                 if (shouldRestart)
                 {
                     shouldRestart = false;
                     wave.BreakWave();
                 }
+            }
+
+            void CheckUpdateConditions()
+            {
+
+                if (
+                    ReachedEndOfLevel ||
+                    frogMediator.AnyFrogAhead(wave) == false
+                    ) 
+
+                    shouldRestart = true;
             }
         }
 

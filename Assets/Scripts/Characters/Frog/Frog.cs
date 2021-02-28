@@ -15,7 +15,7 @@ namespace FrogScripts
         [SerializeField] public Wave wave;
 
         [Header("External Managers")]
-        [SerializeField] public FrogManager frogManager;
+        [SerializeField] public FrogManager manager;
         [SerializeField] public SplitManager splitManager;
 
         [Header("Components")]
@@ -35,7 +35,7 @@ namespace FrogScripts
 
         private void Awake()
         {
-            frogManager.AddFrog(this);
+            manager.AddFrog(this);
             locationTracker = new FrogLocationTracker(this);
         }
 

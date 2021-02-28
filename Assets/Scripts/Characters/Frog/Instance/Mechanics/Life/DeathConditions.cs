@@ -14,6 +14,7 @@ namespace FrogScripts.Life
 
         public enum DeathType { none, setback, restart }
         Frog frog;
+        WaveFrogMediatior waveMediator;
 
         public DeathConditions(Frog frog, List<GameObject> currentCollisions)
         {
@@ -21,6 +22,7 @@ namespace FrogScripts.Life
             transform = frog.transform;
             suicideKey = frog.controlls.suicideKey;
             this.currentCollisions = currentCollisions;
+            waveMediator = frog.currentLevel.waveFrogMediatior;
         }
 
 
@@ -31,13 +33,13 @@ namespace FrogScripts.Life
             if (BelowMinY)
             {
                 Statistics.waterDeaths++;
-                return DeathType.setback;
+                return TrySetBack();
             }
 
             if (Input.GetKeyDown(suicideKey))
             {
                 Statistics.suicideDeaths++;
-                return DeathType.setback;
+                return TrySetBack(); 
             }
 
             bool frogOnStartPlatform = frog.location == FrogLocationTracker.Location.StartPlatform;
@@ -52,6 +54,12 @@ namespace FrogScripts.Life
 
             }
             return DeathType.none;
+
+            DeathType TrySetBack()
+            {
+                if (waveMediator.FrogWillSetbackBehindWave(frog)) return DeathType.restart;
+                return DeathType.setback;
+            }
         }
 
 

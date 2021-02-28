@@ -3499,7 +3499,6 @@ GameObject:
   m_Component:
   - component: {fileID: 920671918}
   - component: {fileID: 920671917}
-  - component: {fileID: 920671916}
   m_Layer: 0
   m_Name: Waves
   m_TagString: Untagged
@@ -3507,20 +3506,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &920671916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920671915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 624487919ee48f040bd639ccced620cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveManager: {fileID: 920671917}
-  frogManager: {fileID: 1249019146}
 --- !u!114 &920671917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3537,7 +3522,7 @@ MonoBehaviour:
   wavesParentComponent: {fileID: 920671915}
   wavePrefab: {fileID: 7611813847098449006, guid: 0a9a88486849973479cdeb0a7f72d322,
     type: 3}
-  frogMediatior: {fileID: 920671916}
+  frogMediatior: {fileID: 1188860047}
 --- !u!4 &920671918
 Transform:
   m_ObjectHideFlags: 0
@@ -4340,6 +4325,7 @@ GameObject:
   - component: {fileID: 1188860044}
   - component: {fileID: 1188860045}
   - component: {fileID: 1188860046}
+  - component: {fileID: 1188860047}
   m_Layer: 0
   m_Name: Challenge Level
   m_TagString: Untagged
@@ -4383,6 +4369,7 @@ MonoBehaviour:
   splitManager: {fileID: 1237552537}
   frogManager: {fileID: 1249019146}
   cleanJumps: []
+  waveFrogMediatior: {fileID: 1188860047}
 --- !u!81 &1188860046
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4391,6 +4378,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188860043}
   m_Enabled: 1
+--- !u!114 &1188860047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188860043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624487919ee48f040bd639ccced620cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveManager: {fileID: 920671917}
+  frogManager: {fileID: 1249019146}
 --- !u!1001 &1197442201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4786,6 +4787,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f849a62a14df4f349ac2de178c73bcb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: {fileID: 1188860045}
+  waveMediator: {fileID: 0}
 --- !u!4 &1249019147
 Transform:
   m_ObjectHideFlags: 0
@@ -8428,6 +8431,11 @@ PrefabInstance:
       objectReference: {fileID: 1982919511}
     - target: {fileID: 443601916918360404, guid: e1ce6bf29dd167046995228830b8e77b,
         type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 1249019146}
+    - target: {fileID: 443601916918360404, guid: e1ce6bf29dd167046995228830b8e77b,
+        type: 3}
       propertyPath: frogManager
       value: 
       objectReference: {fileID: 1249019146}
@@ -8444,7 +8452,7 @@ PrefabInstance:
     - target: {fileID: 443601917095403651, guid: e1ce6bf29dd167046995228830b8e77b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -716.4001
+      value: -716.40015
       objectReference: {fileID: 0}
     - target: {fileID: 443601917248430348, guid: e1ce6bf29dd167046995228830b8e77b,
         type: 3}
@@ -8454,7 +8462,7 @@ PrefabInstance:
     - target: {fileID: 443601917364446649, guid: e1ce6bf29dd167046995228830b8e77b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -97.505615
+      value: -97.505585
       objectReference: {fileID: 0}
     - target: {fileID: 443601917424973459, guid: e1ce6bf29dd167046995228830b8e77b,
         type: 3}
@@ -9278,6 +9286,11 @@ PrefabInstance:
       objectReference: {fileID: 1982919511}
     - target: {fileID: 7074319547255812226, guid: ba5e897114e46934682a35e319227241,
         type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 1249019146}
+    - target: {fileID: 7074319547255812226, guid: ba5e897114e46934682a35e319227241,
+        type: 3}
       propertyPath: frogManager
       value: 
       objectReference: {fileID: 1249019146}
@@ -9334,7 +9347,7 @@ PrefabInstance:
     - target: {fileID: 7074319547836251247, guid: ba5e897114e46934682a35e319227241,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -97.505615
+      value: -97.505585
       objectReference: {fileID: 0}
     - target: {fileID: 7074319547955451179, guid: ba5e897114e46934682a35e319227241,
         type: 3}

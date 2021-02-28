@@ -27,7 +27,7 @@ namespace FrogScripts {
 
             void AddOtherPlayers()
             {
-                foreach(Frog frog in frog.frogManager.Frogs)
+                foreach(Frog frog in frog.manager.Frogs)
                 {
 
                 }

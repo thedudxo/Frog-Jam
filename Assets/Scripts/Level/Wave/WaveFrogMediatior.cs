@@ -27,6 +27,30 @@ public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
     {
         if (frogManager.FrogIsFirst(frog)) return true;
         else return false;
-            
+    }
+
+    public bool AnyFrogAhead(Wave wave)
+    {
+        foreach(Frog frog in frogManager.Frogs)
+        {
+            if (frog.transform.position.x > wave.transform.position.x)
+                return true;
+        }
+        return false;
+    }
+
+    public bool FrogWillSetbackBehindWave(Frog frog)
+    {
+        foreach(Wave wave in waveManager.waves)
+        {
+            float waveX = wave.transform.position.x;
+            float frogX = frog.transform.position.x;
+
+            bool waveBehindFrog = waveX < frogX;
+            bool SetbackBehind = frogX - GM.respawnSetBack < waveX;
+
+            if (waveBehindFrog && SetbackBehind) return true;
+        }
+        return false;
     }
 }

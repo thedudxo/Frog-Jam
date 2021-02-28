@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using FrogScripts;
+using LevelScripts;
 
 public static class SingletonThatNeedsToBeRemoved
 {
@@ -11,10 +12,16 @@ public static class SingletonThatNeedsToBeRemoved
 public class FrogManager : MonoBehaviour
 {
     [SerializeField] public List<Frog> Frogs { get; private set; } = new List<Frog>();
-    public FrogManagerEvents events = new FrogManagerEvents();
-
+    [SerializeField] public Level level;
+    [HideInInspector] public FrogManagerEvents events = new FrogManagerEvents();
+    [HideInInspector] public WaveFrogMediatior waveMediator;
 
     public Dictionary<int, Frog> IDFrogs = new Dictionary<int, Frog>();
+
+    private void Awake()
+    {
+        waveMediator = level.waveFrogMediatior;
+    }
 
     public void AddFrog(Frog frog)
     {

@@ -19,6 +19,7 @@ namespace LevelScripts
         [SerializeField] public SplitManager splitManager;
         [SerializeField] public FrogManager frogManager;
         [HideInInspector] public List<CleanlyJumpableObstacle> cleanJumps;
+        [SerializeField] public WaveFrogMediatior waveFrogMediatior;
 
         private void OnValidate()
         {
