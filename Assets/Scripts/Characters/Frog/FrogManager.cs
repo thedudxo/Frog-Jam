@@ -66,4 +66,19 @@ public class FrogManager : MonoBehaviour
 
         return isFirst;
     }
+
+    public Frog GetLastFrog()
+    {
+        Frog last = null;
+        foreach(Frog frog in Frogs)
+        {
+            if (last == null)last = frog;
+            else
+            {
+                if (frog.transform.position.x < last.transform.position.x)
+                    last = frog;
+            }
+        }
+        return last;
+    }
 }

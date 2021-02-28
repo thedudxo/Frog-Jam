@@ -42,9 +42,27 @@ namespace waveScripts
                 if (releaseTimer > waveReleaseCooldown)
                 {
                     releaseTimer = 0;
-                    canRelease = true;
+
+                    if (NoWaveBehindLastFrog())
+                        canRelease = true;
                 }
             }
+        }
+
+        bool NoWaveBehindLastFrog()
+        {
+            float lastFrogPosX = frogMediatior.GetLastFrog().transform.position.x;
+
+            bool noWaveBehindLastFrog = true;
+
+            foreach (Wave wave in waves)
+            {
+                if (wave.state != Wave.State.inactive)
+                    if (lastFrogPosX > wave.transform.position.x)
+                        noWaveBehindLastFrog = false;
+            }
+
+            return noWaveBehindLastFrog;
         }
 
         public void ReleaseWave()

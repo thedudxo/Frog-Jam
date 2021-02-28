@@ -64,4 +64,9 @@ public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
         }
         return false;
     }
+
+    public Frog GetLastFrog()
+    {
+        return frogManager.GetLastFrog();
+    }
 }
