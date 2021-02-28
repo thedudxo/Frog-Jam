@@ -10,7 +10,7 @@ namespace waveScripts
 
         Transform waveTransform;
         bool ReachedEndOfLevel => waveTransform.position.x > wave.level.end;
-        bool shouldRestart = false;
+        bool shouldBreak = false;
 
 
         private void Start()
@@ -25,28 +25,29 @@ namespace waveScripts
             {
                 CheckUpdateConditions();
 
-                if (shouldRestart)
+                if (shouldBreak)
                 {
-                    shouldRestart = false;
+                    shouldBreak = false;
                     wave.BreakWave();
                 }
             }
 
             void CheckUpdateConditions()
             {
-
+                //these could probably be optimised if needed
                 if (
                     ReachedEndOfLevel ||
-                    frogMediator.AnyFrogAhead(wave) == false
+                    frogMediator.AnyFrogAhead(wave) == false ||
+                    frogMediator.AllFrogsOnPlatform()
                     ) 
 
-                    shouldRestart = true;
+                    shouldBreak = true;
             }
         }
 
         public void TriggerRestart()
         {
-            shouldRestart = true;
+            shouldBreak = true;
         }
     }
 }

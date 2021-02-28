@@ -12,11 +12,14 @@ namespace waveScripts
          * 
          * Waves will be released a period of time after a frog leaves the start platform
          * 
-         * no additional waves will be released untill that one has left the start platform
+         * no additional waves will be released untill that one has left the start platform <-
          * 
          * another can be released after then if a different player leaves the platform
          * 
          * waves will break if there are no frogs ahead of them
+         * 
+         * 
+         * if there is allready a wave behind a frog, dont need another one <-
          */
 
         [SerializeField] public Level level;

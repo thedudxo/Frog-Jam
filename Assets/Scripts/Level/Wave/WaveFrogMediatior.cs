@@ -11,13 +11,24 @@ public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
 
     private void Start()
     {
-        frogManager.events.SubscribeAnyFrogLeftPlatform(this);
+        frogManager.events.SubscribeAnyFrogLeftPlatform(this); 
     }
 
     public void AnyFrogLeftPlatform()
     {
         waveManager.ReleaseWave();
     }
+
+    public bool AllFrogsOnPlatform()
+    {
+        foreach(Frog frog in frogManager.Frogs)
+        {
+            bool frogNotOnPlatform = frog.transform.position.x > frogManager.level.startLength;
+            if (frogNotOnPlatform) return false;
+        }
+        return true;
+    }
+
     public Frog CheckIfHitFrog(Collider2D collision)
     {
         return frogManager.GetFrogFromGameobject(collision.gameObject);
