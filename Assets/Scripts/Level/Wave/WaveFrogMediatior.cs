@@ -78,7 +78,7 @@ public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
 
         foreach (Wave wave in waveManager.waves)
         {
-            if (wave.state != Wave.State.inactive)
+            if (wave.state != Wave.State.normal)
                 if (lastFrogPosX > wave.transform.position.x)
                     noWaveBehindLastFrog = false;
         }
