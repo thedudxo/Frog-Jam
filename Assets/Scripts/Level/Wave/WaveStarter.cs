@@ -24,7 +24,7 @@ namespace waveScripts
 
             canStartRightNow = true;
 
-            TimerElapsed();
+            //TimerElapsed();
             NoWavesBehindLastFrog();
 
             void TimerElapsed()
