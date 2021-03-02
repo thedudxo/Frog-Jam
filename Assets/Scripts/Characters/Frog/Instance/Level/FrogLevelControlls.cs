@@ -36,7 +36,7 @@ namespace FrogScripts {
         {
             levelEndScreen.Disable();
             playingLevel = true;
-            frog.RestartLevel();
+            frog.lifeController.Restart();
         }
 
         public void FinishLevel()

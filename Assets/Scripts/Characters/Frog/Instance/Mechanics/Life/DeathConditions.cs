@@ -59,8 +59,10 @@ namespace FrogScripts.Life
 
             DeathType TrySetBack()
             {
-                if (waveMediator.FrogWillSetbackBehindWave(frog)) return DeathType.restart;
-                return DeathType.setback;
+                if (frog.inDanger)
+                    return DeathType.restart;
+                else
+                    return DeathType.setback;
             }
         }
 

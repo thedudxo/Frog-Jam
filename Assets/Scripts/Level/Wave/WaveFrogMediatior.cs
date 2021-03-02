@@ -58,13 +58,16 @@ public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
     {
         foreach(Wave wave in waveManager.waves)
         {
-            float waveX = wave.transform.position.x;
-            float frogX = frog.transform.position.x;
+            if (wave.state == Wave.State.normal)
+            {
+                float waveX = wave.transform.position.x;
+                float frogX = frog.transform.position.x;
 
-            bool waveBehindFrog = waveX < frogX;
-            bool SetbackBehind = frogX - GM.respawnSetBack < waveX;
+                bool waveBehindFrog = waveX < frogX;
+                bool SetbackBehind = frogX - GM.respawnSetBack < waveX;
 
-            if (waveBehindFrog && SetbackBehind) return true;
+                if (waveBehindFrog && SetbackBehind) return true;
+            }
         }
         return false;
     }

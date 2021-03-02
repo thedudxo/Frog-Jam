@@ -30,6 +30,8 @@ namespace FrogScripts
         [Header("Player UI layer")]
         [SerializeField] public string UILayer;
 
+        [HideInInspector] public bool inDanger = false;
+        [SerializeField] GameObject inDangerUI;
 
         public State state = State.StartPlatform;
         public FrogState stateControlls;
@@ -38,11 +40,16 @@ namespace FrogScripts
         {
             manager.AddFrog(this);
             stateControlls = new FrogState(this);
+            inDangerUI.SetActive(false);
         }
 
         private void Update()
         {
             stateControlls.CheckLocation();
+
+            inDanger = currentLevel.waveFrogMediatior.FrogWillSetbackBehindWave(this);
+            if (state == State.StartPlatform) inDanger = false;
+            inDangerUI.SetActive(inDanger);
         }
 
         public void SetObjectUILayer(GameObject obj)
@@ -63,11 +70,6 @@ namespace FrogScripts
         public void Respawn()
         {
             jumpController.Respawn();
-        }
-
-        public void RestartLevel() //might be a bit sphagetti
-        {
-            lifeController.Restart(); 
         }
 
         #region collisions
