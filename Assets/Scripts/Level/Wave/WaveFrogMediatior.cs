@@ -44,8 +44,12 @@ public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
     {
         foreach(Frog frog in frogManager.Frogs)
         {
-            if (frog.transform.position.x > wave.transform.position.x)
-                return true;
+            bool frogInLevel = frog.state == FrogState.State.Level || frog.state == FrogState.State.Dead;
+            if (frogInLevel)
+            {
+                if (frog.transform.position.x > wave.transform.position.x)
+                    return true;
+            }
         }
         return false;
     }

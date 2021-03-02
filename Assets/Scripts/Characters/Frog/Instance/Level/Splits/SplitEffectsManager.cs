@@ -61,7 +61,7 @@ namespace FrogScripts
 
         private void Update()
         {
-            bool frogOnStartPlatform = frog.location == FrogLocationTracker.Location.StartPlatform;
+            bool frogOnStartPlatform = frog.state == FrogState.State.StartPlatform;
             if (frogOnStartPlatform == false)
                 CurrentSplitTime += Time.deltaTime;
         }

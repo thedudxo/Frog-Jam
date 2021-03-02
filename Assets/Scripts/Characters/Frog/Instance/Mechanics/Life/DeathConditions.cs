@@ -30,6 +30,8 @@ namespace FrogScripts.Life
 
         public DeathType Check()
         {
+            if (frog.state == FrogState.State.Hidden) return DeathType.none;
+
             if (BelowMinY)
             {
                 Statistics.waterDeaths++;
@@ -42,7 +44,7 @@ namespace FrogScripts.Life
                 return TrySetBack(); 
             }
 
-            bool frogOnStartPlatform = frog.location == FrogLocationTracker.Location.StartPlatform;
+            bool frogOnStartPlatform = frog.state == FrogState.State.StartPlatform;
             if (frogOnStartPlatform == false)
             {
 

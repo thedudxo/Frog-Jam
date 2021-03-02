@@ -42,7 +42,6 @@ namespace waveScripts
                     NoFrogsAhead ||
                     AllFrogsOnPlatform
                     ) 
-
                     shouldBreak = true;
             }
         }

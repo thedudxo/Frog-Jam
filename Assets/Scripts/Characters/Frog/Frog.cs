@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
 using waveScripts;
-using static FrogScripts.FrogLocationTracker;
+using static FrogScripts.FrogState;
 
 namespace FrogScripts
 {
@@ -19,6 +19,7 @@ namespace FrogScripts
         [SerializeField] public SplitManager splitManager;
 
         [Header("Components")]
+        [SerializeField] public Rigidbody2D rb;
         [SerializeField] public VfxController vfxManager;
         [SerializeField] public LifeController lifeController;
         [SerializeField] public CameraController cameraController;
@@ -30,18 +31,18 @@ namespace FrogScripts
         [SerializeField] public string UILayer;
 
 
-        public Location location = Location.StartPlatform;
-        FrogLocationTracker locationTracker;
+        public State state = State.StartPlatform;
+        public FrogState stateControlls;
 
         private void Awake()
         {
             manager.AddFrog(this);
-            locationTracker = new FrogLocationTracker(this);
+            stateControlls = new FrogState(this);
         }
 
         private void Update()
         {
-            locationTracker.CheckLocation();
+            stateControlls.CheckLocation();
         }
 
         public void SetObjectUILayer(GameObject obj)

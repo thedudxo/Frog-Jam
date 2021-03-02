@@ -47,8 +47,6 @@ namespace FrogScripts {
             levelStats.CheckForPBTime();
             playingLevel = false;
             EnableEndScreen();
-            rb.gravityScale = 0;
-            rb.velocity = Vector2.zero;
         }
 
         private void EnableEndScreen()

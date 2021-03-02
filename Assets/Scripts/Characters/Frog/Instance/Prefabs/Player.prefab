@@ -25955,7 +25955,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -716.4002}
+  m_AnchoredPosition: {x: 0, y: -716.40015}
   m_SizeDelta: {x: 142.47, y: 64.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9174729618567400091
@@ -26542,8 +26542,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: {fileID: 0}
   wave: {fileID: 0}
-  frogManager: {fileID: 0}
+  manager: {fileID: 0}
   splitManager: {fileID: 0}
+  rb: {fileID: 9174729618712038166}
   vfxManager: {fileID: 9174729618712038248}
   lifeController: {fileID: 9174729618216640956}
   cameraController: {fileID: 9174729618712038250}
@@ -26551,7 +26552,7 @@ MonoBehaviour:
   controlls: {fileID: 1248141674805331836}
   cleanJumpEffectsManager: {fileID: 9098765996569449621}
   UILayer: Player1 UI
-  OnStartingPlatform: 1
+  state: 1
   currentCollisions: []
 --- !u!114 &9174729618712038248
 MonoBehaviour:

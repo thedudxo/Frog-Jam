@@ -18,7 +18,7 @@ namespace FrogScripts
 
         void Update()
         {
-            bool frogOnStartPlatform = frog.location == FrogLocationTracker.Location.StartPlatform;
+            bool frogOnStartPlatform = frog.state == FrogState.State.StartPlatform;
             if (frogOnStartPlatform == false)
                 CurrentLevelTime += Time.deltaTime;
             timer.text = CurrentLevelTime.ToString("f1");

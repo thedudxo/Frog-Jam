@@ -77,6 +77,7 @@ namespace FrogScripts.Life
         {
             Vector2 respawnPosition = new Vector2(transform.position.x - GM.respawnSetBack, respawnHeight);
             transform.position = respawnPosition;
+            frog.transform.rotation = Quaternion.identity;
 
             if (FrogIsOnStartPlatform)
             {
@@ -93,6 +94,7 @@ namespace FrogScripts.Life
 
             rb.velocity = Vector3.zero;
             transform.position = levelStart;
+            frog.transform.rotation = Quaternion.identity;
 
             sendRestartEvent();
 
