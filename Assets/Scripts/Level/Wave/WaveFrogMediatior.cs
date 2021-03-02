@@ -16,7 +16,7 @@ public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
 
     public void AnyFrogLeftPlatform()
     {
-        waveManager.ReleaseWave();
+        waveManager.waveStarter.StartWave();
     }
 
     public bool AllFrogsOnPlatform()
@@ -68,5 +68,21 @@ public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
     public Frog GetLastFrog()
     {
         return frogManager.GetLastFrog();
+    }
+
+    public bool NoWaveBehindLastFrog()
+    {
+        float lastFrogPosX = GetLastFrog().transform.position.x;
+
+        bool noWaveBehindLastFrog = true;
+
+        foreach (Wave wave in waveManager.waves)
+        {
+            if (wave.state != Wave.State.inactive)
+                if (lastFrogPosX > wave.transform.position.x)
+                    noWaveBehindLastFrog = false;
+        }
+
+        return noWaveBehindLastFrog;
     }
 }

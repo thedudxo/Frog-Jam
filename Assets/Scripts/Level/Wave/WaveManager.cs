@@ -22,60 +22,28 @@ namespace waveScripts
          * if there is allready a wave behind a frog, dont need another one <-
          */
 
+        [Header("External")]
         [SerializeField] public Level level;
+        [SerializeField] public WaveFrogMediatior frogMediatior;
+
+        [Header("Components")]
         [SerializeField] GameObject wavesParentComponent;
         [SerializeField] GameObject wavePrefab;
-        [SerializeField] public WaveFrogMediatior frogMediatior;
+        public WaveStarter waveStarter;
 
         public List<Wave> waves { get; private set; } = new List<Wave>();
 
-        float waveReleaseCooldown = 2f;
-        float releaseTimer = 0;
-        bool canRelease = true;
+        private void Start()
+        {
+            waveStarter = new WaveStarter(this, frogMediatior);
+        }
 
         private void Update()
         {
-            if (canRelease == false)
-            {
-                releaseTimer += Time.deltaTime;
-
-                if (releaseTimer > waveReleaseCooldown)
-                {
-                    releaseTimer = 0;
-
-                    if (NoWaveBehindLastFrog())
-                        canRelease = true;
-                }
-            }
+            waveStarter.CheckStartConditions();
         }
 
-        bool NoWaveBehindLastFrog()
-        {
-            float lastFrogPosX = frogMediatior.GetLastFrog().transform.position.x;
-
-            bool noWaveBehindLastFrog = true;
-
-            foreach (Wave wave in waves)
-            {
-                if (wave.state != Wave.State.inactive)
-                    if (lastFrogPosX > wave.transform.position.x)
-                        noWaveBehindLastFrog = false;
-            }
-
-            return noWaveBehindLastFrog;
-        }
-
-        public void ReleaseWave()
-        {
-            if (canRelease)
-            {
-                GetInactiveWave().StartWave();
-            }
-
-            canRelease = false;
-        }
-
-        Wave GetInactiveWave()
+        public Wave GetInactiveWave()
         {
             Wave inactiveWave;
 
@@ -91,7 +59,9 @@ namespace waveScripts
             inactiveWave = Instantiate(wavePrefab).GetComponent<Wave>();
             inactiveWave.Setup(this);
             inactiveWave.transform.parent = wavesParentComponent.transform;
+
             waves.Add(inactiveWave);
+
             return inactiveWave;
         }
     }
