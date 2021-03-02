@@ -9,9 +9,11 @@ namespace waveScripts
         WaveFrogMediatior frogMediator;
 
         Transform waveTransform;
-        bool ReachedEndOfLevel => waveTransform.position.x > wave.level.end;
-        bool shouldBreak = false;
 
+        bool shouldBreak = false;
+        bool ReachedEndOfLevel => waveTransform.position.x > wave.level.end;
+        bool NoFrogsAhead => frogMediator.AnyFrogAhead(wave) == false;
+        bool AllFrogsOnPlatform => frogMediator.AllFrogsOnPlatform();
 
         private void Start()
         {
@@ -27,8 +29,8 @@ namespace waveScripts
 
                 if (shouldBreak)
                 {
-                    shouldBreak = false;
                     wave.BreakWave();
+                    shouldBreak = false;
                 }
             }
 
@@ -37,8 +39,8 @@ namespace waveScripts
                 //these could probably be optimised if needed
                 if (
                     ReachedEndOfLevel ||
-                    frogMediator.AnyFrogAhead(wave) == false ||
-                    frogMediator.AllFrogsOnPlatform()
+                    NoFrogsAhead ||
+                    AllFrogsOnPlatform
                     ) 
 
                     shouldBreak = true;

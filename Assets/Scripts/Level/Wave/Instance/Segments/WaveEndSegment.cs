@@ -6,18 +6,18 @@ namespace waveScripts
     {
         float WaitTillRestart = 2;
         float waited = 0;
-        bool waiting = false;
+        bool waitForAnimation = false;
 
         void Update()
         {
-            if (waiting)
+            if (waitForAnimation)
             {
                 waited += Time.deltaTime;
                 if (waited > WaitTillRestart)
                 {
-                    waiting = false;
+                    waitForAnimation = false;
                     waited = 0;
-                    wave.state = Wave.State.inactive;
+                    wave.FinishedBreaking();
                 }
             }
         }
@@ -25,7 +25,7 @@ namespace waveScripts
         protected override void HideSegment()
         {
             base.HideSegment();
-            waiting = true;
+            waitForAnimation = true;
         }
     }
 }

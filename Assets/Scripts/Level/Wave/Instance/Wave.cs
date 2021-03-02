@@ -9,10 +9,11 @@ namespace waveScripts
     {
         public const string Tag = "Wave";
 
-        public WaveManager manager;
-        public Level level;
-        public FrogManager frogManager { get; private set; }
+        [HideInInspector] public WaveManager manager;
+        [HideInInspector] public Level level;
+        [HideInInspector] public FrogManager frogManager { get; private set; }
 
+        [Header("Components")]
         [SerializeField] public WaveRestartConditions restartConditions;
         [SerializeField] public WaveSegmentManager segments;
 
@@ -25,8 +26,9 @@ namespace waveScripts
         public void Setup(WaveManager manager)
         {
             this.manager = manager;
-            level = manager.level;
-            frogManager = level.frogManager;
+            this.level = manager.level;
+            this.frogManager = level.frogManager;
+
             state = State.inactive;
             spawnPosition = transform.position;
         }
@@ -46,19 +48,37 @@ namespace waveScripts
 
         public void StartWave()
         {
-            if (state == State.normal) return;
-            state = Wave.State.normal;
+            if (state != State.inactive)
+            {
+                Debug.LogWarning("Tried starting a wave that wasn't inactive",this);
+                return;
+            }
 
-            transform.position = spawnPosition;
             segments.UnHideSegments();
+            transform.position = spawnPosition;
+            state = Wave.State.normal;
         }
 
         public void BreakWave()
         {
-            if (state == State.breaking) return;
-            state = Wave.State.breaking;
+            if (state != State.normal)
+            {
+                Debug.LogWarning("Tried breaking a wave which wasn't in normal state", this);
+                return;
+            }
 
             breakPosition = transform.position.x;
+            state = Wave.State.breaking;
+        }
+
+        public void FinishedBreaking()
+        {
+            if (state != State.breaking)
+            {
+                Debug.LogWarning("Tried setting non breaking wave as inactive", this);
+                return;
+            }
+                state = State.inactive;
         }
 
     }
