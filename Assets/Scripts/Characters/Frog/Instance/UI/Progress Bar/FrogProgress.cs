@@ -2,17 +2,26 @@
 using UnityEditor;
 using UnityEngine.UI;
 using LevelScripts;
+using System.Collections.Generic;
 
-namespace FrogScripts {
+namespace FrogScripts.Progress
+{
+    interface IProgressTracker
+    {
+        void UpdateProgress();
+    }
+
     public class FrogProgress : MonoBehaviour , INotifyOnAnyRespawn
     {
-        [SerializeField] Frog frog;
+        [SerializeField] public Frog frog;
 
         [SerializeField] Slider playerProgressBar;
         [SerializeField] Slider progressLost;
         const float progressLostDecaySpeed = 0.002f;
         [SerializeField] Slider personalBest;
         [SerializeField] Slider waveProgressBar;
+
+        [SerializeField] List<IProgressTracker> progressTrackers;
 
         Level level;
         Transform waveTransform;
@@ -41,21 +50,20 @@ namespace FrogScripts {
              * colours in this players progress & progrees lost behind all players
              */
 
+            foreach (IProgressTracker tracker in progressTrackers)
+            {
+                tracker.UpdateProgress();
+            }
 
+
+            //old
             PlayerProgress();
-            WaveProgress();
             LooseProgress();
 
             void PlayerProgress()
             {
                 float frogPosX = frog.transform.position.x;
                 playerProgressBar.value = (frogPosX - level.startLength) / (level.end - level.startLength);
-            }
-
-            void WaveProgress()
-            {
-                float wavePosX = waveTransform.position.x;
-                waveProgressBar.value = (wavePosX - level.startLength) / (level.end - level.startLength);
             }
 
             void LooseProgress()
