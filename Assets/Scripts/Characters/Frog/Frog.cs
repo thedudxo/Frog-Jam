@@ -27,14 +27,18 @@ namespace FrogScripts
         [SerializeField] public Controlls controlls;
         [SerializeField] public FrogCleanJumpManager cleanJumpEffectsManager;
 
+        public State state = State.StartPlatform;
+        public FrogState stateControlls;
+
+        public FrogEvents events = new FrogEvents();
+
         [Header("Player UI layer")]
         [SerializeField] public string UILayer;
 
         [HideInInspector] public bool inDanger = false;
         [SerializeField] GameObject inDangerUI;
 
-        public State state = State.StartPlatform;
-        public FrogState stateControlls;
+
 
         private void Awake()
         {
@@ -89,69 +93,5 @@ namespace FrogScripts
         }
         #endregion
 
-        #region events
-
-        [HideInInspector] public List<INotifyOnDeath> toNotifyOnDeath = new List<INotifyOnDeath>();
-        [HideInInspector] public List<INotifyOnSetback> toNotifyOnSetback = new List<INotifyOnSetback>();
-        [HideInInspector] public List<INotifyOnRestart> toNotifyOnRestart = new List<INotifyOnRestart>();
-        [HideInInspector] public List<INotifyOnRestart> UnsubscribeToNotifyOnRestart = new List<INotifyOnRestart>();
-        [HideInInspector] public List<INotifyBeforeRestart> toNotifyBeforeRestart = new List<INotifyBeforeRestart>();
-        [HideInInspector] public List<INotifyOnAnyRespawn> toNotifyOnAnyRespawn = new List<INotifyOnAnyRespawn>();
-        [HideInInspector] public List<INotifyOnEndLevel> toNotifyOnEndLevel = new List<INotifyOnEndLevel>();
-
-        public void SubscribeOnDeath(INotifyOnDeath subscriber)
-        {
-            toNotifyOnDeath.Add(subscriber);
-        }
-        public void UnscubscribeOnDeath(INotifyOnDeath subscriber)
-        {
-            toNotifyOnDeath.Remove(subscriber);
-        }
-
-        public void SubscribeOnSetback(INotifyOnSetback subscriber)
-        {
-            toNotifyOnSetback.Add(subscriber);
-        }
-        public void UnsubscribeOnSetback(INotifyOnSetback subscriber)
-        {
-            toNotifyOnSetback.Remove(subscriber);
-        }
-
-        public void SubscribeOnRestart(INotifyOnRestart subscriber)
-        {
-            toNotifyOnRestart.Add(subscriber);
-        }
-        public void UnsubscribeOnRestart(INotifyOnRestart subscriber)
-        {
-            UnsubscribeToNotifyOnRestart.Add(subscriber);
-        }
-
-        public void SubscribeBeforeRestart(INotifyBeforeRestart subscriber)
-        {
-            toNotifyBeforeRestart.Add(subscriber);
-        }
-        public void UnsubscribeBeforeRestart(INotifyBeforeRestart subscriber)
-        {
-            toNotifyBeforeRestart.Remove(subscriber);
-        }
-
-        public void SubscribeOnAnyRespawn(INotifyOnAnyRespawn subscriber)
-        {
-            toNotifyOnAnyRespawn.Add(subscriber);
-        }
-        public void UnsubscribeOnAnyRespawn(INotifyOnAnyRespawn subscriber)
-        {
-            toNotifyOnAnyRespawn.Remove(subscriber);
-        }
-
-        public void SubscribeOnEndLevel(INotifyOnEndLevel subscriber)
-        {
-            toNotifyOnEndLevel.Add(subscriber);
-        }
-        public void UnsubscribeOnEndLevel(INotifyOnEndLevel subscriber)
-        {
-            toNotifyOnEndLevel.Remove(subscriber);
-        }
-        #endregion
     }
 }

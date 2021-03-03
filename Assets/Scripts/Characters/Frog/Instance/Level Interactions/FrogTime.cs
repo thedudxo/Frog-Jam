@@ -13,7 +13,7 @@ namespace FrogScripts
 
         private void Start()
         {
-            frog.SubscribeOnRestart(this);
+            frog.events.SubscribeOnRestart(this);
         }
 
         void Update()

@@ -35,7 +35,7 @@ namespace FrogScripts
             splitName = split.SplitName;
 
             if(split is SplitEnd)
-                frog.SubscribeOnEndLevel(this);
+                frog.events.SubscribeOnEndLevel(this);
                 //bit messy but its only 3 lines instead of an entire new class to deal with
         }
 

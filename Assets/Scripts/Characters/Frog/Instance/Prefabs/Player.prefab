@@ -24152,6 +24152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9174729617992367945}
   - component: {fileID: 1703709004776464003}
+  - component: {fileID: 286224497262123975}
   m_Layer: 9
   m_Name: ProgressBar
   m_TagString: Untagged
@@ -24201,6 +24202,21 @@ MonoBehaviour:
   progressLost: {fileID: 9174729618642315022}
   personalBest: {fileID: 9174729618307088328}
   waveProgressBar: {fileID: 9174729618376198360}
+  progressTrackerComponents:
+  - {fileID: 286224497262123975}
+--- !u!114 &286224497262123975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174729617992367990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6344507b10eee604cab922bb065ff32e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frogProgress: {fileID: 1703709004776464003}
 --- !u!1 &9174729617993568098
 GameObject:
   m_ObjectHideFlags: 0
@@ -26667,10 +26683,10 @@ MonoBehaviour:
   jumpController: {fileID: 164193441602028764}
   controlls: {fileID: 1248141674805331836}
   cleanJumpEffectsManager: {fileID: 9098765996569449621}
+  state: 1
   UILayer: Player1 UI
   inDanger: 0
   inDangerUI: {fileID: 5227932630965867949}
-  state: 1
   currentCollisions: []
 --- !u!114 &9174729618712038248
 MonoBehaviour:

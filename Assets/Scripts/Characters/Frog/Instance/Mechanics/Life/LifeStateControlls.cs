@@ -37,7 +37,7 @@ namespace FrogScripts.Life
             ToggleComponents(true);
 
 
-            foreach (INotifyOnAnyRespawn notify in  frog.toNotifyOnAnyRespawn) notify.OnAnyRespawn();
+            foreach (INotifyOnAnyRespawn notify in  frog.events.toNotifyOnAnyRespawn) notify.OnAnyRespawn();
         }
 
         public void Die()
@@ -46,7 +46,7 @@ namespace FrogScripts.Life
             deathSounds.PlayRandom();
             GM.gameMusic.DetuneMusic();
 
-            foreach (INotifyOnDeath notify in frog.toNotifyOnDeath) notify.OnDeath();
+            foreach (INotifyOnDeath notify in frog.events.toNotifyOnDeath) notify.OnDeath();
 
             ToggleComponents(false);
             vfx.DeathEffects();
@@ -85,12 +85,12 @@ namespace FrogScripts.Life
                 return;
             }
 
-            foreach (INotifyOnSetback notify in frog.toNotifyOnSetback) notify.OnSetback();
+            foreach (INotifyOnSetback notify in frog.events.toNotifyOnSetback) notify.OnSetback();
         }
 
         public void Restart()
         {
-            foreach (INotifyBeforeRestart notify in frog.toNotifyBeforeRestart) notify.BeforeRestart();
+            foreach (INotifyBeforeRestart notify in frog.events.toNotifyBeforeRestart) notify.BeforeRestart();
 
             rb.velocity = Vector3.zero;
             transform.position = levelStart;
@@ -100,14 +100,14 @@ namespace FrogScripts.Life
 
             void sendRestartEvent()
             {
-                foreach (INotifyOnRestart notify in frog.toNotifyOnRestart)
+                foreach (INotifyOnRestart notify in frog.events.toNotifyOnRestart)
                 {
                     notify.OnRestart();
                 }
 
-                foreach (INotifyOnRestart unsubscribe in frog.UnsubscribeToNotifyOnRestart)
+                foreach (INotifyOnRestart unsubscribe in frog.events.UnsubscribeToNotifyOnRestart)
                 {
-                    frog.toNotifyOnRestart.Remove(unsubscribe);
+                    frog.events.toNotifyOnRestart.Remove(unsubscribe);
                 }
             }
         }

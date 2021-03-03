@@ -17,7 +17,7 @@ public class RememberCollisions : MonoBehaviour, INotifyOnAnyRespawn
             return;
         }
         FrogsCollided.Add(frog, false);
-        frog.SubscribeOnAnyRespawn(this);
+        frog.events.SubscribeOnAnyRespawn(this);
     }
 
     int ID(Collision2D collision) => collision.gameObject.GetInstanceID();

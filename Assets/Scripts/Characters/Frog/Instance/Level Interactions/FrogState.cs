@@ -16,10 +16,10 @@ namespace FrogScripts
             this.transform = frog.transform;
             this.rb = frog.rb;
 
-            frog.SubscribeOnRestart(this);
-            frog.SubscribeOnDeath(this);
-            frog.SubscribeOnEndLevel(this);
-            frog.SubscribeOnAnyRespawn(this);
+            frog.events.SubscribeOnRestart(this);
+            frog.events.SubscribeOnDeath(this);
+            frog.events.SubscribeOnEndLevel(this);
+            frog.events.SubscribeOnAnyRespawn(this);
         }
 
         public void CheckLocation()

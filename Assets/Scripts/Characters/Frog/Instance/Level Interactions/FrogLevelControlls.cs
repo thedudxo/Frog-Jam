@@ -41,7 +41,7 @@ namespace FrogScripts {
 
         public void FinishLevel()
         {
-            foreach (INotifyOnEndLevel subscriber in frog.toNotifyOnEndLevel)
+            foreach (INotifyOnEndLevel subscriber in frog.events.toNotifyOnEndLevel)
                 subscriber.OnEndLevel();
 
             levelStats.CheckForPBTime();

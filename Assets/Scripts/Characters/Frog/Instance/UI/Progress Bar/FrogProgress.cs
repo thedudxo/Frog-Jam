@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace FrogScripts.Progress
 {
-    interface IProgressTracker
+    public interface IProgressTracker
     {
         void UpdateProgress();
     }
@@ -21,16 +21,26 @@ namespace FrogScripts.Progress
         [SerializeField] Slider personalBest;
         [SerializeField] Slider waveProgressBar;
 
-        [SerializeField] List<IProgressTracker> progressTrackers;
+        [SerializeField] List<MonoBehaviour> progressTrackerComponents;
+        List<IProgressTracker> progressTrackers = new List<IProgressTracker>();
 
         Level level;
         Transform waveTransform;
 
         private void Start()
         {
+            foreach(MonoBehaviour obj in progressTrackerComponents)
+            {
+                IProgressTracker tracker = obj as IProgressTracker;
+                if (tracker != null)
+                {
+                    progressTrackers.Add(tracker);
+                }
+            }
+
             level = frog.currentLevel;
             waveTransform = level.wave.transform;
-            frog.SubscribeOnAnyRespawn(this);
+            frog.events.SubscribeOnAnyRespawn(this);
 
             AddOtherPlayers();
 

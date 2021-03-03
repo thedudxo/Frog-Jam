@@ -37,8 +37,8 @@ namespace FrogScripts
             
             void SetupManager()
             {
-                frog.SubscribeOnRestart(this);
-                frog.SubscribeOnSetback(this);
+                frog.events.SubscribeOnRestart(this);
+                frog.events.SubscribeOnSetback(this);
 
                 splitManager = frog.currentLevel.splitManager;
 
