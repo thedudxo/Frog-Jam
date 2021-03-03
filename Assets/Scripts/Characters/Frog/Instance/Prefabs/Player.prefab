@@ -26692,7 +26692,7 @@ MonoBehaviour:
   visuals:
   - {fileID: 9174729617954839216}
   - {fileID: 9174729617433187279}
-  - {fileID: 9174729616823476522}
+  - {fileID: 9174729617350677313}
   bloodSplatterImage: {fileID: 9174729618297507745}
 --- !u!114 &9174729618712038250
 MonoBehaviour:
