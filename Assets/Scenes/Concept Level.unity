@@ -4368,6 +4368,7 @@ MonoBehaviour:
   wave: {fileID: 1982919507}
   splitManager: {fileID: 1237552537}
   frogManager: {fileID: 1249019146}
+  waveManager: {fileID: 920671917}
   cleanJumps: []
   waveFrogMediatior: {fileID: 1188860047}
 --- !u!81 &1188860046

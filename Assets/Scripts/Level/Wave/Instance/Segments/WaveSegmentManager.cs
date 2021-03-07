@@ -53,7 +53,7 @@ namespace waveScripts
 
                 if (hitFrog != null)
                     if (mediator.CheckIfFrogIsFirst(hitFrog))
-                        wave.restartConditions.TriggerRestart();
+                        wave.breakControlls.TriggerRestart();
             }
         }
     }

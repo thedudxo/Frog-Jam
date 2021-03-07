@@ -14,7 +14,7 @@ namespace waveScripts
         [HideInInspector] public FrogManager frogManager { get; private set; }
 
         [Header("Components")]
-        [SerializeField] public WaveRestartConditions restartConditions;
+        [SerializeField] public WaveBreakControlls breakControlls;
         [SerializeField] public WaveSegmentManager segments;
 
         public float breakPosition;

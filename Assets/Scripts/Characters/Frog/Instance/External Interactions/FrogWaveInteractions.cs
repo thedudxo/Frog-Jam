@@ -8,6 +8,8 @@ namespace FrogScripts
     public class FrogWaveInteractions : MonoBehaviour, INotifyOnLeftPlatform, INotifyOnDeath, INotifyOnEndLevel
     {
         [SerializeField] public Frog frog;
+        WaveManager waveManager;
+        FrogManager frogManager;
 
         WaveFrogMediatior waveMediator;
 
@@ -15,6 +17,8 @@ namespace FrogScripts
 
         private void Start()
         {
+            frogManager = frog.manager;
+            waveManager = frog.currentLevel.waveManager;
             waveMediator = frog.currentLevel.waveFrogMediatior;
 
             frog.events.SubscribeOnLeftPlatform(this);
@@ -27,16 +31,13 @@ namespace FrogScripts
             attachedWave = waveMediator.ClosestWaveBehindPosition(frogPosX);
         }
 
-         
-
         public void OnDeath()
         {
-            waveMediator.CheckIfWaveShouldBreak(attachedWave);
+            attachedWave.breakControlls.FrogTriggerBreak();
         }
         public void OnEndLevel()
         {
-            waveMediator.CheckIfWaveShouldBreak(attachedWave);
+            attachedWave.breakControlls.FrogTriggerBreak();
         }
-
     }
 }

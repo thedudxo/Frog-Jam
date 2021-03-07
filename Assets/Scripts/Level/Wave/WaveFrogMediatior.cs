@@ -32,26 +32,6 @@ public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
 
     public Wave ClosestWaveBehindPosition(float pos) => waveManager.ClosestWaveBehindPosition(pos);
 
-    public void CheckIfWaveShouldBreak(Wave wave)
-    {
-        float wavePos = wave.transform.position.x;
-
-        if (AnyFrogAhead() == false || WaveBeforeNextFrog() )
-            wave.BreakWave();
-
-        bool AnyFrogAhead()
-        {
-            Frog nextFrog = FindClosest.Ahead<Frog>(frogManager.Frogs, wave.transform.position.x);
-            return false;
-        }
-
-        bool WaveBeforeNextFrog()
-        {
-            Wave nextWave = waveManager.ClosestWaveAheadPosition(wavePos);
-            return false;
-        }
-    }
-
     public Frog CheckIfHitFrog(Collider2D collision)
     {
         return frogManager.GetFrogFromGameobject(collision.gameObject);

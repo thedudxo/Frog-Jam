@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   level: {fileID: 0}
-  restartConditions: {fileID: 4593063571467222575}
+  breakControlls: {fileID: 4593063571467222575}
   segments: {fileID: 4521138068764035582}
   breakPosition: 0
   spawnPosition: {x: 0, y: 0}

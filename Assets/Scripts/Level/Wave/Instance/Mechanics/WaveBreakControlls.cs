@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
+using FrogScripts;
 
 namespace waveScripts
 {
-    public class WaveRestartConditions : MonoBehaviour
+    public class WaveBreakControlls : MonoBehaviour
     {
         [SerializeField] Wave wave;
         WaveFrogMediatior frogMediator;
@@ -50,6 +51,25 @@ namespace waveScripts
         {
             return;
             shouldBreak = true;
+        }
+
+        public void FrogTriggerBreak()
+        {
+            float wavePos = wave.transform.position.x;
+            Frog nextFrog = FindClosest.Ahead(wave.frogManager.Frogs, wavePos);
+
+            if (nextFrog == null || WaveBeforeNextFrog())
+                wave.BreakWave();
+
+            bool WaveBeforeNextFrog()
+            {
+                Wave nextWave = wave.manager.ClosestWaveAheadPosition(wavePos);
+                float nextWavePos = nextWave.transform.position.x;
+                float nextFrogPos = nextFrog.transform.position.x;
+                if (nextWavePos < nextFrogPos)
+                    return true;
+                return false;
+            }
         }
     }
 }
