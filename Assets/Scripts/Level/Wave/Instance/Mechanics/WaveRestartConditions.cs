@@ -25,7 +25,7 @@ namespace waveScripts
         {
             if (wave.state == Wave.State.normal)
             {
-                CheckUpdateConditions();
+                //CheckUpdateConditions();
 
                 if (shouldBreak)
                 {
@@ -48,6 +48,7 @@ namespace waveScripts
 
         public void TriggerRestart()
         {
+            return;
             shouldBreak = true;
         }
     }

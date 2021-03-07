@@ -38,6 +38,10 @@ namespace FrogScripts
                 {
                     frog.state = State.Level;
                     frog.manager.events.TriggerAnyFrogLeftPlatform();
+                    foreach (INotifyOnLeftPlatform subscriber in frog.events.toNotifyOnLeftPlatform)
+                    {
+                        subscriber.OnLeftPlatform();
+                    }
                 }
             }
         }

@@ -3519,10 +3519,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 1188860045}
+  frogMediatior: {fileID: 1188860047}
   wavesParentComponent: {fileID: 920671915}
   wavePrefab: {fileID: 7611813847098449006, guid: 0a9a88486849973479cdeb0a7f72d322,
     type: 3}
-  frogMediatior: {fileID: 1188860047}
 --- !u!4 &920671918
 Transform:
   m_ObjectHideFlags: 0
@@ -8462,7 +8462,7 @@ PrefabInstance:
     - target: {fileID: 443601917364446649, guid: e1ce6bf29dd167046995228830b8e77b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -97.505585
+      value: -97.505615
       objectReference: {fileID: 0}
     - target: {fileID: 443601917424973459, guid: e1ce6bf29dd167046995228830b8e77b,
         type: 3}
@@ -9347,7 +9347,7 @@ PrefabInstance:
     - target: {fileID: 7074319547836251247, guid: ba5e897114e46934682a35e319227241,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -97.505585
+      value: -97.505615
       objectReference: {fileID: 0}
     - target: {fileID: 7074319547955451179, guid: ba5e897114e46934682a35e319227241,
         type: 3}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
+using System.Linq;
 
 namespace waveScripts
 {
@@ -64,5 +65,8 @@ namespace waveScripts
 
             return inactiveWave;
         }
+
+        public Wave ClosestWaveBehindPosition(float pos) => FindClosest.Behind(waves,pos);
+        public Wave ClosestWaveAheadPosition(float pos) => FindClosest.Ahead(waves, pos);
     }
 }

@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using FrogScripts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using waveScripts;
-using FrogScripts;
-
 
 public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
 {
@@ -27,6 +28,28 @@ public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
             if (frogNotOnPlatform) return false;
         }
         return true;
+    }
+
+    public Wave ClosestWaveBehindPosition(float pos) => waveManager.ClosestWaveBehindPosition(pos);
+
+    public void CheckIfWaveShouldBreak(Wave wave)
+    {
+        float wavePos = wave.transform.position.x;
+
+        if (AnyFrogAhead() == false || WaveBeforeNextFrog() )
+            wave.BreakWave();
+
+        bool AnyFrogAhead()
+        {
+            Frog nextFrog = FindClosest.Ahead<Frog>(frogManager.Frogs, wave.transform.position.x);
+            return false;
+        }
+
+        bool WaveBeforeNextFrog()
+        {
+            Wave nextWave = waveManager.ClosestWaveAheadPosition(wavePos);
+            return false;
+        }
     }
 
     public Frog CheckIfHitFrog(Collider2D collision)
