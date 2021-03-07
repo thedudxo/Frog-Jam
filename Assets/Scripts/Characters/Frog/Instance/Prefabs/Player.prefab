@@ -5011,6 +5011,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1046078797606661602}
+  - component: {fileID: 7880468304804375817}
   m_Layer: 9
   m_Name: WaveDanger!
   m_TagString: Untagged
@@ -5038,6 +5039,25 @@ RectTransform:
   m_AnchoredPosition: {x: -1.59, y: 2.11}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &7880468304804375817
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5227932630965867949}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b485196d168b6c945ad74b447d3a2887, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5736840734545577112
 GameObject:
   m_ObjectHideFlags: 0
@@ -26687,6 +26707,7 @@ MonoBehaviour:
   UILayer: Player1 UI
   inDanger: 0
   inDangerUI: {fileID: 5227932630965867949}
+  dangerAnimation: {fileID: 7880468304804375817}
   currentCollisions: []
 --- !u!114 &9174729618712038248
 MonoBehaviour:

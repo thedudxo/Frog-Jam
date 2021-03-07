@@ -37,6 +37,7 @@ namespace FrogScripts
 
         [HideInInspector] public bool inDanger = false;
         [SerializeField] GameObject inDangerUI;
+        [SerializeField] Animator dangerAnimation;
 
 
 
@@ -44,16 +45,31 @@ namespace FrogScripts
         {
             manager.AddFrog(this);
             stateControlls = new FrogState(this);
-            inDangerUI.SetActive(false);
+            //inDangerUI.SetActive(false);
         }
 
         private void Update()
         {
             stateControlls.CheckLocation();
 
-            inDanger = currentLevel.waveFrogMediatior.FrogWillSetbackBehindWave(this);
-            if (state == State.StartPlatform) inDanger = false;
-            inDangerUI.SetActive(inDanger);
+
+            //spaghetti below
+            bool newDanger = currentLevel.waveFrogMediatior.FrogWillSetbackBehindWave(this);
+            if (newDanger) enterDanger();
+            else leaveDanger();
+            if (state == State.StartPlatform) leaveDanger();
+
+            void enterDanger()
+            {
+                if (!inDanger) dangerAnimation.SetTrigger("InDanger");
+                inDanger = true;
+            }
+
+            void leaveDanger()
+            {
+                if(inDanger) dangerAnimation.SetTrigger("LeftDanger");
+                inDanger = false;
+            }
         }
 
         public void SetObjectUILayer(GameObject obj)
