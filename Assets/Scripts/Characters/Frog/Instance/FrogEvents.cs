@@ -5,8 +5,9 @@ using UnityEngine;
 namespace FrogScripts
 {
     public interface INotifyOnDeath {void OnDeath();}
+    public interface INotifyPreDeath { void PreDeath(); }
     public interface INotifyOnRestart {void OnRestart(); }
-    public interface INotifyBeforeRestart {void BeforeRestart(); }
+    public interface INotifyPreRestart {void BeforeRestart(); }
     public interface INotifyOnSetback {void OnSetback(); }
     public interface INotifyOnAnyRespawn {void OnAnyRespawn();}
     public interface INotifyOnEndLevel { void OnEndLevel(); }
@@ -14,14 +15,24 @@ namespace FrogScripts
 
     public class FrogEvents
     {
+        public List<INotifyPreDeath>       toNotifyPreDeath             = new List<INotifyPreDeath>();
         public List<INotifyOnDeath>        toNotifyOnDeath              = new List<INotifyOnDeath>();
         public List<INotifyOnSetback>      toNotifyOnSetback            = new List<INotifyOnSetback>();
         public List<INotifyOnRestart>      toNotifyOnRestart            = new List<INotifyOnRestart>();
         public List<INotifyOnRestart>      UnsubscribeToNotifyOnRestart = new List<INotifyOnRestart>();
-        public List<INotifyBeforeRestart>  toNotifyBeforeRestart        = new List<INotifyBeforeRestart>();
+        public List<INotifyPreRestart>     toNotifyPreRestart           = new List<INotifyPreRestart>();
         public List<INotifyOnAnyRespawn>   toNotifyOnAnyRespawn         = new List<INotifyOnAnyRespawn>();
         public List<INotifyOnEndLevel>     toNotifyOnEndLevel           = new List<INotifyOnEndLevel>();
         public List<INotifyOnLeftPlatform> toNotifyOnLeftPlatform       = new List<INotifyOnLeftPlatform>();
+
+        public void SubscribePreDeath(INotifyPreDeath subscriber)
+        {
+            toNotifyPreDeath.Add(subscriber);
+        }
+        public void UnscubscribePreDeath(INotifyPreDeath subscriber)
+        {
+            toNotifyPreDeath.Remove(subscriber);
+        }
 
         public void SubscribeOnDeath(INotifyOnDeath subscriber)
         {
@@ -50,13 +61,13 @@ namespace FrogScripts
             UnsubscribeToNotifyOnRestart.Add(subscriber);
         }
 
-        public void SubscribeBeforeRestart(INotifyBeforeRestart subscriber)
+        public void SubscribeBeforeRestart(INotifyPreRestart subscriber)
         {
-            toNotifyBeforeRestart.Add(subscriber);
+            toNotifyPreRestart.Add(subscriber);
         }
-        public void UnsubscribeBeforeRestart(INotifyBeforeRestart subscriber)
+        public void UnsubscribeBeforeRestart(INotifyPreRestart subscriber)
         {
-            toNotifyBeforeRestart.Remove(subscriber);
+            toNotifyPreRestart.Remove(subscriber);
         }
 
         public void SubscribeOnAnyRespawn(INotifyOnAnyRespawn subscriber)

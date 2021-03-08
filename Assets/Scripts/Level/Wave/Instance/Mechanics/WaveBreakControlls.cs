@@ -55,10 +55,18 @@ namespace waveScripts
 
         public void FrogTriggerBreak()
         {
-            float wavePos = wave.transform.position.x;
-            Frog nextFrog = FindClosest.Ahead(wave.frogManager.Frogs, wavePos);
+            bool FrogAliveFilter(Frog frog)
+            {
+                if (frog.state == FrogState.State.Level) return true;
+                return false;
+                // without this filter, next frog should never be null since it takes time to die, before moving its position.
+            }
 
-            if (nextFrog == null || WaveBeforeNextFrog())
+            float wavePos = wave.transform.position.x;
+            Frog nextFrog = FindClosest.Ahead(wave.frogManager.Frogs, wavePos, FrogAliveFilter);
+            Debug.Log(nextFrog);
+
+            if (nextFrog == null || WaveBeforeNextFrog()) 
                 wave.BreakWave();
 
             bool WaveBeforeNextFrog()

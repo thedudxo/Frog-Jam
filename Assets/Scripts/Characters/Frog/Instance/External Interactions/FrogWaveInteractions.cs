@@ -13,7 +13,7 @@ namespace FrogScripts
 
         WaveFrogMediatior waveMediator;
 
-        Wave attachedWave;
+        public Wave attachedWave;
 
         private void Start()
         {

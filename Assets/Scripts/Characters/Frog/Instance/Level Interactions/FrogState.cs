@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FrogScripts
 {
-    public class FrogState : INotifyOnRestart, INotifyOnDeath, INotifyOnEndLevel, INotifyOnAnyRespawn
+    public class FrogState : INotifyOnRestart, INotifyPreDeath, INotifyOnEndLevel, INotifyOnAnyRespawn
     {
         public enum State {Level, StartPlatform, Hidden, Dead}
         Frog frog;
@@ -17,7 +17,7 @@ namespace FrogScripts
             this.rb = frog.rb;
 
             frog.events.SubscribeOnRestart(this);
-            frog.events.SubscribeOnDeath(this);
+            frog.events.SubscribePreDeath(this);
             frog.events.SubscribeOnEndLevel(this);
             frog.events.SubscribeOnAnyRespawn(this);
         }
@@ -63,7 +63,7 @@ namespace FrogScripts
             frog.state = State.Level;
         }
 
-        public void OnDeath() 
+        public void PreDeath() 
         {
             frog.state = State.Dead;
             rb.simulated = false;

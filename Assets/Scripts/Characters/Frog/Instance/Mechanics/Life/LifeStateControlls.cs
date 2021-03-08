@@ -42,13 +42,14 @@ namespace FrogScripts.Life
 
         public void Die()
         {
+            foreach (INotifyPreDeath notify in frog.events.toNotifyPreDeath) notify.PreDeath();
+
             Statistics.totalDeaths++;
             deathSounds.PlayRandom();
             GM.gameMusic.DetuneMusic();
+            ToggleComponents(false);
 
             foreach (INotifyOnDeath notify in frog.events.toNotifyOnDeath) notify.OnDeath();
-
-            ToggleComponents(false);
             vfx.DeathEffects();
         }
 
@@ -90,7 +91,7 @@ namespace FrogScripts.Life
 
         public void Restart()
         {
-            foreach (INotifyBeforeRestart notify in frog.events.toNotifyBeforeRestart) notify.BeforeRestart();
+            foreach (INotifyPreRestart notify in frog.events.toNotifyPreRestart) notify.BeforeRestart();
 
             rb.velocity = Vector3.zero;
             transform.position = levelStart;
