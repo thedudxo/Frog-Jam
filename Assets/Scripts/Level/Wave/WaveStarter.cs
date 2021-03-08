@@ -8,8 +8,6 @@ namespace waveScripts
         WaveManager waveManager;
         WaveFrogMediatior frogMediatior;
 
-        float waveStartCooldown = .5f;
-        float startTimer = 0;
         bool canStartRightNow = true;
 
         public WaveStarter(WaveManager waveManager, WaveFrogMediatior frogMediatior)
@@ -21,21 +19,9 @@ namespace waveScripts
         public void CheckStartConditions()
         {
             if (canStartRightNow) return;
-
             canStartRightNow = true;
 
-            //TimerElapsed();
             NoWavesBehindLastFrog();
-
-            void TimerElapsed()
-            {
-                startTimer += Time.deltaTime;
-
-                if (startTimer > waveStartCooldown)
-                    startTimer = 0;
-                else
-                    canStartRightNow = false;
-            }
 
             void NoWavesBehindLastFrog()
             {

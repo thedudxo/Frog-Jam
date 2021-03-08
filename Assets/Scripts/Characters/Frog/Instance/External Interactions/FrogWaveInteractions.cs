@@ -25,19 +25,37 @@ namespace FrogScripts
             frog.events.SubscribeOnDeath(this);
             frog.events.SubscribeOnEndLevel(this);
         }
-        public void OnLeftPlatform()
+
+        private void Update()
         {
+            bool frogBehindAttachedWave = attachedWave?.transform.position.x > frog.transform.position.x;
+            if (frogBehindAttachedWave && frog.state != FrogState.State.StartPlatform) AttachNewWave();
+        }
+
+        public void OnLeftPlatform() => AttachNewWave();
+
+        void AttachNewWave()
+        {
+            if (attachedWave != null) attachedWave.breakControlls.FrogTriggerBreak();
+
             float frogPosX = frog.transform.position.x;
             attachedWave = waveMediator.ClosestWaveBehindPosition(frogPosX);
+
+            if (attachedWave == null)
+            {
+                attachedWave = waveManager.GetInactiveWave();
+                attachedWave.StartWave();
+            }
         }
 
         public void OnDeath()
         {
-            attachedWave.breakControlls.FrogTriggerBreak();
+            float resetPos = frog.transform.position.x - GM.respawnSetBack;
+            bool frogResetsBehindWave = resetPos < attachedWave.transform.position.x;
+            bool frogResetsOntoPlatform = resetPos < frog.currentLevel.startLength;
+            if (frogResetsBehindWave || frogResetsOntoPlatform)
+                attachedWave.breakControlls.FrogTriggerBreak();
         }
-        public void OnEndLevel()
-        {
-            attachedWave.breakControlls.FrogTriggerBreak();
-        }
+        public void OnEndLevel() => attachedWave.breakControlls.FrogTriggerBreak();
     }
 }

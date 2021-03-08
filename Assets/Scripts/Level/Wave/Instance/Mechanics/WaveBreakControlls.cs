@@ -26,24 +26,10 @@ namespace waveScripts
         {
             if (wave.state == Wave.State.normal)
             {
-                //CheckUpdateConditions();
-
-                if (shouldBreak)
+                if (ReachedEndOfLevel)
                 {
                     wave.BreakWave();
-                    shouldBreak = false;
                 }
-            }
-
-            void CheckUpdateConditions()
-            {
-                //these could probably be optimised if needed
-                if (
-                    ReachedEndOfLevel ||
-                    NoFrogsAhead ||
-                    AllFrogsOnPlatform
-                    ) 
-                    shouldBreak = true;
             }
         }
 
@@ -63,19 +49,23 @@ namespace waveScripts
             }
 
             float wavePos = wave.transform.position.x;
+
             Frog nextFrog = FindClosest.Ahead(wave.frogManager.Frogs, wavePos, FrogAliveFilter);
-            Debug.Log(nextFrog);
+            Debug.Log(nextFrog, nextFrog);
 
             if (nextFrog == null || WaveBeforeNextFrog()) 
-                wave.BreakWave();
+                wave.BreakWave(); 
 
             bool WaveBeforeNextFrog()
             {
                 Wave nextWave = wave.manager.ClosestWaveAheadPosition(wavePos);
-                float nextWavePos = nextWave.transform.position.x;
-                float nextFrogPos = nextFrog.transform.position.x;
-                if (nextWavePos < nextFrogPos)
-                    return true;
+                if (nextWave != null)
+                {
+                    float nextWavePos = nextWave.transform.position.x;
+                    float nextFrogPos = nextFrog.transform.position.x;
+                    if (nextWavePos < nextFrogPos)
+                        return true;
+                }
                 return false;
             }
         }
