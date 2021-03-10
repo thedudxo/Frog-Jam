@@ -21,10 +21,9 @@ namespace FrogScripts {
         private void Update()
         {
             bool danger = FrogWillSetbackBehindWave(frog);
-
             if (frog.state == FrogState.State.StartPlatform) danger = false;
-            dangerAnimation.SetBool("Danger", danger);
 
+            dangerAnimation.SetBool("Danger", danger);
             frog.inDanger = danger;
         }
 
