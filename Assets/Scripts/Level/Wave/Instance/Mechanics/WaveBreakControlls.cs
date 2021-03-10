@@ -51,7 +51,6 @@ namespace WaveScripts
             float wavePos = wave.transform.position.x;
 
             Frog nextFrog = FindClosest.Ahead(wave.frogManager.Frogs, wavePos, FrogAliveFilter);
-            Debug.Log(nextFrog, nextFrog);
 
             if (nextFrog == null || WaveBeforeNextFrog()) 
                 wave.BreakWave(); 

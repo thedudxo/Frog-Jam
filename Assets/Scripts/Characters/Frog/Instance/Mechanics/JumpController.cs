@@ -67,7 +67,7 @@ namespace FrogScripts
 
 
 
-        bool IsGrounded => Physics2D.OverlapBox(groundedBoxCenter, groundedBoxSize, groundedBoxAngle, groundedMask);
+        bool IsGrounded => Physics2D.OverlapBox(groundedBoxCenter, groundedBoxSize, groundedBoxAngle);
 
         void Update()
         {
