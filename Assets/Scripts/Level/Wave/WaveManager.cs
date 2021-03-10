@@ -65,8 +65,8 @@ namespace waveScripts
 
             return inactiveWave;
         }
-
-        public Wave ClosestWaveBehindPosition(float pos) => FindClosest.Behind(waves,pos);
-        public Wave ClosestWaveAheadPosition(float pos) => FindClosest.Ahead(waves, pos);
+        bool WaveActiveFilter(Wave wave) => wave.state == Wave.State.normal;
+        public Wave ClosestWaveBehindPosition(float pos) => FindClosest.Behind(waves,pos,WaveActiveFilter);
+        public Wave ClosestWaveAheadPosition(float pos) => FindClosest.Ahead(waves, pos, WaveActiveFilter);
     }
 }
