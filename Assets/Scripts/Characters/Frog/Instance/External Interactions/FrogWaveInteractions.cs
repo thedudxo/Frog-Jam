@@ -50,9 +50,12 @@ namespace FrogScripts
 
         public void OnDeath()
         {
+            if (attachedWave == null) return;
+
             float resetPos = frog.transform.position.x - GM.respawnSetBack;
             bool frogResetsBehindWave = resetPos < attachedWave.transform.position.x;
             bool frogResetsOntoPlatform = resetPos < frog.currentLevel.startLength;
+
             if (frogResetsBehindWave || frogResetsOntoPlatform)
                 attachedWave.breakControlls.FrogTriggerBreak();
         }
