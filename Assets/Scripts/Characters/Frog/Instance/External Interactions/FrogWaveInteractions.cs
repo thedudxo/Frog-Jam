@@ -5,7 +5,7 @@ using waveScripts;
 
 namespace FrogScripts
 {
-    public class FrogWaveInteractions : MonoBehaviour, INotifyOnLeftPlatform, INotifyOnDeath, INotifyOnEndLevel
+    public class FrogWaveInteractions : MonoBehaviour, INotifyOnLeftPlatform, INotifyOnDeath, INotifyOnEndLevel, INotifyOnRestart
     {
         [SerializeField] public Frog frog;
         WaveManager waveManager;
@@ -24,6 +24,7 @@ namespace FrogScripts
             frog.events.SubscribeOnLeftPlatform(this);
             frog.events.SubscribeOnDeath(this);
             frog.events.SubscribeOnEndLevel(this);
+            frog.events.SubscribeOnRestart(this);
         }
 
         private void Update()
@@ -54,11 +55,12 @@ namespace FrogScripts
 
             float resetPos = frog.transform.position.x - GM.respawnSetBack;
             bool frogResetsBehindWave = resetPos < attachedWave.transform.position.x;
-            bool frogResetsOntoPlatform = resetPos < frog.currentLevel.startLength;
+            //bool frogResetsOntoPlatform = resetPos < frog.currentLevel.startLength;
 
-            if (frogResetsBehindWave || frogResetsOntoPlatform)
+            if (frogResetsBehindWave)
                 attachedWave.breakControlls.FrogTriggerBreak();
         }
         public void OnEndLevel() => attachedWave.breakControlls.FrogTriggerBreak();
+        public void OnRestart() => attachedWave.breakControlls.FrogTriggerBreak();
     }
 }
