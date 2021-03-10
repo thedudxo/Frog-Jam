@@ -24297,7 +24297,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6344507b10eee604cab922bb065ff32e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frogProgress: {fileID: 1703709004776464003}
+  frog: {fileID: 9174729617834607438}
+  waveInteractions: {fileID: 2469700746435384598}
+  waveProgressBar: {fileID: 9174729618376198360}
 --- !u!1 &9174729617993568098
 GameObject:
   m_ObjectHideFlags: 0
