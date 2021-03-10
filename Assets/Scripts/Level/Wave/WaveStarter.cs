@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace waveScripts
+namespace WaveScripts
 {
     public class WaveStarter
     {

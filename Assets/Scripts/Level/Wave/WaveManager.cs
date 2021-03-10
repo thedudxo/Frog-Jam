@@ -4,7 +4,7 @@ using UnityEngine;
 using LevelScripts;
 using System.Linq;
 
-namespace waveScripts
+namespace WaveScripts
 {
     public class WaveManager : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
 
-namespace waveScripts
+namespace WaveScripts
 {
     public class Wave : MonoBehaviour
     {

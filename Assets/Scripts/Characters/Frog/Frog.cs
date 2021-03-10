@@ -3,7 +3,7 @@ using FrogScripts.Vfx;
 using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
-using waveScripts;
+using WaveScripts;
 using static FrogScripts.FrogState;
 
 namespace FrogScripts
@@ -26,6 +26,7 @@ namespace FrogScripts
         [SerializeField] public JumpController jumpController;
         [SerializeField] public Controlls controlls;
         [SerializeField] public FrogCleanJumpManager cleanJumpEffectsManager;
+        [SerializeField] public FrogWaveInteractions waveInteractions;
 
         public State state = State.StartPlatform;
         public FrogState stateControlls;

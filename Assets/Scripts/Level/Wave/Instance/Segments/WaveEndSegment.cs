@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace waveScripts
+namespace WaveScripts
 {
     public class WaveEndSegment : WaveSegment
     {

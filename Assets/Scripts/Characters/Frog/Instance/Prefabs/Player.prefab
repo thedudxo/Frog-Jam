@@ -26766,6 +26766,7 @@ MonoBehaviour:
   jumpController: {fileID: 164193441602028764}
   controlls: {fileID: 1248141674805331836}
   cleanJumpEffectsManager: {fileID: 9098765996569449621}
+  waveInteractions: {fileID: 2469700746435384598}
   state: 1
   UILayer: Player1 UI
   inDanger: 0

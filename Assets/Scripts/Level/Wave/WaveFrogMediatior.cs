@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using waveScripts;
+using WaveScripts;
 
 public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
 {
@@ -52,24 +52,6 @@ public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
             {
                 if (frog.transform.position.x > wave.transform.position.x)
                     return true;
-            }
-        }
-        return false;
-    }
-
-    public bool FrogWillSetbackBehindWave(Frog frog)
-    {
-        foreach(Wave wave in waveManager.waves)
-        {
-            if (wave.state == Wave.State.normal)
-            {
-                float waveX = wave.transform.position.x;
-                float frogX = frog.transform.position.x;
-
-                bool waveBehindFrog = waveX < frogX;
-                bool SetbackBehind = frogX - GM.respawnSetBack < waveX;
-
-                if (waveBehindFrog && SetbackBehind) return true;
             }
         }
         return false;

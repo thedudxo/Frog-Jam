@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using WaveScripts;
 
 namespace FrogScripts.Progress
 {
@@ -12,8 +13,8 @@ namespace FrogScripts.Progress
 
         public void UpdateProgress()
         {
-            waveScripts.Wave wave = waveInteractions.attachedWave;
-            if (wave == null || wave.state == waveScripts.Wave.State.inactive)
+            Wave wave = waveInteractions.attachedWave;
+            if (wave == null || wave.state == WaveScripts.Wave.State.inactive)
             {
                 waveProgressBar.value = 0;
                 return;

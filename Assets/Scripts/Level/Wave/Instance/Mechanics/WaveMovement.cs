@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace waveScripts
+namespace WaveScripts
 {
     public class WaveMovement : MonoBehaviour
     {
-        const float speed = 8f;
+        public const float speed = 8f;
         Transform waveTransform;
         [SerializeField] Wave wave;
 

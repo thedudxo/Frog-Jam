@@ -18,7 +18,7 @@ namespace LevelScripts
         [SerializeField] public GameObject wave;
         [SerializeField] public SplitManager splitManager;
         [SerializeField] public FrogManager frogManager;
-        [SerializeField] public waveScripts.WaveManager waveManager;
+        [SerializeField] public WaveScripts.WaveManager waveManager;
         [HideInInspector] public List<CleanlyJumpableObstacle> cleanJumps;
         [SerializeField] public WaveFrogMediatior waveFrogMediatior;
 

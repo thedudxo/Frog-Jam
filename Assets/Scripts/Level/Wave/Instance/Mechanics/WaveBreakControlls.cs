@@ -2,7 +2,7 @@
 using UnityEngine;
 using FrogScripts;
 
-namespace waveScripts
+namespace WaveScripts
 {
     public class WaveBreakControlls : MonoBehaviour
     {

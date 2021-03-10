@@ -81,7 +81,7 @@ namespace FrogScripts.Life
                         isTouchingDeadly = true;
                         break;
 
-                    case waveScripts.Wave.Tag:
+                    case WaveScripts.Wave.Tag:
                         Statistics.waveDeaths++;
                         isTouchingDeadly = true;
                         causesRestart = true;
