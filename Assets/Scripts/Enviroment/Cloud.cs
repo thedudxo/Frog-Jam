@@ -2,61 +2,94 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cloud : MonoBehaviour
-{
-
-    public float speed;
-
-    public List<Renderer> renderers  = new List<Renderer>();
-    Animator animatior;
-    [SerializeField] GameObject spriteHolder;
-
-    float repositionCooldown = 1;
-    float lastRepositionTime = 0;
-
-    private void Start()
+namespace LevelScripts {
+    public class Cloud : MonoBehaviour
     {
-        animatior = spriteHolder.GetComponent<Animator>();
 
-        //add all the renderers to a list so we can check if anything is on screen
-        //gets the straws as well so that it is still counted as visible when phill gets lower
-        
+        public float speed;
+        const float averageSpeed = -0.02f;
+        const float speedVariance = 0.005f;
+        float RandomSpeed => Random.Range(averageSpeed - speedVariance, averageSpeed + speedVariance);
 
-        Renderer[] r = spriteHolder.transform.GetComponentsInChildren<Renderer>();
-        foreach(Renderer renderer in r)
+        Animator animatior;
+        [SerializeField] GameObject spriteHolder;
+        [SerializeField] Clouds cloudmanager;
+
+        static readonly Vector2 respawnWaitRange = new Vector2(1f, 3);
+        float respawnWait = 2;
+        public float respawnTimer = 0;
+        float RandomRespawnTime => Random.Range(respawnWaitRange.x, respawnWaitRange.y);
+        bool respawning = false;
+
+        const float maxSpawnPastLevel = 5;
+        float spawnPos;
+
+        const float minResetPos = -20;
+        float resetPos;
+        bool pastResetPos => transform.position.x < resetPos;
+
+        const float minSpawnPositionDistance = 10;
+
+
+        private void Start()
         {
-            renderers.Add(renderer);
+            speed = RandomSpeed;
+            animatior = spriteHolder.GetComponent<Animator>();
+            PickNewPositions();
         }
-    }
 
-    public bool IsOnScreen()
-    {
-        bool onScreen = false;
-        foreach(Renderer i in renderers)
+        private void Update()
         {
-            if (i.isVisible)
+            if (respawning)
             {
-                onScreen = true;
+                respawnTimer += Time.deltaTime;
+                if (respawnTimer > respawnWait)
+                {
+                    PopUp();
+                    respawning = false;
+                    respawnTimer = 0;
+                }
+            }
+
+            else if (pastResetPos)
+            {
+                //Debug.Log($"POSITION: {transform.position.x} < {resetPos}");
+                Disappear();
             }
         }
-        return onScreen;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position = new Vector2(transform.position.x + speed, transform.position.y);
-    }
-
-    public void PopUp()
-    {
-        if(Time.time > repositionCooldown + lastRepositionTime)
+        void FixedUpdate()
         {
-            animatior.SetTrigger("Hide");
-            lastRepositionTime = Time.time;
+            transform.position = new Vector2(transform.position.x + speed, transform.position.y);
         }
 
+        void PickNewPositions()
+        {
+            float minSpawnPos = minResetPos + minSpawnPositionDistance;
+            float maxSpawnPos = maxSpawnPastLevel + cloudmanager.level.end;
+            spawnPos = Random.Range(minSpawnPos, maxSpawnPos);
 
+            float maxResetPos = spawnPos - minSpawnPositionDistance;
+            resetPos = Random.Range(minResetPos, maxResetPos);
+
+            //Debug.Log($"SPAWN POS: {spawnPos}   RESET POS: {resetPos}");
+        }
+
+        public void PopUp()
+        {
+            transform.position = new Vector2(spawnPos, transform.position.y);
+            animatior.SetTrigger("PopUp");
+            PickNewPositions();
+            //Debug.Log($"POPUP at {spawnPos}");
+
+        }
+
+        void Disappear()
+        {
+            animatior.SetTrigger("Disappear");
+            respawnWait = RandomRespawnTime;
+            respawning = true;
+            //Debug.Log("DISAPPEAR");
+        }
     }
-
 }

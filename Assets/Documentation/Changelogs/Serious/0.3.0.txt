@@ -1,4 +1,4 @@
-0.3 - Multiplayer
+0.3.0 - Jam with friend!
 
 ===============
 
@@ -16,11 +16,14 @@ New Features:
  - Aligaytors are now always friendly
  - Aligaytors have rotation physics
  - Aligaytors can return to a starting position
- - Aligaytors will carry you along with them rather than having to keep up yourself.
+ - Aligaytors will carry you along with them rather than having to keep up yourself
 
- - Splits start tracking time when you pass the previous one.
- - End screen displays total time of each splits personal best. Ie, your best possible time.
- - End screen displays that runs time, and your personal best run.
+ - Splits start tracking time when you pass the previous one
+ - End screen displays total time of each splits personal best. Ie, your best possible time
+ - End screen displays that runs time, and your personal best run
+
+ - A "In Danger" indicator, appears when you would respawn behind a wave
+ - Any death while In danger will respawn at the start of the level
 
 ===============
 
@@ -33,17 +36,26 @@ New Art:
 
 Changes:
 
-- Fishing hole counts any death near it as a catch
+
 - Camera has a max height
 - Camera is positioned higher up and further right
+
 - Canjump detection uses colliders again, has some "coyotie time"
+
 - Refactored a bunch of code
-- Bunch of changes to the level. should be completable in one sitting now.
+
+- Refined the level, so its shorter and has more interesting parts
+- Fishing hole counts any death near it as a catch
+
+- Waves don't get pushed back when you die
+- Its possible to survive a wave by being above it as it passes. a new wave will be sent for you, however
+- Waves won't harm you on the start platform
 
 ===============
 
 Fixes:
 - Phill doesn't get stuck on flat surfaces anymore
+- Clouds would pop up/disappear without playing the animation properly
 - So many bugs caused by adding multiplayer functionality
 
 ===============
@@ -52,5 +64,4 @@ Known Issues:
 - music zones occasionaly get out of sync
 - the music kinda sucks tbh
 - Phill occasionaly launches forwards but not up whith particular timed jumps
-- Clouds sometimes pop up without animating
-- Aligaytors will sometimes be launched the other way from what you'd expect when you land on them. I think this is unity having some janky physics so i'm not sure i can fix this one properly.
+- Aligaytors will sometimes be launched the other way from what you'd expect when you land on them. I think this is unity having some janky physics so I'm not sure I can fix this one properly
