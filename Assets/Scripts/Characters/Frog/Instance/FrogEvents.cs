@@ -29,7 +29,7 @@ namespace FrogScripts
         {
             toNotifyPreDeath.Add(subscriber);
         }
-        public void UnscubscribePreDeath(INotifyPreDeath subscriber)
+        public void UnsubscribePreDeath(INotifyPreDeath subscriber)
         {
             toNotifyPreDeath.Remove(subscriber);
         }

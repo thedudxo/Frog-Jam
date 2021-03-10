@@ -29,7 +29,7 @@ public class FrogManager : MonoBehaviour
         IDFrogs.Add(frog.gameObject.GetInstanceID(), frog);
     }
 
-    public Frog GetFrogFromGameobject(GameObject obj)
+    public Frog GetFrogComponent(GameObject obj)
     { 
         if (obj.gameObject.CompareTag(GM.playerTag))
         {

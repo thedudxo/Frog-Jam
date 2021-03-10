@@ -5,13 +5,13 @@ using UnityEngine.UI;
 using FrogScripts;
 using LevelScripts;
 
-public class DeathsAtLocationCounter : MonoBehaviour, INotifyOnDeath
+public class DeathsAtLocationCounter : MonoBehaviour, INotifyPreDeath
 {
     private int deaths = 0;
     [SerializeField] Text deathcounter;
     [SerializeField] Level level;
 
-    void INotifyOnDeath.OnDeath()
+    void INotifyPreDeath.PreDeath()
     {
         deaths++;
         Statistics.deathsAtThatHole++; //TODO: make more dynamic for future uses in other levels
@@ -30,14 +30,16 @@ public class DeathsAtLocationCounter : MonoBehaviour, INotifyOnDeath
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == GM.playerTag)
-            collision.GetComponent<Frog>().events.UnscubscribeOnDeath(this);
+        var frog = level.frogManager.GetFrogComponent(collision.gameObject);
+        if (frog == null) return;
+        frog.events.UnsubscribePreDeath(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(GM.playerTag))
-            collision.GetComponent<Frog>().events.SubscribeOnDeath(this);
+        var frog = level.frogManager.GetFrogComponent(collision.gameObject);
+        if (frog == null) return;
+        frog.events.SubscribePreDeath(this);
     }
 
    
