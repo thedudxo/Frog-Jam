@@ -5145,7 +5145,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 9174729617090259637}
   m_Father: {fileID: 9174729617210768510}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5164,6 +5165,7 @@ MonoBehaviour:
   animator: {fileID: 9174729618208786169}
   frog: {fileID: 9174729617834607438}
   rb: {fileID: 9174729618712038166}
+  groundedDetection: {fileID: 8501311290567428493}
   landSounds: {fileID: 9174729617181033737}
   jumpSounds: {fileID: 9174729616964550922}
   spriteRenderer: {fileID: 9174729616963248092}
@@ -5172,7 +5174,6 @@ MonoBehaviour:
   powerBar: {fileID: 9174729616823476525}
   jumpForce: 600
   horizontalJumpForce: 500
-  groundDetectionBox: {fileID: 9174729617090259637}
 --- !u!1 &6548359566150269039
 GameObject:
   m_ObjectHideFlags: 0
@@ -6582,7 +6583,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9174729618712038167}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
 --- !u!198 &9174729617085815933
 ParticleSystem:
@@ -11374,8 +11375,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9174729617090259637}
-  - component: {fileID: 9174729617090259638}
-  - component: {fileID: 9174729617090259639}
   - component: {fileID: 9174729617090259636}
   m_Layer: 0
   m_Name: Grounded Detection Box
@@ -11383,7 +11382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9174729617090259637
 Transform:
   m_ObjectHideFlags: 0
@@ -11391,62 +11390,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9174729617090259634}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.15, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.1500003, z: 0}
   m_LocalScale: {x: 4.19, y: 1.63, z: 1}
   m_Children: []
-  m_Father: {fileID: 9174729618712038167}
-  m_RootOrder: 2
+  m_Father: {fileID: 4528491567384568240}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &9174729617090259638
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9174729617090259634}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &9174729617090259639
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9174729617090259634}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 19b9fb0c1a9b3c941b936eacd1485dbf, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &9174729617090259636
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11455,7 +11405,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9174729617090259634}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -11526,7 +11476,7 @@ Transform:
   - {fileID: 9174729617954839219}
   - {fileID: 9174729617433187265}
   m_Father: {fileID: 9174729618712038167}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9174729617159060534
 GameObject:
@@ -17264,7 +17214,7 @@ Transform:
   - {fileID: 4528491567384568240}
   - {fileID: 3180354114891386527}
   m_Father: {fileID: 9174729618712038167}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9174729617246210595
 GameObject:
@@ -26655,6 +26605,7 @@ GameObject:
   - component: {fileID: 9174729618712038248}
   - component: {fileID: 9174729618712038250}
   - component: {fileID: 1248141674805331836}
+  - component: {fileID: 8501311290567428493}
   m_Layer: 0
   m_Name: Phill the Frog
   m_TagString: Phill
@@ -26675,7 +26626,6 @@ Transform:
   m_Children:
   - {fileID: 9174729617350677312}
   - {fileID: 9174729617543913682}
-  - {fileID: 9174729617090259637}
   - {fileID: 9174729617085815935}
   - {fileID: 9174729617139490405}
   - {fileID: 9174729617210768510}
@@ -26821,6 +26771,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpKey: 32
   suicideKey: 113
+--- !u!114 &8501311290567428493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174729618712038164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3893f403b90f004480ae1d2c4c71ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9174729618743871617
 GameObject:
   m_ObjectHideFlags: 0
