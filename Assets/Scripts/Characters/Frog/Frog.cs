@@ -20,6 +20,7 @@ namespace FrogScripts
         [SerializeField] public SplitManager splitManager;
 
         [Header("Components")]
+        [SerializeField] public new Collider2D collider;
         [SerializeField] public Rigidbody2D rb;
         [SerializeField] public VfxController vfxManager;
         [SerializeField] public LifeController lifeController;
@@ -29,8 +30,8 @@ namespace FrogScripts
         [SerializeField] public FrogCleanJumpManager cleanJumpEffectsManager;
         [SerializeField] public FrogWaveInteractions waveInteractions;
 
-        public State state = State.StartPlatform;
         public FrogState stateControlls;
+        public State state => stateControlls.state;
 
         public FrogEvents events = new FrogEvents();
 

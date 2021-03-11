@@ -33,9 +33,9 @@ public class FrogManager : MonoBehaviour
     { 
         if (obj.gameObject.CompareTag(GM.playerTag))
         {
-            int collisionID = obj.gameObject.GetInstanceID();
+            int objID = obj.GetInstanceID();
 
-            if (IDFrogs.TryGetValue(collisionID, out Frog frog))
+            if (IDFrogs.TryGetValue(objID, out Frog frog))
             {
                 return frog;
             }

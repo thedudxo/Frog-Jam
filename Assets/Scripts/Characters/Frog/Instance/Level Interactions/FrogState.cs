@@ -10,6 +10,8 @@ namespace FrogScripts
         Transform transform;
         Rigidbody2D rb;
 
+        public State state { get; private set; } = State.StartPlatform;
+
         public FrogState(Frog frog)
         {
             this.frog = frog;
@@ -36,7 +38,7 @@ namespace FrogScripts
                 bool OnStartingPlatform = transform.position.x < frog.currentLevel.startLength;
                 if (OnStartingPlatform == false)
                 {
-                    frog.state = State.Level;
+                    state = State.Level;
                     frog.manager.events.TriggerAnyFrogLeftPlatform();
                     foreach (INotifyOnLeftPlatform subscriber in frog.events.toNotifyOnLeftPlatform)
                     {
@@ -51,7 +53,7 @@ namespace FrogScripts
             if(frog.state == State.Hidden)
                 frog.vfxManager.ShowFrogVisuals(true);
 
-            frog.state = State.StartPlatform;
+            state = State.StartPlatform;
         }
 
         public void OnAnyRespawn()
@@ -60,18 +62,18 @@ namespace FrogScripts
             rb.isKinematic = false;
 
             if (frog.state == State.Dead)
-            frog.state = State.Level;
+            state = State.Level;
         }
 
         public void PreDeath() 
         {
-            frog.state = State.Dead;
+            state = State.Dead;
             rb.simulated = false;
         }
 
         public void OnEndLevel()
         {
-            frog.state = State.Hidden;
+            state = State.Hidden;
             rb.simulated = false;
             frog.vfxManager.ShowFrogVisuals(false);
         }
