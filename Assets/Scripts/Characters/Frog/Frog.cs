@@ -1,5 +1,6 @@
 ﻿using FrogScripts.Life;
 using FrogScripts.Vfx;
+using FrogScripts.Jump;
 using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;

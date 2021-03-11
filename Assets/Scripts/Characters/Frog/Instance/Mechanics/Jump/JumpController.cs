@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace FrogScripts
+namespace FrogScripts.Jump
 {
     public class JumpController : MonoBehaviour
     {
@@ -11,7 +11,10 @@ namespace FrogScripts
         [SerializeField] Animator animator;
         [SerializeField] Frog frog;
         [SerializeField] Rigidbody2D rb;
-        
+
+        [Header("Components")]
+        [SerializeField] GroundedDetection groundedDetection;
+
         [Header("Audio")]
         [SerializeField] AudioClip landSounds;
         [SerializeField] AudioClip jumpSounds;
@@ -30,59 +33,32 @@ namespace FrogScripts
         const float maxJumpKeyTime = .22f;  //how long the key must be heled to get max power
               float jumpTimeNormalised = 0; // how long the key was held 0 to 1
         const float minJumpTimeNormalised = .15f; //the smallest jump you can make
-        const float jumpKeyTimeMinThreshold = 0.3f; //if jump key is heled for less than this time jump will be minimum power
-
-        //grounded detection
-        [SerializeField] Transform groundDetectionBox;
-        Vector2 groundedBoxCenter, groundedBoxSize;
-        float groundedBoxAngle;
-        int groundedMask;
-        
+        const float jumpKeyTimeMinThreshold = 0.3f; //if jump key is heled for less than this time jump will be minimum power 
 
         bool canJump = false;
         float airTime = 0; //time since phill last touched something
         float maxAnimationAirTime = 1.5f; // time where the landing animation gets maximum squish
 
-        private int layermask;
-
         public bool CollidedSinceLastJump { get; private set; } = true;
 
         void Start()
         {
-            layermask = LayerMask.GetMask("Ground");
-
             powerBar.minValue = 0;
             powerBar.maxValue = 1;
-
-            Vector2 GDBScale = groundDetectionBox.localScale;
-            Vector2 frogScale = frog.transform.localScale;
-            groundedBoxSize = new Vector2(
-                GDBScale.x * frogScale.x,
-                GDBScale.y * frogScale.y);
-            groundedBoxAngle = groundDetectionBox.rotation.z;
-            groundedMask = LayerMask.GetMask("Ground");
 
             jumpKey = frog.controlls.jumpKey;
         }
 
-
-
-        bool IsGrounded => Physics2D.OverlapBox(groundedBoxCenter, groundedBoxSize, groundedBoxAngle);
+        bool IsGrounded => groundedDetection.IsGrounded;
 
         void Update()
         {
             //can the frog jump?
-            groundedBoxCenter = groundDetectionBox.position;
             if (IsGrounded)
             {
                 if (canJump == false)
                 { // the frame where phill landed
-                  //landing animation
-                    float airTimeNormalised = Mathf.Clamp(airTime, 0, maxAnimationAirTime) / maxAnimationAirTime;
-                    animator.SetFloat("AirTime", airTimeNormalised);
-                    airTime = 0;
-
-                    landSounds.GetRandomAudioSource().Play();
+                    LandedAnimation();
                 }
                 canJump = true;
             }
@@ -148,6 +124,15 @@ namespace FrogScripts
             {
                 GM.QuitToMenu();
             }
+        }
+
+        private void LandedAnimation()
+        {
+            float airTimeNormalised = Mathf.Clamp(airTime, 0, maxAnimationAirTime) / maxAnimationAirTime;
+            animator.SetFloat("AirTime", airTimeNormalised);
+            airTime = 0;
+
+            landSounds.GetRandomAudioSource().Play();
         }
 
         public void OnCollisionEnter2D()
