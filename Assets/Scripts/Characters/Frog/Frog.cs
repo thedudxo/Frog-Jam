@@ -13,7 +13,6 @@ namespace FrogScripts
     {
         [Header("make dynamic later")]
         [SerializeField] public Level currentLevel;
-        [SerializeField] public Wave wave;
 
         [Header("External Managers")]
         [SerializeField] public FrogManager manager;

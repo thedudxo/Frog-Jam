@@ -29,7 +29,7 @@ namespace FrogScripts {
 
         bool FrogWillSetbackBehindWave(Frog frog)
         {
-            Wave wave = waveInteractions.attachedWave;
+            Wave wave = waveInteractions.AttachedWave;
             if (wave == null) return false;
 
             if (wave.state == Wave.State.normal)

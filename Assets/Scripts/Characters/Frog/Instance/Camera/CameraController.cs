@@ -26,7 +26,7 @@ namespace FrogScripts {
         void Start()
         {
             camTransform = camera.transform;
-            waveTransform = frog.wave.transform;
+            waveTransform = frog.waveInteractions.AttachedWave.transform;
 
             target = new CameraTarget(transform);
             Vector3 targetStart = target.GetPos();
