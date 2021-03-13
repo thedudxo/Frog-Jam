@@ -118,14 +118,6 @@ namespace FrogScripts.Jump
 
             animator.SetFloat("JumpPower", jumpTimeNormalised);
             powerBar.value = jumpTimeNormalised;
-
-
-
-            //quit to menu
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                GM.QuitToMenu();
-            }
         }
 
         private void LandedAnimation()
