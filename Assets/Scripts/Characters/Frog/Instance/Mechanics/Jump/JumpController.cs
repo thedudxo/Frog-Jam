@@ -2,42 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Normalise;
 
 namespace FrogScripts.Jump
 {
     public class JumpController : MonoBehaviour, INotifyOnAnyRespawn
     {
-        KeyCode jumpKey;
-        [SerializeField] Animator animator;
+        [Header("Components")]
         [SerializeField] Frog frog;
         [SerializeField] Rigidbody2D rb;
-
-        [Header("Components")]
         [SerializeField] GroundedDetection groundedDetection;
+        [SerializeField] JumpAnimations animations;
 
         [Header("Audio")]
         [SerializeField] AudioClip landSounds;
         [SerializeField] AudioClip jumpSounds;
 
-        [Header("Sprites")]
-        public SpriteRenderer spriteRenderer;
-        public Sprite jumpSprite;
-        public Sprite restSprite;
-
         [Header("UI")]
         public Slider powerBar;
 
-        [SerializeField] float jumpForce = 1000;
-        [SerializeField] float horizontalJumpForce = 300;
-              float jumpKeyTime = 0; //how long the jump key has been held down
-        const float maxJumpKeyTime = .22f;  //how long the key must be heled to get max power
-              float jumpTimeNormalised = 0; // how long the key was held 0 to 1
-        const float minJumpTimeNormalised = .15f; //the smallest jump you can make
-        const float jumpKeyTimeMinThreshold = 0.3f; //if jump key is heled for less than this time jump will be minimum power 
+        [Header("Parameters")]
+        [SerializeField] Vector2 maxJumpForce = new Vector2(600,500);
 
-        bool canJump = false;
-        float airTime = 0; //time since phill last touched something
-        float maxAnimationAirTime = 1.5f; // time where the landing animation gets maximum squish
+        public KeyCode JumpKey => frog.controlls.jumpKey;
+
+        float jumpChargeTime = 0;
+        const float maxJumpCharge = .22f;
+              float jumpCharge01 = 0;
+        const float minJumpCharge01 = .15f; 
+        const float minJumpChargeThreshhold01 = 0.3f; 
+
+        bool _canJump = false;
+        bool CanJump { 
+            get { return _canJump; } 
+            set 
+            {
+                bool changedToTrue = (value != _canJump) && value;
+                _canJump = value;
+                if (changedToTrue) LandingFrame();
+            } 
+        }
+        float airTime = 0; 
 
         public bool CollidedSinceLastJump { get; private set; } = true;
 
@@ -46,87 +51,77 @@ namespace FrogScripts.Jump
             powerBar.minValue = 0;
             powerBar.maxValue = 1;
 
-            jumpKey = frog.controlls.jumpKey;
-
             frog.events.SubscribeOnAnyRespawn(this);
         }
 
-        bool IsGrounded => groundedDetection.IsGrounded;
-
         void Update()
         {
-            //can the frog jump?
-            if (IsGrounded)
-            {
-                if (canJump == false)
-                { // the frame where phill landed
-                    LandedAnimation();
-                }
-                canJump = true;
-            }
-            else
-            {
-                canJump = false;
-                airTime += Time.deltaTime;
-            }
-            animator.SetBool("Landed", canJump);
+            CanJump = groundedDetection.IsGrounded;
+
+            if (CanJump == false) airTime += Time.deltaTime;
+
+            animations.SetGrounded(CanJump);
 
 
-            if (canJump)
-            { spriteRenderer.sprite = restSprite; }
-            else
-            { spriteRenderer.sprite = jumpSprite; }
-
-            if (Input.GetKeyDown(jumpKey))
+            if (Input.GetKey(JumpKey))
             {
-                animator.SetBool("ChargingJump", true);
+                jumpChargeTime += Time.deltaTime;
             }
 
-            if (Input.GetKey(jumpKey))
+            if (Input.GetKeyUp(JumpKey)) AttemptJump();
+
+            jumpCharge01 = Normalise01(jumpChargeTime, maxJumpCharge);
+
+            animations.Squish(jumpCharge01);
+            powerBar.value = jumpCharge01;
+        }
+
+        private void AttemptJump()
+        {
+            animations.StartJump(jumpCharge01);
+
+            jumpSounds.GetRandomAudioSource().Play();
+
+            if (CanJump) Jump();
+
+            jumpChargeTime = 0;
+
+
+            void Jump()
             {
-                jumpKeyTime += Time.deltaTime;
-            }
+                IncreaseSmallJumpAccuracy();
+                Vector2 jumpForce = CalculateFinalJumpForce();
+                PerformJump(jumpForce);
 
-            if (Input.GetKeyUp(jumpKey))
-            {
-                //do jump
-                animator.SetTrigger("ReleaseJump");
-                animator.SetBool("ChargingJump", false);
-                animator.SetFloat("JumpPowerAtKeyRelease", jumpTimeNormalised);
-
-                jumpSounds.GetRandomAudioSource().Play();
-
-                if (canJump)
+                void IncreaseSmallJumpAccuracy()
                 {
-                    //if jump key is heled for less than this time jump will be minimum power
-                    //increases accuracy when player intends to make small jumps
-                    if ((jumpTimeNormalised < jumpKeyTimeMinThreshold))
-                    {
-                        jumpTimeNormalised = minJumpTimeNormalised;
-                    }
+                    bool minimumJump = jumpCharge01 < minJumpChargeThreshhold01;
+                    if (minimumJump) jumpCharge01 = minJumpCharge01;
+                }
 
-                    rb.AddForce(new Vector2(horizontalJumpForce * jumpTimeNormalised, jumpForce * jumpTimeNormalised));
+                Vector2 CalculateFinalJumpForce()
+                {
+                    return new Vector2(
+                        maxJumpForce.x * jumpCharge01,
+                        maxJumpForce.y * jumpCharge01
+                        );
+                }
+
+                void PerformJump(Vector2 force)
+                {
+                    rb.AddForce(force);
                     rb.AddTorque(-45);
                     CollidedSinceLastJump = false;
                 }
-
-                jumpKeyTime = 0;
             }
-
-            //get normalised jump time
-            jumpTimeNormalised = Mathf.Clamp((jumpKeyTime / maxJumpKeyTime), 0, 1);
-
-            animator.SetFloat("JumpPower", jumpTimeNormalised);
-            powerBar.value = jumpTimeNormalised;
         }
 
-        private void LandedAnimation()
+        private void LandingFrame()
         {
-            float airTimeNormalised = Mathf.Clamp(airTime, 0, maxAnimationAirTime) / maxAnimationAirTime;
-            animator.SetFloat("AirTime", airTimeNormalised);
-            airTime = 0;
-
+            animations.Landed(airTime);
             landSounds.GetRandomAudioSource().Play();
+
+            airTime = 0;
         }
 
         public void OnCollisionEnter2D()
@@ -136,7 +131,7 @@ namespace FrogScripts.Jump
 
         public void OnAnyRespawn()
         {
-            jumpKeyTime = 0;
+            jumpChargeTime = 0;
         }
     }
 }

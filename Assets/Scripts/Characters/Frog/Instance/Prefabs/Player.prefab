@@ -176,7 +176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frog: {fileID: 9174729617834607438}
-  attachedWave: {fileID: 0}
 --- !u!1 &1909892806027663412
 GameObject:
   m_ObjectHideFlags: 0
@@ -5128,6 +5127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4528491567384568240}
   - component: {fileID: 164193441602028764}
+  - component: {fileID: 6244754691832725776}
   m_Layer: 0
   m_Name: Jump
   m_TagString: Untagged
@@ -5162,18 +5162,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3722a98c83210ca498d567c1f1b361a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 9174729618208786169}
   frog: {fileID: 9174729617834607438}
   rb: {fileID: 9174729618712038166}
   groundedDetection: {fileID: 8501311290567428493}
+  animations: {fileID: 6244754691832725776}
   landSounds: {fileID: 9174729617181033737}
   jumpSounds: {fileID: 9174729616964550922}
-  spriteRenderer: {fileID: 9174729616963248092}
-  jumpSprite: {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
-  restSprite: {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
   powerBar: {fileID: 9174729616823476525}
-  jumpForce: 600
-  horizontalJumpForce: 500
+  maxJumpForce: {x: 500, y: 600}
+--- !u!114 &6244754691832725776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5736840734545577112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7722bb77277b54643966e9ff0c6ab67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpController: {fileID: 164193441602028764}
+  animator: {fileID: 9174729618208786169}
 --- !u!1 &6548359566150269039
 GameObject:
   m_ObjectHideFlags: 0
@@ -26751,7 +26761,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: {fileID: 0}
-  wave: {fileID: 0}
   manager: {fileID: 0}
   splitManager: {fileID: 0}
   collider: {fileID: 9174729618712038249}
@@ -26821,6 +26830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpKey: 32
   suicideKey: 113
+  QuitToMenuKey: 27
 --- !u!114 &8501311290567428493
 MonoBehaviour:
   m_ObjectHideFlags: 0
