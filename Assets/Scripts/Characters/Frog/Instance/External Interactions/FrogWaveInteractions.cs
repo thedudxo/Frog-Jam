@@ -61,6 +61,10 @@ namespace FrogScripts
                 attachedWave.breakControlls.FrogTriggerBreak();
         }
         public void OnEndLevel() => attachedWave.breakControlls.FrogTriggerBreak();
-        public void OnRestart() => attachedWave.breakControlls.FrogTriggerBreak();
+        public void OnRestart()
+        {
+            if (attachedWave == null) return;
+            attachedWave.breakControlls.FrogTriggerBreak();
+        }
     }
 }
