@@ -11,15 +11,24 @@ namespace FrogScripts
 
         bool waitingToExitGhostMode = false;
 
-        float radius;
         ContactFilter2D filter = new ContactFilter2D();
+
+        const int defaultLayer = 0;
+
+        struct Circle
+        {
+            public float radius;
+            public Vector2 centre;
+        }
+
+        Circle overlapCircle;
 
         void Start()
         {
             frog.events.SubscribeOnRestart(this);
             frog.events.SubscribeOnLeftPlatform(this);
 
-            radius = frog.collider.bounds.size.magnitude;
+            overlapCircle.radius = frog.collider.bounds.size.magnitude;
 
             filter.layerMask = GM.NoSelfCollisionsLayer;
 
@@ -34,12 +43,6 @@ namespace FrogScripts
             }
         }
 
-        private void OnDrawGizmos()
-        {
-            //use this to see where the collision check is happening
-            //Gizmos.DrawSphere(frog.collider.bounds.center, radius);
-        }
-
         public void OnRestart() => EnterGhostMode();
         public void OnLeftPlatform() => TryLeaveGhostMode();
         void EnterGhostMode()
@@ -49,36 +52,56 @@ namespace FrogScripts
             frog.vfxManager.GhostVisuals();
         }
 
+        void LeaveGhostMode()
+        {
+            frog.gameObject.layer = defaultLayer;
+            frog.vfxManager.UnGhostVisuals();
+        }
+
         void TryLeaveGhostMode()
         {
-            Vector2 circleCenter = frog.collider.bounds.center;
-
-            List<Collider2D> overlapColliders = new List<Collider2D>();
+            var overlapColliders = new List<Collider2D>();
+            FillWithCurrentOverlaps(overlapColliders);
             
-            //this fills the list with all colliders cuurently overlaping
-            Physics2D.OverlapCircle(circleCenter, radius, filter, overlapColliders);
-
-            var overlapFrogQuery =
-                from collider in overlapColliders
-                let _frog = frog.manager.GetFrogComponent(collider.gameObject)
-                where _frog != null
-                where _frog != this.frog
-                select _frog;
-
-
-            if (overlapFrogQuery.Any())
+            if (AnyOverlappingFrogs())
+            {
                 waitingToExitGhostMode = true;
+            }
+
             else
             {
                 waitingToExitGhostMode = false;
                 LeaveGhostMode();
             }
+
+
+            void FillWithCurrentOverlaps(List<Collider2D> ResultsList)
+            {
+                overlapCircle.centre = frog.collider.bounds.center;
+                Physics2D.OverlapCircle(overlapCircle.centre, overlapCircle.radius, filter, ResultsList);
+            }
+
+            bool AnyOverlappingFrogs()
+            {
+                var overlapFrogQuery =
+                    from collider in overlapColliders
+                    let _frog = frog.manager.GetFrogComponent(collider.gameObject)
+                    where _frog != null
+                    where _frog != this.frog
+                    select _frog;
+
+                if (overlapFrogQuery.Any())
+                    return true;
+                else
+                    return false;
+            }
         }
 
-        void LeaveGhostMode()
-        {
-            frog.gameObject.layer = 0; //default layer
-            frog.vfxManager.UnGhostVisuals();
-        }
+        //use this debug to visualise where the collision check is happening
+        //private void OnDrawGizmos()
+        //{
+        //    Gizmos.DrawSphere(frog.collider.bounds.center, overlapCircle.radius);
+        //}
+
     }
 }
