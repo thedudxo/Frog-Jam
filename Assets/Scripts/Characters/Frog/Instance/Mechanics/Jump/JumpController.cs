@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace FrogScripts.Jump
 {
-    public class JumpController : MonoBehaviour
+    public class JumpController : MonoBehaviour, INotifyOnAnyRespawn
     {
         KeyCode jumpKey;
         [SerializeField] Animator animator;
@@ -47,6 +47,8 @@ namespace FrogScripts.Jump
             powerBar.maxValue = 1;
 
             jumpKey = frog.controlls.jumpKey;
+
+            frog.events.SubscribeOnAnyRespawn(this);
         }
 
         bool IsGrounded => groundedDetection.IsGrounded;
@@ -140,7 +142,7 @@ namespace FrogScripts.Jump
             CollidedSinceLastJump = true;
         }
 
-        public void Respawn()
+        public void OnAnyRespawn()
         {
             jumpKeyTime = 0;
         }

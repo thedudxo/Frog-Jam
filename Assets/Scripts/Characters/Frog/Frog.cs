@@ -67,11 +67,6 @@ namespace FrogScripts
 
         }
 
-        public void Respawn()
-        {
-            jumpController.Respawn();
-        }
-
         #region collisions
         [HideInInspector] public List<GameObject> currentCollisions = new List<GameObject>();
 
