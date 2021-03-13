@@ -9508,6 +9508,11 @@ PrefabInstance:
       propertyPath: m_Simulated
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7074319547445508315, guid: ba5e897114e46934682a35e319227241,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7074319547569174869, guid: ba5e897114e46934682a35e319227241,
         type: 3}
       propertyPath: m_AnchoredPosition.y
