@@ -1190,6 +1190,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1692683974}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &311283718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 311283721}
+  - component: {fileID: 311283720}
+  - component: {fileID: 311283719}
+  m_Layer: 0
+  m_Name: Suicide
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &311283719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311283718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7512412, g: 0.8584906, b: 0.13363297, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2d340809df8a7cc4e9223e7e97fff0df, type: 3}
+    m_FontSize: 71
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 71
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Q = Suicide
+--- !u!222 &311283720
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311283718}
+  m_CullTransparentMesh: 0
+--- !u!224 &311283721
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311283718}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.016247831, y: 0.016247831, z: 0.016247831}
+  m_Children: []
+  m_Father: {fileID: 695180688}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 3.35, y: -1.24}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &350796918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,7 +1646,7 @@ GameObject:
   - component: {fileID: 391627099}
   - component: {fileID: 391627098}
   m_Layer: 0
-  m_Name: Text
+  m_Name: Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1625,7 +1704,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Spacebar = Jump\n         Q = Suicide"
+  m_Text: 'Spacebar = Jump
+
+'
 --- !u!222 &391627099
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2429,7 +2510,7 @@ Transform:
   - {fileID: 7357607}
   - {fileID: 620792309}
   m_Father: {fileID: 1188860044}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &671841335
 GameObject:
@@ -2708,12 +2789,12 @@ GameObject:
   - component: {fileID: 695180690}
   - component: {fileID: 695180689}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Controlls Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &695180688
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2726,12 +2807,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 391627097}
-  m_Father: {fileID: 1355521505}
-  m_RootOrder: 5
+  - {fileID: 311283721}
+  m_Father: {fileID: 1188860044}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -27.46, y: 1.92}
+  m_AnchoredPosition: {x: -25.84, y: 1.92}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695180689
@@ -2743,14 +2825,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 695180687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Script: {fileID: 11500000, guid: a26c32aab2b53f948b0f63f3b5a972b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
+  jumpKeyTipText: {fileID: 391627098}
+  suicideKeyTipText: {fileID: 311283719}
 --- !u!114 &695180690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4511,6 +4590,7 @@ Transform:
   m_LocalPosition: {x: 25.96, y: -2.7933526, z: -2.952322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 695180688}
   - {fileID: 668287255}
   - {fileID: 1237552536}
   m_Father: {fileID: 0}
@@ -4538,6 +4618,7 @@ MonoBehaviour:
   waveManager: {fileID: 920671917}
   cleanJumps: []
   waveFrogMediatior: {fileID: 1188860047}
+  controllsTextTipPrefab: {fileID: 695180689}
 --- !u!81 &1188860046
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4845,7 +4926,7 @@ Transform:
   - {fileID: 1857983452}
   - {fileID: 1662660459}
   m_Father: {fileID: 1188860044}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1237552537
 MonoBehaviour:
@@ -5513,7 +5594,6 @@ Transform:
   - {fileID: 727301893}
   - {fileID: 1756974496}
   - {fileID: 819179462}
-  - {fileID: 695180688}
   m_Father: {fileID: 668287255}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

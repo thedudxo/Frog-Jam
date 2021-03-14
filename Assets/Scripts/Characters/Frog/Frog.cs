@@ -54,16 +54,11 @@ namespace FrogScripts
         public void SetObjectUILayer(GameObject obj)
         {
 
-            foreach(Transform child in obj.transform)
+            foreach(Transform child in obj.transform) 
                 setLayer(child.gameObject);
-
             setLayer(obj);
 
-            void setLayer(GameObject _obj)
-            {
-                _obj.layer = LayerMask.NameToLayer(UILayer);
-            }
-
+            void setLayer(GameObject _obj) => _obj.layer = LayerMask.NameToLayer(UILayer);
         }
 
         #region collisions

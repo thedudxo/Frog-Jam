@@ -5195,6 +5195,7 @@ GameObject:
   - component: {fileID: 5529073238860149330}
   - component: {fileID: 702444461349873034}
   - component: {fileID: 9098765996569449621}
+  - component: {fileID: 6684417489744459302}
   m_Layer: 0
   m_Name: PerPlayer Instance Managers
   m_TagString: Untagged
@@ -5241,6 +5242,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e73dd398cec96e447a3575bbbc20195b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frog: {fileID: 9174729617834607438}
+--- !u!114 &6684417489744459302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6548359566150269039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dfb6c63c6b32ea42bf9377c7f57ac45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   frog: {fileID: 9174729617834607438}
