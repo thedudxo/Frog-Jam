@@ -176,7 +176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frog: {fileID: 9174729617834607438}
-  attachedWave: {fileID: 0}
 --- !u!1 &1909892806027663412
 GameObject:
   m_ObjectHideFlags: 0
@@ -5128,6 +5127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4528491567384568240}
   - component: {fileID: 164193441602028764}
+  - component: {fileID: 6244754691832725776}
   m_Layer: 0
   m_Name: Jump
   m_TagString: Untagged
@@ -5162,18 +5162,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3722a98c83210ca498d567c1f1b361a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 9174729618208786169}
   frog: {fileID: 9174729617834607438}
   rb: {fileID: 9174729618712038166}
   groundedDetection: {fileID: 8501311290567428493}
+  animations: {fileID: 6244754691832725776}
   landSounds: {fileID: 9174729617181033737}
   jumpSounds: {fileID: 9174729616964550922}
-  spriteRenderer: {fileID: 9174729616963248092}
-  jumpSprite: {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
-  restSprite: {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
   powerBar: {fileID: 9174729616823476525}
-  jumpForce: 600
-  horizontalJumpForce: 500
+  maxJumpForce: {x: 500, y: 600}
+--- !u!114 &6244754691832725776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5736840734545577112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7722bb77277b54643966e9ff0c6ab67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpController: {fileID: 164193441602028764}
+  animator: {fileID: 9174729618208786169}
 --- !u!1 &6548359566150269039
 GameObject:
   m_ObjectHideFlags: 0
@@ -5185,6 +5195,7 @@ GameObject:
   - component: {fileID: 5529073238860149330}
   - component: {fileID: 702444461349873034}
   - component: {fileID: 9098765996569449621}
+  - component: {fileID: 6684417489744459302}
   m_Layer: 0
   m_Name: PerPlayer Instance Managers
   m_TagString: Untagged
@@ -5231,6 +5242,63 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e73dd398cec96e447a3575bbbc20195b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frog: {fileID: 9174729617834607438}
+--- !u!114 &6684417489744459302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6548359566150269039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dfb6c63c6b32ea42bf9377c7f57ac45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frog: {fileID: 9174729617834607438}
+--- !u!1 &6786229053379228144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2059829605390456860}
+  - component: {fileID: 1927616946604035118}
+  m_Layer: 0
+  m_Name: GhostMode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2059829605390456860
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6786229053379228144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9174729617210768510}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1927616946604035118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6786229053379228144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794476ed5a5676d47bb9c9e854440ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   frog: {fileID: 9174729617834607438}
@@ -11568,7 +11636,7 @@ GameObject:
   - component: {fileID: 9174729617163678944}
   - component: {fileID: 9174729617163678947}
   m_Layer: 0
-  m_Name: w
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17213,6 +17281,7 @@ Transform:
   - {fileID: 9174729617197800312}
   - {fileID: 4528491567384568240}
   - {fileID: 3180354114891386527}
+  - {fileID: 2059829605390456860}
   m_Father: {fileID: 9174729618712038167}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26706,9 +26775,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: {fileID: 0}
-  wave: {fileID: 0}
   manager: {fileID: 0}
   splitManager: {fileID: 0}
+  collider: {fileID: 9174729618712038249}
   rb: {fileID: 9174729618712038166}
   vfxManager: {fileID: 9174729618712038248}
   lifeController: {fileID: 9174729618216640956}
@@ -26717,7 +26786,6 @@ MonoBehaviour:
   controlls: {fileID: 1248141674805331836}
   cleanJumpEffectsManager: {fileID: 9098765996569449621}
   waveInteractions: {fileID: 2469700746435384598}
-  state: 1
   UILayer: Player1 UI
   inDanger: 0
   currentCollisions: []
@@ -26742,6 +26810,11 @@ MonoBehaviour:
   - {fileID: 9174729617954839216}
   - {fileID: 9174729617433187279}
   - {fileID: 9174729617350677313}
+  sprites:
+  - {fileID: 9174729616963248092}
+  - {fileID: 9174729616841117588}
+  - {fileID: 9174729617433187278}
+  - {fileID: 9174729617163678947}
   bloodSplatterImage: {fileID: 9174729618297507745}
 --- !u!114 &9174729618712038250
 MonoBehaviour:
@@ -26771,6 +26844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpKey: 32
   suicideKey: 113
+  QuitToMenuKey: 27
 --- !u!114 &8501311290567428493
 MonoBehaviour:
   m_ObjectHideFlags: 0

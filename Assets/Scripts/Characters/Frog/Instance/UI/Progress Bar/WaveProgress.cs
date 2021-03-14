@@ -13,7 +13,7 @@ namespace FrogScripts.Progress
 
         public void UpdateProgress()
         {
-            Wave wave = waveInteractions.attachedWave;
+            Wave wave = waveInteractions.AttachedWave;
             if (wave == null || wave.state == WaveScripts.Wave.State.inactive)
             {
                 waveProgressBar.value = 0;

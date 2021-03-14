@@ -13,11 +13,14 @@ public static class GM {
     public static GameMusic gameMusic;
 
     public static readonly float CameraVeiwRangeApprox = 18;
+
     public static int CurrentRespawnCount { get; private set; } = 1;
     public static bool sendAnyalitics = true;
 
     public const string playerTag = "Phill";
     public const string enemyAligator = "EnemyAligator";
+
+    public static readonly int NoSelfCollisionsLayer = 11;
 
     public const float respawnSetBack = 25;
 

@@ -13,7 +13,7 @@ namespace FrogScripts
 
         WaveFrogMediatior waveMediator;
 
-        public Wave attachedWave;
+        public Wave AttachedWave { get; private set; }
 
         private void Start()
         {
@@ -29,38 +29,52 @@ namespace FrogScripts
 
         private void Update()
         {
-            bool frogBehindAttachedWave = attachedWave?.transform.position.x > frog.transform.position.x;
-            if (frogBehindAttachedWave && frog.state != FrogState.State.StartPlatform) AttachNewWave();
+            bool frogNotOnStartPlatform = frog.state != FrogState.State.StartPlatform;
+
+            if (frogNotOnStartPlatform) //minor bug: can be on start platform and dying, causing this to trigger
+            {
+                if (AttachedWave == null) AttachClosestWave();
+                else
+                { 
+                    bool frogBehindAttachedWave = AttachedWave.transform.position.x > frog.transform.position.x;
+                    if (frogBehindAttachedWave) AttachClosestWave();
+                }
+                
+            }
         }
 
-        public void OnLeftPlatform() => AttachNewWave();
+        public void OnLeftPlatform() => AttachClosestWave();
 
-        void AttachNewWave()
+        void AttachClosestWave()
         {
-            if (attachedWave != null) attachedWave.breakControlls.FrogTriggerBreak();
+            if (AttachedWave != null) AttachedWave.breakControlls.FrogTriggerBreak();
 
             float frogPosX = frog.transform.position.x;
-            attachedWave = waveMediator.ClosestWaveBehindPosition(frogPosX);
+            AttachedWave = waveMediator.ClosestWaveBehindPosition(frogPosX);
 
-            if (attachedWave == null)
+            if (AttachedWave == null)
             {
-                attachedWave = waveManager.GetInactiveWave();
-                attachedWave.StartWave();
+                AttachedWave = waveManager.GetInactiveWave();
+                AttachedWave.StartWave();
             }
         }
 
         public void OnDeath()
         {
-            if (attachedWave == null) return;
+            if (AttachedWave == null) return;
 
             float resetPos = frog.transform.position.x - GM.respawnSetBack;
-            bool frogResetsBehindWave = resetPos < attachedWave.transform.position.x;
+            bool frogResetsBehindWave = resetPos < AttachedWave.transform.position.x;
             //bool frogResetsOntoPlatform = resetPos < frog.currentLevel.startLength;
 
             if (frogResetsBehindWave)
-                attachedWave.breakControlls.FrogTriggerBreak();
+                AttachedWave.breakControlls.FrogTriggerBreak();
         }
-        public void OnEndLevel() => attachedWave.breakControlls.FrogTriggerBreak();
-        public void OnRestart() => attachedWave.breakControlls.FrogTriggerBreak();
+        public void OnEndLevel() => AttachedWave.breakControlls.FrogTriggerBreak();
+        public void OnRestart()
+        {
+            if (AttachedWave == null) return;
+            AttachedWave.breakControlls.FrogTriggerBreak();
+        }
     }
 }

@@ -13,20 +13,18 @@ namespace FrogScripts {
         Vector2 targetPos;
         Vector2 centerOffset;
         Transform camTransform;
-        Transform waveTransform;
 
         const float Acceleration = 4f;
 
         const float maxY = -1.85f;
 
         const float WaveOffsetWeight = 4;
-        const float WaveMinDist = 10;
-        const float waveMaXDist = 30;
+        const float WaveMinDist = 20;
+        const float waveMaxDist = 40;
 
         void Start()
         {
             camTransform = camera.transform;
-            waveTransform = frog.wave.transform;
 
             target = new CameraTarget(transform);
             Vector3 targetStart = target.GetPos();
@@ -48,9 +46,13 @@ namespace FrogScripts {
         {
             get
             {
-                float waveDistToFrog = camTransform.position.x - waveTransform.position.x;
-                float waveDistanceXNormal = 1 - Mathf.Clamp01(
-                    (waveDistToFrog - WaveMinDist) / (waveMaXDist - WaveMinDist));
+                if (frog.waveInteractions.AttachedWave == null) return 0;
+
+                float 
+                    wavePosX = frog.waveInteractions.AttachedWave.transform.position.x,
+                    waveDistToFrog = camTransform.position.x - wavePosX,
+                    waveDistanceXNormal = 1 - Mathf.Clamp01(
+                        (waveDistToFrog - WaveMinDist) / (waveMaxDist - WaveMinDist));
 
                return waveDistanceXNormal * WaveOffsetWeight;
             }

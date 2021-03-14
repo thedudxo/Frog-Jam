@@ -21,6 +21,7 @@ namespace LevelScripts
         [SerializeField] public WaveScripts.WaveManager waveManager;
         [HideInInspector] public List<CleanlyJumpableObstacle> cleanJumps;
         [SerializeField] public WaveFrogMediatior waveFrogMediatior;
+        [SerializeField] public UI.ControllsTextTip controllsTextTipPrefab;
 
         private void OnValidate()
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,9 @@ namespace FrogScripts.Vfx
 
         [Header("visuals")]
         [SerializeField] public List<GameObject> visuals;
+        [SerializeField] List<SpriteRenderer> sprites;
         [SerializeField] public Image bloodSplatterImage;
+
 
         const int respawnEmit = 5;
         const int deathEmit = 25;
@@ -37,6 +40,21 @@ namespace FrogScripts.Vfx
             bloodSplaterController.Update();
             airParticleController.Update();
         }
+
+        const float ghostAlpha = 0.5f;
+        public void GhostVisuals() => SetAlpha(ghostAlpha);
+        public void UnGhostVisuals() => SetAlpha(1);
+        void SetAlpha(float alpha)
+        {
+            foreach (SpriteRenderer sprite in sprites)
+            {
+                var newColour = sprite.color;
+                newColour.a = alpha;
+                sprite.color = newColour;
+            }
+        }
+
+
 
         public void DeathEffects()
         {

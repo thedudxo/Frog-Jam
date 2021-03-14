@@ -5,7 +5,7 @@ public static class ObjectInstanceBuilder
 {
     public delegate void ExtndGameObjSetup(GameObject obj);
 
-    public static  void Build(List<GameObject> Templates)
+    public static void CreateInstances(List<GameObject> Templates)
     {
         foreach (GameObject template in Templates)
             InstantiateTemplate(template);

@@ -13,13 +13,13 @@ namespace FrogScripts
     {
         [Header("make dynamic later")]
         [SerializeField] public Level currentLevel;
-        [SerializeField] public Wave wave;
 
         [Header("External Managers")]
         [SerializeField] public FrogManager manager;
         [SerializeField] public SplitManager splitManager;
 
         [Header("Components")]
+        [SerializeField] public new Collider2D collider;
         [SerializeField] public Rigidbody2D rb;
         [SerializeField] public VfxController vfxManager;
         [SerializeField] public LifeController lifeController;
@@ -29,8 +29,8 @@ namespace FrogScripts
         [SerializeField] public FrogCleanJumpManager cleanJumpEffectsManager;
         [SerializeField] public FrogWaveInteractions waveInteractions;
 
-        public State state = State.StartPlatform;
         public FrogState stateControlls;
+        public State state => stateControlls.state;
 
         public FrogEvents events = new FrogEvents();
 
@@ -54,21 +54,11 @@ namespace FrogScripts
         public void SetObjectUILayer(GameObject obj)
         {
 
-            foreach(Transform child in obj.transform)
+            foreach(Transform child in obj.transform) 
                 setLayer(child.gameObject);
-
             setLayer(obj);
 
-            void setLayer(GameObject _obj)
-            {
-                _obj.layer = LayerMask.NameToLayer(UILayer);
-            }
-
-        }
-
-        public void Respawn()
-        {
-            jumpController.Respawn();
+            void setLayer(GameObject _obj) => _obj.layer = LayerMask.NameToLayer(UILayer);
         }
 
         #region collisions
