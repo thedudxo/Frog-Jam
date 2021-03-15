@@ -46,7 +46,6 @@ namespace FrogScripts.Life
 
             Statistics.totalDeaths++;
             deathSounds.PlayRandom();
-            GM.gameMusic.DetuneMusic();
             ToggleComponents(false);
 
             foreach (INotifyOnDeath notify in frog.events.toNotifyOnDeath) notify.OnDeath();
