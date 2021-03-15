@@ -123,7 +123,7 @@ public class MusicZone : MonoBehaviour
     public void UpdateWaveAudio()
     {
 
-        float wavePos = GM.currentLevel.wave.transform.position.x;
+        float wavePos = 0; // GM.currentLevel.wave.transform.position.x;
         float frogPos = SingletonThatNeedsToBeRemoved.frog.transform.position.x;
 
         float distanceNormalised = 1 - Mathf.Clamp01((frogPos - (wavePos + bufferInFrontOfWave)) / (waveMusicDistance));

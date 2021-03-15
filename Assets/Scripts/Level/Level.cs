@@ -15,13 +15,13 @@ namespace LevelScripts
         const float start = 0;
 
         [Header("Components")]
-        [SerializeField] public GameObject wave;
         [SerializeField] public SplitManager splitManager;
         [SerializeField] public FrogManager frogManager;
         [SerializeField] public WaveScripts.WaveManager waveManager;
-        [HideInInspector] public List<CleanlyJumpableObstacle> cleanJumps;
         [SerializeField] public WaveFrogMediatior waveFrogMediatior;
         [SerializeField] public UI.ControllsTextTip controllsTextTipPrefab;
+
+        [HideInInspector] public List<CleanlyJumpableObstacle> cleanJumps;
 
         private void OnValidate()
         {
