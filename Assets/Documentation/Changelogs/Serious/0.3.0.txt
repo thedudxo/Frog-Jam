@@ -15,15 +15,48 @@ New Features:
 
  - Aligaytors are now always friendly
  - Aligaytors have rotation physics
- - Aligaytors can return to a starting position
+ - Aligaytors try to return to their starting position
  - Aligaytors will carry you along with them rather than having to keep up yourself
 
- - Splits start tracking time when you pass the previous one
- - End screen displays total time of each splits personal best. Ie, your best possible time
- - End screen displays that runs time, and your personal best run
+ - Splits start tracking time once you pass the previous one
+ - End screen displays sum of your best splits. Ie, your best possible time
+ - End screen displays current runs time, and your personal best run
+
+ - Support for mutiple waves, so there is always a wave somewhere behind each player.
 
  - A "In Danger" indicator, appears when you would respawn behind a wave
  - Any death while In danger will respawn at the start of the level
+
+===============
+
+Changes:
+
+- Camera has a max height
+- Camera is positioned higher up and further right
+- Camera pulls back as a wave approaches
+
+- Canjump detection uses colliders again, has some "coyotie time"
+
+- Refactored a bunch of code
+
+- Refined the level, so its shorter and has more interesting parts
+	* Removed the "leap of faith" section
+	* Reworked the aligaytor section
+	* Feedback appreciated
+
+- Fishing hole counts any death near it as a catch
+
+- Waves don't get pushed back when you die
+- Its possible to survive a wave by being above it as it passes. a new wave will be sent for you, however
+- Waves won't harm you on the start platform
+
+- Disabled music for various reasons:
+	* Dynamic music doesn't make any sense in splitscreen
+	* There wasn't much variety so it gets annoying
+	* My current audio setup has a 0.5 second delay on sound, making it hard to work with when things need good timing
+	* Bottlenecking this 3.0 release
+	* It may come back in a future version, but it's not the core of the game so isn't something to be focused on right now
+	* Please let me know your thoughts
 
 ===============
 
@@ -31,37 +64,21 @@ New Art:
 - Air particles
 - squishy jumping sounds
 - Sky background
-
-===============
-
-Changes:
-
-
-- Camera has a max height
-- Camera is positioned higher up and further right
-
-- Canjump detection uses colliders again, has some "coyotie time"
-
-- Refactored a bunch of code
-
-- Refined the level, so its shorter and has more interesting parts
-- Fishing hole counts any death near it as a catch
-
-- Waves don't get pushed back when you die
-- Its possible to survive a wave by being above it as it passes. a new wave will be sent for you, however
-- Waves won't harm you on the start platform
+- Hand
 
 ===============
 
 Fixes:
-- Phill doesn't get stuck on flat surfaces anymore
+
+- Frogs would get stuck on flat surfaces
 - Clouds would pop up/disappear without playing the animation properly
 - So many bugs caused by adding multiplayer functionality
 
 ===============
 
 Known Issues:
-- music zones occasionaly get out of sync
-- the music kinda sucks tbh
-- Phill occasionaly launches forwards but not up whith particular timed jumps
-- Aligaytors will sometimes be launched the other way from what you'd expect when you land on them. I think this is unity having some janky physics so I'm not sure I can fix this one properly
+
+- Frogs occasionaly launch forwards but not up whith particular timed jumps
+- Frogs can get stuck in objects when respawning
+- Aligaytors will sometimes be launched the other way from what you'd expect when you land on them
+	* I think this is unity having some janky physics so I'm not sure I can fix this one properly
