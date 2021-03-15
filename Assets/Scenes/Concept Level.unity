@@ -2659,6 +2659,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9174729616964550926, guid: ee73907a125ab89439fd3950bf2b10ce,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9174729616975014827, guid: ee73907a125ab89439fd3950bf2b10ce,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2673,6 +2678,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0.387
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174729617046344253, guid: ee73907a125ab89439fd3950bf2b10ce,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174729617181033741, guid: ee73907a125ab89439fd3950bf2b10ce,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9174729617208895207, guid: ee73907a125ab89439fd3950bf2b10ce,
         type: 3}
@@ -2748,6 +2763,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174729617849656280, guid: ee73907a125ab89439fd3950bf2b10ce,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9174729618187121873, guid: ee73907a125ab89439fd3950bf2b10ce,
         type: 3}
@@ -7923,7 +7943,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020549041}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b033ebb32dbc52c43969792896ea9879, type: 3}
   m_Name: 
