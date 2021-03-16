@@ -164,7 +164,8 @@ public class GameMusic : MonoBehaviour
 
         musicZones[position] = zone;
 
-        if (position == 0) //starting zone
+        //disabled, remove the second check to enable
+        if (position == 0 && position == 1) //starting zone 
         {
             musicZones[0].PlayZone(AudioSettings.dspTime + musicStartDelay);
         }

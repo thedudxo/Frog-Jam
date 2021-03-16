@@ -25,7 +25,6 @@ namespace FrogScripts.Progress
         List<IProgressTracker> progressTrackers = new List<IProgressTracker>();
 
         Level level;
-        Transform waveTransform;
 
         private void Start()
         {
@@ -39,7 +38,6 @@ namespace FrogScripts.Progress
             }
 
             level = frog.currentLevel;
-            waveTransform = level.wave.transform;
             frog.events.SubscribeOnAnyRespawn(this);
 
             AddOtherPlayers();

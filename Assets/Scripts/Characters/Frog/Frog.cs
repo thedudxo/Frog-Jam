@@ -4,19 +4,15 @@ using FrogScripts.Jump;
 using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
-using WaveScripts;
 using static FrogScripts.FrogState;
 
 namespace FrogScripts
 {
     public class Frog : MonoBehaviour
     {
-        [Header("make dynamic later")]
-        [SerializeField] public Level currentLevel;
-
-        [Header("External Managers")]
-        [SerializeField] public FrogManager manager;
-        [SerializeField] public SplitManager splitManager;
+        [HideInInspector] public Level currentLevel;
+        [HideInInspector] public FrogManager manager;
+        [HideInInspector] public SplitManager splitManager;
 
         [Header("Components")]
         [SerializeField] public new Collider2D collider;
@@ -42,7 +38,11 @@ namespace FrogScripts
 
         private void Awake()
         {
+            manager = FrogStartSettings.manager;
+            currentLevel = FrogStartSettings.level;
+
             manager.AddFrog(this);
+            splitManager = currentLevel.splitManager;
             stateControlls = new FrogState(this);
         }
 
