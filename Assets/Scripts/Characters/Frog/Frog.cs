@@ -4,7 +4,6 @@ using FrogScripts.Jump;
 using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
-using WaveScripts;
 using static FrogScripts.FrogState;
 
 namespace FrogScripts
