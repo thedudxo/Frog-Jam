@@ -2135,7 +2135,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1473312038}
   m_HandleRect: {fileID: 1473312037}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2870,8 +2870,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 591555381}
   m_HandleRect: {fileID: 591555380}
   m_Direction: 2
-  m_Value: 0.9850975
-  m_Size: 0.15195481
+  m_Value: 0.9850983
+  m_Size: 0.15191332
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2923,6 +2923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 608663226}
+  - component: {fileID: 608663227}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -2954,6 +2955,18 @@ RectTransform:
   m_AnchoredPosition: {x: -549, y: -179}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &608663227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608663225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a150a3f016641b748a361a0ebcc621e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &654738328
 GameObject:
   m_ObjectHideFlags: 0
@@ -5990,7 +6003,6 @@ GameObject:
   - component: {fileID: 1645265071}
   - component: {fileID: 1645265070}
   - component: {fileID: 1645265069}
-  - component: {fileID: 1645265068}
   m_Layer: 5
   m_Name: Play Solo
   m_TagString: Untagged
@@ -6018,18 +6030,6 @@ RectTransform:
   m_AnchoredPosition: {x: -76.99998, y: 95.69}
   m_SizeDelta: {x: 137.3, y: 38.799988}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1645265068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645265066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a150a3f016641b748a361a0ebcc621e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1645265069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6073,9 +6073,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1645265068}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: loadLevel
+      - m_Target: {fileID: 608663227}
+        m_TargetAssemblyTypeName: MainMenu.LoadLevel, FrogJam
+        m_MethodName: StartSingleplayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7557,9 +7557,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1955122468}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: loadLevel
+      - m_Target: {fileID: 608663227}
+        m_TargetAssemblyTypeName: MainMenu.LoadLevel, FrogJam
+        m_MethodName: StartSplitscreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
