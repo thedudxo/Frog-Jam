@@ -20,7 +20,7 @@ public static class GM {
     public const float CameraVeiwRangeApprox = 18;
 
     //Session Settings
-    public enum PlayerMode {single, SplitScreen2};
+    public enum PlayerMode {single, SplitScreen};
     public static PlayerMode playerMode = single;
 
     public static void QuitToMenu()

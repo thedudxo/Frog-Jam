@@ -427,6 +427,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 443601917095403651, guid: e1ce6bf29dd167046995228830b8e77b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -716.40015
+      objectReference: {fileID: 0}
     - target: {fileID: 443601917095403676, guid: e1ce6bf29dd167046995228830b8e77b,
         type: 3}
       propertyPath: m_Layer
@@ -536,6 +541,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504853298809302374, guid: e1ce6bf29dd167046995228830b8e77b,
+        type: 3}
+      propertyPath: jumpKey
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504853298809302374, guid: e1ce6bf29dd167046995228830b8e77b,
+        type: 3}
+      propertyPath: suicideKey
+      value: 303
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1ce6bf29dd167046995228830b8e77b, type: 3}

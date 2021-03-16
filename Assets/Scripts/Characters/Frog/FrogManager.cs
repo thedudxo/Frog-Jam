@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using FrogScripts;
 using LevelScripts;
+using static GM.PlayerMode;
 
 public static class SingletonThatNeedsToBeRemoved
 {
     public static Frog frog;
+}
+
+public static class FrogStartSettings
+{
+    public static Level level;
+    public static FrogManager manager;
 }
 
 public class FrogManager : MonoBehaviour
@@ -16,11 +23,40 @@ public class FrogManager : MonoBehaviour
     [HideInInspector] public FrogManagerEvents events = new FrogManagerEvents();
     [HideInInspector] public WaveFrogMediatior waveMediator;
 
+    [Header("Player Prefabs")]
+    [SerializeField] GameObject player1Prefab, player2Prefab, singlePlayerPrefab;
+
     public Dictionary<int, Frog> IDFrogs = new Dictionary<int, Frog>();
 
     private void Awake()
     {
         waveMediator = level.waveFrogMediatior;
+
+        FrogStartSettings.level = level;
+        FrogStartSettings.manager = this;
+
+        AddFrogsToLevel();
+
+        void AddFrogsToLevel()
+        {
+            switch (GM.playerMode)
+            {
+                case (single):
+                    AddFrog(singlePlayerPrefab);
+                    break;
+
+                case (SplitScreen):
+                    AddFrog(player1Prefab);
+                    AddFrog(player2Prefab);
+                    break;
+            }
+
+            void AddFrog(GameObject frogPrefab)
+            {
+                GameObject.Instantiate(frogPrefab)
+                    .transform.SetParent(gameObject.transform);
+            }
+        }
     }
 
     public void AddFrog(Frog frog)

@@ -12,6 +12,6 @@ namespace MainMenu
         }
 
         public void StartSingleplayer() => LoadFirstLevel(GM.PlayerMode.single);
-        public void StartSplitscreen() => LoadFirstLevel(GM.PlayerMode.SplitScreen2);
+        public void StartSplitscreen() => LoadFirstLevel(GM.PlayerMode.SplitScreen);
     }
 }
