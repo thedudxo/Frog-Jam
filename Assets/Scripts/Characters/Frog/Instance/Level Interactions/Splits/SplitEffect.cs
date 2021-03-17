@@ -34,14 +34,14 @@ namespace FrogScripts
             splitXPos = split.transform.position.x;
             splitName = split.SplitName;
 
+
             if(split is SplitEnd)
                 frog.events.SubscribeOnEndLevel(this);
                 //bit messy but its only 3 lines instead of an entire new class to deal with
+                //these are instansiated dynamicly so creating a new class requires changing the way that happens
         }
 
         public void OnEndLevel() => ReachedSplit();
-
-        bool FirstTimeHere => BestTime == 0;
 
         public void ReachedSplit()
         {
@@ -51,8 +51,7 @@ namespace FrogScripts
             if (triggeredThisLife ) return;
             triggeredThisLife = true;
 
-            if (FirstTimeHere)
-                    TrackFirstTimeAnalyitic();
+            ReachedSplitAnalyitics();
 
             if (newTime < BestTime)
                 NewBestTime(newTime);
@@ -65,9 +64,12 @@ namespace FrogScripts
             SplitFXMngr.EmitPBParticles();
         }
 
-        void TrackFirstTimeAnalyitic()
+
+        bool FirstTimeHere => BestTime == float.MaxValue;
+        void ReachedSplitAnalyitics()
         {
-            if (!GM.sendAnyalitics) return;
+            if (GM.sendAnyalitics == false) return;
+            if (!FirstTimeHere) return;
 
             Dictionary<string, object> info = new Dictionary<string, object>
                 { {"Time", SplitFXMngr.CurrentSplitTime }

@@ -12,6 +12,8 @@ namespace FrogScripts
 
         public void Enable(float time, float pbTime, float splitsSum)
         {
+            if (splitsSum > 1000000)
+                Debug.Log("bug");
             endScreen.SetActive(true);
             timeTaken.text = time.ToString(timeFormat);
             pbTimeTaken.text = pbTime.ToString(timeFormat);
