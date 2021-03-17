@@ -24518,9 +24518,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150326447484825489d375c5b089224c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frog: {fileID: 9174729617834607438}
   timeTaken: {fileID: 9174729617015174506}
   pbTimeTaken: {fileID: 9174729617168767589}
   splitsSum: {fileID: 9174729617501087365}
+  restartPrompt: {fileID: 9174729618027915083}
   endScreen: {fileID: 9174729617947526689}
 --- !u!1 &9174729618024602069
 GameObject:
@@ -24625,7 +24627,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7dfac94513ce62047b11b5378a70d1e4, type: 3}
-    m_FontSize: 217
+    m_FontSize: 189
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -24636,7 +24638,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Press Q to restart
+  m_Text: Press RightShift to restart
 --- !u!1 &9174729618079675108
 GameObject:
   m_ObjectHideFlags: 0
