@@ -7,8 +7,7 @@ namespace LevelScripts
 {
     public abstract class Split : MonoBehaviour
     {
-        [Header("Don't forget to add this to the list on the SplitManager")]
-
+        [SerializeField] Level level;
         [SerializeField] Text title;
         [SerializeField] public Canvas playerCopyCanvas;
 
@@ -18,6 +17,7 @@ namespace LevelScripts
 
         protected virtual void Start()
         {
+            level.splitManager.AddSplit(this);
             playerCopyCanvas.gameObject.SetActive(false);
             SplitName = title.text;
         }

@@ -1,6 +1,6 @@
 0.3.0 - Jam with friend!
 
-===============
+____________________
 
 New Features:
 
@@ -9,6 +9,7 @@ New Features:
  - Frogs have rotation physics, will try to remain upright.
  - Frogs are now slightly slippery. This allows chaining jumps for extra speed and distance
  - Tapping the jump key will always result in the smallest possible jump
+
  - Jumping animations
  - Jumping Sounds
  - Air particles when going fast
@@ -22,12 +23,20 @@ New Features:
  - End screen displays sum of your best splits. Ie, your best possible time
  - End screen displays current runs time, and your personal best run
 
- - Support for mutiple waves, so there is always a wave somewhere behind each player.
+ - It's now possible for multiple waves to spawn
+ - There will always a wave somewhere behind each player in the level
 
  - A "In Danger" indicator, appears when you would respawn behind a wave
  - Any death while In danger will respawn at the start of the level
 
-===============
+ - "Ghost mode" while players are on the start platform.
+ - While in ghost mode:
+	* Players cannot collide with other players
+	* Players will not die to the wave
+
+- The level timer doesn't begin until you leave the start platform
+
+____________________
 
 Changes:
 
@@ -35,50 +44,57 @@ Changes:
 - Camera is positioned higher up and further right
 - Camera pulls back as a wave approaches
 
-- Canjump detection uses colliders again, has some "coyotie time"
+- Grounded detection uses colliders again, has some "coyotie time"
 
-- Refactored a bunch of code
+- Refactored heaps of code
 
 - Refined the level, so its shorter and has more interesting parts
 	* Removed the "leap of faith" section
 	* Reworked the aligaytor section
+	* Removed repetitive log jumps
 	* Feedback appreciated
 
 - Fishing hole counts any death near it as a catch
 
 - Waves don't get pushed back when you die
-- Its possible to survive a wave by being above it as it passes. a new wave will be sent for you, however
+- It's possible to survive a wave by being above it as it passes. a new wave will be sent for you, however
 - Waves won't harm you on the start platform
 
 - Disabled music for various reasons:
 	* Dynamic music doesn't make any sense in splitscreen
 	* There wasn't much variety so it gets annoying
-	* My current audio setup has a 0.5 second delay on sound, making it hard to work with when things need good timing
+	* My current audio setup has a 0.5 second delay on sound, making it hard to work with when audio need good timing
 	* Bottlenecking this 3.0 release
 	* It may come back in a future version, but it's not the core of the game so isn't something to be focused on right now
 	* Please let me know your thoughts
 
-===============
+- Disabled Anyalitics
+____________________
 
 New Art:
 - Air particles
-- squishy jumping sounds
-- Sky background
-- Hand
+- Squishy jumping sounds (bit too echoey atm)
+- Sky background (needs some tweaks)
+- Hand (quick sketch, needs doing properly)
 
-===============
+____________________
 
 Fixes:
 
 - Frogs would get stuck on flat surfaces
-- Clouds would pop up/disappear without playing the animation properly
+- Clouds would pop up/disappear without playing the animation properly (occasionally I still see them do this ;~;)
 - So many bugs caused by adding multiplayer functionality
 
-===============
+____________________
 
 Known Issues:
 
-- Frogs occasionaly launch forwards but not up whith particular timed jumps
+- Frogs occasionally launch forwards but not up with particular timed jumps
 - Frogs can get stuck in objects when respawning
 - Aligaytors will sometimes be launched the other way from what you'd expect when you land on them
 	* I think this is unity having some janky physics so I'm not sure I can fix this one properly
+
+____________________
+
+Apologies if I missed something, this update has been in the works for a while
+Just putting this here to round the changelog off to 100 lines :p
