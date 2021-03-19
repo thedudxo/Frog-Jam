@@ -13,7 +13,7 @@ namespace FrogScripts {
         [SerializeField] Rigidbody2D rb;
 
 
-        bool PlayerGotToTheEnd => frog.transform.position.x >= frog.currentLevel.end;
+        bool PlayerGotToTheEnd => frog.transform.position.x >= frog.currentLevel.region.end;
         bool PlayerInputRestart => Input.GetKeyDown(frog.controlls.suicideKey);
 
         bool playingLevel = true;

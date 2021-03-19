@@ -9,7 +9,7 @@ namespace WaveScripts
         [SerializeField] Wave wave;
 
         Transform waveTransform;
-        bool ReachedEndOfLevel => waveTransform.position.x > wave.level.end;
+        bool ReachedEndOfLevel => waveTransform.position.x > wave.level.region.end;
 
         private void Start()
         {

@@ -122,7 +122,7 @@ public class FrogManager : MonoBehaviour
     {
         foreach (Frog frog in Frogs)
         {
-            bool frogNotOnPlatform = frog.transform.position.x > level.startLength;
+            bool frogNotOnPlatform = frog.transform.position.x > level.StartPlatformLength;
             if (frogNotOnPlatform) return false;
         }
         return true;

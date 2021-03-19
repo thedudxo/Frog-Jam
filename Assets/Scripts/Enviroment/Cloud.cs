@@ -5,19 +5,20 @@ using UnityEngine;
 namespace LevelScripts {
     public class Cloud : MonoBehaviour
     {
+        [SerializeField] GameObject spriteHolder;
+        [SerializeField] CloudManager manager;
 
-        public float speed;
-        const float averageSpeed = -0.02f;
-        const float speedVariance = 0.005f;
-        float RandomSpeed => Random.Range(averageSpeed - speedVariance, averageSpeed + speedVariance);
+        float speed;
+        float RandomSpeed => Random.Range(
+            manager.averageSpeed - manager.speedVariance,
+            manager.averageSpeed + manager.speedVariance
+            );
 
         Animator animatior;
-        [SerializeField] GameObject spriteHolder;
-        [SerializeField] Clouds cloudmanager;
 
         static readonly Vector2 respawnWaitRange = new Vector2(1f, 3);
         float respawnWait = 2;
-        public float respawnTimer = 0;
+        float respawnTimer = 0;
         float RandomRespawnTime => Random.Range(respawnWaitRange.x, respawnWaitRange.y);
         bool respawning = false;
 
@@ -33,9 +34,20 @@ namespace LevelScripts {
 
         private void Start()
         {
+            manager.Clouds.Add(this);
+
             speed = RandomSpeed;
             animatior = spriteHolder.GetComponent<Animator>();
-            PickNewPositions();
+
+            if (manager.randomPositions)
+                PickNewPositions();
+            else
+            {
+                spawnPos = manager.region.end;
+                resetPos = manager.region.start;
+            }
+
+            RandomRespawnTimer();
         }
 
         private void Update()
@@ -53,7 +65,6 @@ namespace LevelScripts {
 
             else if (pastResetPos)
             {
-                //Debug.Log($"POSITION: {transform.position.x} < {resetPos}");
                 Disappear();
             }
         }
@@ -63,25 +74,29 @@ namespace LevelScripts {
             transform.position = new Vector2(transform.position.x + speed, transform.position.y);
         }
 
+        void RandomRespawnTimer() => respawnWait = Random.Range(manager.randomRespawnTime.x, manager.randomRespawnTime.y);
+
         void PickNewPositions()
         {
             float minSpawnPos = minResetPos + minSpawnPositionDistance;
-            float maxSpawnPos = maxSpawnPastLevel + cloudmanager.level.end;
+            float maxSpawnPos = maxSpawnPastLevel + manager.region.end;
             spawnPos = Random.Range(minSpawnPos, maxSpawnPos);
 
             float maxResetPos = spawnPos - minSpawnPositionDistance;
             resetPos = Random.Range(minResetPos, maxResetPos);
-
-            //Debug.Log($"SPAWN POS: {spawnPos}   RESET POS: {resetPos}");
         }
 
         public void PopUp()
         {
             transform.position = new Vector2(spawnPos, transform.position.y);
             animatior.SetTrigger("PopUp");
-            PickNewPositions();
-            //Debug.Log($"POPUP at {spawnPos}");
 
+            if (manager.randomPositions)
+                PickNewPositions();
+
+            RandomRespawnTimer();
+
+            speed = RandomSpeed;
         }
 
         void Disappear()
@@ -89,7 +104,6 @@ namespace LevelScripts {
             animatior.SetTrigger("Disappear");
             respawnWait = RandomRespawnTime;
             respawning = true;
-            //Debug.Log("DISAPPEAR");
         }
     }
 }
