@@ -15,52 +15,11 @@ public class WaveFrogMediatior : MonoBehaviour, INotifyAnyFrogLeftPlatform
         frogManager.events.SubscribeAnyFrogLeftPlatform(this); 
     }
 
-    public void AnyFrogLeftPlatform()
-    {
-        waveManager.waveStarter.StartWave();
-    }
-
-    public bool AllFrogsOnPlatform()
-    {
-        foreach(Frog frog in frogManager.Frogs)
-        {
-            bool frogNotOnPlatform = frog.transform.position.x > frogManager.level.startLength;
-            if (frogNotOnPlatform) return false;
-        }
-        return true;
-    }
+    public void AnyFrogLeftPlatform() => waveManager.waveStarter.StartWave();
 
     public Wave ClosestWaveBehindPosition(float pos) => waveManager.ClosestWaveBehindPosition(pos);
 
-    public Frog CheckIfHitFrog(Collider2D collision)
-    {
-        return frogManager.GetFrogComponent(collision.gameObject);
-    }
-
-    public bool CheckIfFrogIsFirst(Frog frog)
-    {
-        if (frogManager.FrogIsFirst(frog)) return true;
-        else return false;
-    }
-
-    public bool AnyFrogAhead(Wave wave)
-    {
-        foreach(Frog frog in frogManager.Frogs)
-        {
-            bool frogInLevel = frog.state == FrogState.State.Level || frog.state == FrogState.State.Dead;
-            if (frogInLevel)
-            {
-                if (frog.transform.position.x > wave.transform.position.x)
-                    return true;
-            }
-        }
-        return false;
-    }
-
-    public Frog GetLastFrog()
-    {
-        return frogManager.GetLastFrog();
-    }
+    public Frog GetLastFrog() => frogManager.GetLastFrog();
 
     public bool NoWaveBehindLastFrog()
     {

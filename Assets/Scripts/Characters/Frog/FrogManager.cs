@@ -117,4 +117,14 @@ public class FrogManager : MonoBehaviour
         }
         return last;
     }
+
+    public bool AllFrogsOnPlatform()
+    {
+        foreach (Frog frog in Frogs)
+        {
+            bool frogNotOnPlatform = frog.transform.position.x > level.StartPlatformLength;
+            if (frogNotOnPlatform) return false;
+        }
+        return true;
+    }
 }

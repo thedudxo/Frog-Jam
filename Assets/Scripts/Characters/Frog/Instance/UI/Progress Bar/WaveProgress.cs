@@ -22,7 +22,7 @@ namespace FrogScripts.Progress
 
             float wavePosX = wave.transform.position.x;
             LevelScripts.Level level = frog.currentLevel;
-            waveProgressBar.value = (wavePosX - level.startLength) / (level.end - level.startLength);
+            waveProgressBar.value = (wavePosX - level.StartPlatformLength) / (level.region.end - level.StartPlatformLength);
         }
     }
 }

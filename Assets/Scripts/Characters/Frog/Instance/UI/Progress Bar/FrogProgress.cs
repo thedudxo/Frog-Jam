@@ -71,7 +71,7 @@ namespace FrogScripts.Progress
             void PlayerProgress()
             {
                 float frogPosX = frog.transform.position.x;
-                playerProgressBar.value = (frogPosX - level.startLength) / (level.end - level.startLength);
+                playerProgressBar.value = (frogPosX - level.StartPlatformLength) / (level.region.end - level.StartPlatformLength);
             }
 
             void LooseProgress()

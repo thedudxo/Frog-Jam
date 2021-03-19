@@ -71,7 +71,7 @@ namespace FrogScripts.Life
             }
         }
 
-        bool FrogIsOnStartPlatform => transform.position.x < (levelStart.x + GM.currentLevel.startLength);
+        bool FrogIsOnStartPlatform => transform.position.x < (levelStart.x + GM.currentLevel.StartPlatformLength);
 
         public void Setback()
         {
