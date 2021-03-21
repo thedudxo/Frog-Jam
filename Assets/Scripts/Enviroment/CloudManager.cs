@@ -11,8 +11,9 @@ namespace LevelScripts {
         [SerializeField] public float averageSpeed = -0.02f;
         [SerializeField] public float speedVariance = 0.005f;
 
-        [SerializeField] public bool randomPositions = true;
         [SerializeField] public Vector2 randomRespawnTime;
+        [SerializeField] public Vector2 randomLifeTime = new Vector2(10,20);
+
 
         [HideInInspector] public List<Cloud> Clouds = new List<Cloud>();
     }

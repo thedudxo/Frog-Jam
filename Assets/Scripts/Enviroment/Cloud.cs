@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Util.Generic;
 
 namespace LevelScripts {
     public class Cloud : MonoBehaviour
@@ -8,65 +9,36 @@ namespace LevelScripts {
         [SerializeField] GameObject spriteHolder;
         [SerializeField] CloudManager manager;
 
-        float speed;
-        float RandomSpeed => Random.Range(
-            manager.averageSpeed - manager.speedVariance,
-            manager.averageSpeed + manager.speedVariance
-            );
-
         Animator animatior;
 
-        static readonly Vector2 respawnWaitRange = new Vector2(1f, 3);
-        float respawnWait = 2;
-        float respawnTimer = 0;
-        float RandomRespawnTime => Random.Range(respawnWaitRange.x, respawnWaitRange.y);
-        bool respawning = false;
+        float speed;
+        float RandomiseSpeed() => speed = RandomUtil.Variance(manager.averageSpeed, manager.speedVariance);
 
-        const float maxSpawnPastLevel = 5;
+        float respawnTime = 2;
+        void RandomiseRespawnTime() => respawnTime = RandomUtil.Vector2(manager.randomRespawnTime);
+
+        float lifetime = 10;
+        void RandomiseLifetime() => lifetime = RandomUtil.Vector2(manager.randomLifeTime);
+
         float spawnPos;
+        void RandomiseSpawnPos() => spawnPos = Random.Range(manager.region.start, manager.region.end);
 
-        const float minResetPos = -20;
-        float resetPos;
-        bool pastResetPos => transform.position.x < resetPos;
+        public enum State {lifespan, Hidden }
+        public State state = State.lifespan;
 
-        const float minSpawnPositionDistance = 10;
-
+        bool lifespanRunning = false;
 
         private void Start()
         {
             manager.Clouds.Add(this);
 
-            speed = RandomSpeed;
             animatior = spriteHolder.GetComponent<Animator>();
 
-            if (manager.randomPositions)
-                PickNewPositions();
-            else
-            {
-                spawnPos = manager.region.end;
-                resetPos = manager.region.start;
-            }
+            RandomiseVariables();
 
-            RandomRespawnTimer();
-        }
-
-        private void Update()
-        {
-            if (respawning)
-            {
-                respawnTimer += Time.deltaTime;
-                if (respawnTimer > respawnWait)
-                {
-                    PopUp();
-                    respawning = false;
-                    respawnTimer = 0;
-                }
-            }
-
-            else if (pastResetPos)
-            {
-                Disappear();
-            }
+            //was experimenting with coroutines. it was probably cleaner to just do it in update with a timer like usual.
+            StartCoroutine(CheckCloudWithinRegion());
+            StartCoroutine(Lifespan());
         }
 
         void FixedUpdate()
@@ -74,36 +46,69 @@ namespace LevelScripts {
             transform.position = new Vector2(transform.position.x + speed, transform.position.y);
         }
 
-        void RandomRespawnTimer() => respawnWait = Random.Range(manager.randomRespawnTime.x, manager.randomRespawnTime.y);
-
-        void PickNewPositions()
-        {
-            float minSpawnPos = minResetPos + minSpawnPositionDistance;
-            float maxSpawnPos = maxSpawnPastLevel + manager.region.end;
-            spawnPos = Random.Range(minSpawnPos, maxSpawnPos);
-
-            float maxResetPos = spawnPos - minSpawnPositionDistance;
-            resetPos = Random.Range(minResetPos, maxResetPos);
-        }
-
-        public void PopUp()
-        {
-            transform.position = new Vector2(spawnPos, transform.position.y);
-            animatior.SetTrigger("PopUp");
-
-            if (manager.randomPositions)
-                PickNewPositions();
-
-            RandomRespawnTimer();
-
-            speed = RandomSpeed;
-        }
-
-        void Disappear()
+        void Disappear(bool randomiseSpawnPos)
         {
             animatior.SetTrigger("Disappear");
-            respawnWait = RandomRespawnTime;
-            respawning = true;
+            state = State.Hidden;
+            StartCoroutine(Respawn(randomiseSpawnPos));
+        }
+
+        IEnumerator Respawn(bool randomiseSpawnPos)
+        {
+            yield return new WaitForSeconds(respawnTime);
+            PopUp(randomiseSpawnPos);
+        }
+        public void PopUp(bool randomiseSpawnPos)
+        {
+            if (randomiseSpawnPos)
+                RandomiseSpawnPos();
+            else spawnPos = manager.region.end;
+
+            transform.position = new Vector2(spawnPos, transform.position.y);
+
+            animatior.SetTrigger("PopUp");
+
+            if (lifespanRunning == false)
+            {
+                lifespanRunning = true;
+                StartCoroutine(Lifespan());
+            }
+
+            state = State.lifespan;
+        }
+
+        IEnumerator Lifespan()
+        {
+            yield return new WaitForSeconds(lifetime);
+
+            Debug.Log("Lifetime:" + lifetime);
+            lifespanRunning = false;
+            RandomiseVariables();
+            Disappear(true);
+        }
+
+        void RandomiseVariables()
+        {
+            RandomiseRespawnTime();
+            RandomiseSpeed();
+            RandomiseLifetime();
+        }
+
+        IEnumerator CheckCloudWithinRegion()
+        {
+            for(;;) //unity why are you like this
+            {
+                if (state == State.lifespan)
+                {
+                    bool leftRegion = transform.position.x < manager.region.start;
+
+                    if (leftRegion)
+                    {
+                        Disappear(false);
+                    }
+                }
+                yield return new WaitForSeconds(0.5f);
+            }
         }
     }
 }

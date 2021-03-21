@@ -5466,10 +5466,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   region: {fileID: 1563441021}
-  averageSpeed: -0.02
+  averageSpeed: -0.1
   speedVariance: 0.005
-  randomPositions: 1
-  randomRespawnTime: {x: 2, y: 10}
+  randomRespawnTime: {x: 2, y: 6}
+  randomLifeTime: {x: 5, y: 20}
   Clouds: []
 --- !u!4 &1710247146 stripped
 Transform:
