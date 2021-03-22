@@ -5465,8 +5465,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a60dab3c1d0b6044a1d1b25089d4d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _region: {fileID: 1563441021}
+  expandRegion: {x: 10, y: 15}
   region: {fileID: 1563441021}
-  averageSpeed: -0.1
+  averageSpeed: -0.02
   speedVariance: 0.005
   randomRespawnTime: {x: 2, y: 6}
   randomLifeTime: {x: 5, y: 20}

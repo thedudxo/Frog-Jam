@@ -6,7 +6,9 @@ namespace LevelScripts {
 
     public class CloudManager : MonoBehaviour
     {
-        [SerializeField] public Region region;
+        [SerializeField] Region _region;
+        [SerializeField] Vector2 expandRegion;
+        public Region region;
 
         [SerializeField] public float averageSpeed = -0.02f;
         [SerializeField] public float speedVariance = 0.005f;
@@ -16,5 +18,14 @@ namespace LevelScripts {
 
 
         [HideInInspector] public List<Cloud> Clouds = new List<Cloud>();
+
+        private void Awake()
+        {
+            region = new Region()
+            {
+                start = _region.start - expandRegion.x,
+                end = _region.end + expandRegion.y
+            };
+        }
     }
 }
