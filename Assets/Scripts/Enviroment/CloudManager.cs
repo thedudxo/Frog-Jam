@@ -21,11 +21,9 @@ namespace LevelScripts {
 
         private void Awake()
         {
-            region = new Region()
-            {
-                start = _region.start - expandRegion.x,
-                end = _region.end + expandRegion.y
-            };
+            region = gameObject.AddComponent<Region>();
+            region.start = _region.start - expandRegion.x;
+            region.end = _region.end + expandRegion.y;
         }
     }
 }
