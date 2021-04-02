@@ -11,7 +11,7 @@ namespace FrogScripts.Progress
         void UpdateProgress();
     }
 
-    public class FrogProgress : MonoBehaviour , INotifyOnAnyRespawn
+    public class FrogProgress : MonoBehaviour , INotifyOnAnyRespawn, INotifyOnEndLevel
     {
         [SerializeField] public Frog frog;
 
@@ -39,6 +39,7 @@ namespace FrogScripts.Progress
 
             level = frog.currentLevel;
             frog.events.SubscribeOnAnyRespawn(this);
+            frog.events.SubscribeOnEndLevel(this);
 
             AddOtherPlayers();
 
@@ -107,5 +108,8 @@ namespace FrogScripts.Progress
                 progressLost.value = playerProgressBar.value;
             }
         }
+
+        public void OnEndLevel() => personalBest.value = 1f;
+
     }
 }

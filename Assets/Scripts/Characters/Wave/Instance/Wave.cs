@@ -78,7 +78,7 @@ namespace WaveScripts
                 Debug.LogWarning("Tried setting non breaking wave as inactive", this);
                 return;
             }
-                state = State.inactive;
+            state = State.inactive;
         }
 
     }
