@@ -9,7 +9,7 @@ namespace FrogScripts {
         [SerializeField] Frog frog;
         [SerializeField] Animator dangerAnimation;
 
-        WaveManager waveManager;
+        WaveCollection waveManager;
         FrogWaveInteractions waveInteractions;
 
         private void Start()

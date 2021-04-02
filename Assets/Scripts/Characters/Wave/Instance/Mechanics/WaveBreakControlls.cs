@@ -45,7 +45,7 @@ namespace WaveScripts
 
             bool WaveBeforeNextFrog()
             {
-                Wave nextWave = wave.manager.ClosestWaveAheadPosition(wavePos);
+                Wave nextWave = wave.manager.ClosestAhead(wavePos);
                 if (nextWave != null)
                 {
                     float nextWavePos = nextWave.transform.position.x;

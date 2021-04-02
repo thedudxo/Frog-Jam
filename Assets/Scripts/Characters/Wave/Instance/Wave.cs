@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
+using Chaseable;
 
 namespace WaveScripts
 {
-    public class Wave : MonoBehaviour
+    public class Wave : MonoBehaviour, IChaser
     {
         public const string Tag = "Wave";
 
-        [HideInInspector] public WaveManager manager;
+        [HideInInspector] public WaveCollection manager;
         [HideInInspector] public Level level;
         [HideInInspector] public FrogManager frogManager { get; private set; }
 
@@ -21,9 +22,9 @@ namespace WaveScripts
         public Vector2 spawnPosition;
 
         public enum State { normal, breaking, inactive }
-        public State state;
+        public State state = State.inactive;
 
-        public void Setup(WaveManager manager)
+        public void Setup(WaveCollection manager)
         {
             this.manager = manager;
             this.level = manager.level;

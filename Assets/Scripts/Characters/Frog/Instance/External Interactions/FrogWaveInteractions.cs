@@ -8,7 +8,7 @@ namespace FrogScripts
     public class FrogWaveInteractions : MonoBehaviour, INotifyOnLeftPlatform, INotifyOnDeath, INotifyOnEndLevel, INotifyOnRestart
     {
         [SerializeField] public Frog frog;
-        WaveManager waveManager;
+        WaveCollection waveManager;
         FrogManager frogManager;
 
         WaveFrogMediatior waveMediator;

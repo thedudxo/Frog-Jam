@@ -1,41 +1,28 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using Chaseable;
 
 namespace WaveScripts
 {
-    public class WaveStarter
+    public class WaveStarter : MonoBehaviour
     {
-        WaveManager waveManager;
-        WaveFrogMediatior frogMediatior;
+        [SerializeField] WaveCollection waveManager;
 
-        bool canStartRightNow = true;
-
-        public WaveStarter(WaveManager waveManager, WaveFrogMediatior frogMediatior)
+        public IChaser Chase(IChaseable chaseable)
         {
-            this.waveManager = waveManager; 
-            this.frogMediatior = frogMediatior;
+
+            Wave waveBehind = waveManager.ClosestBehind(chaseable.GetXPos());
+
+            if (waveBehind == null)
+                return StartWave();
+
+            else return waveBehind;
         }
 
-        public void CheckStartConditions()
+        private Wave StartWave()
         {
-            if (canStartRightNow) return;
-            canStartRightNow = true;
-
-            NoWavesBehindLastFrog();
-
-            void NoWavesBehindLastFrog()
-            {
-                if (frogMediatior.NoWaveBehindLastFrog() == false)
-                    canStartRightNow = false;
-            }
-        }
-
-        public void StartWave()
-        {
-            if (canStartRightNow)
-                waveManager.GetInactiveWave().StartWave();
-
-            canStartRightNow = false;
+            var wave = waveManager.GetInactiveWave();
+            wave.StartWave();
+            return wave;
         }
     }
 }
