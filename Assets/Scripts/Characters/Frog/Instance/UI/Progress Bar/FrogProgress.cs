@@ -11,7 +11,7 @@ namespace FrogScripts.Progress
         void UpdateProgress();
     }
 
-    public class FrogProgress : MonoBehaviour , INotifyOnAnyRespawn
+    public class FrogProgress : MonoBehaviour , INotifyOnAnyRespawn, INotifyOnEndLevel
     {
         [SerializeField] public Frog frog;
 
@@ -39,6 +39,7 @@ namespace FrogScripts.Progress
 
             level = frog.currentLevel;
             frog.events.SubscribeOnAnyRespawn(this);
+            frog.events.SubscribeOnEndLevel(this);
 
             AddOtherPlayers();
 
@@ -71,7 +72,7 @@ namespace FrogScripts.Progress
             void PlayerProgress()
             {
                 float frogPosX = frog.transform.position.x;
-                playerProgressBar.value = (frogPosX - level.startLength) / (level.end - level.startLength);
+                playerProgressBar.value = (frogPosX - level.StartPlatformLength) / (level.region.end - level.StartPlatformLength);
             }
 
             void LooseProgress()
@@ -107,5 +108,8 @@ namespace FrogScripts.Progress
                 progressLost.value = playerProgressBar.value;
             }
         }
+
+        public void OnEndLevel() => personalBest.value = 1f;
+
     }
 }

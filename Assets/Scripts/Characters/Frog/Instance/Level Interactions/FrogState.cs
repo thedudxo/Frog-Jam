@@ -35,7 +35,7 @@ namespace FrogScripts
 
             void CheckStillOnPlatform()
             {
-                bool OnStartingPlatform = transform.position.x < frog.currentLevel.startLength;
+                bool OnStartingPlatform = transform.position.x < frog.currentLevel.StartPlatformLength;
                 if (OnStartingPlatform == false)
                 {
                     state = State.Level;
