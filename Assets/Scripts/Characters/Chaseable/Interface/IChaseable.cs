@@ -1,11 +1,16 @@
-﻿namespace Chaseable
+﻿using System.Collections.Generic;
+
+namespace Chaseables
 {
-    /// <summary>
-    /// Something that can be chased by things IChaserManager manages
-    /// </summary>
     public interface IChaseable
     {
         float GetXPos();
-        bool CanChase { get; set; }
+        bool IsCurrentlyChaseable { get; set; }
+
+        IChaserCollection ChaserCollection { get; }
+        IChaser ActiveChaser { get; set; }
+
+        bool WillSetbackBehindAChaser(float setbackDistance, float respawnTimeSeconds);
+
     }
 }

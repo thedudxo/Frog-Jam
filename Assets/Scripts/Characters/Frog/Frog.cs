@@ -23,12 +23,14 @@ namespace FrogScripts
         [SerializeField] public JumpController jumpController;
         [SerializeField] public Controlls controlls;
         [SerializeField] public FrogCleanJumpManager cleanJumpEffectsManager;
-        [SerializeField] public FrogWaveInteractions waveInteractions;
+        [SerializeField] public FrogChaseable chaseable;
 
         public FrogState stateControlls;
         public State state => stateControlls.state;
 
         public FrogEvents events = new FrogEvents();
+
+        public float SetbackDistance { get; set; } = 25;
 
         [Header("Player UI layer")]
         [SerializeField] public string UILayer;

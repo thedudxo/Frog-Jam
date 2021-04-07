@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
-using Chaseable;
+using Chaseables;
 
 namespace WaveScripts
 {
@@ -10,7 +10,7 @@ namespace WaveScripts
     {
         public const string Tag = "Wave";
 
-        [HideInInspector] public WaveCollection manager;
+        [HideInInspector] public WaveCollection collection;
         [HideInInspector] public Level level;
         [HideInInspector] public FrogManager frogManager { get; private set; }
 
@@ -18,16 +18,15 @@ namespace WaveScripts
         [SerializeField] public WaveBreakControlls breakControlls;
         [SerializeField] public WaveSegmentManager segments;
 
-        public float breakPosition;
         public Vector2 spawnPosition;
 
         public enum State { normal, breaking, inactive }
         public State state = State.inactive;
 
-        public void Setup(WaveCollection manager)
+        public void Setup(WaveCollection collection)
         {
-            this.manager = manager;
-            this.level = manager.level;
+            this.collection = collection;
+            this.level = collection.level;
             this.frogManager = level.frogManager;
 
             state = State.inactive;
@@ -60,27 +59,24 @@ namespace WaveScripts
             state = Wave.State.normal;
         }
 
-        public void BreakWave()
+        public bool IsBehind(IChaseable chaseable)
         {
-            if (state != State.normal)
-            {
-                Debug.LogWarning("Tried breaking a wave which wasn't in normal state", this);
-                return;
-            }
-
-            breakPosition = transform.position.x;
-            state = Wave.State.breaking;
+            return chaseable.GetXPos() < GetXPos();
         }
 
-        public void FinishedBreaking()
+        public void CheckStopChaseConditions()
         {
-            if (state != State.breaking)
-            {
-                Debug.LogWarning("Tried setting non breaking wave as inactive", this);
-                return;
-            }
-            state = State.inactive;
+            breakControlls.CheckIfWaveShouldBreak();
         }
 
+        public float GetXPos()
+        {
+            return transform.position.x;
+        }
+
+        public float GetSpeed()
+        {
+            return WaveMovement.speed;
+        }
     }
 }

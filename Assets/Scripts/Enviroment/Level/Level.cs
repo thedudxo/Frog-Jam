@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Chaseables.MonoBehaviours;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,10 +18,11 @@ namespace LevelScripts
         [SerializeField] public SplitManager splitManager;
         [SerializeField] public FrogManager frogManager;
         [SerializeField] public WaveScripts.WaveCollection waveManager;
-        [SerializeField] public WaveFrogMediatior waveFrogMediatior;
         [SerializeField] public UI.ControllsTextTip controllsTextTipPrefab;
+        [SerializeField] public ChaserCollection Chasers;
 
         [HideInInspector] public List<CleanlyJumpableObstacle> cleanJumps;
+
 
         private void OnValidate()
         {

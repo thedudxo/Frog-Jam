@@ -8,7 +8,7 @@ namespace FrogScripts.Life
     {
         [SerializeField] Frog frog;
 
-        RespawnTimer respawnTimer;
+        public RespawnTimer respawnTimer;
         DeathConditions deathConditions;
         [SerializeField] LifeStateControlls stateControlls;
             

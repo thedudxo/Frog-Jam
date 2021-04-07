@@ -2,7 +2,7 @@
 using UnityEngine;
 using Util.Generic;
 
-namespace Chaseable.MonoBehaviours
+namespace Chaseables.MonoBehaviours
 {
     public class ChaseableCompositeCollection : 
         SerialisedInterfaceList<ChaseableCollection, IChaseableCollection>, 

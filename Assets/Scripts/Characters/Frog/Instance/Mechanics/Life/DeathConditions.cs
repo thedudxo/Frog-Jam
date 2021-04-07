@@ -14,7 +14,6 @@ namespace FrogScripts.Life
 
         public enum DeathType { none, setback, restart }
         Frog frog;
-        WaveFrogMediatior waveMediator;
 
         public DeathConditions(Frog frog, List<GameObject> currentCollisions)
         {
@@ -22,7 +21,6 @@ namespace FrogScripts.Life
             transform = frog.transform;
             suicideKey = frog.controlls.suicideKey;
             this.currentCollisions = currentCollisions;
-            waveMediator = frog.currentLevel.waveFrogMediatior;
         }
 
 

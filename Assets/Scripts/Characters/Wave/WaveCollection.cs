@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
-using Chaseable.MonoBehaviours;
-using Chaseable;
+using Chaseables.MonoBehaviours;
+using Chaseables;
 using System.Linq;
 
 namespace WaveScripts
 {
-    public class WaveCollection : MonoBehaviour, IChaserCollection
+    public class WaveCollection : ChaserCollection, IChaserCollection
     {
 
         [Header("External")]
@@ -20,7 +20,7 @@ namespace WaveScripts
         [SerializeField] WaveStarter waveStarter;
 
         public List<Wave> waves { get; private set; } = new List<Wave>();
-
+        public override IChaseableCollection Chasing { get; set ; }
 
         public Wave GetInactiveWave()
         {
@@ -48,6 +48,27 @@ namespace WaveScripts
         public Wave ClosestBehind(float pos) => FindClosest.Behind(waves,pos,WaveActiveFilter);
         public Wave ClosestAhead(float pos) => FindClosest.Ahead(waves, pos, WaveActiveFilter);
 
-        public IChaser Chase(IChaseable c) => waveStarter.Chase(c);
+        public override IChaser Chase(IChaseable c) => waveStarter.Chase(c);
+
+        public override void ChaseableStartedLevel(IChaseable chaseable)
+        {
+            var xPos = chaseable.GetXPos();
+            var waveBehind = ClosestBehind(xPos);
+
+            if (waveBehind == null)
+            {
+                GetInactiveWave().StartWave();
+            }
+        }
+
+        public override IChaser GetFirstBehindOrNew(float pos)
+        {
+            return GetFirstBehindOrNull(pos) ?? GetInactiveWave();
+        }
+
+        public override IChaser GetFirstBehindOrNull(float pos)
+        {
+            return ClosestBehind(pos);
+        }
     }
 }

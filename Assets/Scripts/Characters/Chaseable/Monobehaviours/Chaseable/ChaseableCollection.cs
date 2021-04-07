@@ -2,14 +2,13 @@
 using System.Linq;
 using Util.Generic;
 
-namespace Chaseable.MonoBehaviours
+namespace Chaseables.MonoBehaviours
 {
-    public class ChaseableCollection : 
-        SerialisedInterfaceList<Chaseable, IChaseable>,
+    public class ChaseableCollection : SerialisedInterfaceList<Chaseable, IChaseable>,
         IChaseableCollection
     {
-        List<Chaseable> chaseableMonoBehaviours => monoBehaviourList;
-        List<IChaseable> chaseables => interfaceList;
+        protected List<Chaseable> chaseableMonoBehaviours => monoBehaviourList;
+        protected List<IChaseable> chaseables => interfaceList;
 
 
         public List<IChaseable> GetAll() => chaseables;
@@ -18,7 +17,7 @@ namespace Chaseable.MonoBehaviours
         {
             var LastChaseableQuery =
                 from chaseable in chaseableMonoBehaviours
-                where chaseable.CanChase
+                where chaseable.IsCurrentlyChaseable
                 orderby chaseable.GetXPos() descending
                 select chaseable;
 

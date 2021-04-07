@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using WaveScripts;
+using Chaseables;
 
 namespace FrogScripts {
     public class DangerState : MonoBehaviour
@@ -9,44 +10,24 @@ namespace FrogScripts {
         [SerializeField] Frog frog;
         [SerializeField] Animator dangerAnimation;
 
-        WaveCollection waveManager;
-        FrogWaveInteractions waveInteractions;
+        FrogChaseable chaseable;
 
         private void Start()
         {
-            waveManager = frog.currentLevel.waveManager;
-            waveInteractions = frog.waveInteractions;
+            chaseable = frog.chaseable;
         }
 
         private void Update()
         {
-            bool danger = FrogWillSetbackBehindWave(frog);
+            bool danger = chaseable.WillSetbackBehindAChaser(
+                frog.SetbackDistance, 
+                frog.lifeController.respawnTimer.respawnWaitSeconds
+                );
+
             if (frog.state == FrogState.State.StartPlatform) danger = false;
 
             dangerAnimation.SetBool("Danger", danger);
             frog.inDanger = danger;
-        }
-
-        bool FrogWillSetbackBehindWave(Frog frog)
-        {
-            Wave wave = waveInteractions.AttachedWave;
-            if (wave == null) return false;
-
-            if (wave.state == Wave.State.normal)
-            {
-                float 
-                    waveX = wave.transform.position.x, 
-                    frogX = frog.transform.position.x,
-
-                    setbackPosition = frogX - GM.respawnSetBack,
-                    wavePositionAtRespawn = waveX + (WaveMovement.speed * RespawnTimer.respawnWaitSeconds);
-
-                bool SetbackBehind = setbackPosition < (wavePositionAtRespawn + 0.05);
-
-                if (SetbackBehind) return true;
-            }
-
-            return false;
         }
     }
 }

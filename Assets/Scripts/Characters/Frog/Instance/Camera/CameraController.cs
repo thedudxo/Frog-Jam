@@ -18,9 +18,9 @@ namespace FrogScripts {
 
         const float maxY = -1.85f;
 
-        const float WaveOffsetWeight = 4;
-        const float WaveMinDist = 20;
-        const float waveMaxDist = 40;
+        const float chaserOffsetWeight = 4;
+        const float chaserMinDist = 20;
+        const float chaserMaxDist = 40;
 
         void Start()
         {
@@ -46,15 +46,15 @@ namespace FrogScripts {
         {
             get
             {
-                if (frog.waveInteractions.AttachedWave == null) return 0;
+                if (frog.chaseable.ActiveChaser == null) return 0;
 
-                float 
-                    wavePosX = frog.waveInteractions.AttachedWave.transform.position.x,
-                    waveDistToFrog = camTransform.position.x - wavePosX,
-                    waveDistanceXNormal = 1 - Mathf.Clamp01(
-                        (waveDistToFrog - WaveMinDist) / (waveMaxDist - WaveMinDist));
+                float
+                    chaserPos = frog.chaseable.ActiveChaser.GetXPos(),
+                    chaserDistToFrog = camTransform.position.x - chaserPos,
+                    chaserDistanceXNormal = 1 - Mathf.Clamp01(
+                        (chaserDistToFrog - chaserMinDist) / (chaserMaxDist - chaserMinDist));
 
-               return waveDistanceXNormal * WaveOffsetWeight;
+               return chaserDistanceXNormal * chaserOffsetWeight;
             }
         }
 

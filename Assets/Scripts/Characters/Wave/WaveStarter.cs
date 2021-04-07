@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Chaseable;
+using Chaseables;
 
 namespace WaveScripts
 {

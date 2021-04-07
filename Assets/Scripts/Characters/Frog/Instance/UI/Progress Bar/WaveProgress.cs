@@ -2,25 +2,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 using WaveScripts;
+using Chaseables;
 
 namespace FrogScripts.Progress
 {
     public class WaveProgress : MonoBehaviour, IProgressTracker
     {
         [SerializeField] Frog frog;
-        [SerializeField] FrogWaveInteractions waveInteractions;
+        [SerializeField] FrogChaseable chaseable;
         [SerializeField] Slider waveProgressBar;
 
         public void UpdateProgress()
         {
-            Wave wave = waveInteractions.AttachedWave;
-            if (wave == null || wave.state == WaveScripts.Wave.State.inactive)
+            IChaser chaser = chaseable.ActiveChaser;
+            if (chaser == null)
             {
                 waveProgressBar.value = 0;
                 return;
             }
 
-            float wavePosX = wave.transform.position.x;
+            float wavePosX = chaser.GetXPos();
             LevelScripts.Level level = frog.currentLevel;
             waveProgressBar.value = (wavePosX - level.StartPlatformLength) / (level.region.end - level.StartPlatformLength);
         }

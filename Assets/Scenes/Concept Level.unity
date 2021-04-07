@@ -7635,7 +7635,14 @@ PrefabInstance:
       propertyPath: objective
       value: 
       objectReference: {fileID: 1470318436}
-    m_RemovedComponents: []
+    - target: {fileID: 7544379270679779189, guid: c267027177916754ba74a614e4d92f83,
+        type: 3}
+      propertyPath: waveManager
+      value: 
+      objectReference: {fileID: 7544379271648430076}
+    m_RemovedComponents:
+    - {fileID: 7544379272556482901, guid: c267027177916754ba74a614e4d92f83, type: 3}
+    - {fileID: 7544379270679779191, guid: c267027177916754ba74a614e4d92f83, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c267027177916754ba74a614e4d92f83, type: 3}
 --- !u!1 &7544379271648430073 stripped
 GameObject:
@@ -7672,11 +7679,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 7544379271648430074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0e612088e9c4744a7c6603aa581616, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f234018241c8cb4cb30d06d500e5446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monoBehaviourList:
-  - {fileID: 7544379271648430075}
+  level: {fileID: 1188860045}
+  wavesParentComponent: {fileID: 7544379271648430074}
+  wavePrefab: {fileID: 7611813847098449006, guid: 0a9a88486849973479cdeb0a7f72d322,
+    type: 3}
+  chaseables: {fileID: 7544379271648430075}
+  waveStarter: {fileID: 7544379271648430077}
+--- !u!114 &7544379271648430077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7544379271648430074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac8b13c88a6ef84cba4fa329aa1eebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveManager: {fileID: 7544379271648430076}
 --- !u!4 &8075903511427217438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8428801162286610401, guid: 561b98bbcdc0776498b0bc6f4cc9b266,

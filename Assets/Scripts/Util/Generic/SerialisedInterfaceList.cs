@@ -7,7 +7,7 @@ namespace Util.Generic
         where TMonoBehaviour : TInterface
     {
         [SerializeField] protected List<TMonoBehaviour> monoBehaviourList;
-        protected List<TInterface> interfaceList;
+        protected List<TInterface> interfaceList = new List<TInterface>();
 
         virtual protected void OnValidate()
         {

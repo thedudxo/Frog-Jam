@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Chaseable
+namespace Chaseables
 {
     public interface IChaseableCollection
     {

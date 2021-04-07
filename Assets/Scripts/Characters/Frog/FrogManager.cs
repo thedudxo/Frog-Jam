@@ -21,7 +21,6 @@ public class FrogManager : MonoBehaviour
     [SerializeField] public List<Frog> Frogs { get; private set; } = new List<Frog>();
     [SerializeField] public Level level;
     [HideInInspector] public FrogManagerEvents events = new FrogManagerEvents();
-    [HideInInspector] public WaveFrogMediatior waveMediator;
 
     [Header("Player Prefabs")]
     [SerializeField] GameObject player1Prefab, player2Prefab, singlePlayerPrefab;
@@ -30,8 +29,6 @@ public class FrogManager : MonoBehaviour
 
     private void Awake()
     {
-        waveMediator = level.waveFrogMediatior;
-
         FrogStartSettings.level = level;
         FrogStartSettings.manager = this;
 

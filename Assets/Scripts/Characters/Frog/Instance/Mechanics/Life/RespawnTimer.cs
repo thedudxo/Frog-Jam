@@ -5,7 +5,7 @@ namespace FrogScripts
 {
     public class RespawnTimer
     {
-        public const float respawnWaitSeconds = 1;
+        public float respawnWaitSeconds = 1;
         float respawnWaitTimer = 0;
 
         public bool ShouldRespawnNow()
