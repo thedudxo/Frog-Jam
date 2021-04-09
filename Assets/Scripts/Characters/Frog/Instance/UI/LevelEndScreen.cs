@@ -20,7 +20,11 @@ namespace FrogScripts
             timeTaken.text = time.ToString(timeFormat);
             pbTimeTaken.text = pbTime.ToString(timeFormat);
             this.splitsSum.text = splitsSum.ToString(timeFormat);
-            restartPrompt.text = $"Press {frog.controlls.suicideKey} to restart";
+
+            //this is a really quick fix to make the keys display as a user freindly name
+            string restartText = frog.controlls.suicideKey.ToString();
+            if (frog.controlls.suicideKey == KeyCode.RightShift) restartText = "shift";
+            restartPrompt.text = $"Press {restartText} to restart";
         }
 
         public void Disable()

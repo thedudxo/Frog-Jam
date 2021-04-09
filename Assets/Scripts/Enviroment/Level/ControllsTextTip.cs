@@ -11,8 +11,15 @@ namespace LevelScripts.UI
 
         public void SetControlls(KeyCode jumpKey, KeyCode suicideKey)
         {
-            jumpKeyTipText.text = $"Jump = {jumpKey}";
-            suicideKeyTipText.text = $"Suicide = {suicideKey}";
+            string jumpText = jumpKey.ToString();
+            string suicideText = suicideKey.ToString();
+
+            //this is a really quick fix to make the keys display as a user freindly name
+            if (jumpKey == KeyCode.UpArrow) jumpText = "up arrow";
+            if (suicideKey == KeyCode.RightShift) suicideText = "shift";
+
+            jumpKeyTipText.text = $"Press {jumpText} to Jump";
+            suicideKeyTipText.text = $"Press {suicideText} to die";
         }
     }
 }
