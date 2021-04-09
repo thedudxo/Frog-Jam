@@ -22,6 +22,11 @@ namespace WaveScripts
         public List<Wave> waves { get; private set; } = new List<Wave>();
         public override IChaseableCollection Chasing { get; set ; }
 
+        private void Awake()
+        {
+            Chasing = level.frogManager;
+        }
+
         public Wave GetInactiveWave()
         {
             bool Inactive(Wave wave) => wave.state == Wave.State.inactive;
