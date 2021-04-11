@@ -9,12 +9,17 @@ namespace FrogScripts
         [SerializeField] Text timeTaken, pbTimeTaken, splitsSum, restartPrompt;
         [SerializeField] GameObject endScreen;
 
+        public static bool bugOccured = false;
+
         const string timeFormat = "F3";
 
         public void Enable(float time, float pbTime, float splitsSum)
         {
             if (splitsSum > 1000000)
+            {
                 Debug.Log("bug");
+                bugOccured = true;
+            }
 
             endScreen.SetActive(true);
             timeTaken.text = time.ToString(timeFormat);
