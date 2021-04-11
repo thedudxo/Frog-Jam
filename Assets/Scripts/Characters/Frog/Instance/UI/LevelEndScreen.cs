@@ -15,11 +15,17 @@ namespace FrogScripts
 
         public void Enable(float time, float pbTime, float splitsSum)
         {
-            if (splitsSum > 1000000)
+<<<<<<< Updated upstream
+            if (splitsSum > 10000000)
             {
-                Debug.Log("bug");
                 bugOccured = true;
+                Debug.LogError("That annoying split bug");
             }
+                
+=======
+            if (splitsSum > 1000000)
+                Debug.LogError("That annoying split bug");
+>>>>>>> Stashed changes
 
             endScreen.SetActive(true);
             timeTaken.text = time.ToString(timeFormat);
