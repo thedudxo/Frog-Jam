@@ -28,7 +28,7 @@ namespace EndScreen
         [UnityTest]
         public IEnumerator TotalSplitTimeTest()
         {
-            int attempts = 10;
+            int attempts = 100;
             int attempt = 0;
             int bugOccurences = 0;
 
@@ -45,7 +45,6 @@ namespace EndScreen
                     currentLevel = GM.currentLevel;
                     frog = currentLevel.frogManager.Frogs[0];
                     frog.rb.isKinematic = true;
-                    Debug.Log("loaded");
                 };
 
                 yield return new WaitForSeconds(0.1f);
