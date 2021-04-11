@@ -9,18 +9,27 @@ namespace FrogScripts
         [SerializeField] Text timeTaken, pbTimeTaken, splitsSum, restartPrompt;
         [SerializeField] GameObject endScreen;
 
+        public static bool bugOccured = false;
+
         const string timeFormat = "F3";
 
         public void Enable(float time, float pbTime, float splitsSum)
         {
-            if (splitsSum > 1000000)
-                Debug.Log("bug");
+            if (splitsSum > 10000000)
+            {
+                bugOccured = true;
+                Debug.LogError("That annoying split bug");
+            }
 
             endScreen.SetActive(true);
             timeTaken.text = time.ToString(timeFormat);
             pbTimeTaken.text = pbTime.ToString(timeFormat);
             this.splitsSum.text = splitsSum.ToString(timeFormat);
-            restartPrompt.text = $"Press {frog.controlls.suicideKey} to restart";
+
+            //this is a really quick fix to make the keys display as a user freindly name
+            string restartText = frog.controlls.suicideKey.ToString();
+            if (frog.controlls.suicideKey == KeyCode.RightShift) restartText = "shift";
+            restartPrompt.text = $"Press {restartText} to restart";
         }
 
         public void Disable()

@@ -42,16 +42,16 @@ public class FrogManager : MonoBehaviour
             switch (GM.playerMode)
             {
                 case (single):
-                    AddFrog(singlePlayerPrefab);
+                    CreateFrog(singlePlayerPrefab);
                     break;
 
                 case (SplitScreen):
-                    AddFrog(player1Prefab);
-                    AddFrog(player2Prefab);
+                    CreateFrog(player1Prefab);
+                    CreateFrog(player2Prefab);
                     break;
             }
 
-            void AddFrog(GameObject frogPrefab)
+            void CreateFrog(GameObject frogPrefab)
             {
                 GameObject.Instantiate(frogPrefab)
                     .transform.SetParent(gameObject.transform);
