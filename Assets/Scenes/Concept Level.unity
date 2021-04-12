@@ -1119,6 +1119,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lilly Pad
       objectReference: {fileID: 0}
+    - target: {fileID: 6808815045019934333, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6808815045019934335, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
         type: 3}
       propertyPath: m_RootOrder
@@ -6395,18 +6400,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2922519551766642221, guid: 69229fc2ae2300c42bee08ee60326f66,
         type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: 5.7203655
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922519551766642221, guid: 69229fc2ae2300c42bee08ee60326f66,
+        type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
-      value: -1.729516
+      value: -5.082193
       objectReference: {fileID: 0}
     - target: {fileID: 2922519551766642221, guid: 69229fc2ae2300c42bee08ee60326f66,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[21].x
-      value: -5.808185
+      value: -5.770511
       objectReference: {fileID: 0}
     - target: {fileID: 2922519551766642221, guid: 69229fc2ae2300c42bee08ee60326f66,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[21].y
-      value: -1.7192967
+      value: -5.16615
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69229fc2ae2300c42bee08ee60326f66, type: 3}
@@ -6581,10 +6591,65 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1798581555}
     m_Modifications:
+    - target: {fileID: 653549342901515064, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 653549342901515064, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
+        type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 653549342901515064, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.6745283
+      objectReference: {fileID: 0}
+    - target: {fileID: 653549342901515064, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 653549342901515064, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.70445675
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280371850443352473, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280371850443352473, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280371850443352473, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9988406
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280371850443352473, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.048140284
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280371850443352473, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -5.519
+      objectReference: {fileID: 0}
     - target: {fileID: 6808815045019934272, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
         type: 3}
       propertyPath: m_Name
       value: Lilly Pad
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808815045019934333, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6808815045019934335, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
         type: 3}
