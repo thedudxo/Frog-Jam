@@ -1119,11 +1119,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lilly Pad
       objectReference: {fileID: 0}
-    - target: {fileID: 6808815045019934333, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6808815045019934335, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
         type: 3}
       propertyPath: m_RootOrder
@@ -1982,6 +1977,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lilly Pad (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808815045019934333, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6808815045019934335, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
         type: 3}
@@ -6418,6 +6418,46 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[21].y
       value: -5.16615
       objectReference: {fileID: 0}
+    - target: {fileID: 2922519552201946783, guid: 69229fc2ae2300c42bee08ee60326f66,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.7019
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922519552201946783, guid: 69229fc2ae2300c42bee08ee60326f66,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7019
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922519552201946783, guid: 69229fc2ae2300c42bee08ee60326f66,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7019
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922519552201946783, guid: 69229fc2ae2300c42bee08ee60326f66,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922519552323292216, guid: 69229fc2ae2300c42bee08ee60326f66,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.7019
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922519552323292216, guid: 69229fc2ae2300c42bee08ee60326f66,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7019
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922519552323292216, guid: 69229fc2ae2300c42bee08ee60326f66,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7019
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922519552323292216, guid: 69229fc2ae2300c42bee08ee60326f66,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.08
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69229fc2ae2300c42bee08ee60326f66, type: 3}
 --- !u!1001 &5345388470394384855
@@ -6645,11 +6685,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lilly Pad
-      objectReference: {fileID: 0}
-    - target: {fileID: 6808815045019934333, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6808815045019934335, guid: 39c6f2a8c67a8594e8ae34a4d7a4e559,
         type: 3}
