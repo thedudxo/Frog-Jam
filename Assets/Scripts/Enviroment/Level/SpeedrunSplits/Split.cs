@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using FrogScripts;
+using UnityEngine.Serialization;
 
 namespace LevelScripts
 {
@@ -9,7 +10,7 @@ namespace LevelScripts
     {
         [SerializeField] Level level;
         [SerializeField] Text title;
-        [SerializeField] public Canvas playerCopyCanvas;
+        [SerializeField] [FormerlySerializedAs("playerCopyCanvas")] public Canvas canvasPrototype;
 
         public string SplitName { get; private set; }
 
@@ -18,7 +19,7 @@ namespace LevelScripts
         protected virtual void Start()
         {
             level.splitManager.AddSplit(this);
-            playerCopyCanvas.gameObject.SetActive(false);
+            canvasPrototype.gameObject.SetActive(false);
             SplitName = title.text;
         }
 

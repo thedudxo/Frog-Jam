@@ -50,7 +50,7 @@ namespace FrogScripts
                 List<GameObject> SplitUITemplates = new List<GameObject>();
 
                 foreach (Split split in splitManager.splits)
-                    SplitUITemplates.Add(split.playerCopyCanvas.gameObject);
+                    SplitUITemplates.Add(split.canvasPrototype.gameObject);
 
                 splitEffects = CreateInstances<SplitEffect>(SplitUITemplates, frog.SetObjectUILayer);
 
