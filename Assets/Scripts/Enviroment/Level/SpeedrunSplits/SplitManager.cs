@@ -8,12 +8,12 @@ namespace LevelScripts
 {
     public class SplitManager : MonoBehaviour
     {
-        [HideInInspector] public List<Split> splits;
+        [HideInInspector] public List<Split> splitsList;
         [SerializeField] public FrogManager frogManager;
 
         public void AddSplit(Split split)
         {
-            if (splits.Contains(split)) 
+            if (splitsList.Contains(split)) 
             {
                 Debug.LogWarning($"Tried adding split '{split.name}', but it was allready in the list", split);
                 return;
