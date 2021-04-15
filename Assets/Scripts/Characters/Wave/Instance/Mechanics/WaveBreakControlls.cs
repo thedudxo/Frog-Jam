@@ -7,19 +7,13 @@ namespace WaveScripts
     public class WaveBreakControlls : MonoBehaviour
     {
         [SerializeField] Wave wave;
-        WaveFrogMediatior frogMediator;
 
         Transform waveTransform;
-
-        bool shouldBreak = false;
-        bool ReachedEndOfLevel => waveTransform.position.x > wave.level.end;
-        bool NoFrogsAhead => frogMediator.AnyFrogAhead(wave) == false;
-        bool AllFrogsOnPlatform => frogMediator.AllFrogsOnPlatform();
+        bool ReachedEndOfLevel => waveTransform.position.x > wave.level.region.end;
 
         private void Start()
         {
             waveTransform = wave.transform;
-            frogMediator = wave.manager.frogMediatior;
         }
 
         private void Update()
@@ -31,12 +25,6 @@ namespace WaveScripts
                     wave.BreakWave();
                 }
             }
-        }
-
-        public void TriggerRestart()
-        {
-            return;
-            shouldBreak = true;
         }
 
         public void FrogTriggerBreak()

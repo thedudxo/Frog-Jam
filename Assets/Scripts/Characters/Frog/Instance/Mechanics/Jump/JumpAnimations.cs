@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
-using static Normalise;
+using static Util.Normalise;
 
 namespace FrogScripts.Jump
 {

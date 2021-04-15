@@ -1,0 +1,40 @@
+0.3.1 - Armageddon!
+
+____________________
+
+New Features:
+
+- Clouds in the main menu
+
+____________________
+
+
+New Art:
+
+- hand (finish up)
+- Logs
+- Wave
+- Aligaytor
+- Lily Pad
+- Lily Pad UI button version
+- Rushes
+- Flag
+
+____________________
+
+
+Changes:
+
+- Changelogs more family friendly
+- Changed control prompts text
+- Shuffled some logs and Lily Pads around
+- Cursor is hidden in the level
+
+____________________
+
+Known Issues:
+ 
+ - Probably anything from last version
+ - Probably something in this changelog. It was written pretty quickly at 5PM on release build day. fun times.
+
+

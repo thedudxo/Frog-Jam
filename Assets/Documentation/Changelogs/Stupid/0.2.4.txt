@@ -41,7 +41,7 @@ New Doodles:
 
 A "we've made changes to our privacy statement" email:
 
-- the way the game checks if you can jump or not is done differently, but should feel the same. (It now checks if your moving, so slow down you fucking spastic)
+- the way the game checks if you can jump or not is done differently, but should feel the same. (It now checks if your moving, so slow down you dam spastic)
 
 - simply slick phill sillouette simplified, so slick phill collider should show simpler somewhat. sticky stuck on static stacks less.
 
@@ -49,7 +49,7 @@ A "we've made changes to our privacy statement" email:
 
 - Checkpoint names wont upset the man anymore. usualy I'd stick it to the man, but I guess he wins this one.
 
-- got my shit together so I know what should be shown overtop of what
+- got my crap together so I know what should be shown overtop of what
 
 - ran the changelogs theough as shpel cekcer
 

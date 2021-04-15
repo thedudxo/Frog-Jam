@@ -45,16 +45,5 @@ namespace WaveScripts
                 segment.UnHideSegement();
             }
         }
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.CompareTag(GM.playerTag))
-            {
-                FrogScripts.Frog hitFrog = mediator.CheckIfHitFrog(collision);
-
-                if (hitFrog != null)
-                    if (mediator.CheckIfFrogIsFirst(hitFrog))
-                        wave.breakControlls.TriggerRestart();
-            }
-        }
     }
 }
