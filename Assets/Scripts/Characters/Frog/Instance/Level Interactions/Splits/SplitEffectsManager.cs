@@ -1,4 +1,4 @@
-﻿using LevelScripts;
+using LevelScripts;
 using System.Collections.Generic;
 using UnityEngine;
 using static ObjectInstanceBuilder;
@@ -49,7 +49,7 @@ namespace FrogScripts
             {
                 List<GameObject> SplitUITemplates = new List<GameObject>();
 
-                foreach (Split split in splitManager.splitsList)
+                foreach (Split split in splitManager.splits)
                     SplitUITemplates.Add(split.canvasPrototype.gameObject);
 
                 splitEffects = CreateInstances<SplitEffect>(SplitUITemplates, frog.SetObjectUILayer);
