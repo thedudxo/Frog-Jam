@@ -1345,11 +1345,13 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 0a4d5439f91453942b57e9030d802f71, type: 3}
   - {fileID: 4900000, guid: 69b0e344bbfe4114e82a075887a6f287, type: 3}
   - {fileID: 4900000, guid: 084da53af46abc44499247693d778fb4, type: 3}
+  - {fileID: 4900000, guid: 1f482a08f1cf3184a9efae9b0d2ad2f5, type: 3}
   stupidChangelogs:
   - {fileID: 4900000, guid: 6336c3ddfb668a34b84f22c4bbb8bea4, type: 3}
   - {fileID: 4900000, guid: f822c834a555b3449875cc44f08b40d8, type: 3}
   - {fileID: 4900000, guid: 0dcc4eb19abd4d54681562d750176490, type: 3}
   - {fileID: 4900000, guid: 93180da89743930459e43eb057c69d94, type: 3}
+  - {fileID: 4900000, guid: 22f69d977f9647545be406d649137870, type: 3}
   displayText: {fileID: 189414137}
   dropdown: {fileID: 1794188965}
 --- !u!1 &301131388
@@ -3047,8 +3049,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 591555381}
   m_HandleRect: {fileID: 591555380}
   m_Direction: 2
-  m_Value: 0.99639916
-  m_Size: 0.14813514
+  m_Value: 0.99639875
+  m_Size: 0.1482401
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4981,7 +4983,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 0.3.0
+  m_Text: 0.3.1
 --- !u!222 &1324634465
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7397,6 +7399,8 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: 0.3.1
+      m_Image: {fileID: 0}
     - m_Text: 0.3.0
       m_Image: {fileID: 0}
     - m_Text: 0.2.4
@@ -8844,7 +8848,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -12.210022}
+  m_AnchoredPosition: {x: 0, y: -12.209961}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &2079448642
