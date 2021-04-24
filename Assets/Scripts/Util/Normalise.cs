@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 
-
-static class Normalise
+namespace Util
 {
-    public static float Normalise01(float val, float max) => Mathf.Clamp((val / max), 0, 1);
+    public static class Normalise
+    {
+        public static float Normalise01(float val, float max) => Mathf.Clamp(val / max, 0, 1);
 
+    }
 }
-

@@ -33,6 +33,7 @@ namespace LevelScripts
         private void Awake()
         {
             GM.currentLevel = this;
+            Cursor.visible = false;
         }
 
         private void OnDrawGizmos()

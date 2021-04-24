@@ -9,6 +9,8 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = true;
+
         foreach(Transform t in transform)
         {
             if (t.gameObject.activeInHierarchy)
