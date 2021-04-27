@@ -24,7 +24,7 @@ namespace WaveScripts
 
         private void Awake()
         {
-            Chasing = level.frogManager;
+            Chasing = (IChaseableCollection)level.frogManager;
         }
 
         public Wave GetInactiveWave()
