@@ -9,9 +9,16 @@ namespace Pursuits
 {
     public class Pursuer : PursuitMember
     {
+        internal Pursuer() { }
+
         public bool IsPast(float PursuitEntryPoint)
         {
             return position > PursuitEntryPoint;
+        }
+
+        public override string ToString()
+        {
+            return $"<color=blue>Pursuer</color> at {position}";
         }
     }
 }

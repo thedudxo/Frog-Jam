@@ -12,45 +12,83 @@ namespace Pursuits
         public float entryPoint = 0;
 
         public Add add;
-        public IMemberMovement movement;
+        public Remove remove;
 
-        public Pursuit(IMemberMovement movement)
+        public List<string> LastTickLog { get; private set; } = new List<string>();
+        int tickCount = 0;
+
+        public Pursuit(IPositionControllerAssigner pursuerPosAssigner, IPositionControllerAssigner runnerPosAssigner)
         {
-            add = new Add(this);
-
-            this.movement = movement;
-            movement.pursuit = this;
+            add = new Add(this, pursuerPosAssigner, runnerPosAssigner);
+            remove = new Remove(this);
         }
 
-        public void Tick()
+        public void Tick(int count = 1)
         {
-            movement.Move();
-            CheckIncomingPursuer();
-            members.Sort();
+            for (int i = 0; i < count; i++)
+            {
+                tickCount++;
 
-            FindAdjacentPursuers();
+                MoveMembers();
+                CheckIncomingPursuerHasArrived();
+                members.Sort();
 
+                FindAdjacentPursuers();
+                RemovePursuerIfLast();
+
+                LogTick();
+            }
+
+            void MoveMembers()
+            {
+                foreach(PursuitMember m in members)
+                {
+                    m.positionController.UpdatePosition();
+                }
+            }
 
             void FindAdjacentPursuers()
             {
-                for (int i = 0; i <= members.Count - 1; i++)
+                for (int i = 0; i <= members.Count - 2; i++)
                 {
                     PursuitMember member = members[i];
 
                     bool adjacentPursuers = member is Pursuer && members[i + 1] is Pursuer;
                     if (adjacentPursuers)
                     {
-                        // this pursuer should be removed
+                        remove.Pursuer(member as Pursuer);
                     }
                 }
             }
 
-            void CheckIncomingPursuer()
+            void RemovePursuerIfLast()
+            {
+                PursuitMember last = members[members.Count - 1];
+                if (last is Pursuer)
+                {
+                    remove.Pursuer((Pursuer) last);
+                }
+            }
+
+            void CheckIncomingPursuerHasArrived()
             {
                 if (incomingPursuer?.IsPast(entryPoint) == true)
                 {
                     members.Insert(0, incomingPursuer);
                     incomingPursuer = null;
+                }
+            }
+
+            void LogTick()
+            {
+                LastTickLog.Clear();
+
+                LastTickLog.Add($"<color=yellow>________ Tick {tickCount} ________</color>");
+                LastTickLog.Add($"Incoming: {incomingPursuer?.ToString()}");
+
+                foreach(PursuitMember m in members)
+                {
+                    LastTickLog.Add(m.ToString());
                 }
             }
         }
