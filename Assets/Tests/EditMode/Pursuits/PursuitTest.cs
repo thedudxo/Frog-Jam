@@ -19,8 +19,7 @@ namespace Tests.Pursuits
 
         void SetupPursuit()
         {
-            var MockPosAssigner = new MockPositionControllerAssigner();
-            pursuit = new Pursuit(MockPosAssigner, MockPosAssigner);
+            pursuit = new Pursuit();
             pursuit.add.pursuerStartPos = -1;
         }
 

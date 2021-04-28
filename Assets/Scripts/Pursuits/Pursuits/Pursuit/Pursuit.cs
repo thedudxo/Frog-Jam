@@ -17,9 +17,9 @@ namespace Pursuits
         public List<string> LastTickLog { get; private set; } = new List<string>();
         int tickCount = 0;
 
-        public Pursuit(IPositionControllerAssigner pursuerPosAssigner, IPositionControllerAssigner runnerPosAssigner)
+        public Pursuit()
         {
-            add = new Add(this, pursuerPosAssigner, runnerPosAssigner);
+            add = new Add(this);
             remove = new Remove(this);
         }
 
