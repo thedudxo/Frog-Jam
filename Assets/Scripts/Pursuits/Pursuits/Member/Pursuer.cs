@@ -9,8 +9,6 @@ namespace Pursuits
 {
     public class Pursuer : PursuitMember
     {
-        internal Pursuer() { }
-
         public bool IsPast(float PursuitEntryPoint)
         {
             return position > PursuitEntryPoint;

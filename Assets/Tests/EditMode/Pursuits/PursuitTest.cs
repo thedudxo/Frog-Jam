@@ -23,13 +23,26 @@ namespace Tests.Pursuits
             pursuit.add.pursuerStartPos = -1;
         }
 
+
+        Pursuer GetNewPursuer()
+        {
+            return new Pursuer(new MockPositionController());
+        }
+
+        Runner AddBasicRunner()
+        {
+            Runner r = new Runner(new MockPositionController());
+            pursuit.add.Runner(r, GetNewPursuer);
+            return r;
+        }
+
         [Test]
         public void AddRunner()
         {
             //setup
             SetupPursuit();
 
-            pursuit.add.Runner();
+            AddBasicRunner();
 
             //perform
             pursuit.Tick();
@@ -46,13 +59,13 @@ namespace Tests.Pursuits
             SetupPursuit();
 
             //runner that creates the pursuer
-            pursuit.add.Runner();
+            AddBasicRunner();
             pursuit.Tick();
             LogList();
 
             //runners before pursuer arrives
-            pursuit.add.Runner();
-            pursuit.add.Runner();
+            AddBasicRunner(); 
+            AddBasicRunner();
 
             pursuit.Tick(); 
             LogList();
@@ -60,7 +73,7 @@ namespace Tests.Pursuits
             LogList();
 
             //new runner after pursuer arrived
-            pursuit.add.Runner();
+            AddBasicRunner();
 
             pursuit.Tick();
             LogList();
@@ -80,7 +93,7 @@ namespace Tests.Pursuits
         {
             SetupPursuit();
 
-            Runner r = pursuit.add.Runner();
+            Runner r = AddBasicRunner();
             pursuit.Tick(2);
             LogList();
 
@@ -97,17 +110,17 @@ namespace Tests.Pursuits
             SetupPursuit();
 
             //runner ahead to create an adjacent pursuer
-            pursuit.add.Runner();
+            AddBasicRunner();
             pursuit.Tick(2);
             LogList();
 
             //this is the runner to remove
-            Runner r = pursuit.add.Runner();
+            Runner r = AddBasicRunner();
             pursuit.Tick(2);
             LogList();
 
             //add a final one behind to confirm its only adjacency that gets removed
-            pursuit.add.Runner();
+            AddBasicRunner();
             pursuit.Tick(2);
             LogList();
 
@@ -128,8 +141,9 @@ namespace Tests.Pursuits
         {
             SetupPursuit();
 
-            pursuit.add.Runner();
-            MockPositionController positionController = pursuit.members[0].positionController as MockPositionController;
+            var speedyPosController = new MockPositionController(3);
+            Runner speedyRunner = new Runner(speedyPosController);
+            pursuit.add.Runner(speedyRunner, GetNewPursuer);
         }
     }
 }

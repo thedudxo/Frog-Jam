@@ -13,43 +13,27 @@
             this.pursuit = pursuit;
         }
 
-        public delegate IpostitonController GetPosController();
+        public delegate void CreateNewPursuer();
 
-        public Runner Runner(IpostitonController postitonController, GetPosController getPursuerPositionController)
+        public void Runner(CreateNewPursuer CreateNewPursuer)
         {
-            Runner runner = CreateNewRunner();
-            runner.positionController = postitonController;
-            CheckForIncomingPursuer();
-            return runner;
+            Runner runner = new Runner();
+            runner.position = runnerStartPos;
 
-            Runner CreateNewRunner()
+            pursuit.members.Insert(0, runner);
+
+            if (pursuit.incomingPursuer == null)
             {
-                Runner r = new Runner();
-
-                r.position = runnerStartPos;
-
-                pursuit.members.Insert(0, r);
-                return r;
-            }
-
-            void CheckForIncomingPursuer()
-            {
-                if (pursuit.incomingPursuer == null)
-                {
-                    pursuit.add.Pursuer(getPursuerPositionController());
-                }
+               CreateNewPursuer();
             }
         }
 
-        public Pursuer Pursuer(IpostitonController positionController)
+        public Pursuer Pursuer()
         {
             Pursuer pursuer = new Pursuer();
             pursuer.position = pursuerStartPos;
 
             pursuit.incomingPursuer = pursuer;
-
-            pursuer.positionController = positionController;
-
             return pursuer;
         }
     }

@@ -9,7 +9,6 @@ namespace Pursuits
 {
     public class Runner : PursuitMember
     {
-        internal Runner() { }
 
         public override string ToString()
         {
