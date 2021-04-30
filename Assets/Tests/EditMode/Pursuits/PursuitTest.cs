@@ -8,7 +8,7 @@ namespace Tests.Pursuits
     public class PursuitTest
     {
         Pursuit pursuit;
-
+        /*
         void LogList()
         {
             foreach (string s in pursuit.LastTickLog)
@@ -23,7 +23,7 @@ namespace Tests.Pursuits
             pursuit.add.pursuerStartPos = -1;
         }
 
-
+        
         Pursuer GetNewPursuer()
         {
             return new Pursuer(new MockPositionController());
@@ -145,5 +145,6 @@ namespace Tests.Pursuits
             Runner speedyRunner = new Runner(speedyPosController);
             pursuit.add.Runner(speedyRunner, GetNewPursuer);
         }
+        */
     }
 }

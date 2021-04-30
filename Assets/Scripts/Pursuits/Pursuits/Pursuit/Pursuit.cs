@@ -7,11 +7,7 @@ namespace Pursuits
 
         public List<PursuitMember> members = new List<PursuitMember>();
 
-
-        public Pursuer incomingPursuer = null;
-        public float entryPoint = 0;
-
-        public Add add;
+        //public Add add;
         public Remove remove;
 
         public List<string> LastTickLog { get; private set; } = new List<string>();
@@ -19,8 +15,14 @@ namespace Pursuits
 
         public Pursuit()
         {
-            add = new Add(this);
             remove = new Remove(this);
+        }
+
+        public memberType Add<memberType>() where memberType : PursuitMember, new()
+        {
+            PursuitMember member = new memberType();
+            members.Insert(0, member);
+            return member as memberType;
         }
 
         public void Tick(int count = 1)
@@ -29,22 +31,12 @@ namespace Pursuits
             {
                 tickCount++;
 
-                MoveMembers();
-                CheckIncomingPursuerHasArrived();
                 members.Sort();
 
                 FindAdjacentPursuers();
                 RemovePursuerIfLast();
 
                 LogTick();
-            }
-
-            void MoveMembers()
-            {
-                foreach(PursuitMember m in members)
-                {
-                    m.positionController.UpdatePosition();
-                }
             }
 
             void FindAdjacentPursuers()
@@ -70,21 +62,11 @@ namespace Pursuits
                 }
             }
 
-            void CheckIncomingPursuerHasArrived()
-            {
-                if (incomingPursuer?.IsPast(entryPoint) == true)
-                {
-                    members.Insert(0, incomingPursuer);
-                    incomingPursuer = null;
-                }
-            }
-
             void LogTick()
             {
                 LastTickLog.Clear();
 
                 LastTickLog.Add($"<color=yellow>________ Tick {tickCount} ________</color>");
-                LastTickLog.Add($"Incoming: {incomingPursuer?.ToString()}");
 
                 foreach(PursuitMember m in members)
                 {
