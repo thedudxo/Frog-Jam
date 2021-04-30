@@ -13,10 +13,10 @@ public static class SingletonThatNeedsToBeRemoved
 public static class FrogStartSettings
 {
     public static Level level;
-    public static FrogManager manager;
+    public static FrogCollection frogCollection;
 }
 
-public class FrogManager : MonoBehaviour
+public class FrogCollection : MonoBehaviour
 {
     [SerializeField] public List<Frog> Frogs { get; private set; } = new List<Frog>();
     [SerializeField] public Level level;
@@ -30,7 +30,7 @@ public class FrogManager : MonoBehaviour
     private void Awake()
     {
         FrogStartSettings.level = level;
-        FrogStartSettings.manager = this;
+        FrogStartSettings.frogCollection = this;
 
         AddFrogsToLevel();
 
@@ -50,8 +50,7 @@ public class FrogManager : MonoBehaviour
 
             void CreateFrog(GameObject frogPrefab)
             {
-                GameObject.Instantiate(frogPrefab)
-                    .transform.SetParent(gameObject.transform);
+                GameObject.Instantiate(frogPrefab, gameObject.transform);
             }
         }
     }

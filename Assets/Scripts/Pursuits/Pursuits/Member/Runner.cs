@@ -9,7 +9,6 @@ namespace Pursuits
 {
     public class Runner : PursuitMember
     {
-
         public override string ToString()
         {
             return $"<color=green>Runner</color> at {position}";

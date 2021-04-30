@@ -16,7 +16,7 @@ namespace LevelScripts
 
         [Header("Components")]
         [SerializeField] public SplitManager splitManager;
-        [SerializeField] public FrogManager frogManager;
+        [SerializeField] public FrogCollection frogManager;
         [SerializeField] public WaveScripts.WaveCollection waveManager;
         [SerializeField] public UI.ControllsTextTip controllsTextTipPrefab;
         [SerializeField] public ChaserCollection Chasers;

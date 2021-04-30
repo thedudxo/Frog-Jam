@@ -11,7 +11,7 @@ namespace FrogScripts
     public class Frog : MonoBehaviour
     {
         [HideInInspector] public Level currentLevel;
-        [HideInInspector] public FrogManager manager;
+        [HideInInspector] public FrogCollection manager;
         [HideInInspector] public SplitManager splitManager;
 
         [Header("Components")]
@@ -40,7 +40,7 @@ namespace FrogScripts
 
         private void Awake()
         {
-            manager = FrogStartSettings.manager;
+            manager = FrogStartSettings.frogCollection;
             currentLevel = FrogStartSettings.level;
 
             manager.AddFrog(this);

@@ -9,7 +9,7 @@ namespace LevelScripts
     public class CleanlyJumpableObstacle : MonoBehaviour
     {
         [SerializeField] Level level;
-        FrogManager frogManager;
+        FrogCollection frogManager;
 
         [SerializeField] RememberCollisions[] rememberCollisions;
 

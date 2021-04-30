@@ -9,7 +9,7 @@ namespace LevelScripts
     public class SplitManager : MonoBehaviour
     {
         [HideInInspector] public List<Split> splits;
-        [SerializeField] public FrogManager frogManager;
+        [SerializeField] public FrogCollection frogManager;
 
         public void AddSplit(Split split)
         {

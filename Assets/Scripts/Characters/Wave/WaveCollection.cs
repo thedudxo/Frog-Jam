@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
-using Chaseables.MonoBehaviours;
-using Chaseables;
 using System.Linq;
 
 namespace WaveScripts
 {
-    public class WaveCollection : ChaserCollection, IChaserCollection
+    public class WaveCollection : MonoBehaviour
     {
 
         [Header("External")]
@@ -16,16 +14,9 @@ namespace WaveScripts
         [Header("Components")]
         [SerializeField] GameObject wavesParentComponent;
         [SerializeField] GameObject wavePrefab;
-        [SerializeField] public ChaseableCollection chaseables;
         [SerializeField] WaveStarter waveStarter;
 
         public List<Wave> waves { get; private set; } = new List<Wave>();
-        public override IChaseableCollection Chasing { get; set ; }
-
-        private void Awake()
-        {
-            Chasing = (IChaseableCollection)level.frogManager;
-        }
 
         public Wave GetInactiveWave()
         {
@@ -52,28 +43,5 @@ namespace WaveScripts
         bool WaveActiveFilter(Wave wave) => wave.state == Wave.State.normal;
         public Wave ClosestBehind(float pos) => FindClosest.Behind(waves,pos,WaveActiveFilter);
         public Wave ClosestAhead(float pos) => FindClosest.Ahead(waves, pos, WaveActiveFilter);
-
-        public override IChaser Chase(IChaseable c) => waveStarter.Chase(c);
-
-        public override void ChaseableStartedLevel(IChaseable chaseable)
-        {
-            var xPos = chaseable.GetXPos();
-            var waveBehind = ClosestBehind(xPos);
-
-            if (waveBehind == null)
-            {
-                GetInactiveWave().StartWave();
-            }
-        }
-
-        public override IChaser GetFirstBehindOrNew(float pos)
-        {
-            return GetFirstBehindOrNull(pos) ?? GetInactiveWave();
-        }
-
-        public override IChaser GetFirstBehindOrNull(float pos)
-        {
-            return ClosestBehind(pos);
-        }
     }
 }

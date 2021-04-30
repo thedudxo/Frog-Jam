@@ -12,7 +12,7 @@ namespace WaveScripts
 
         [HideInInspector] public WaveCollection collection;
         [HideInInspector] public Level level;
-        [HideInInspector] public FrogManager frogManager { get; private set; }
+        [HideInInspector] public FrogCollection frogManager { get; private set; }
 
         [Header("Components")]
         [SerializeField] public WaveBreakControlls breakControlls;

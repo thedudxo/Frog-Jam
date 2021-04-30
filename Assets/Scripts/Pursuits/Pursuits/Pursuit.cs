@@ -7,22 +7,19 @@ namespace Pursuits
 
         public List<PursuitMember> members = new List<PursuitMember>();
 
-        //public Add add;
-        public Remove remove;
-
         public List<string> LastTickLog { get; private set; } = new List<string>();
         int tickCount = 0;
-
-        public Pursuit()
-        {
-            remove = new Remove(this);
-        }
 
         public memberType Add<memberType>() where memberType : PursuitMember, new()
         {
             PursuitMember member = new memberType();
             members.Insert(0, member);
             return member as memberType;
+        }
+
+        public void Remove(PursuitMember member)
+        {
+            members.Remove(member);
         }
 
         public void Tick(int count = 1)
@@ -48,7 +45,7 @@ namespace Pursuits
                     bool adjacentPursuers = member is Pursuer && members[i + 1] is Pursuer;
                     if (adjacentPursuers)
                     {
-                        remove.Pursuer(member as Pursuer);
+                        Remove(member);
                     }
                 }
             }
@@ -58,7 +55,7 @@ namespace Pursuits
                 PursuitMember last = members[members.Count - 1];
                 if (last is Pursuer)
                 {
-                    remove.Pursuer((Pursuer) last);
+                    Remove(last);
                 }
             }
 
