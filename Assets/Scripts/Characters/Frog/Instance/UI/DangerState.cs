@@ -1,28 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using WaveScripts;
-using Chaseables;
+﻿using UnityEngine;
+using Pursuits;
 
-namespace FrogScripts {
+namespace FrogScripts
+{
     public class DangerState : MonoBehaviour
     {
         [SerializeField] Frog frog;
         [SerializeField] Animator dangerAnimation;
 
-        FrogChaseable chaseable;
-
+        FrogRunner frogPursuit;
+        RespawnTimer respawnTimer;
         private void Start()
         {
-            chaseable = frog.chaseable;
+            frogPursuit = frog.FrogRunner;
+            respawnTimer = frog.controllers.life.respawnTimer;
         }
 
         private void Update()
         {
-            bool danger = chaseable.WillSetbackBehindAChaser(
-                frog.SetbackDistance, 
-                frog.lifeController.respawnTimer.respawnWaitSeconds
-                );
+            float respawnTime = respawnTimer.respawnWaitSeconds;
+            Pursuer behind = frogPursuit.runner.pursuerBehind;
+
+            float pursuerPosAtRespawn = (respawnTime * behind.speed) + behind.position;
+            float RunnerposAtRespawn = frogPursuit.runner.position - frog.SetbackDistance;
+
+            bool danger = pursuerPosAtRespawn >= RunnerposAtRespawn;
 
             if (frog.state == FrogState.State.StartPlatform) danger = false;
 

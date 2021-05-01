@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using FrogScripts;
-using Chaseables;
+﻿using UnityEngine;
 using System.Linq;
 using static WaveScripts.Wave.State;
 
@@ -27,64 +24,6 @@ namespace WaveScripts
                 if (ReachedEndOfLevel)
                 {
                     BreakWave();
-                }
-            }
-        }
-
-        delegate bool Conditions(IChaseable chaseable, float chaseablePos);
-
-        public void CheckIfWaveShouldBreak()
-        {
-            float wavePos = wave.GetXPos();
-            Wave nextWave = wave.collection.ClosestAhead(wavePos);
-
-            float nextWavePos;
-
-
-            Conditions conditions;
-            ChooseConditions();
-
-
-            var FirstChaseableBeforeNextWave =
-                (
-                from chaseable in wave.collection.Chasing.GetAll()
-                where conditions(chaseable, chaseable.GetXPos())
-                select chaseable
-                ).FirstOrDefault();
-
-            if (FirstChaseableBeforeNextWave == null)
-            {
-                BreakWave();
-            }
-
-
-            void ChooseConditions()
-            {
-                if (nextWave == null)
-                {
-                    nextWavePos = wave.level.region.end + 1000;
-                    conditions = NoChaseableAhead;
-                }
-                else
-                {
-                    nextWavePos = nextWave.GetXPos();
-                    conditions = ChaseableAhead;
-                }
-
-                bool ChaseableAhead(IChaseable chaseable, float chaseablePos)
-                {
-                    return
-                        NoChaseableAhead(chaseable, chaseablePos)
-                        &&
-                        chaseablePos < nextWavePos;
-                }
-
-                bool NoChaseableAhead(IChaseable chaseable, float chaseablePos)
-                {
-                    return
-                        chaseable.IsCurrentlyChaseable
-                        &&
-                        wavePos < chaseablePos;
                 }
             }
         }

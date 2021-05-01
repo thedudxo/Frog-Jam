@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FrogScripts;
 using LevelScripts;
+using Characters;
 using static GM.PlayerMode;
 
 public static class SingletonThatNeedsToBeRemoved
@@ -20,10 +21,12 @@ public class FrogCollection : MonoBehaviour
 {
     [SerializeField] public List<Frog> Frogs { get; private set; } = new List<Frog>();
     [SerializeField] public Level level;
-    [HideInInspector] public FrogManagerEvents events = new FrogManagerEvents();
+    [SerializeField] PursuitHandler pursuitHandler;
 
     [Header("Player Prefabs")]
     [SerializeField] GameObject player1Prefab, player2Prefab, singlePlayerPrefab;
+
+    [HideInInspector] public FrogManagerEvents events = new FrogManagerEvents();
 
     public Dictionary<int, Frog> IDFrogs = new Dictionary<int, Frog>();
 
@@ -59,6 +62,7 @@ public class FrogCollection : MonoBehaviour
     {
         Frogs.Add(frog);
         IDFrogs.Add(frog.gameObject.GetInstanceID(), frog);
+        pursuitHandler.AddRunner();
     }
 
     public Frog GetFrogComponent(GameObject obj)

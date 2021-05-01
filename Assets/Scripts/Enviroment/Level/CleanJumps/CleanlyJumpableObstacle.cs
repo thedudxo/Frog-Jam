@@ -39,7 +39,7 @@ namespace LevelScripts
 
             if (JumpWasClean())
             {
-                frog.cleanJumpEffectsManager.DoCleanJumpEffect(this);
+                frog.controllers.cleanJumpEffects.DoCleanJumpEffect(this);
             }
 
             bool JumpWasClean()

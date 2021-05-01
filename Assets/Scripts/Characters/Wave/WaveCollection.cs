@@ -14,7 +14,7 @@ namespace WaveScripts
         [Header("Components")]
         [SerializeField] GameObject wavesParentComponent;
         [SerializeField] GameObject wavePrefab;
-        [SerializeField] WaveStarter waveStarter;
+        [SerializeField] public WaveStarter waveStarter;
 
         public List<Wave> waves { get; private set; } = new List<Wave>();
 

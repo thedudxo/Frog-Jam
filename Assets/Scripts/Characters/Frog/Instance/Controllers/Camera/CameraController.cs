@@ -46,10 +46,11 @@ namespace FrogScripts {
         {
             get
             {
-                if (frog.chaseable.ActiveChaser == null) return 0;
+                Pursuits.Pursuer firstPursuerBehind = frog.FrogRunner.runner.pursuerBehind;
+                if (firstPursuerBehind == null) return 0;
 
                 float
-                    chaserPos = frog.chaseable.ActiveChaser.GetXPos(),
+                    chaserPos = firstPursuerBehind.position,
                     chaserDistToFrog = camTransform.position.x - chaserPos,
                     chaserDistanceXNormal = 1 - Mathf.Clamp01(
                         (chaserDistToFrog - chaserMinDist) / (chaserMaxDist - chaserMinDist));

@@ -1,6 +1,4 @@
-﻿using Chaseables.MonoBehaviours;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace LevelScripts
@@ -19,7 +17,6 @@ namespace LevelScripts
         [SerializeField] public FrogCollection frogManager;
         [SerializeField] public WaveScripts.WaveCollection waveManager;
         [SerializeField] public UI.ControllsTextTip controllsTextTipPrefab;
-        [SerializeField] public ChaserCollection Chasers;
 
         [HideInInspector] public List<CleanlyJumpableObstacle> cleanJumps;
 

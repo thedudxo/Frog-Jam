@@ -6,6 +6,7 @@ namespace Pursuits
     {
 
         public List<PursuitMember> members = new List<PursuitMember>();
+        Stack<PursuitMember> membersToRemove = new Stack<PursuitMember>();
 
         public List<string> LastTickLog { get; private set; } = new List<string>();
         int tickCount = 0;
@@ -19,7 +20,7 @@ namespace Pursuits
 
         public void Remove(PursuitMember member)
         {
-            members.Remove(member);
+            membersToRemove.Push(member);
         }
 
         public void Tick(int count = 1)
@@ -28,34 +29,72 @@ namespace Pursuits
             {
                 tickCount++;
 
-                members.Sort();
+                members.Sort(); 
 
-                FindAdjacentPursuers();
-                RemovePursuerIfLast();
+                CheckRules();
+                RemoveQueuedMembers();
+                AssignIndexes();
 
                 LogTick();
             }
 
-            void FindAdjacentPursuers()
+            void CheckRules()
             {
-                for (int i = 0; i <= members.Count - 2; i++)
-                {
-                    PursuitMember member = members[i];
+                int memberCount = members.Count;
 
-                    bool adjacentPursuers = member is Pursuer && members[i + 1] is Pursuer;
-                    if (adjacentPursuers)
+                Pursuer lastPursuer = null;
+
+                for (int index = 0; index <= memberCount - 1; index++)
+                {
+                    PursuitMember member = members[index];
+
+                    if (member is Pursuer)
                     {
-                        Remove(member);
+                        bool notLastMember = index != memberCount - 1;
+
+                        if (notLastMember)
+                        {
+                            bool nextMemberIsPursuer = members[index + 1] is Pursuer;
+
+                            if (nextMemberIsPursuer)
+                            {
+                                Remove(member);
+                            }
+
+                            else
+                            {
+                                lastPursuer = member as Pursuer;
+                            }
+                        }
+                        else
+                        {
+                            Remove(member);
+                        }
+                    }
+
+                    else
+                    {
+                        (member as Runner).pursuerBehind = lastPursuer;
                     }
                 }
             }
 
-            void RemovePursuerIfLast()
+            void RemoveQueuedMembers()
             {
-                PursuitMember last = members[members.Count - 1];
-                if (last is Pursuer)
+                foreach (PursuitMember m in membersToRemove)
                 {
-                    Remove(last);
+                    m.ToNotifyOnMemberRemoved?.OnMemberRemoved();
+                    members.Remove(m);
+                }
+
+                membersToRemove.Clear();
+            }
+
+            void AssignIndexes()
+            {
+                for (int i = 0; i <= members.Count - 1; i++)
+                {
+                    members[i].index = i;
                 }
             }
 

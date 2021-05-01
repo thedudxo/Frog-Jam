@@ -19,7 +19,7 @@ namespace FrogScripts.Life
         {
             this.frog = frog;
             transform = frog.transform;
-            suicideKey = frog.controlls.suicideKey;
+            suicideKey = frog.controllers.controlls.suicideKey;
             this.currentCollisions = currentCollisions;
         }
 

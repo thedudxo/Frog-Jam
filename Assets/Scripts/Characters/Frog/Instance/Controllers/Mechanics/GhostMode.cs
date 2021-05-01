@@ -49,13 +49,13 @@ namespace FrogScripts
 
         {
             frog.gameObject.layer = GM.NoSelfCollisionsLayer;
-            frog.vfxManager.GhostVisuals();
+            frog.controllers.vfx.GhostVisuals();
         }
 
         void LeaveGhostMode()
         {
             frog.gameObject.layer = defaultLayer;
-            frog.vfxManager.UnGhostVisuals();
+            frog.controllers.vfx.UnGhostVisuals();
         }
 
         void TryLeaveGhostMode()

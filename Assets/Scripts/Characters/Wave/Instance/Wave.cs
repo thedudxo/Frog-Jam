@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
-using Chaseables;
 
 namespace WaveScripts
 {
-    public class Wave : MonoBehaviour, IChaser
+    public class Wave : MonoBehaviour
     {
         public const string Tag = "Wave";
 
         [HideInInspector] public WaveCollection collection;
         [HideInInspector] public Level level;
-        [HideInInspector] public FrogCollection frogManager { get; private set; }
 
         [Header("Components")]
+        [SerializeField] public Controllers controllers;
         [SerializeField] public WaveBreakControlls breakControlls;
         [SerializeField] public WaveSegmentManager segments;
+        [SerializeField] public PursuerController pursuer;
 
         public Vector2 spawnPosition;
 
@@ -27,7 +27,6 @@ namespace WaveScripts
         {
             this.collection = collection;
             this.level = collection.level;
-            this.frogManager = level.frogManager;
 
             state = State.inactive;
             spawnPosition = transform.position;
@@ -59,24 +58,9 @@ namespace WaveScripts
             state = Wave.State.normal;
         }
 
-        public bool IsBehind(IChaseable chaseable)
-        {
-            return chaseable.GetXPos() < GetXPos();
-        }
-
-        public void CheckStopChaseConditions()
-        {
-            breakControlls.CheckIfWaveShouldBreak();
-        }
-
         public float GetXPos()
         {
             return transform.position.x;
-        }
-
-        public float GetSpeed()
-        {
-            return WaveMovement.speed;
         }
     }
 }

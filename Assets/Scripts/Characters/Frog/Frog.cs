@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
 using static FrogScripts.FrogState;
+using Characters;
 
 namespace FrogScripts
 {
@@ -14,16 +15,15 @@ namespace FrogScripts
         [HideInInspector] public FrogCollection manager;
         [HideInInspector] public SplitManager splitManager;
 
+        [Header("External")]
+        [SerializeField] public PursuitHandler pursuitHandler;
+
         [Header("Components")]
         [SerializeField] public new Collider2D collider;
         [SerializeField] public Rigidbody2D rb;
-        [SerializeField] public VfxController vfxManager;
-        [SerializeField] public LifeController lifeController;
-        [SerializeField] public CameraController cameraController;
-        [SerializeField] public JumpController jumpController;
-        [SerializeField] public Controlls controlls;
-        [SerializeField] public FrogCleanJumpManager cleanJumpEffectsManager;
-        [SerializeField] public FrogChaseable chaseable;
+
+        [SerializeField] public Controllers controllers;
+        [SerializeField] public FrogRunner FrogRunner;
 
         public FrogState stateControlls;
         public State state => stateControlls.state;

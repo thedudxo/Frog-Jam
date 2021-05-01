@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Pursuits;
 
 namespace WaveScripts
 {
@@ -6,7 +7,7 @@ namespace WaveScripts
     {
         [SerializeField] WaveCollection waveManager;
 
-        private Wave StartWave()
+        public Wave StartWave(Pursuer pursuer)
         {
             var wave = waveManager.GetInactiveWave();
             wave.StartWave();

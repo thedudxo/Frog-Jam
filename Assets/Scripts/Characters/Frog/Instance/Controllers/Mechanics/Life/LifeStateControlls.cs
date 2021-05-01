@@ -59,7 +59,7 @@ namespace FrogScripts.Life
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.gravityScale = 1;
                 collider.enabled = true;
-                frog.cameraController.target.Set(transform);
+                frog.controllers.camera.target.Set(transform);
             }
 
             else
@@ -67,7 +67,7 @@ namespace FrogScripts.Life
                 rb.velocity = Vector2.zero;
                 rb.gravityScale = 0;
                 collider.enabled = false;
-                frog.cameraController.target.Set(transform.position);
+                frog.controllers.camera.target.Set(transform.position);
             }
         }
 
