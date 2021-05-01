@@ -2379,6 +2379,51 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6808815044224337631}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &953630450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 953630452}
+  - component: {fileID: 953630451}
+  m_Layer: 0
+  m_Name: PursuitHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &953630451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953630450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96e8112b358d444599a14f1c64d8909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves: {fileID: 7544379271648430076}
+  frogs: {fileID: 7544379271648430073}
+--- !u!4 &953630452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953630450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1563441024}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &977781210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6781,6 +6826,11 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 1.2800236
       objectReference: {fileID: 0}
+    - target: {fileID: 6222908787257002320, guid: c267027177916754ba74a614e4d92f83,
+        type: 3}
+      propertyPath: pursuitHandler
+      value: 
+      objectReference: {fileID: 953630451}
     - target: {fileID: 7544379270679779187, guid: c267027177916754ba74a614e4d92f83,
         type: 3}
       propertyPath: m_Name
@@ -6866,8 +6916,22 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 2.493679
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7544379270679779191, guid: c267027177916754ba74a614e4d92f83, type: 3}
+    - {fileID: 7544379272556482901, guid: c267027177916754ba74a614e4d92f83, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c267027177916754ba74a614e4d92f83, type: 3}
+--- !u!114 &7544379271648430073 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6222908787257002320, guid: c267027177916754ba74a614e4d92f83,
+    type: 3}
+  m_PrefabInstance: {fileID: 7544379271648430072}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f849a62a14df4f349ac2de178c73bcb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7544379271648430074 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7544379272556482899, guid: c267027177916754ba74a614e4d92f83,
@@ -6886,12 +6950,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f234018241c8cb4cb30d06d500e5446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monoBehaviourList: []
   level: {fileID: 1188860045}
   wavesParentComponent: {fileID: 7544379271648430074}
   wavePrefab: {fileID: 7611813847098449006, guid: 0a9a88486849973479cdeb0a7f72d322,
     type: 3}
-  chaseables: {fileID: 0}
   waveStarter: {fileID: 7544379271648430077}
 --- !u!114 &7544379271648430077
 MonoBehaviour:

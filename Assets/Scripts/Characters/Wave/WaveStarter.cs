@@ -10,7 +10,7 @@ namespace WaveScripts
         public Wave StartWave(Pursuer pursuer)
         {
             var wave = waveManager.GetInactiveWave();
-            wave.StartWave();
+            wave.StartWave(pursuer);
             return wave;
         }
     }

@@ -12,11 +12,8 @@ namespace FrogScripts
     public class Frog : MonoBehaviour
     {
         [HideInInspector] public Level currentLevel;
-        [HideInInspector] public FrogCollection manager;
+        [HideInInspector] public FrogCollection collection;
         [HideInInspector] public SplitManager splitManager;
-
-        [Header("External")]
-        [SerializeField] public PursuitHandler pursuitHandler;
 
         [Header("Components")]
         [SerializeField] public new Collider2D collider;
@@ -40,10 +37,10 @@ namespace FrogScripts
 
         private void Awake()
         {
-            manager = FrogStartSettings.frogCollection;
+            collection = FrogStartSettings.frogCollection;
             currentLevel = FrogStartSettings.level;
 
-            manager.AddFrog(this);
+            collection.AddFrog(this);
             splitManager = currentLevel.splitManager;
             stateControlls = new FrogState(this);
         }

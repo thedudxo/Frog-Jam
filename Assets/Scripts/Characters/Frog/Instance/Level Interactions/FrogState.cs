@@ -39,7 +39,7 @@ namespace FrogScripts
                 if (OnStartingPlatform == false)
                 {
                     state = State.Level;
-                    frog.manager.events.TriggerAnyFrogLeftPlatform();
+                    frog.collection.events.TriggerAnyFrogLeftPlatform();
                     foreach (INotifyOnLeftPlatform subscriber in frog.events.toNotifyOnLeftPlatform)
                     {
                         subscriber.OnLeftPlatform();

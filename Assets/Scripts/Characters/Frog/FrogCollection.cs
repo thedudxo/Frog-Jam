@@ -21,7 +21,7 @@ public class FrogCollection : MonoBehaviour
 {
     [SerializeField] public List<Frog> Frogs { get; private set; } = new List<Frog>();
     [SerializeField] public Level level;
-    [SerializeField] PursuitHandler pursuitHandler;
+    [SerializeField] public PursuitHandler pursuitHandler;
 
     [Header("Player Prefabs")]
     [SerializeField] GameObject player1Prefab, player2Prefab, singlePlayerPrefab;

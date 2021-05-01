@@ -85,7 +85,7 @@ namespace FrogScripts
             {
                 var overlapFrogQuery =
                     from collider in overlapColliders
-                    let _frog = frog.manager.GetFrogComponent(collider.gameObject)
+                    let _frog = frog.collection.GetFrogComponent(collider.gameObject)
                     where _frog != null
                     where _frog != this.frog
                     select _frog;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pursuits;
+using Characters;
 
 namespace FrogScripts
 {
@@ -13,7 +14,7 @@ namespace FrogScripts
     {
         [SerializeField] public Frog frog;
 
-        Pursuit pursuit;
+        PursuitHandler pursuitHandler;
         public Runner runner;
 
         public bool IsCurrentlyChaseable => frog.state == FrogState.State.Level;
@@ -23,6 +24,11 @@ namespace FrogScripts
             runner.position = transform.position.x;
         }
 
+        private void Awake()
+        {
+            StartChase();
+        }
+
         private void Start()
         {
             frog.events.SubscribeOnLeftPlatform(this);
@@ -30,8 +36,7 @@ namespace FrogScripts
             frog.events.SubscribeOnEndLevel(this);
             frog.events.SubscribeOnRestart(this);
 
-            pursuit = frog.pursuitHandler.pursuit;
-            StartChase();
+            pursuitHandler = frog.collection.pursuitHandler;
         }
 
         public void OnDeath()
@@ -45,12 +50,12 @@ namespace FrogScripts
 
         void EndChase()
         {
-            pursuit.Remove(runner);
+            pursuitHandler.pursuit.Remove(runner);
         }
 
         void StartChase()
         {
-            runner = frog.pursuitHandler.AddRunner();
+            runner = pursuitHandler.AddRunner();
         }
 
         public void OnEndLevel() => EndChase();

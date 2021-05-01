@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using Pursuits;
-using System.Linq;
 
 using WaveScripts;
-using FrogScripts;
 
 namespace Characters
 {
@@ -14,7 +11,7 @@ namespace Characters
         [SerializeField] FrogCollection frogs;
 
         Wave IncomingWave = null;
-        [HideInInspector] public Pursuit pursuit;
+        [HideInInspector] public Pursuit pursuit = new Pursuit();
 
         public Runner AddRunner()
         {

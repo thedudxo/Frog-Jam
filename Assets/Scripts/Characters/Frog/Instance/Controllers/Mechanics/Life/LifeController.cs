@@ -8,13 +8,12 @@ namespace FrogScripts.Life
     {
         [SerializeField] Frog frog;
 
-        public RespawnTimer respawnTimer;
+        public RespawnTimer respawnTimer = new RespawnTimer();
         DeathConditions deathConditions;
         [SerializeField] LifeStateControlls stateControlls;
             
         void Start()
         {
-            respawnTimer = new RespawnTimer();
             deathConditions = new DeathConditions(frog, frog.currentCollisions);
         }
 

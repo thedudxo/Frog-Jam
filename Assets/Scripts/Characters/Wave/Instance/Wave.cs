@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using LevelScripts;
+using Pursuits;
 
 namespace WaveScripts
 {
@@ -16,7 +15,7 @@ namespace WaveScripts
         [SerializeField] public Controllers controllers;
         [SerializeField] public WaveBreakControlls breakControlls;
         [SerializeField] public WaveSegmentManager segments;
-        [SerializeField] public PursuerController pursuer;
+        [SerializeField] public PursuerController pursuerController;
 
         public Vector2 spawnPosition;
 
@@ -45,7 +44,7 @@ namespace WaveScripts
             }
         }
 
-        public void StartWave()
+        public void StartWave(Pursuer pursuer)
         {
             if (state != State.inactive)
             {
@@ -56,6 +55,7 @@ namespace WaveScripts
             segments.UnHideSegments();
             transform.position = spawnPosition;
             state = Wave.State.normal;
+            pursuerController.pursuer = pursuer;
         }
 
         public float GetXPos()

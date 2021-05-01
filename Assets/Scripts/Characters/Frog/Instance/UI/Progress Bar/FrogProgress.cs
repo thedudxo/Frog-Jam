@@ -45,7 +45,7 @@ namespace FrogScripts.Progress
 
             void AddOtherPlayers()
             {
-                foreach(Frog frog in frog.manager.Frogs)
+                foreach(Frog frog in frog.collection.Frogs)
                 {
 
                 }
