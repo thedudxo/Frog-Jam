@@ -1,0 +1,29 @@
+0.3.2 - Armagedon Sweep Up
+
+____________________
+
+New Features:
+
+____________________
+
+
+New Art:
+
+____________________
+
+
+Changes:
+
+- Refactored/optimised code for wave/frog pursuits
+- Moved the lilly pad before flippy birb forward slightly. It was possible to fall through the gap there if you fell in at an angle, which was unintended.
+
+____________________
+
+
+Fixes:
+
+- The stop sign would only change text when you restarted the scene (via the main menu)
+____________________
+
+
+Known Issues:
