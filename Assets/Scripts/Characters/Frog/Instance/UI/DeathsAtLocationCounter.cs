@@ -24,7 +24,7 @@ public class DeathsAtLocationCounter : MonoBehaviour, INotifyPreDeath
         if (deaths > 99)
         {
             deathcounter.text = "heaps";
-            deathcounter.fontSize = 60;
+            deathcounter.fontSize = 16;
         }
     }
 
