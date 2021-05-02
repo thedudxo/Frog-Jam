@@ -23,6 +23,8 @@ ____________________
 Fixes:
 
 - The stop sign would only change text when you restarted the scene (via the main menu)
+- Wave sprites were rendering underneath things they should have been on top of
+- Todays catch didn't count deaths in front of the boat
 ____________________
 
 
