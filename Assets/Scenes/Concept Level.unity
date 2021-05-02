@@ -4614,7 +4614,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1610165527}
-  - component: {fileID: 1610165528}
   - component: {fileID: 2046956654}
   - component: {fileID: 1610165525}
   m_Layer: 8
@@ -4681,26 +4680,6 @@ Transform:
   m_Father: {fileID: 1798581555}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5.5}
---- !u!114 &1610165528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1610165524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a514486ac3caa1744bfdbc31eaebb611, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToSwap: {fileID: 2010112438}
-  sprites:
-  - {fileID: 21300000, guid: 597bfa0c76839984e98b6d50d564d0f1, type: 3}
-  - {fileID: 21300000, guid: faff42e0a8e6e80458962fb20d5a3c90, type: 3}
-  - {fileID: 21300000, guid: fb2ca24746c578947a1f61c6768725ff, type: 3}
-  - {fileID: 21300000, guid: c7529d8545e36074b8609d8688a104f6, type: 3}
-  - {fileID: 21300000, guid: 4062802bcb4955145884733fbf22bae9, type: 3}
-  randomOnStart: 1
 --- !u!4 &1614429245 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6751295754709368279, guid: 5e5a12790970fc941b1e52f27f2af7d9,
@@ -5852,6 +5831,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2010112439}
   - component: {fileID: 2010112440}
+  - component: {fileID: 2010112441}
   m_Layer: 0
   m_Name: RandomWords
   m_TagString: Untagged
@@ -5924,6 +5904,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2010112441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010112438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a514486ac3caa1744bfdbc31eaebb611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSwap: {fileID: 2010112438}
+  sprites:
+  - {fileID: 21300000, guid: 597bfa0c76839984e98b6d50d564d0f1, type: 3}
+  - {fileID: 21300000, guid: faff42e0a8e6e80458962fb20d5a3c90, type: 3}
+  - {fileID: 21300000, guid: fb2ca24746c578947a1f61c6768725ff, type: 3}
+  - {fileID: 21300000, guid: c7529d8545e36074b8609d8688a104f6, type: 3}
+  - {fileID: 21300000, guid: 4062802bcb4955145884733fbf22bae9, type: 3}
+  randomOnStart: 1
 --- !u!1 &2019238613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1997177715601440174, guid: 546760663b386b446bf96ddb28f7f30e,
@@ -6812,12 +6812,12 @@ PrefabInstance:
     - target: {fileID: 7611813847098449001, guid: 0a9a88486849973479cdeb0a7f72d322,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -161.18
+      value: 40.74
       objectReference: {fileID: 0}
     - target: {fileID: 7611813847098449001, guid: 0a9a88486849973479cdeb0a7f72d322,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.31
+      value: -2.26
       objectReference: {fileID: 0}
     - target: {fileID: 7611813847098449001, guid: 0a9a88486849973479cdeb0a7f72d322,
         type: 3}

@@ -22,6 +22,7 @@ ____________________
 
 Fixes:
 
+- The stop sign would only change text when you restarted the scene (via the main menu)
 ____________________
 
 

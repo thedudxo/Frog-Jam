@@ -9,7 +9,7 @@ public class RandomSprite : MonoBehaviour
     [SerializeField] bool randomOnStart = false;
 
     SpriteRenderer spriteRenderer;
-
+    
 
     private void Start()
     {
@@ -19,10 +19,11 @@ public class RandomSprite : MonoBehaviour
 
     }
 
-    public void PhillRestartedLevel()
+    private void OnBecameInvisible()
     {
         RandomiseSprite();
     }
+
 
     public void RandomiseSprite()
     {
