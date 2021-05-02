@@ -155,6 +155,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7611813847098449001}
     m_Modifications:
+    - target: {fileID: 1935657180519118278, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
+        type: 3}
+      propertyPath: offset.y
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935657180519118278, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
+        type: 3}
+      propertyPath: offsetRandom.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320708047715260699, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6913878046043657946, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
         type: 3}
       propertyPath: wave
@@ -235,6 +250,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7611813847098449001}
     m_Modifications:
+    - target: {fileID: 1935657180519118278, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
+        type: 3}
+      propertyPath: offset.y
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935657180519118278, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
+        type: 3}
+      propertyPath: offsetRandom.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320708047715260701, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 111
+      objectReference: {fileID: 0}
     - target: {fileID: 6913878046043657946, guid: a5242f8b24ded99439b4b1fbf9e4b6ac,
         type: 3}
       propertyPath: wave
@@ -380,6 +410,21 @@ PrefabInstance:
       propertyPath: wave
       value: 
       objectReference: {fileID: 7611813847098449007}
+    - target: {fileID: 5387012852944133177, guid: a44ab2fe4c4ba1a47a377671cde9d90d,
+        type: 3}
+      propertyPath: offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387012852944133177, guid: a44ab2fe4c4ba1a47a377671cde9d90d,
+        type: 3}
+      propertyPath: offsetRandom.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775582701251801314, guid: a44ab2fe4c4ba1a47a377671cde9d90d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 112
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a44ab2fe4c4ba1a47a377671cde9d90d, type: 3}
 --- !u!4 &875481115921657514 stripped
