@@ -20,6 +20,7 @@ namespace Pursuits
 
         public void Remove(PursuitMember member)
         {
+            if (member == null) throw new System.ArgumentNullException("member");
             membersToRemove.Push(member);
         }
 

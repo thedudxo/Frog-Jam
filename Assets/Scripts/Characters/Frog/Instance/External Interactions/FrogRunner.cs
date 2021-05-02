@@ -39,6 +39,7 @@ namespace FrogScripts
 
         public void OnDeath()
         {
+            if (runner == null) return;
             float setbackPos = runner.position - frog.SetbackDistance;
             bool wouldResetBehindChaser = runner.pursuerBehind?.position > setbackPos;
 
@@ -48,6 +49,7 @@ namespace FrogScripts
 
         void EndChase()
         {
+            if (runner == null) return;
             pursuitHandler.pursuit.Remove(runner);
         }
 
