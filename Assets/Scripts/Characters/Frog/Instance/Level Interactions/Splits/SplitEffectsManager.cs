@@ -57,7 +57,7 @@ namespace FrogScripts
                 foreach (SplitEffect effect in splitEffects)
                 {
                     effect.Setup(this);
-                    Debug.Log($"<color=green>INSTANCE:</color> setup effect {effect.splitName}", this);
+                    //Debug.Log($"<color=green>INSTANCE:</color> setup effect {effect.splitName}", this);
                 }
             }
         }

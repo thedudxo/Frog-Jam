@@ -21,12 +21,10 @@ namespace FrogScripts
 
         private void Update()
         {
-            runner.position = transform.position.x;
-        }
-
-        private void Awake()
-        {
-            StartChase();
+            if (runner != null)
+            {
+                runner.position = transform.position.x;
+            }
         }
 
         private void Start()
@@ -42,7 +40,7 @@ namespace FrogScripts
         public void OnDeath()
         {
             float setbackPos = runner.position - frog.SetbackDistance;
-            bool wouldResetBehindChaser = runner.pursuerBehind.position > setbackPos;
+            bool wouldResetBehindChaser = runner.pursuerBehind?.position > setbackPos;
 
             if (wouldResetBehindChaser)
                 EndChase();

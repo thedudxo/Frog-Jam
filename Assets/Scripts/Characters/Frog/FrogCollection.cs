@@ -62,7 +62,6 @@ public class FrogCollection : MonoBehaviour
     {
         Frogs.Add(frog);
         IDFrogs.Add(frog.gameObject.GetInstanceID(), frog);
-        pursuitHandler.AddRunner();
     }
 
     public Frog GetFrogComponent(GameObject obj)

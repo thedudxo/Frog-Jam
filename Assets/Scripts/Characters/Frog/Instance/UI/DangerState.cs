@@ -18,13 +18,18 @@ namespace FrogScripts
 
         private void Update()
         {
-            float respawnTime = respawnTimer.respawnWaitSeconds;
-            Pursuer behind = frogPursuit.runner.pursuerBehind;
+            bool danger = false;
+            Pursuer behind = frogPursuit.runner?.pursuerBehind;
 
-            float pursuerPosAtRespawn = (respawnTime * behind.speed) + behind.position;
-            float RunnerposAtRespawn = frogPursuit.runner.position - frog.SetbackDistance;
+            if (behind != null)
+            {
+                float respawnTime = respawnTimer.respawnWaitSeconds;
 
-            bool danger = pursuerPosAtRespawn >= RunnerposAtRespawn;
+                float pursuerPosAtRespawn = (respawnTime * behind.speed) + behind.position;
+                float RunnerposAtRespawn = frogPursuit.runner.position - frog.SetbackDistance;
+
+                danger = pursuerPosAtRespawn >= RunnerposAtRespawn;
+            }
 
             if (frog.state == FrogState.State.StartPlatform) danger = false;
 

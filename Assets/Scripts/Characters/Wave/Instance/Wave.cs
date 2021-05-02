@@ -15,7 +15,7 @@ namespace WaveScripts
         [SerializeField] public Controllers controllers;
         [SerializeField] public WaveBreakControlls breakControlls;
         [SerializeField] public WaveSegmentManager segments;
-        [SerializeField] public PursuerController pursuerController;
+        [SerializeField] public WavePursuer pursuerController;
 
         public Vector2 spawnPosition;
 
@@ -55,7 +55,7 @@ namespace WaveScripts
             segments.UnHideSegments();
             transform.position = spawnPosition;
             state = Wave.State.normal;
-            pursuerController.pursuer = pursuer;
+            pursuerController.Setup(pursuer);
         }
 
         public float GetXPos()

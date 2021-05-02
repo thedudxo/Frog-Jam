@@ -46,7 +46,7 @@ namespace FrogScripts {
         {
             get
             {
-                Pursuits.Pursuer firstPursuerBehind = frog.FrogRunner.runner.pursuerBehind;
+                Pursuits.Pursuer firstPursuerBehind = frog.FrogRunner.runner?.pursuerBehind;
                 if (firstPursuerBehind == null) return 0;
 
                 float

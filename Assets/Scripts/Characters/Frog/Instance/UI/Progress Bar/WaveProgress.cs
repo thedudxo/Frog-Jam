@@ -11,7 +11,7 @@ namespace FrogScripts.Progress
 
         public void UpdateProgress()
         {
-            Pursuer pursuer = frog.FrogRunner.runner.pursuerBehind;
+            Pursuer pursuer = frog.FrogRunner.runner?.pursuerBehind;
             if (pursuer == null)
             {
                 waveProgressBar.value = 0;
