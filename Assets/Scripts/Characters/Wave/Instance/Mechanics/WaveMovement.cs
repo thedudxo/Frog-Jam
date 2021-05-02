@@ -5,7 +5,7 @@ namespace WaveScripts
 {
     public class WaveMovement : MonoBehaviour
     {
-        public const float speed = 8f;
+        public float speed = 8f;
         Transform waveTransform;
         [SerializeField] Wave wave;
 

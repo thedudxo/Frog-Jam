@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using UnityEngine;
-using FrogScripts;
+﻿using UnityEngine;
+using System.Linq;
+using static WaveScripts.Wave.State;
 
 namespace WaveScripts
 {
@@ -8,6 +8,7 @@ namespace WaveScripts
     {
         [SerializeField] Wave wave;
 
+        public float BreakPosition { get; private set; }
         Transform waveTransform;
         bool ReachedEndOfLevel => waveTransform.position.x > wave.level.region.end;
 
@@ -22,39 +23,32 @@ namespace WaveScripts
             {
                 if (ReachedEndOfLevel)
                 {
-                    wave.BreakWave();
+                    BreakWave();
                 }
             }
         }
 
-        public void FrogTriggerBreak()
+        public void BreakWave()
         {
-            bool FrogAliveFilter(Frog frog)
+            if (wave.state != normal)
             {
-                if (frog.state == FrogState.State.Level) return true;
-                return false;
-                // without this filter, next frog should never be null since it takes time to die, before moving its position.
+                Debug.LogWarning($"Tried breaking wave in state '{wave.state}', expected normal", this);
+                return;
             }
 
-            float wavePos = wave.transform.position.x;
-
-            Frog nextFrog = FindClosest.Ahead(wave.frogManager.Frogs, wavePos, FrogAliveFilter);
-
-            if (nextFrog == null || WaveBeforeNextFrog()) 
-                wave.BreakWave(); 
-
-            bool WaveBeforeNextFrog()
-            {
-                Wave nextWave = wave.manager.ClosestWaveAheadPosition(wavePos);
-                if (nextWave != null)
-                {
-                    float nextWavePos = nextWave.transform.position.x;
-                    float nextFrogPos = nextFrog.transform.position.x;
-                    if (nextWavePos < nextFrogPos)
-                        return true;
-                }
-                return false;
-            }
+            BreakPosition = transform.position.x;
+            wave.state = breaking;
         }
+
+        public void StopBreaking()
+        {
+            if (wave.state != breaking)
+            {
+                Debug.LogWarning($"Tried to stop breaking on a wave whos state was '{wave.state}', expected breaking", this);
+                return;
+            }
+            wave.state = inactive;
+        }
+
     }
 }

@@ -1,0 +1,15 @@
+{
+    "name": "Pursuits.MonoBehaviour",
+    "references": [
+        "GUID:408735acd557c394d88c1ffc9df6e75a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

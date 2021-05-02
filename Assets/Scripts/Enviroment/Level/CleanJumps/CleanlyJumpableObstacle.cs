@@ -9,7 +9,7 @@ namespace LevelScripts
     public class CleanlyJumpableObstacle : MonoBehaviour
     {
         [SerializeField] Level level;
-        FrogManager frogManager;
+        FrogCollection frogManager;
 
         [SerializeField] RememberCollisions[] rememberCollisions;
 
@@ -39,7 +39,7 @@ namespace LevelScripts
 
             if (JumpWasClean())
             {
-                frog.cleanJumpEffectsManager.DoCleanJumpEffect(this);
+                frog.controllers.cleanJumpEffects.DoCleanJumpEffect(this);
             }
 
             bool JumpWasClean()

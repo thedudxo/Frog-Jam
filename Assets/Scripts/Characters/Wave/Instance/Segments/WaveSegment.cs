@@ -10,11 +10,11 @@ namespace WaveScripts
 
         bool hidden = false;
 
-        bool segmentAtBreakpoint => transform.position.x > wave.breakPosition;
+        bool SegmentAtBreakpoint => transform.position.x > wave.breakControlls.BreakPosition;
 
         public void HideSegmentAtBreakpoint()
         {
-            if (!hidden && segmentAtBreakpoint)
+            if (!hidden && SegmentAtBreakpoint)
             {
                 HideSegment();
             }

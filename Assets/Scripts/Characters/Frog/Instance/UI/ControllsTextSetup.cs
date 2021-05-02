@@ -16,7 +16,7 @@ namespace FrogScripts.UI.Builders
                 (prefab, frog.SetObjectUILayer)
                 [0];
 
-            controllsTextTip.SetControlls(frog.controlls.jumpKey, frog.controlls.suicideKey);
+            controllsTextTip.SetControlls(frog.controllers.controlls.jumpKey, frog.controllers.controlls.suicideKey);
         }
     }
 }

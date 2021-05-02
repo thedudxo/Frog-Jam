@@ -17,7 +17,7 @@ namespace WaveScripts
                 {
                     waitForAnimation = false;
                     waited = 0;
-                    wave.FinishedBreaking();
+                    wave.breakControlls.StopBreaking();
                 }
             }
         }

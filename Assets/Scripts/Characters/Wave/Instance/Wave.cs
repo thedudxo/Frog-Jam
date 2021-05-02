@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using LevelScripts;
+using Pursuits;
 
 namespace WaveScripts
 {
@@ -9,25 +8,24 @@ namespace WaveScripts
     {
         public const string Tag = "Wave";
 
-        [HideInInspector] public WaveManager manager;
+        [HideInInspector] public WaveCollection collection;
         [HideInInspector] public Level level;
-        [HideInInspector] public FrogManager frogManager { get; private set; }
 
         [Header("Components")]
+        [SerializeField] public Controllers controllers;
         [SerializeField] public WaveBreakControlls breakControlls;
         [SerializeField] public WaveSegmentManager segments;
+        [SerializeField] public WavePursuer pursuerController;
 
-        public float breakPosition;
         public Vector2 spawnPosition;
 
         public enum State { normal, breaking, inactive }
-        public State state;
+        public State state = State.inactive;
 
-        public void Setup(WaveManager manager)
+        public void Setup(WaveCollection collection)
         {
-            this.manager = manager;
-            this.level = manager.level;
-            this.frogManager = level.frogManager;
+            this.collection = collection;
+            this.level = collection.level;
 
             state = State.inactive;
             spawnPosition = transform.position;
@@ -46,7 +44,7 @@ namespace WaveScripts
             }
         }
 
-        public void StartWave()
+        public void StartWave(Pursuer pursuer)
         {
             if (state != State.inactive)
             {
@@ -57,29 +55,12 @@ namespace WaveScripts
             segments.UnHideSegments();
             transform.position = spawnPosition;
             state = Wave.State.normal;
+            pursuerController.Setup(pursuer);
         }
 
-        public void BreakWave()
+        public float GetXPos()
         {
-            if (state != State.normal)
-            {
-                Debug.LogWarning("Tried breaking a wave which wasn't in normal state", this);
-                return;
-            }
-
-            breakPosition = transform.position.x;
-            state = Wave.State.breaking;
+            return transform.position.x;
         }
-
-        public void FinishedBreaking()
-        {
-            if (state != State.breaking)
-            {
-                Debug.LogWarning("Tried setting non breaking wave as inactive", this);
-                return;
-            }
-            state = State.inactive;
-        }
-
     }
 }

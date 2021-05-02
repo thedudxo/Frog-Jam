@@ -39,7 +39,7 @@ namespace FrogScripts
                 if (OnStartingPlatform == false)
                 {
                     state = State.Level;
-                    frog.manager.events.TriggerAnyFrogLeftPlatform();
+                    frog.collection.events.TriggerAnyFrogLeftPlatform();
                     foreach (INotifyOnLeftPlatform subscriber in frog.events.toNotifyOnLeftPlatform)
                     {
                         subscriber.OnLeftPlatform();
@@ -51,7 +51,7 @@ namespace FrogScripts
         public void OnRestart()
         {
             if(frog.state == State.Hidden)
-                frog.vfxManager.ShowFrogVisuals(true);
+                frog.controllers.vfx.ShowFrogVisuals(true);
 
             state = State.StartPlatform;
         }
@@ -75,7 +75,7 @@ namespace FrogScripts
         {
             state = State.Hidden;
             rb.simulated = false;
-            frog.vfxManager.ShowFrogVisuals(false);
+            frog.controllers.vfx.ShowFrogVisuals(false);
         }
 
     }

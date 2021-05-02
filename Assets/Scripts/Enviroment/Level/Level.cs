@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace LevelScripts
@@ -15,12 +14,12 @@ namespace LevelScripts
 
         [Header("Components")]
         [SerializeField] public SplitManager splitManager;
-        [SerializeField] public FrogManager frogManager;
-        [SerializeField] public WaveScripts.WaveManager waveManager;
-        [SerializeField] public WaveFrogMediatior waveFrogMediatior;
+        [SerializeField] public FrogCollection frogManager;
+        [SerializeField] public WaveScripts.WaveCollection waveManager;
         [SerializeField] public UI.ControllsTextTip controllsTextTipPrefab;
 
         [HideInInspector] public List<CleanlyJumpableObstacle> cleanJumps;
+
 
         private void OnValidate()
         {
@@ -31,6 +30,7 @@ namespace LevelScripts
         private void Awake()
         {
             GM.currentLevel = this;
+            Cursor.visible = false;
         }
 
         private void OnDrawGizmos()

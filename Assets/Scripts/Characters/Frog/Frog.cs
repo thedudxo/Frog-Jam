@@ -5,30 +5,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using LevelScripts;
 using static FrogScripts.FrogState;
+using Characters;
 
 namespace FrogScripts
 {
     public class Frog : MonoBehaviour
     {
         [HideInInspector] public Level currentLevel;
-        [HideInInspector] public FrogManager manager;
+        [HideInInspector] public FrogCollection collection;
         [HideInInspector] public SplitManager splitManager;
 
         [Header("Components")]
         [SerializeField] public new Collider2D collider;
         [SerializeField] public Rigidbody2D rb;
-        [SerializeField] public VfxController vfxManager;
-        [SerializeField] public LifeController lifeController;
-        [SerializeField] public CameraController cameraController;
-        [SerializeField] public JumpController jumpController;
-        [SerializeField] public Controlls controlls;
-        [SerializeField] public FrogCleanJumpManager cleanJumpEffectsManager;
-        [SerializeField] public FrogWaveInteractions waveInteractions;
+
+        [SerializeField] public Controllers controllers;
+        [SerializeField] public FrogRunner FrogRunner;
 
         public FrogState stateControlls;
         public State state => stateControlls.state;
 
         public FrogEvents events = new FrogEvents();
+
+        public float SetbackDistance { get; set; } = 25;
 
         [Header("Player UI layer")]
         [SerializeField] public string UILayer;
@@ -38,10 +37,10 @@ namespace FrogScripts
 
         private void Awake()
         {
-            manager = FrogStartSettings.manager;
+            collection = FrogStartSettings.frogCollection;
             currentLevel = FrogStartSettings.level;
 
-            manager.AddFrog(this);
+            collection.AddFrog(this);
             splitManager = currentLevel.splitManager;
             stateControlls = new FrogState(this);
         }

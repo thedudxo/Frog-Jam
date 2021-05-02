@@ -7,14 +7,12 @@ namespace WaveScripts
     public class WaveSegmentManager : MonoBehaviour
     {
         [SerializeField] Wave wave;
-        WaveFrogMediatior mediator;
         public const string segmentTag = "WaveSegment";
         [SerializeField] public List<WaveSegment> segments = new List<WaveSegment>();
 
         private void Start()
         {
             GetSegmentsFromComponents();
-            mediator = wave.manager.frogMediatior;
 
             void GetSegmentsFromComponents()
             {

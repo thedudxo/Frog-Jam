@@ -1,26 +1,24 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using WaveScripts;
+using Pursuits;
 
 namespace FrogScripts.Progress
 {
     public class WaveProgress : MonoBehaviour, IProgressTracker
     {
         [SerializeField] Frog frog;
-        [SerializeField] FrogWaveInteractions waveInteractions;
         [SerializeField] Slider waveProgressBar;
 
         public void UpdateProgress()
         {
-            Wave wave = waveInteractions.AttachedWave;
-            if (wave == null || wave.state == WaveScripts.Wave.State.inactive)
+            Pursuer pursuer = frog.FrogRunner.runner?.pursuerBehind;
+            if (pursuer == null)
             {
                 waveProgressBar.value = 0;
                 return;
             }
 
-            float wavePosX = wave.transform.position.x;
+            float wavePosX = pursuer.position;
             LevelScripts.Level level = frog.currentLevel;
             waveProgressBar.value = (wavePosX - level.StartPlatformLength) / (level.region.end - level.StartPlatformLength);
         }

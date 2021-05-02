@@ -1,4 +1,5 @@
-﻿using UnityEngine.SceneManagement;
+﻿using System;
+using UnityEngine.SceneManagement;
 using static GM.PlayerMode;
 
 public static class GM {
@@ -15,6 +16,7 @@ public static class GM {
 
     public const int NoSelfCollisionsLayer = 11;
 
+    [Obsolete("Use relevant variable in frog")]
     public const float respawnSetBack = 25;
 
     public const float CameraVeiwRangeApprox = 18;
