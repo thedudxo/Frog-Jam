@@ -18,6 +18,12 @@ namespace Frogs.Progress
                 return;
             }
 
+            if (frog.FrogRunner.runner == null)
+            {
+                waveProgressBar.value = 0;
+                return;
+            }
+
             float wavePosX = pursuer.position;
             Levels.Level level = frog.currentLevel;
             waveProgressBar.value = (wavePosX - level.StartPlatformLength) / (level.region.end - level.StartPlatformLength);

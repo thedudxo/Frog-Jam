@@ -53,6 +53,7 @@ namespace Frogs
         {
             if (runner == null) return;
             pursuitHandler.pursuit.Remove(runner);
+            runner = null;
         }
 
         void StartChase()

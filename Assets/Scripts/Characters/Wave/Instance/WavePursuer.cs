@@ -8,26 +8,24 @@ namespace Waves
     {
         [SerializeField] Wave wave;
         public Pursuer pursuer;
-        bool setup = false;
 
         public void Setup(Pursuer pursuer)
         {
             this.pursuer = pursuer;
             this.pursuer.speed = wave.controllers.movement.speed;
             this.pursuer.ToNotifyOnMemberRemoved = this;
-            setup = true;
         }
 
         private void Update()
         {
-            //if (setup == false) return;
+            if (pursuer == null) return;
             pursuer.position = transform.position.x;
         }
 
         public void OnMemberRemoved()
         {
             wave.breakControlls.BreakWave();
-            setup = false;
+            pursuer = null;
         }
     }
 }
