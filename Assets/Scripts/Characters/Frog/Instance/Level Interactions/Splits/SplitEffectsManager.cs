@@ -23,8 +23,14 @@ namespace Frogs
             get 
             {
                 float time = 0;
-                foreach(SplitEffect effect in splitEffects)
+                foreach (SplitEffect effect in splitEffects)
+                {
                     time += effect.BestTime;
+                    if (time > 10000000)
+                    {
+                        Debug.LogError("That annoying split bug");
+                    }
+                }
                 return time;
             }
             private set { }
