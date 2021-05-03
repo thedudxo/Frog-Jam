@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using FrogScripts;
-using LevelScripts;
+using Frogs;
+using Levels;
 
 public class DeathsAtLocationCounter : MonoBehaviour, INotifyPreDeath
 {

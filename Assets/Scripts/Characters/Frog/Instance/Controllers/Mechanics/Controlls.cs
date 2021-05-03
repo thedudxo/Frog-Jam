@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class Controlls : MonoBehaviour
     {

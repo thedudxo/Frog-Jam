@@ -4,7 +4,7 @@ using UnityEngine;
 using Pursuits;
 using Characters;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class FrogRunner : MonoBehaviour, 
         INotifyOnLeftPlatform, 

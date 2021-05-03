@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Util.Generic;
 
-namespace LevelScripts
+namespace Levels
 {
     public class Cloud : MonoBehaviour
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FrogScripts.Vfx
+namespace Frogs.Vfx
 {
     public class AirParticleController
     {

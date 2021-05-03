@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LevelScripts {
+namespace Levels {
 
     public class CloudManager : MonoBehaviour
     {

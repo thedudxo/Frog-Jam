@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Pursuits;
 
-namespace WaveScripts
+namespace Waves
 {
     public class WaveStarter : MonoBehaviour
     {

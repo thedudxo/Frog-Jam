@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using Pursuits;
 
-namespace FrogScripts.Progress
+namespace Frogs.Progress
 {
     public class WaveProgress : MonoBehaviour, IProgressTracker
     {
@@ -19,7 +19,7 @@ namespace FrogScripts.Progress
             }
 
             float wavePosX = pursuer.position;
-            LevelScripts.Level level = frog.currentLevel;
+            Levels.Level level = frog.currentLevel;
             waveProgressBar.value = (wavePosX - level.StartPlatformLength) / (level.region.end - level.StartPlatformLength);
         }
     }

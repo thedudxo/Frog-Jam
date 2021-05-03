@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace WaveScripts
+namespace Waves
 {
     public class WaveMovement : MonoBehaviour
     {

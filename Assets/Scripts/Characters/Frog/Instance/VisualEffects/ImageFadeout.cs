@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 
-namespace FrogScripts.Vfx
+namespace Frogs.Vfx
 {
     public class ImageFadeout
     {

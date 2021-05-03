@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Linq;
-using static WaveScripts.Wave.State;
+using static Waves.Wave.State;
 
-namespace WaveScripts
+namespace Waves
 {
     public class WaveBreakControlls : MonoBehaviour
     {
@@ -26,6 +26,11 @@ namespace WaveScripts
                     BreakWave();
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                WaveTime.Log();
+            }
         }
 
         public void BreakWave()
@@ -38,6 +43,8 @@ namespace WaveScripts
 
             BreakPosition = transform.position.x;
             wave.state = breaking;
+            Debug.Log("breaking");
+            WaveTime.BreakControllsTime = Time.time;
         }
 
         public void StopBreaking()

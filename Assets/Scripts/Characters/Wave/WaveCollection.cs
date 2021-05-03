@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using LevelScripts;
+using Levels;
 using System.Linq;
 
-namespace WaveScripts
+namespace Waves
 {
     public class WaveCollection : MonoBehaviour
     {

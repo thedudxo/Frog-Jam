@@ -1,13 +1,10 @@
-﻿using FrogScripts.Life;
-using FrogScripts.Vfx;
-using FrogScripts.Jump;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using LevelScripts;
-using static FrogScripts.FrogState;
-using Characters;
+using Levels;
+using static Frogs.FrogState;
+using Frogs.Collections;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class Frog : MonoBehaviour
     {

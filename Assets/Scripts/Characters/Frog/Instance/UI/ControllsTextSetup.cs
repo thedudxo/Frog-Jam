@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using LevelScripts.UI;
+using Levels.UI;
 
-namespace FrogScripts.UI.Builders
+namespace Frogs.UI.Builders
 {
     public class ControllsTextSetup : MonoBehaviour
     {

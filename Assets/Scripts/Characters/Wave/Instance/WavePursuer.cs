@@ -2,7 +2,7 @@
 using UnityEngine;
 using Pursuits;
 
-namespace WaveScripts
+namespace Waves
 {
     public class WavePursuer : MonoBehaviour, INotifyOnMemberRemoved
     {

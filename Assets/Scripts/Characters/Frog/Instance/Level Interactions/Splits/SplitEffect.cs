@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
-using LevelScripts;
+using Levels;
 using UnityEngine.UI;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class SplitEffect : MonoBehaviour, INotifyOnEndLevel
     {

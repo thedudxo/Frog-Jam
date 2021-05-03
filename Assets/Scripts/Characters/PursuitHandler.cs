@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Pursuits;
-
-using WaveScripts;
+using Waves;
+using Frogs.Collections;
 
 namespace Characters
 {

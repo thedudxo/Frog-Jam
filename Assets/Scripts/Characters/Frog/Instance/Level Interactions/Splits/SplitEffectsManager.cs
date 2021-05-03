@@ -1,9 +1,9 @@
-using LevelScripts;
+using Levels;
 using System.Collections.Generic;
 using UnityEngine;
 using static ObjectInstanceBuilder;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class SplitEffectsManager : MonoBehaviour, INotifyOnSetback, INotifyOnRestart
     {

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Frogs.Collections;
+using Waves;
 
-namespace LevelScripts
+namespace Levels
 {
     public class Level : MonoBehaviour
     {
@@ -15,7 +17,7 @@ namespace LevelScripts
         [Header("Components")]
         [SerializeField] public SplitManager splitManager;
         [SerializeField] public FrogCollection frogManager;
-        [SerializeField] public WaveScripts.WaveCollection waveManager;
+        [SerializeField] public WaveCollection waveManager;
         [SerializeField] public UI.ControllsTextTip controllsTextTipPrefab;
 
         [HideInInspector] public List<CleanlyJumpableObstacle> cleanJumps;

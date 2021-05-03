@@ -1,5 +1,5 @@
-﻿using FrogScripts;
-using LevelScripts;
+﻿using Frogs;
+using Levels;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;

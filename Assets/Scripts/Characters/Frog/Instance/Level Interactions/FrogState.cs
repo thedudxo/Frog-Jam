@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class FrogState : INotifyOnRestart, INotifyPreDeath, INotifyOnEndLevel, INotifyOnAnyRespawn
     {
@@ -39,7 +39,6 @@ namespace FrogScripts
                 if (OnStartingPlatform == false)
                 {
                     state = State.Level;
-                    frog.collection.events.TriggerAnyFrogLeftPlatform();
                     foreach (INotifyOnLeftPlatform subscriber in frog.events.toNotifyOnLeftPlatform)
                     {
                         subscriber.OnLeftPlatform();

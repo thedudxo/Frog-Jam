@@ -1,12 +1,12 @@
-﻿using FrogScripts.Life;
-using FrogScripts.Vfx;
-using FrogScripts.Jump;
+﻿using Frogs.Life;
+using Frogs.Vfx;
+using Frogs.Jump;
 using System.Collections.Generic;
 using UnityEngine;
-using LevelScripts;
-using static FrogScripts.FrogState;
+using Levels;
+using static Frogs.FrogState;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class Controllers : MonoBehaviour
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace WaveScripts
+namespace Waves
 {
     public class WaveSegmentManager : MonoBehaviour
     {

@@ -1,10 +1,9 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Frogs.Collections;
 
 
-namespace LevelScripts
+namespace Levels
 {
     public class SplitManager : MonoBehaviour
     {
