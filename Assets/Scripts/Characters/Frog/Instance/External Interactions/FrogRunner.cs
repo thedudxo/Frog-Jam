@@ -37,14 +37,14 @@ namespace Frogs
             pursuitHandler = frog.collection.pursuitHandler;
         }
 
+        public void OnEndLevel() => EndChase();
+        public void OnRestart() => EndChase();
+        public void OnLeftPlatform() => StartChase();
         public void OnDeath()
         {
             if (runner == null) return;
             float setbackPos = runner.position - frog.SetbackDistance;
             bool wouldResetBehindChaser = runner.pursuerBehind?.position > setbackPos;
-
-            if (wouldResetBehindChaser)
-                EndChase();
 
             pursuitHandler.Tick();
         }
@@ -54,6 +54,7 @@ namespace Frogs
             if (runner == null) return;
             pursuitHandler.pursuit.Remove(runner);
             runner = null;
+            Debug.Log("end chase");
         }
 
         void StartChase()
@@ -61,8 +62,6 @@ namespace Frogs
             runner = pursuitHandler.AddRunner();
         }
 
-        public void OnEndLevel() => EndChase();
-        public void OnRestart() => EndChase();
-        public void OnLeftPlatform() => StartChase();
+
     }
 }

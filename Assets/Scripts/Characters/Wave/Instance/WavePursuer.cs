@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Pursuits;
+using System;
 
 namespace Waves
 {
@@ -25,6 +26,11 @@ namespace Waves
         public void OnMemberRemoved()
         {
             wave.breakControlls.BreakWave();
+        }
+
+        public void RemovePursuer()
+        {
+            Debug.Log("remove");
             pursuer = null;
         }
     }

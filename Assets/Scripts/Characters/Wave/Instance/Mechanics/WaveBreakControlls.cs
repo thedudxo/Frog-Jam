@@ -49,6 +49,7 @@ namespace Waves
                 return;
             }
             wave.state = inactive;
+            wave.pursuerController.RemovePursuer();
         }
 
     }
