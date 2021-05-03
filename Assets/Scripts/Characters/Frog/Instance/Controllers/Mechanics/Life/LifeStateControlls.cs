@@ -50,7 +50,7 @@ namespace Frogs.Life
 
             foreach (INotifyOnDeath notify in frog.events.toNotifyOnDeath) notify.OnDeath();
             vfx.DeathEffects();
-            WaveTime.FrogDeathTime = Time.time;
+            
         }
 
         void ToggleComponents(bool alive)

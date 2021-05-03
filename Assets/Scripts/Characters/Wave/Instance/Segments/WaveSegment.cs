@@ -24,7 +24,6 @@ namespace Waves
             Debug.Log("hiding");
             animator.SetTrigger("Disappear");
             hidden = true;
-            WaveTime.SetSegmentTime(Time.time);
         }
 
         public void UnHideSegement()

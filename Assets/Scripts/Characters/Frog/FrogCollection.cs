@@ -21,7 +21,7 @@ namespace Frogs.Collections {
     {
         [HideInInspector] public List<Frog> Frogs { get; private set; } = new List<Frog>();
         [SerializeField] public Level level;
-        [SerializeField] public PursuitHandler pursuitHandler;
+        [SerializeField] public PursuitController pursuitHandler;
 
         [Header("Player Prefabs")]
         [SerializeField] GameObject player1Prefab, player2Prefab, singlePlayerPrefab;
@@ -62,6 +62,7 @@ namespace Frogs.Collections {
         {
             Frogs.Add(frog);
             IDFrogs.Add(frog.gameObject.GetInstanceID(), frog);
+            frog.events.SubscribeOnDeath(events);
         }
 
         public Frog GetFrogComponent(GameObject obj)

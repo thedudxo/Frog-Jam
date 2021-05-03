@@ -26,11 +26,6 @@ namespace Waves
                     BreakWave();
                 }
             }
-
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                WaveTime.Log();
-            }
         }
 
         public void BreakWave()
@@ -44,7 +39,6 @@ namespace Waves
             BreakPosition = transform.position.x;
             wave.state = breaking;
             Debug.Log("breaking");
-            WaveTime.BreakControllsTime = Time.time;
         }
 
         public void StopBreaking()

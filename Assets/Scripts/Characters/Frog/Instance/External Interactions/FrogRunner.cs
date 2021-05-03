@@ -14,7 +14,7 @@ namespace Frogs
     {
         [SerializeField] public Frog frog;
 
-        PursuitHandler pursuitHandler;
+        PursuitController pursuitHandler;
         public Runner runner;
 
         public bool IsCurrentlyChaseable => frog.state == FrogState.State.Level;
@@ -45,6 +45,8 @@ namespace Frogs
 
             if (wouldResetBehindChaser)
                 EndChase();
+
+            pursuitHandler.Tick();
         }
 
         void EndChase()

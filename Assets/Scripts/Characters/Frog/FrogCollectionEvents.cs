@@ -7,7 +7,7 @@ namespace Frogs.Collections
         void OnAnyFrogDied();
     }
 
-    public class FrogCollectionEvents
+    public class FrogCollectionEvents: INotifyOnDeath
     {
 
         List<INotifyOnAnyFrogDied> onAnyFrogDied = new List<INotifyOnAnyFrogDied>();
@@ -16,6 +16,8 @@ namespace Frogs.Collections
         {
             if (item == null) throw new System.ArgumentNullException(item.ToString());
         }
+
+        public void OnDeath() => NotifyOnAnyFrogDied();
 
         public void NotifyOnAnyFrogDied()
         {
