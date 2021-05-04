@@ -88,9 +88,7 @@ namespace Frogs
                 {
                     SplitEffect previousSplit = splitEffects[i - 1];
 
-                    if (previousSplit.CharacterIsPast)
-                        effect.triggeredThisLife = true;
-                    else
+                    if (previousSplit.CharacterIsPast == false)
                         effect.triggeredThisLife = false;
                 }
             }
