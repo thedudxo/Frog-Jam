@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FrogScripts;
+using Frogs.Collections;
+using Frogs;
 using UnityEngine.UI;
 
-namespace LevelScripts
+namespace Levels
 {
     public class CleanlyJumpableObstacle : MonoBehaviour
     {
         [SerializeField] Level level;
-        FrogCollection frogManager;
+        FrogCollection frogs;
 
         [SerializeField] RememberCollisions[] rememberCollisions;
 
@@ -17,7 +18,7 @@ namespace LevelScripts
 
         private void Awake()
         {
-            frogManager = level.frogManager;
+            frogs = level.frogManager;
             level.cleanJumps.Add(this);
         }
 
@@ -25,7 +26,7 @@ namespace LevelScripts
         {
             templateCleanJumpEffect.SetActive(false);
 
-            foreach (Frog frog in frogManager.Frogs)
+            foreach (Frog frog in frogs.Frogs)
             {
                 foreach (RememberCollisions remember in rememberCollisions)
                 {
@@ -69,7 +70,7 @@ namespace LevelScripts
                 Frog GetFrog()
                 {
                     int collisionID = collision.gameObject.GetInstanceID();
-                    return frogManager.IDFrogs[collisionID];
+                    return frogs.IDFrogs[collisionID];
                 }
             }
         }

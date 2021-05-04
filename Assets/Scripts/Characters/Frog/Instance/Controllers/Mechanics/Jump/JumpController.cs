@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Util.Normalise;
 
-namespace FrogScripts.Jump
+namespace Frogs.Jump
 {
     public class JumpController : MonoBehaviour, INotifyOnAnyRespawn
     {

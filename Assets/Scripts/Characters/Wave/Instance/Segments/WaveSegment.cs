@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace WaveScripts
+namespace Waves
 {
     public class WaveSegment : MonoBehaviour
     {
@@ -21,6 +21,7 @@ namespace WaveScripts
         }
         protected virtual void HideSegment()
         {
+            Debug.Log("hiding");
             animator.SetTrigger("Disappear");
             hidden = true;
         }

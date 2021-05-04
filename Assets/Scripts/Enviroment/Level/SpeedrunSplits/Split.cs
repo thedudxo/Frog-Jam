@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using FrogScripts;
+using Frogs;
 using UnityEngine.Serialization;
 
-namespace LevelScripts
+namespace Levels
 {
     public abstract class Split : MonoBehaviour
     {

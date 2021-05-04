@@ -4,7 +4,7 @@ using UnityEngine;
 using Pursuits;
 using Characters;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class FrogRunner : MonoBehaviour, 
         INotifyOnLeftPlatform, 
@@ -14,7 +14,7 @@ namespace FrogScripts
     {
         [SerializeField] public Frog frog;
 
-        PursuitHandler pursuitHandler;
+        PursuitController pursuitHandler;
         public Runner runner;
 
         public bool IsCurrentlyChaseable => frog.state == FrogState.State.Level;
@@ -37,20 +37,24 @@ namespace FrogScripts
             pursuitHandler = frog.collection.pursuitHandler;
         }
 
+        public void OnEndLevel() => EndChase();
+        public void OnRestart() => EndChase();
+        public void OnLeftPlatform() => StartChase();
         public void OnDeath()
         {
             if (runner == null) return;
             float setbackPos = runner.position - frog.SetbackDistance;
             bool wouldResetBehindChaser = runner.pursuerBehind?.position > setbackPos;
 
-            if (wouldResetBehindChaser)
-                EndChase();
+            pursuitHandler.Tick();
         }
 
         void EndChase()
         {
             if (runner == null) return;
             pursuitHandler.pursuit.Remove(runner);
+            runner = null;
+            Debug.Log("end chase");
         }
 
         void StartChase()
@@ -58,8 +62,6 @@ namespace FrogScripts
             runner = pursuitHandler.AddRunner();
         }
 
-        public void OnEndLevel() => EndChase();
-        public void OnRestart() => EndChase();
-        public void OnLeftPlatform() => StartChase();
+
     }
 }

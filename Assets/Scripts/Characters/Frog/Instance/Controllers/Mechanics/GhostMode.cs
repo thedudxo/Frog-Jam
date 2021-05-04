@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class GhostMode : MonoBehaviour, INotifyOnRestart, INotifyOnLeftPlatform
     {

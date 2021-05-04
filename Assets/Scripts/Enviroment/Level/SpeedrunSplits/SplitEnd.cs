@@ -1,4 +1,4 @@
-﻿namespace LevelScripts
+﻿namespace Levels
 {
     public class SplitEnd : Split
     {

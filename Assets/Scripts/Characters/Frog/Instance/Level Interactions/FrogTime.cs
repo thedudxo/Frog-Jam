@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class FrogTime : MonoBehaviour, INotifyOnRestart
     {

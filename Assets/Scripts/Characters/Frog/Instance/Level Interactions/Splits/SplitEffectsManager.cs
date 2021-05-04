@@ -1,9 +1,9 @@
-using LevelScripts;
+using Levels;
 using System.Collections.Generic;
 using UnityEngine;
 using static ObjectInstanceBuilder;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class SplitEffectsManager : MonoBehaviour, INotifyOnSetback, INotifyOnRestart
     {
@@ -23,8 +23,14 @@ namespace FrogScripts
             get 
             {
                 float time = 0;
-                foreach(SplitEffect effect in splitEffects)
+                foreach (SplitEffect effect in splitEffects)
+                {
                     time += effect.BestTime;
+                    if (time > 10000000)
+                    {
+                        Debug.LogError("That annoying split bug");
+                    }
+                }
                 return time;
             }
             private set { }
@@ -82,9 +88,7 @@ namespace FrogScripts
                 {
                     SplitEffect previousSplit = splitEffects[i - 1];
 
-                    if (previousSplit.CharacterIsPast)
-                        effect.triggeredThisLife = true;
-                    else
+                    if (previousSplit.CharacterIsPast == false)
                         effect.triggeredThisLife = false;
                 }
             }

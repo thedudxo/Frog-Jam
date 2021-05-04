@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using static FrogScripts.Life.DeathConditions;
-using FrogScripts.Vfx;
+using static Frogs.Life.DeathConditions;
+using Frogs.Vfx;
 using System.Collections.Generic;
 
-namespace FrogScripts.Life
+namespace Frogs.Life
 {
     class LifeStateControlls : MonoBehaviour
     {
@@ -50,6 +50,7 @@ namespace FrogScripts.Life
 
             foreach (INotifyOnDeath notify in frog.events.toNotifyOnDeath) notify.OnDeath();
             vfx.DeathEffects();
+            
         }
 
         void ToggleComponents(bool alive)

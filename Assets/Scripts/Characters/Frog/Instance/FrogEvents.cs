@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FrogScripts
+namespace Frogs
 {
     public interface INotifyOnDeath {void OnDeath();}
     public interface INotifyPreDeath { void PreDeath(); }

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Linq;
-using static WaveScripts.Wave.State;
+using static Waves.Wave.State;
 
-namespace WaveScripts
+namespace Waves
 {
     public class WaveBreakControlls : MonoBehaviour
     {
@@ -38,6 +38,7 @@ namespace WaveScripts
 
             BreakPosition = transform.position.x;
             wave.state = breaking;
+            Debug.Log("breaking");
         }
 
         public void StopBreaking()
@@ -48,6 +49,7 @@ namespace WaveScripts
                 return;
             }
             wave.state = inactive;
+            wave.pursuerController.RemovePursuer();
         }
 
     }

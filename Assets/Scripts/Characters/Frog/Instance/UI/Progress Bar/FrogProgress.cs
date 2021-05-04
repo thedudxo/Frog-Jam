@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
-using LevelScripts;
+using Levels;
 using System.Collections.Generic;
 
-namespace FrogScripts.Progress
+namespace Frogs.Progress
 {
     public interface IProgressTracker
     {

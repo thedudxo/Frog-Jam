@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace LevelScripts.UI
+namespace Levels.UI
 {
 
     public class ControllsTextTip : MonoBehaviour

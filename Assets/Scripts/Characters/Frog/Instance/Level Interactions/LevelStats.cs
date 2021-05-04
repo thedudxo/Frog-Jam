@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class LevelStats : MonoBehaviour
     {

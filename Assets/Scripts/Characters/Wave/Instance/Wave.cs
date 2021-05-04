@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using LevelScripts;
+using Levels;
 using Pursuits;
 
-namespace WaveScripts
+namespace Waves
 {
     public class Wave : MonoBehaviour
     {

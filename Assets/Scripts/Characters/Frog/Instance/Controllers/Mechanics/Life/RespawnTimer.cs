@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class RespawnTimer
     {

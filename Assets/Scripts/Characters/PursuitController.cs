@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using Pursuits;
-
-using WaveScripts;
+using Waves;
+using Frogs.Collections;
 
 namespace Characters
 {
-    public class PursuitHandler : MonoBehaviour
+    public class PursuitController : MonoBehaviour
     {
         [SerializeField] WaveCollection waves;
         [SerializeField] FrogCollection frogs;
@@ -13,8 +13,9 @@ namespace Characters
         Wave IncomingWave = null;
         [HideInInspector] public Pursuit pursuit = new Pursuit();
 
-        readonly float tickspeed = 0.5f;
+        readonly float tickspeed = 1f;
         float timeSinceLastTick = 0;
+
 
         public Runner AddRunner()
         {
@@ -26,13 +27,18 @@ namespace Characters
             return pursuit.Add<Runner>();
         }
 
+        public void Tick()
+        {
+            pursuit.Tick();
+            timeSinceLastTick = 0;
+        }
+
         private void Update()
         {
             timeSinceLastTick += Time.deltaTime;
             if (timeSinceLastTick >= tickspeed)
             {
-                pursuit.Tick();
-                timeSinceLastTick = 0;
+                Tick();
             }
 
             if (Input.GetKeyDown(KeyCode.P))

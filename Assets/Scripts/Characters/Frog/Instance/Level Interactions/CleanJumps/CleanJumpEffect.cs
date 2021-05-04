@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
-using LevelScripts;
+using Levels;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class CleanJumpEffect : MonoBehaviour
     {

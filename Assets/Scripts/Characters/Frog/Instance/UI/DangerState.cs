@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Pursuits;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class DangerState : MonoBehaviour
     {

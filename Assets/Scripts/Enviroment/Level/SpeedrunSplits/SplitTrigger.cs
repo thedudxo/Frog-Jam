@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using FrogScripts;
+using Frogs;
 
-namespace LevelScripts
+namespace Levels
 {
     public class SplitTrigger : Split
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 
-namespace FrogScripts
+namespace Frogs
 {
     public class LevelEndScreen : MonoBehaviour
     {
@@ -18,7 +18,8 @@ namespace FrogScripts
             if (splitsSum > 10000000)
             {
                 bugOccured = true;
-                Debug.LogError("That annoying split bug");
+                //Debug.LogError("That annoying split bug");
+                //caught In splitEffectsManager instead
             }
 
             endScreen.SetActive(true);

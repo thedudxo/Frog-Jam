@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FrogScripts.Life
+namespace Frogs.Life
 {
     public class DeathConditions
     {
@@ -79,7 +79,7 @@ namespace FrogScripts.Life
                         isTouchingDeadly = true;
                         break;
 
-                    case WaveScripts.Wave.Tag:
+                    case Waves.Wave.Tag:
                         Statistics.waveDeaths++;
                         isTouchingDeadly = true;
                         causesRestart = true;

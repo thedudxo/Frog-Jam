@@ -1,7 +1,7 @@
-﻿using LevelScripts;
+﻿using Levels;
 using UnityEngine;
 
-namespace FrogScripts {
+namespace Frogs {
     public class FrogLevelControlls : MonoBehaviour
     {
         [SerializeField] Frog frog;

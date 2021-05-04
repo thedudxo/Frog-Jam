@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using static FrogScripts.Life.DeathConditions;
+using static Frogs.Life.DeathConditions;
 
-namespace FrogScripts.Life
+namespace Frogs.Life
 {
     public class LifeController : MonoBehaviour
     {
