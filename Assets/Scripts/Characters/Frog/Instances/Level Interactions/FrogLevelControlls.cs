@@ -14,7 +14,7 @@ namespace Frogs {
 
 
         bool PlayerGotToTheEnd => frog.transform.position.x >= frog.currentLevel.region.end;
-        bool PlayerInputRestart => Input.GetKeyDown(frog.controllers.controlls.suicideKey);
+        bool PlayerInputRestart => Input.GetKeyDown(frog.controllers.input.suicide.key);
 
         bool playingLevel = true;
 

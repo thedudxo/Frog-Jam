@@ -26,6 +26,7 @@ Fixes:
 - Wave sprites were rendering underneath things they should have been on top of
 - Todays catch didn't count deaths in front of the boat
 - Todays catch font size while displaying "Heaps" was too large
+- Respawining without changing which two splits you were between would cause the next split to be marked as passed, without actually having a time. this would, most notably, cause the end screen stats to display a huge number as the sum of splits.
 ____________________
 
 

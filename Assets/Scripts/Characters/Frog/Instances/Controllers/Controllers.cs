@@ -1,10 +1,8 @@
 ﻿using Frogs.Life;
 using Frogs.Vfx;
 using Frogs.Jump;
-using System.Collections.Generic;
+using Frogs.Instances.Inputs;
 using UnityEngine;
-using Levels;
-using static Frogs.FrogState;
 
 namespace Frogs
 {
@@ -14,7 +12,7 @@ namespace Frogs
         [SerializeField] public LifeController life;
         [SerializeField] public new CameraController camera;
         [SerializeField] public JumpController jump;
-        [SerializeField] public Controlls controlls; //should perhaps be in a settings object instead
+        [SerializeField] public FrogInputs input;
         [SerializeField] public FrogCleanJumpManager cleanJumpEffects;
     }
 }

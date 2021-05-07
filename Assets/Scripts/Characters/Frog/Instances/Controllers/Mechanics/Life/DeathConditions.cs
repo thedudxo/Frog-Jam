@@ -7,19 +7,21 @@ namespace Frogs.Life
     public class DeathConditions
     {
         Transform transform;
-        KeyCode suicideKey;
+
         List<GameObject> currentCollisions;
 
         const float deathBellowY = -6.5f;
 
         public enum DeathType { none, setback, restart }
+
         Frog frog;
+        //Controlls controlls;
 
         public DeathConditions(Frog frog, List<GameObject> currentCollisions)
         {
             this.frog = frog;
             transform = frog.transform;
-            suicideKey = frog.controllers.controlls.suicideKey;
+            //controlls = frog.controllers.input;
             this.currentCollisions = currentCollisions;
         }
 
@@ -36,11 +38,18 @@ namespace Frogs.Life
                 return TrySetBack();
             }
 
-            if (Input.GetKeyDown(suicideKey))
+
+            if (Input.GetKeyDown(frog.controllers.input.suicide.key))
             {
+                
                 Statistics.suicideDeaths++;
-                return TrySetBack(); 
+                if (frog.state == FrogState.State.Hidden)
+                {
+                    return DeathType.restart;
+                }
+                else return TrySetBack();
             }
+
 
             bool frogOnStartPlatform = frog.state == FrogState.State.StartPlatform;
             if (frogOnStartPlatform == false)

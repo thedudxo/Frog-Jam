@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using static Frogs.Life.DeathConditions;
+using static Frogs.Life.DeathConditions.DeathType;
 
 namespace Frogs.Life
 {
@@ -18,7 +19,7 @@ namespace Frogs.Life
         }
 
         bool alive = true;
-        DeathType deathType = DeathType.none;
+        DeathType lastDeathType = none;
 
 
         public void Update()
@@ -26,8 +27,8 @@ namespace Frogs.Life
             switch (alive)
             {
                 case true:
-                    deathType = deathConditions.Check();
-                    if (deathType != DeathType.none)
+                    lastDeathType = deathConditions.Check();
+                    if (lastDeathType != none)
                     {
                         stateControlls.Die();
                         alive = false;
@@ -37,7 +38,7 @@ namespace Frogs.Life
                 case false:
                     if (respawnTimer.ShouldRespawnNow())
                     {
-                        stateControlls.Respawn(deathType);
+                        stateControlls.Respawn(lastDeathType);
                         alive = true;
                     }
                     break;
