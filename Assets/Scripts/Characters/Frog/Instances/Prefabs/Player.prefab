@@ -25360,6 +25360,7 @@ GameObject:
   - component: {fileID: 9174729618216640956}
   - component: {fileID: 9174729618216640957}
   - component: {fileID: 3212929134351720206}
+  - component: {fileID: 4421702543203111617}
   m_Layer: 0
   m_Name: Life
   m_TagString: Untagged
@@ -25394,6 +25395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frog: {fileID: 9174729617834607438}
+  deathConditions: {fileID: 4421702543203111617}
   stateControlls: {fileID: 9174729618216640957}
 --- !u!114 &9174729618216640957
 MonoBehaviour:
@@ -25424,6 +25426,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 794476ed5a5676d47bb9c9e854440ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frog: {fileID: 9174729617834607438}
+--- !u!114 &4421702543203111617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174729618216640955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f0bfe7c4f94fd499be369622e51a75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   frog: {fileID: 9174729617834607438}
@@ -26405,7 +26420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -716.4001}
+  m_AnchoredPosition: {x: 0, y: -716.40015}
   m_SizeDelta: {x: 142.47, y: 64.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9174729618567400091
@@ -26906,7 +26921,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9174729618712038164}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.85, z: 0}
+  m_LocalPosition: {x: 0, y: -2.8, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 9174729617350677312}
@@ -26936,7 +26951,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: a252fcee77cf39048889264c8ed5b0de, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!60 &9174729618712038249
 PolygonCollider2D:

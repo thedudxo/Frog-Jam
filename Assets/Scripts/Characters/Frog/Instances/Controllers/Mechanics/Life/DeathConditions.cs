@@ -1,32 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Frogs.Life
 {
-    public class DeathConditions
+    public class DeathConditions : MonoBehaviour
     {
-        Transform transform;
-
-        List<GameObject> currentCollisions;
-
         const float deathBellowY = -6.5f;
 
-        public enum DeathType { none, setback, restart }
+        [SerializeField] Frog frog;
 
-        Frog frog;
-        //Controlls controlls;
-
-        public DeathConditions(Frog frog, List<GameObject> currentCollisions)
-        {
-            this.frog = frog;
-            transform = frog.transform;
-            //controlls = frog.controllers.input;
-            this.currentCollisions = currentCollisions;
-        }
-
-
-        bool BelowMinY => transform.position.y < deathBellowY;
+        bool BelowMinY => frog.transform.position.y < deathBellowY;
 
         public DeathType Check()
         {
@@ -79,7 +61,7 @@ namespace Frogs.Life
             bool isTouchingDeadly = false;
             bool causesRestart = false;
 
-            foreach (GameObject thing in currentCollisions)
+            foreach (GameObject thing in frog.currentCollisions)
             {
                 switch (thing.tag)
                 {

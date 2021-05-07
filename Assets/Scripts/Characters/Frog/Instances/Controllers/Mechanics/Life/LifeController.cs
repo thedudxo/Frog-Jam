@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using static Frogs.Life.DeathConditions;
-using static Frogs.Life.DeathConditions.DeathType;
+using static Frogs.Life.DeathType;
 
 namespace Frogs.Life
 {
@@ -10,13 +9,9 @@ namespace Frogs.Life
         [SerializeField] Frog frog;
 
         public RespawnTimer respawnTimer = new RespawnTimer();
-        DeathConditions deathConditions;
+        [SerializeField] DeathConditions deathConditions;
         [SerializeField] LifeStateControlls stateControlls;
             
-        void Start()
-        {
-            deathConditions = new DeathConditions(frog, frog.currentCollisions);
-        }
 
         bool alive = true;
         DeathType lastDeathType = none;
