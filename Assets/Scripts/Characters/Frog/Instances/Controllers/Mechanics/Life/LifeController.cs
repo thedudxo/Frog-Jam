@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using static Frogs.Life.DeathType;
+using static Frogs.Instances.Death.DeathType;
+using Frogs.Instances.Death;
 
-namespace Frogs.Life
+namespace Frogs.Instances.Life
 {
     public class LifeController : MonoBehaviour
     {

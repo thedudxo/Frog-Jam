@@ -1,7 +1,7 @@
-﻿using Frogs.Life;
-using Frogs.Vfx;
+﻿using Frogs.Vfx;
 using Frogs.Jump;
 using Frogs.Instances.Inputs;
+using Frogs.Instances.Life;
 using UnityEngine;
 
 namespace Frogs

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Frogs.Life
+namespace Frogs.Instances.Death
 {
+
     public class DeathConditions : MonoBehaviour
     {
         const float deathBellowY = -6.5f;

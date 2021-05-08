@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using static Frogs.Life.DeathConditions;
 using Frogs.Vfx;
-using System.Collections.Generic;
+using Frogs.Instances.Death;
 
-namespace Frogs.Life
+namespace Frogs.Instances.Life
 {
     class LifeStateControlls : MonoBehaviour
     {
