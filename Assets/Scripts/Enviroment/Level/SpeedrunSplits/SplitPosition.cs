@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Frogs;
+using Frogs.Instances;
 
 namespace Levels
 {

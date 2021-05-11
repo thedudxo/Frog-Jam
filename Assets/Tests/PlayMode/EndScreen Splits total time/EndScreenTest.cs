@@ -1,4 +1,4 @@
-﻿using Frogs;
+﻿using Frogs.Instances;
 using Levels;
 using NUnit.Framework;
 using System.Collections;
