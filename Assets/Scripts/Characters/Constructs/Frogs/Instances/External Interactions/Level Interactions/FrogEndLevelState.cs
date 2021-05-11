@@ -29,6 +29,7 @@ namespace Frogs.Instances.Deaths
             if (PlayerInputRestart)
             {
                 context.levelEndScreen.Disable();
+                new RestartRespawnMethod(frog, context.componentsToggle).Respawn();
                 context.ChangeState(new FrogAliveState(context));
             }
         }

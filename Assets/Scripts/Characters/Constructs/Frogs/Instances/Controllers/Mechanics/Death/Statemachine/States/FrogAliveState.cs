@@ -21,6 +21,8 @@ namespace Frogs.Instances.Deaths
             restart = new RestartRespawnMethod(frog, context.componentsToggle);
             setback = new SetbackRespawnMethod(frog, restart, context.componentsToggle);
 
+            restart.Respawn();
+
             deathConditions = new DeathConditions
             (
                 new List<IDeathCondition>()

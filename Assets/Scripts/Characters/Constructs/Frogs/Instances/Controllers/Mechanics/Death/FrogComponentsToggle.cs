@@ -9,8 +9,9 @@ namespace Frogs.Instances.Deaths
         Rigidbody2D rb;
         new CameraController camera;
 
-        private void Start()
+        private void Awake()
         {
+            Debug.Log("Ashfikahfkjsa");
             rb = frog.rb;
             camera = frog.controllers.camera;
         }
