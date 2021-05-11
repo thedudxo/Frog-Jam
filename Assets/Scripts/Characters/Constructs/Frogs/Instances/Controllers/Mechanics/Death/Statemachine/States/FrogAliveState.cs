@@ -28,7 +28,8 @@ namespace Frogs.Instances.Deaths
                 new List<IDeathCondition>()
                 {
                     new BelowYDeathCondition(frog.gameObject, -6.5f, setback),
-                    new TouchDeadlyDeathCondition(frog.currentCollisions, restart)
+                    new TouchDeadlyDeathCondition(frog.currentCollisions, restart),
+                    new PressKeyDeathCondition(frog.controllers.input.suicide.key, setback)
                 }
             );
         }
