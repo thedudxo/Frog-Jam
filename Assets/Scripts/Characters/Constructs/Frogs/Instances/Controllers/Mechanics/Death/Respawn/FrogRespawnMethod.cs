@@ -1,5 +1,4 @@
 ﻿using Characters.Instances.Deaths;
-using UnityEngine;
 namespace Frogs.Instances.Deaths
 {
     abstract class FrogRespawnMethod : IRespawnMethod

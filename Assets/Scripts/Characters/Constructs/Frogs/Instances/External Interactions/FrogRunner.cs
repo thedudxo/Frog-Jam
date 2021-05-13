@@ -54,7 +54,6 @@ namespace Frogs.Instances
             if (runner == null) return;
             pursuitHandler.pursuit.Remove(runner);
             runner = null;
-            Debug.Log("end chase");
         }
 
         void StartChase()

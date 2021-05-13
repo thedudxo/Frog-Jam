@@ -30,7 +30,6 @@ namespace Waves
 
         public void RemovePursuer()
         {
-            Debug.Log("remove");
             pursuer = null;
         }
     }

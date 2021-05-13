@@ -38,7 +38,6 @@ namespace Waves
 
             BreakPosition = transform.position.x;
             wave.state = breaking;
-            Debug.Log("breaking");
         }
 
         public void StopBreaking()

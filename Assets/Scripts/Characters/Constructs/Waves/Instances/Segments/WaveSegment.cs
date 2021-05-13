@@ -21,7 +21,6 @@ namespace Waves
         }
         protected virtual void HideSegment()
         {
-            Debug.Log("hiding");
             animator.SetTrigger("Disappear");
             hidden = true;
         }

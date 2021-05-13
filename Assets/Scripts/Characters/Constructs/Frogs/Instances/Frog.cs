@@ -25,6 +25,7 @@ namespace Frogs.Instances
         public FrogEvents events = new FrogEvents();
 
         public float SetbackDistance { get; set; } = 25;
+        public Vector2 spawnpoint;
 
         [Header("Player UI layer")]
         [SerializeField] public string UILayer;
@@ -35,10 +36,13 @@ namespace Frogs.Instances
         private void Awake()
         {
             collection = FrogStartSettings.frogCollection;
-            currentLevel = FrogStartSettings.level;
-
             collection.AddFrog(this);
+
+            currentLevel = FrogStartSettings.level;
+            spawnpoint = new Vector2(currentLevel.region.start, transform.position.y);
+
             splitManager = currentLevel.splitManager;
+            
             stateControlls = new FrogState(this);
         }
 

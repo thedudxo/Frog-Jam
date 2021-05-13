@@ -11,7 +11,6 @@ namespace Frogs.Instances.Deaths
 
         private void Awake()
         {
-            Debug.Log("Ashfikahfkjsa");
             rb = frog.rb;
             camera = frog.controllers.camera;
         }

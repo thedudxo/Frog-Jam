@@ -38,7 +38,6 @@ namespace Frogs.Instances
             if (split is SplitEnd)
             {
                 frog.events.SubscribeOnEndLevel(this);
-                //Debug.Log("subscribed end split");
             }
                 //bit messy but its only 3 lines instead of an entire new class to deal with
                 //these are instansiated dynamicly so creating a new class requires changing the way that happens
@@ -46,7 +45,6 @@ namespace Frogs.Instances
 
         public void OnEndLevel()
         {
-            Debug.Log("<color=green>ON END LEVEL</color>");
             ReachedSplit();
         }
         public void ReachedSplit()
