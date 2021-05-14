@@ -37,7 +37,7 @@ namespace Frogs.Instances.State
 
                 frog.events.SendOnSetback();
 
-                context.ChangeState(new FrogAliveState(context));
+                context.ChangeState(context.alive);
             }
         }
     }

@@ -2,11 +2,12 @@
 
 namespace Characters.Instances.Deaths
 {
-    class BelowYDeathCondition : IDeathCondition
+    public class BelowYDeathCondition : IDeathCondition
     {
         GameObject gameObject;
         float y;
         IRespawnMethod respawnMethod;
+        public bool Enabled { get; set; } = true;
 
         public BelowYDeathCondition(GameObject gameObject, float y, IRespawnMethod respawnMethod)
         {
@@ -17,6 +18,7 @@ namespace Characters.Instances.Deaths
 
         public DeathInformation Check()
         {
+            if (!Enabled) return null;
             if (gameObject.transform.position.y < y)
             {
                 return new DeathInformation(respawnMethod, "Fell in the water");

@@ -9,6 +9,13 @@ namespace Frogs.Instances.State
             
         }
 
+        public override void Respawn()
+        {
+            base.Respawn();
+            context.ChangeState(context.alive);
+            context.alive.ghost.Activate();
+        }
+
         public void PrepareRespawn()
         {
             frog.events.SendBeforeRestart();
@@ -18,8 +25,6 @@ namespace Frogs.Instances.State
             frog.transform.rotation = Quaternion.identity;
 
             frog.events.SendRestart();
-
-            context.ChangeState(new FrogGhostState(context));
         }
     }
 }

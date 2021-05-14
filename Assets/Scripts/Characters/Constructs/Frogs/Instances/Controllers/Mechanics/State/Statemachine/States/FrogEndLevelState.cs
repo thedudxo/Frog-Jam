@@ -6,9 +6,14 @@ namespace Frogs.Instances.State
     {
         bool PlayerInputRestart => Input.GetKeyDown(frog.controllers.input.suicide.key);
 
-        EndLevelRespawnMethod respawnMethod;
+        readonly EndLevelRespawnMethod respawnMethod;
 
         public FrogEndLevelState(FrogStateContext context) : base(context)
+        {
+            respawnMethod = new EndLevelRespawnMethod(context);
+        }
+
+        public void Activate()
         {
             frog.events.SendOnEndLevel();
             context.levelStats.CheckForPBTime();
@@ -18,8 +23,6 @@ namespace Frogs.Instances.State
                 (float)context.levelStats.PbTime,
                 context.splitFX.TotalSplitTime);
 
-
-            respawnMethod = new EndLevelRespawnMethod(context);
             respawnMethod.PrepareRespawn();
         }
 
@@ -29,10 +32,7 @@ namespace Frogs.Instances.State
             {
                 context.levelEndScreen.Disable();
                 respawnMethod.Respawn();
-                context.ChangeState(new FrogAliveState(context));
             }
         }
-
-        public override void ExitState() { }
     }
 }

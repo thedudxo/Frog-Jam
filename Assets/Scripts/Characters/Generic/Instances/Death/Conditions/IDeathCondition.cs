@@ -2,6 +2,7 @@
 {
     public interface IDeathCondition
     {
-         DeathInformation Check();
+        bool Enabled { get; set; }
+        DeathInformation Check();
     }
 }

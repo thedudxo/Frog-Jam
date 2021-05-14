@@ -13,6 +13,5 @@
         }
 
         public abstract void UpdateState();
-        public abstract void ExitState();
     }
 }

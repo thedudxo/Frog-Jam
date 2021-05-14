@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using Characters.Instances.Deaths;
-
+﻿using UnityEngine;
 
 namespace Frogs.Instances.State
 {
@@ -19,14 +16,22 @@ namespace Frogs.Instances.State
 
         public FrogState state { get; private set; }
 
+        public FrogAliveState alive;
+        public FrogDeadState dead;
+        public FrogEndLevelState endLevel;
+
         private void Start()
         {
-            state = new FrogGhostState(this);
+            alive = new FrogAliveState(this);
+            dead = new FrogDeadState(this);
+            endLevel = new FrogEndLevelState(this);
+
+            state = alive;
+            alive.ghost.Activate();
         }
 
         public void ChangeState(FrogState newState)
         {
-            state.ExitState();
             state = newState;
         }
 

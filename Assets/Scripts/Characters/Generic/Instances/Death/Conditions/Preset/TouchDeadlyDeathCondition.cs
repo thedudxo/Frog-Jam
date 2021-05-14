@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace Characters.Instances.Deaths
 {
-    class TouchDeadlyDeathCondition : IDeathCondition
+    public class TouchDeadlyDeathCondition : IDeathCondition
     {
         List<GameObject> currentlyTouching;
         IRespawnMethod respawnMethod;
-
+        public bool Enabled { get; set; } = true;
         public TouchDeadlyDeathCondition(List<GameObject> currentlyTouching, IRespawnMethod respawnMethod)
         {
             this.currentlyTouching = currentlyTouching;
@@ -17,6 +17,8 @@ namespace Characters.Instances.Deaths
 
         public DeathInformation Check()
         {
+            if (!Enabled) return null;
+
             var deadly = from obj in currentlyTouching
                          where obj.tag == Waves.Wave.Tag
                          select obj;

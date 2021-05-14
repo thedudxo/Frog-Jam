@@ -24,7 +24,8 @@ namespace Frogs.Instances.State
 
             frog.events.SendRestart();
 
-            context.ChangeState(new FrogGhostState(context));
+            context.ChangeState(context.alive);
+            context.alive.ghost.Activate();
         }
     }
 }

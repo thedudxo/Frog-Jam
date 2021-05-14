@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Characters.Instances.Deaths;
 
 namespace Frogs.Instances.State
@@ -7,47 +6,37 @@ namespace Frogs.Instances.State
 
     public class FrogAliveState : FrogState
     {
-        DeathConditions deathConditions;
-        SetbackRespawnMethod setback;
-        RestartRespawnMethod restart;
-        SuicideRespawnMethod suicide;
+        FrogDeathConditions conditions;
+
+        public FrogGhost ghost;
 
         public FrogAliveState(FrogStateContext context) : base(context)
         {
-
-            restart = new RestartRespawnMethod(context);
-            setback = new SetbackRespawnMethod(context);
-            suicide = new SuicideRespawnMethod(context);
-
-            deathConditions = new DeathConditions
-            (
-                new List<IDeathCondition>()
-                {
-                    new BelowYDeathCondition(frog.gameObject, -6.5f, setback),
-                    new TouchDeadlyDeathCondition(frog.currentCollisions, restart),
-                    new PressKeyDeathCondition(frog.controllers.input.suicide, suicide)
-                }
-            );
+            conditions = new FrogDeathConditions(context);
+            ghost = new FrogGhost(frog, conditions);
         }
 
         bool PlayerGotToTheEnd => frog.transform.position.x >= frog.currentLevel.region.end;
+
         public override void UpdateState()
         {
             if (PlayerGotToTheEnd)
             {
-                context.ChangeState(new FrogEndLevelState(context));
+                context.ChangeState(context.endLevel);
+                context.endLevel.Activate();
                 return;
             }
 
             DeathInformation death;
-            death = deathConditions.Check();
+            death = conditions.Check();
             if(death != null)
             {
-                context.ChangeState(new FrogDeadState(context, death));
+                context.ChangeState(context.dead);
+                context.dead.Activate(death);
                 return;
             }
-        }
 
-        public override void ExitState() { }
+            ghost.Update();
+        }
     }
 }

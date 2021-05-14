@@ -14,9 +14,11 @@ ____________________
 
 Changes:
 
-- Refactored/optimised code for wave/frog pursuits
 - Moved the lilly pad before flippy birb forward slightly. It was possible to fall through the gap there if you fell in at an angle, which was unintended.
+- Hold down the suicide key to go back to the start of the level
 
+- Refactored/optimised code for wave/frog pursuits
+- Refactored Frog life/death code into a statemachine
 ____________________
 
 

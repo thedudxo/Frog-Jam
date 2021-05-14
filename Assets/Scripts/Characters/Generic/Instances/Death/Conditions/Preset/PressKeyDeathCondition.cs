@@ -2,15 +2,16 @@
 
 namespace Characters.Instances.Deaths
 {
-    interface ISuicideInput
+    public interface ISuicideInput
     {
         bool GetSuicideInput();
     }
 
-    class PressKeyDeathCondition : IDeathCondition
+    public class PressKeyDeathCondition : IDeathCondition
     {
         IRespawnMethod respawnMethod;
         ISuicideInput suicideInput;
+        public bool Enabled { get; set; } = true;
 
         public PressKeyDeathCondition(ISuicideInput suicideInput, IRespawnMethod respawnMethod)
         {
@@ -20,6 +21,7 @@ namespace Characters.Instances.Deaths
 
         public DeathInformation Check()
         {
+            if (!Enabled) return null;
             if (suicideInput.GetSuicideInput())
             {
                 DeathInformation death = new DeathInformation(respawnMethod, "Killed them self");

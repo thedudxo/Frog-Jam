@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using Characters.Instances.Deaths;
 
 namespace Frogs.Instances.State
@@ -12,14 +11,10 @@ namespace Frogs.Instances.State
         float respawnWaitTimer = 0;
 
 
-        public FrogDeadState(FrogStateContext context, DeathInformation deathInformation) : base(context)
+        public FrogDeadState(FrogStateContext context) : base(context)
         {
-            death = deathInformation;
             componentsToggle = context.componentsToggle;
-            Die();
         }
-
-        public override void ExitState() { }
 
         public override void UpdateState()
         {
@@ -37,8 +32,10 @@ namespace Frogs.Instances.State
             death.respawnMethod.Respawn();
         }
 
-        void Die()
+        public void Activate(DeathInformation death)
         {
+            this.death = death;
+
             frog.events.SendBeforeDeath();
 
 
