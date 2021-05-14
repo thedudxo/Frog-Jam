@@ -1,22 +1,15 @@
 ﻿using UnityEngine;
 
-namespace Frogs.Instances.Deaths
+namespace Frogs.Instances.State
 {
-    public class FrogEndLevelState : IDeathState
+    public class FrogEndLevelState : FrogState
     {
-        FrogDeathContext context;
-        Frog frog;
-
         bool PlayerInputRestart => Input.GetKeyDown(frog.controllers.input.suicide.key);
 
         EndLevelRespawnMethod respawnMethod;
 
-        public FrogEndLevelState(FrogDeathContext context)
+        public FrogEndLevelState(FrogStateContext context) : base(context)
         {
-            this.context = context;
-            frog = context.frog;
-
-
             frog.events.SendOnEndLevel();
             context.levelStats.CheckForPBTime();
 
@@ -26,11 +19,11 @@ namespace Frogs.Instances.Deaths
                 context.splitFX.TotalSplitTime);
 
 
-            respawnMethod = new EndLevelRespawnMethod(frog, context.componentsToggle);
+            respawnMethod = new EndLevelRespawnMethod(context);
             respawnMethod.PrepareRespawn();
         }
 
-        public void UpdateState()
+        public override void UpdateState()
         {
             if (PlayerInputRestart)
             {
@@ -39,5 +32,7 @@ namespace Frogs.Instances.Deaths
                 context.ChangeState(new FrogAliveState(context));
             }
         }
+
+        public override void ExitState() { }
     }
 }

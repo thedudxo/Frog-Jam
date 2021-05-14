@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Frogs.Instances.Deaths
+namespace Frogs.Instances.State
 {
     public class FrogComponentsToggle : MonoBehaviour
     {

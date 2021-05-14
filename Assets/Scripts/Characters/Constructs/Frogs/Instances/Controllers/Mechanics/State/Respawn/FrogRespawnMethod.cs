@@ -1,14 +1,18 @@
 ﻿using Characters.Instances.Deaths;
-namespace Frogs.Instances.Deaths
+namespace Frogs.Instances.State
 {
     abstract class FrogRespawnMethod : IRespawnMethod
     {
         protected Frog frog;
-        FrogComponentsToggle components;
-        public FrogRespawnMethod(Frog frog, FrogComponentsToggle components)
+        protected FrogStateContext context;
+        protected FrogComponentsToggle components;
+        public FrogRespawnMethod(FrogStateContext context)
         {
-            this.frog = frog;
-            this.components = components;
+            if (context == null) throw new System.ArgumentNullException("context");
+
+            this.context = context;
+            this.frog = context.frog;
+            this.components = context.componentsToggle;
         }
 
         public abstract int Priority { get; }

@@ -2,28 +2,26 @@
 using UnityEngine;
 using Characters.Instances.Deaths;
 
-namespace Frogs.Instances.Deaths
+namespace Frogs.Instances.State
 {
-    public class FrogDeadState : IDeathState
+    public class FrogDeadState : FrogState
     {
-        readonly FrogDeathContext context;
-        readonly Frog frog;
         readonly FrogComponentsToggle componentsToggle;
         public DeathInformation death;
 
         float respawnWaitTimer = 0;
 
 
-        public FrogDeadState(FrogDeathContext context, DeathInformation deathInformation)
+        public FrogDeadState(FrogStateContext context, DeathInformation deathInformation) : base(context)
         {
-            this.context = context;
-            frog = context.frog;
             death = deathInformation;
             componentsToggle = context.componentsToggle;
             Die();
         }
 
-        public void UpdateState()
+        public override void ExitState() { }
+
+        public override void UpdateState()
         {
             respawnWaitTimer += Time.deltaTime;
 
@@ -37,7 +35,6 @@ namespace Frogs.Instances.Deaths
         void Respawn()
         {
             death.respawnMethod.Respawn();
-            context.ChangeState(new FrogAliveState(context));
         }
 
         void Die()

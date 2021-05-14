@@ -2,24 +2,20 @@
 using UnityEngine;
 using Characters.Instances.Deaths;
 
-namespace Frogs.Instances.Deaths
+namespace Frogs.Instances.State
 {
 
-    public class FrogAliveState : IDeathState
+    public class FrogAliveState : FrogState
     {
-        FrogDeathContext context;
-        Frog frog;
         DeathConditions deathConditions;
         SetbackRespawnMethod setback;
         RestartRespawnMethod restart;
 
-        public FrogAliveState(FrogDeathContext context)
+        public FrogAliveState(FrogStateContext context) : base(context)
         {
-            this.context = context;
-            frog = context.frog;
 
-            restart = new RestartRespawnMethod(frog, context.componentsToggle);
-            setback = new SetbackRespawnMethod(frog, restart, context.componentsToggle);
+            restart = new RestartRespawnMethod(context);
+            setback = new SetbackRespawnMethod(restart, context);
 
             deathConditions = new DeathConditions
             (
@@ -33,7 +29,7 @@ namespace Frogs.Instances.Deaths
         }
 
         bool PlayerGotToTheEnd => frog.transform.position.x >= frog.currentLevel.region.end;
-        public void UpdateState()
+        public override void UpdateState()
         {
             if (PlayerGotToTheEnd)
             {
@@ -49,5 +45,7 @@ namespace Frogs.Instances.Deaths
                 return;
             }
         }
+
+        public override void ExitState() { }
     }
 }

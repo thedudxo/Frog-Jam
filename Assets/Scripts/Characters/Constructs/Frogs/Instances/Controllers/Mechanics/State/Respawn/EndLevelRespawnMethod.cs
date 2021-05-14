@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-namespace Frogs.Instances.Deaths
+namespace Frogs.Instances.State
 {
     class EndLevelRespawnMethod : FrogRespawnMethod
     {
         override public int Priority => -1;
-        public EndLevelRespawnMethod(Frog frog, FrogComponentsToggle components) : base(frog, components)
+        public EndLevelRespawnMethod(FrogStateContext context) : base(context)
         {
             
         }
@@ -18,6 +18,8 @@ namespace Frogs.Instances.Deaths
             frog.transform.rotation = Quaternion.identity;
 
             frog.events.SendRestart();
+
+            context.ChangeState(new FrogGhostState(context));
         }
     }
 }

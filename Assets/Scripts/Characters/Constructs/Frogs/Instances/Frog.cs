@@ -20,7 +20,7 @@ namespace Frogs.Instances
         [SerializeField] public FrogRunner FrogRunner;
 
         public FrogState stateControlls;
-        public State state => stateControlls.state;
+        public FrogState.State state => stateControlls.state;
 
         public FrogEvents events = new FrogEvents();
 

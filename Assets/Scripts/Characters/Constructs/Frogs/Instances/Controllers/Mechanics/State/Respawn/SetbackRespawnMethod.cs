@@ -1,7 +1,7 @@
 ﻿using Characters.Instances.Deaths;
 using UnityEngine;
 
-namespace Frogs.Instances.Deaths
+namespace Frogs.Instances.State
 {
     class SetbackRespawnMethod : FrogRespawnMethod
     {
@@ -11,7 +11,7 @@ namespace Frogs.Instances.Deaths
 
         override public int Priority => 1;
 
-        public SetbackRespawnMethod(Frog frog, RestartRespawnMethod restartRespawnMethod, FrogComponentsToggle componentsToggle) : base(frog, componentsToggle)
+        public SetbackRespawnMethod(RestartRespawnMethod restartRespawnMethod, FrogStateContext context) : base(context)
         {
             this.restartMethod = restartRespawnMethod;
         }

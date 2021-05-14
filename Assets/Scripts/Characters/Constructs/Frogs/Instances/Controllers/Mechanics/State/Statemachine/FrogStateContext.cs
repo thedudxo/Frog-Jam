@@ -3,9 +3,9 @@ using UnityEngine;
 using Characters.Instances.Deaths;
 
 
-namespace Frogs.Instances.Deaths
+namespace Frogs.Instances.State
 {
-    public class FrogDeathContext : MonoBehaviour
+    public class FrogStateContext : MonoBehaviour
     {
         [SerializeField] public Frog frog;
         [SerializeField] public FrogComponentsToggle componentsToggle;
@@ -17,15 +17,16 @@ namespace Frogs.Instances.Deaths
 
         [HideInInspector] public float respawnTime = 1f;
 
-        public IDeathState state;
+        public FrogState state { get; private set; }
 
         private void Start()
         {
-            state = new FrogAliveState(this);
+            state = new FrogGhostState(this);
         }
 
-        public void ChangeState(IDeathState newState)
+        public void ChangeState(FrogState newState)
         {
+            state.ExitState();
             state = newState;
         }
 

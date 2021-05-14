@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Frogs.Instances
+namespace Frogs.Instances.State
 {
-    public class GhostMode : MonoBehaviour, INotifyOnRestart, INotifyOnLeftPlatform
+    public class FrogGhostState : FrogState, INotifyOnLeftPlatform
     {
-        [SerializeField] Frog frog;
-
         bool waitingToExitGhostMode = false;
 
         ContactFilter2D filter = new ContactFilter2D();
@@ -23,19 +20,19 @@ namespace Frogs.Instances
 
         Circle overlapCircle;
 
-        void Start()
+        public FrogGhostState(FrogStateContext context) : base(context)
         {
-            frog.events.SubscribeOnRestart(this);
             frog.events.SubscribeOnLeftPlatform(this);
 
             overlapCircle.radius = frog.collider.bounds.size.magnitude;
 
             filter.layerMask = GM.NoSelfCollisionsLayer;
 
-            EnterGhostMode();
+            frog.gameObject.layer = GM.NoSelfCollisionsLayer;
+            frog.controllers.vfx.GhostVisuals();
         }
 
-        private void Update()
+        public override void UpdateState()
         {
             if (waitingToExitGhostMode)
             {
@@ -43,42 +40,29 @@ namespace Frogs.Instances
             }
         }
 
-        public void OnRestart() => EnterGhostMode();
-        public void OnLeftPlatform() => TryLeaveGhostMode();
-        void EnterGhostMode()
-
-        {
-            frog.gameObject.layer = GM.NoSelfCollisionsLayer;
-            frog.controllers.vfx.GhostVisuals();
-        }
-
-        void LeaveGhostMode()
+        public override void ExitState()
         {
             frog.gameObject.layer = defaultLayer;
             frog.controllers.vfx.UnGhostVisuals();
         }
 
+        public void OnLeftPlatform() => waitingToExitGhostMode = true;
+
+
         void TryLeaveGhostMode()
         {
             var overlapColliders = new List<Collider2D>();
-            FillWithCurrentOverlaps(overlapColliders);
+            GetCurrentOverlaps();
             
-            if (AnyOverlappingFrogs())
+            if (AnyOverlappingFrogs() == false)
             {
-                waitingToExitGhostMode = true;
+                context.ChangeState(new FrogAliveState(context));
             }
 
-            else
-            {
-                waitingToExitGhostMode = false;
-                LeaveGhostMode();
-            }
-
-
-            void FillWithCurrentOverlaps(List<Collider2D> ResultsList)
+            void GetCurrentOverlaps()
             {
                 overlapCircle.centre = frog.collider.bounds.center;
-                Physics2D.OverlapCircle(overlapCircle.centre, overlapCircle.radius, filter, ResultsList);
+                Physics2D.OverlapCircle(overlapCircle.centre, overlapCircle.radius, filter, overlapColliders);
             }
 
             bool AnyOverlappingFrogs()
@@ -96,12 +80,5 @@ namespace Frogs.Instances
                     return false;
             }
         }
-
-        //use this debug to visualise where the collision check is happening
-        //private void OnDrawGizmos()
-        //{
-        //    Gizmos.DrawSphere(frog.collider.bounds.center, overlapCircle.radius);
-        //}
-
     }
 }

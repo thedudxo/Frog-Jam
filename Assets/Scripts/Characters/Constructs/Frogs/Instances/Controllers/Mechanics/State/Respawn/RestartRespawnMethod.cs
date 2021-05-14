@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
-namespace Frogs.Instances.Deaths
+namespace Frogs.Instances.State
 {
     class RestartRespawnMethod : FrogRespawnMethod
     {
         Rigidbody2D rb;
 
-        public RestartRespawnMethod(Frog frog, FrogComponentsToggle componentsToggle) 
-            : base(frog, componentsToggle)
+        public RestartRespawnMethod(FrogStateContext context) : base(context)
         {
             rb = frog.rb;
         }
@@ -24,6 +23,8 @@ namespace Frogs.Instances.Deaths
             frog.transform.rotation = Quaternion.identity;
 
             frog.events.SendRestart();
+
+            context.ChangeState(new FrogGhostState(context));
         }
     }
 }
