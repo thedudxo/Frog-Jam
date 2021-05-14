@@ -6,15 +6,11 @@ namespace Frogs.Instances.State
     class SetbackRespawnMethod : FrogRespawnMethod
     {
         const int respawnHeight = 5;
-        readonly RestartRespawnMethod restartMethod;
         Vector2 Position => frog.transform.position;
 
-        override public int Priority => 1;
+        override public int Priority => 0;
 
-        public SetbackRespawnMethod(RestartRespawnMethod restartRespawnMethod, FrogStateContext context) : base(context)
-        {
-            this.restartMethod = restartRespawnMethod;
-        }
+        public SetbackRespawnMethod(FrogStateContext context) : base(context){}
 
         bool IsOnStartPlatform(float position) 
         {
@@ -31,7 +27,7 @@ namespace Frogs.Instances.State
 
             if (IsOnStartPlatform(setbackPos))
             {
-                restartMethod.Respawn();
+                new RestartRespawnMethod(context).Respawn();
             }
 
             else
@@ -40,6 +36,8 @@ namespace Frogs.Instances.State
                 frog.transform.rotation = Quaternion.identity;
 
                 frog.events.SendOnSetback();
+
+                context.ChangeState(new FrogAliveState(context));
             }
         }
     }

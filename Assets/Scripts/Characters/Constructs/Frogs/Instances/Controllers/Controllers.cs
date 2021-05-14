@@ -16,6 +16,6 @@ namespace Frogs.Instances
         [SerializeField] public FrogInputs input;
         [SerializeField] public FrogCleanJumpManager cleanJumpEffects;
         [SerializeField] new public FrogAudio audio;
-        [SerializeField] public FrogStateContext deathContext;
+        [SerializeField] public FrogStateContext stateContext;
     }
 }

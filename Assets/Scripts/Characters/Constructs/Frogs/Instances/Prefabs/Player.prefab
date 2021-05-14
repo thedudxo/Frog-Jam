@@ -5242,10 +5242,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6325450513500495640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886094c26814a1548a9070caef481b34, type: 3}
+  m_Script: {fileID: 11500000, guid: 23835590a54df1e46910a075b6b5f08d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frog: {fileID: 9174729617834607438}
   key: 113
+  holding: 0
 --- !u!114 &2091108548720415451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17504,7 +17506,7 @@ MonoBehaviour:
   input: {fileID: 2840089621339752209}
   cleanJumpEffects: {fileID: 9098765996569449621}
   audio: {fileID: 1399289886363456598}
-  deathContext: {fileID: 3464756183254776309}
+  stateContext: {fileID: 3464756183254776309}
 --- !u!1 &9174729617246210595
 GameObject:
   m_ObjectHideFlags: 0

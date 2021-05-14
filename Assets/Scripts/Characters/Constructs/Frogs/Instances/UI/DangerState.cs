@@ -21,7 +21,7 @@ namespace Frogs.Instances
 
             if (behind != null)
             {
-                float respawnTime = frog.controllers.deathContext.respawnTime;
+                float respawnTime = frog.controllers.stateContext.respawnTime;
 
                 float pursuerPosAtRespawn = (respawnTime * behind.speed) + behind.position;
                 float RunnerposAtRespawn = frogPursuit.runner.position - frog.SetbackDistance;

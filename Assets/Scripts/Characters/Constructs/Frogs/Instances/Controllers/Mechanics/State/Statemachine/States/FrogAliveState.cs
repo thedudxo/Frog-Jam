@@ -10,12 +10,14 @@ namespace Frogs.Instances.State
         DeathConditions deathConditions;
         SetbackRespawnMethod setback;
         RestartRespawnMethod restart;
+        SuicideRespawnMethod suicide;
 
         public FrogAliveState(FrogStateContext context) : base(context)
         {
 
             restart = new RestartRespawnMethod(context);
-            setback = new SetbackRespawnMethod(restart, context);
+            setback = new SetbackRespawnMethod(context);
+            suicide = new SuicideRespawnMethod(context);
 
             deathConditions = new DeathConditions
             (
@@ -23,7 +25,7 @@ namespace Frogs.Instances.State
                 {
                     new BelowYDeathCondition(frog.gameObject, -6.5f, setback),
                     new TouchDeadlyDeathCondition(frog.currentCollisions, restart),
-                    new PressKeyDeathCondition(frog.controllers.input.suicide.key, setback)
+                    new PressKeyDeathCondition(frog.controllers.input.suicide, suicide)
                 }
             );
         }

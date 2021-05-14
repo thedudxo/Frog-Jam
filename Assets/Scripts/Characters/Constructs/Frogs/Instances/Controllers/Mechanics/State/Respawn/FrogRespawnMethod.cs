@@ -4,7 +4,7 @@ namespace Frogs.Instances.State
     abstract class FrogRespawnMethod : IRespawnMethod
     {
         protected Frog frog;
-        protected FrogStateContext context;
+        public FrogStateContext context { get; private set; }
         protected FrogComponentsToggle components;
         public FrogRespawnMethod(FrogStateContext context)
         {

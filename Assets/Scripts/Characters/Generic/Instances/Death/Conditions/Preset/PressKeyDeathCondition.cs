@@ -2,22 +2,28 @@
 
 namespace Characters.Instances.Deaths
 {
+    interface ISuicideInput
+    {
+        bool GetSuicideInput();
+    }
+
     class PressKeyDeathCondition : IDeathCondition
     {
-        KeyCode key;
         IRespawnMethod respawnMethod;
+        ISuicideInput suicideInput;
 
-        public PressKeyDeathCondition(KeyCode key, IRespawnMethod respawnMethod)
+        public PressKeyDeathCondition(ISuicideInput suicideInput, IRespawnMethod respawnMethod)
         {
-            this.key = key;
             this.respawnMethod = respawnMethod;
+            this.suicideInput = suicideInput;
         }
 
         public DeathInformation Check()
         {
-            if (Input.GetKeyDown(key))
+            if (suicideInput.GetSuicideInput())
             {
-                return new DeathInformation(respawnMethod, "Killed them self");
+                DeathInformation death = new DeathInformation(respawnMethod, "Killed them self");
+                return death;
             }
 
             else return null;
