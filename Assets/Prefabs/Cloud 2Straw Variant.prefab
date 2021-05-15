@@ -45,6 +45,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -69,9 +71,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -1077965110213726988, guid: 4aa857744ac7bf74dbb17301354aa0b7,
+  m_Sprite: {fileID: -5868312757300504888, guid: f36d3344685264641a2ec2eb9e34f69a,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9433962, g: 0.21804914, b: 0.21804914, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -90,18 +92,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8428801160841025990, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}
-      propertyPath: m_Color.r
-      value: 1
+      propertyPath: m_Color.b
+      value: 0.9245283
       objectReference: {fileID: 0}
     - target: {fileID: 8428801160841025990, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.33933768
       objectReference: {fileID: 0}
     - target: {fileID: 8428801160841025990, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}
-      propertyPath: m_Color.b
-      value: 1
+      propertyPath: m_Color.r
+      value: 0.11774653
       objectReference: {fileID: 0}
     - target: {fileID: 8428801160841026009, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}
@@ -114,6 +116,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2669142961033076756, guid: 4aa857744ac7bf74dbb17301354aa0b7,
         type: 3}
+    - target: {fileID: 8428801162286610401, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8428801162286610401, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -131,6 +138,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8428801162286610401, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428801162286610401, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -143,16 +155,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8428801162286610401, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8428801162286610401, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8428801162286610401, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}
@@ -172,7 +174,7 @@ PrefabInstance:
     - target: {fileID: 8428801162286610403, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}
       propertyPath: m_Name
-      value: Cloud 2Straw
+      value: Cloud 2Straw Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 561b98bbcdc0776498b0bc6f4cc9b266, type: 3}

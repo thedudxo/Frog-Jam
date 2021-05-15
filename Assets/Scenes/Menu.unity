@@ -2232,7 +2232,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1473312037}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3049,8 +3049,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 591555381}
   m_HandleRect: {fileID: 591555380}
   m_Direction: 2
-  m_Value: 0.9963994
-  m_Size: 0.14808382
+  m_Value: 0.9963992
+  m_Size: 0.14811717
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3328,13 +3328,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -1077965110213726988, guid: 4aa857744ac7bf74dbb17301354aa0b7,
+  m_Sprite: {fileID: -5868312757300504888, guid: f36d3344685264641a2ec2eb9e34f69a,
     type: 3}
-  m_Color: {r: 0.82213473, g: 0.44753468, b: 0.8396226, a: 1}
+  m_Color: {r: 0.9339623, g: 0.23349057, b: 0.23349057, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.06, y: 4.68}
+  m_Size: {x: 0.95, y: 4.57}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -7038,24 +7038,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8428801160841025990, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}
+      propertyPath: m_Size.x
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428801160841025990, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428801160841025990, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
+        type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1077965110213726988, guid: 4aa857744ac7bf74dbb17301354aa0b7,
+      objectReference: {fileID: -5868312757300504888, guid: f36d3344685264641a2ec2eb9e34f69a,
         type: 3}
     - target: {fileID: 8428801160841025990, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.92357606
       objectReference: {fileID: 0}
     - target: {fileID: 8428801160841025990, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.39489147
       objectReference: {fileID: 0}
     - target: {fileID: 8428801160841025990, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.9622642
       objectReference: {fileID: 0}
     - target: {fileID: 8428801160841026009, guid: 561b98bbcdc0776498b0bc6f4cc9b266,
         type: 3}

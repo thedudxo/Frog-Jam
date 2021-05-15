@@ -45,6 +45,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -69,9 +71,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -490272766788380162, guid: 4aa857744ac7bf74dbb17301354aa0b7,
+  m_Sprite: {fileID: -7214011141539679556, guid: f36d3344685264641a2ec2eb9e34f69a,
     type: 3}
-  m_Color: {r: 0.371501, g: 0.9056604, b: 0.252047, a: 1}
+  m_Color: {r: 0.1477839, g: 0.764151, b: 0.20278604, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -178,6 +180,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -262,6 +266,7 @@ MonoBehaviour:
   speed: {x: 0, y: 0.03, z: 0}
   intensity: {x: 0, y: 0.005, z: 0}
   offset: {x: 0, y: 63, z: 0}
+  offsetRandom: {x: 0, y: 0, z: 0}
   constrainPosition: 0
 --- !u!114 &8428801162286610415
 MonoBehaviour:
@@ -275,5 +280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7813701dc8b70d34eb196c00f5e55300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
   spriteHolder: {fileID: 8428801161303514459}
+  manager: {fileID: 0}
+  state: 0

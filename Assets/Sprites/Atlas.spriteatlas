@@ -42,12 +42,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 639545a186b26cb40b31d5d433e31a30, type: 3}
   - {fileID: 21300000, guid: 990733722b25a9f4babe7a1f1f4ed85e, type: 3}
   - {fileID: 21300000, guid: 09b2f333485070440b6419ee4ec9fb45, type: 3}
+  - {fileID: -5868312757300504888, guid: f36d3344685264641a2ec2eb9e34f69a, type: 3}
+  - {fileID: -7214011141539679556, guid: f36d3344685264641a2ec2eb9e34f69a, type: 3}
   - {fileID: 2669142961033076756, guid: 4aa857744ac7bf74dbb17301354aa0b7, type: 3}
   - {fileID: -3967920315399815954, guid: 4aa857744ac7bf74dbb17301354aa0b7, type: 3}
   - {fileID: -1749161583622989117, guid: 4aa857744ac7bf74dbb17301354aa0b7, type: 3}
   - {fileID: -5240784962635489071, guid: 4aa857744ac7bf74dbb17301354aa0b7, type: 3}
-  - {fileID: -1077965110213726988, guid: 4aa857744ac7bf74dbb17301354aa0b7, type: 3}
-  - {fileID: -490272766788380162, guid: 4aa857744ac7bf74dbb17301354aa0b7, type: 3}
   - {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
   - {fileID: 21300000, guid: 7b3b4535542a7d141876ce56f0abe606, type: 3}
   - {fileID: 21300000, guid: c7529d8545e36074b8609d8688a104f6, type: 3}
@@ -84,12 +84,12 @@ SpriteAtlas:
   - Phill The FrogPAPER
   - Maths
   - ReedsAndRushes
+  - Straw_1
+  - Straw_2
   - Clouds_0
   - Clouds_1
   - Clouds_2
   - Clouds_3
-  - Straw_1
-  - Straw_2
   - Phill The Frog
   - Flag
   - StopSign_stahp
