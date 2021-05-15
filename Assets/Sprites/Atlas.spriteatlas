@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: fa7c1de91f2412c49b7a9d861a7687c2, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 71fa5a104afb93c4abca4fefa54a1689, type: 3}
+  - {fileID: 21300000, guid: f45d64702ae2c9f438a879a367f05d9c, type: 3}
+  - {fileID: 21300000, guid: faff42e0a8e6e80458962fb20d5a3c90, type: 3}
+  - {fileID: 21300000, guid: 639545a186b26cb40b31d5d433e31a30, type: 3}
+  - {fileID: 21300000, guid: 990733722b25a9f4babe7a1f1f4ed85e, type: 3}
+  - {fileID: 21300000, guid: 09b2f333485070440b6419ee4ec9fb45, type: 3}
+  - {fileID: 2669142961033076756, guid: 4aa857744ac7bf74dbb17301354aa0b7, type: 3}
+  - {fileID: -3967920315399815954, guid: 4aa857744ac7bf74dbb17301354aa0b7, type: 3}
+  - {fileID: -1749161583622989117, guid: 4aa857744ac7bf74dbb17301354aa0b7, type: 3}
+  - {fileID: -5240784962635489071, guid: 4aa857744ac7bf74dbb17301354aa0b7, type: 3}
+  - {fileID: -1077965110213726988, guid: 4aa857744ac7bf74dbb17301354aa0b7, type: 3}
+  - {fileID: -490272766788380162, guid: 4aa857744ac7bf74dbb17301354aa0b7, type: 3}
+  - {fileID: 21300000, guid: 6526d08412c17024ea499b05e6b830cc, type: 3}
+  - {fileID: 21300000, guid: 7b3b4535542a7d141876ce56f0abe606, type: 3}
+  - {fileID: 21300000, guid: c7529d8545e36074b8609d8688a104f6, type: 3}
+  - {fileID: -8492855265564123367, guid: 2ea5bc162da73f34e9d12bbd1bba1525, type: 3}
+  - {fileID: 3283728061913803992, guid: 2ea5bc162da73f34e9d12bbd1bba1525, type: 3}
+  - {fileID: 21300000, guid: a766cde60ae9cfd45a420d9f77da01ce, type: 3}
+  - {fileID: 21300000, guid: 82348117bc5db314f9d7c3279086eb28, type: 3}
+  - {fileID: 21300000, guid: fb2ca24746c578947a1f61c6768725ff, type: 3}
+  - {fileID: 21300000, guid: 468207773df39cf49b7dfb28fdc837af, type: 3}
+  - {fileID: 3831615864627105695, guid: 272c43a7c6dc9f249b1c5f425d5a6d78, type: 3}
+  - {fileID: 4707605344582356100, guid: 272c43a7c6dc9f249b1c5f425d5a6d78, type: 3}
+  - {fileID: -2294338854851817144, guid: 07f46d88d9e00d149846353494fed582, type: 3}
+  - {fileID: 2368875588930414890, guid: 07f46d88d9e00d149846353494fed582, type: 3}
+  - {fileID: 21300000, guid: 079570896df78ab449b0b14fd85de4f7, type: 3}
+  - {fileID: 21300000, guid: d3d5d2a98d952914db3788479cfe30f6, type: 3}
+  - {fileID: 21300000, guid: 90b6de4a9a2b1f042a91a04fbbd45e8d, type: 3}
+  - {fileID: 21300000, guid: 90bb5d7ab60201b43a413870d19f69ff, type: 3}
+  - {fileID: 21300000, guid: 4062802bcb4955145884733fbf22bae9, type: 3}
+  - {fileID: 21300000, guid: 62c4252be5f68cf49a529aa6c3c6eaa3, type: 3}
+  - {fileID: 21300000, guid: e53c388bfde8f8a4b8fe64a028acdefa, type: 3}
+  - {fileID: 5398871666063446498, guid: d3d9bfebfb3c7604e83bcfe819abf5fd, type: 3}
+  - {fileID: 21300000, guid: 597bfa0c76839984e98b6d50d564d0f1, type: 3}
+  - {fileID: 21300000, guid: ce12ec8c0d030ab458d89fbab0b89efb, type: 3}
+  - {fileID: 21300000, guid: 6adb050ecdcbcc44cadcbeb1580e8a41, type: 3}
+  - {fileID: 21300000, guid: 1d2f658e51624b2468abffc14b696ffa, type: 3}
+  - {fileID: 21300000, guid: f3949bbe363ba38499a239252b289137, type: 3}
+  - {fileID: 1624501387654268978, guid: 7d4ed70f1d9979c40a75f8fbda8d9b99, type: 3}
+  - {fileID: 632793351390350305, guid: 7d4ed70f1d9979c40a75f8fbda8d9b99, type: 3}
+  - {fileID: 21300000, guid: 9069149f189fd9b4982710591276e8ba, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Flippy Birb PAPER
+  - MetaBloodOuchies
+  - StopSign_NoGo
+  - Phill The FrogPAPER
+  - Maths
+  - ReedsAndRushes
+  - Clouds_0
+  - Clouds_1
+  - Clouds_2
+  - Clouds_3
+  - Straw_1
+  - Straw_2
+  - Phill The Frog
+  - Flag
+  - StopSign_stahp
+  - WavePaper
+  - Wave
+  - Crispy Boat
+  - Pipe PAPER
+  - StopSign_Nope
+  - Assassabs creep
+  - Aligaytor
+  - Aligaytor Paper
+  - Log Paper
+  - Log Image
+  - Pipe
+  - Flippy Birb
+  - CAKE
+  - water
+  - StopSign_StoppyCar
+  - Lilly Pad
+  - GridPaper
+  - Whiteboard
+  - StopSign_Halt
+  - Hand
+  - PIXEL SIZE REFERENCE
+  - PopsicleSoftOutline
+  - Popsicle
+  - Lilly Pad Paper
+  - Lilly Pad
+  - stop Sign
+  m_Tag: Atlas
+  m_IsVariant: 0

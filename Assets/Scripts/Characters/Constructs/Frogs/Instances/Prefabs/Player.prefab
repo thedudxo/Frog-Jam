@@ -26952,7 +26952,6 @@ MonoBehaviour:
   FrogRunner: {fileID: 5845606616408213340}
   spawnpoint: {x: 0, y: 0}
   UILayer: Player1 UI
-  inDanger: 0
   currentCollisions: []
 --- !u!114 &9174729618712038248
 MonoBehaviour:
