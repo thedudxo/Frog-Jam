@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Frogs;
+using Frogs.Instances;
 using UnityEngine.Serialization;
 
 namespace Levels

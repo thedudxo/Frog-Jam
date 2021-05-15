@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Frogs.Collections;
-using Frogs;
+using Frogs.Instances;
 using UnityEngine.UI;
 
 namespace Levels

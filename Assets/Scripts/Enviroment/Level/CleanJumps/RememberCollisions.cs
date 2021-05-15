@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Frogs;
+using Frogs.Instances;
 using System.Linq;
 
 public class RememberCollisions : MonoBehaviour, INotifyOnAnyRespawn
