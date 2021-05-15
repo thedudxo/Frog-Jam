@@ -146,5 +146,12 @@ namespace Frogs.Instances
         {
             toNotifyOnLeftPlatform.Remove(subscriber);
         }
+        public void SendOnLeftPlatform()
+        {
+            foreach (INotifyOnLeftPlatform subscriber in toNotifyOnLeftPlatform)
+            {
+                subscriber.OnLeftPlatform();
+            }
+        }
     }
 }

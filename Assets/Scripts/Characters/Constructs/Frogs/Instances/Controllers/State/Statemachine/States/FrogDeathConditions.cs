@@ -15,9 +15,13 @@ namespace Frogs.Instances.State
         public TouchDeadlyDeathCondition touchDeadly;
         public PressKeyDeathCondition suicideKey;
 
+        Frog frog;
+        FrogStateContext context;
+
         public FrogDeathConditions(FrogStateContext context)
         {
-            Frog frog = context.frog;
+            this.context = context;
+            frog = context.frog;
 
             restart = new RestartRespawnMethod(context);
             setback = new SetbackRespawnMethod(context);
@@ -38,6 +42,16 @@ namespace Frogs.Instances.State
             );
         }
 
-        public DeathInformation Check() => deathConditions.Check();
+        public DeathInformation Check()
+        {
+            DeathInformation info = deathConditions.Check();
+
+            if (info != null && frog.state.inDanger  ) 
+            {
+                info.respawnMethod = new RestartRespawnMethod(context);
+            }
+
+            return info;
+        }
     }
 }

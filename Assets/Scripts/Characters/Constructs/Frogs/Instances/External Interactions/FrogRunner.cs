@@ -17,8 +17,6 @@ namespace Frogs.Instances
         PursuitController pursuitHandler;
         public Runner runner;
 
-        public bool IsCurrentlyChaseable => frog.state == FrogState.State.Level;
-
         private void Update()
         {
             if (runner != null)

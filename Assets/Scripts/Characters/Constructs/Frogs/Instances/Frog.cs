@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Levels;
-using static Frogs.Instances.FrogState;
 using Frogs.Collections;
 
 namespace Frogs.Instances
@@ -19,19 +18,16 @@ namespace Frogs.Instances
         [SerializeField] public Controllers controllers;
         [SerializeField] public FrogRunner FrogRunner;
 
-        public FrogState stateControlls;
-        public FrogState.State state => stateControlls.state;
+        public FrogStateInfo state;
 
         public FrogEvents events = new FrogEvents();
+
 
         public float SetbackDistance { get; set; } = 25;
         public Vector2 spawnpoint;
 
         [Header("Player UI layer")]
         [SerializeField] public string UILayer;
-
-        [HideInInspector] public bool inDanger = false;
-
 
         private void Awake()
         {
@@ -42,13 +38,6 @@ namespace Frogs.Instances
             spawnpoint = new Vector2(currentLevel.region.start, transform.position.y);
 
             splitManager = currentLevel.splitManager;
-            
-            stateControlls = new FrogState(this);
-        }
-
-        private void Update()
-        {
-            stateControlls.CheckLocation();
         }
 
         public void SetObjectUILayer(GameObject obj)

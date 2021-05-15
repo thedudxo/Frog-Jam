@@ -20,14 +20,21 @@ namespace Frogs.Instances.State
         public FrogDeadState dead;
         public FrogEndLevelState endLevel;
 
+        public FrogStateInfo stateInfo;
+
         private void Start()
         {
             alive = new FrogAliveState(this);
             dead = new FrogDeadState(this);
             endLevel = new FrogEndLevelState(this);
 
+            stateInfo = new FrogStateInfo(this);
+            frog.state = stateInfo;
+
             state = alive;
             alive.ghost.Activate();
+
+            
         }
 
         public void ChangeState(FrogState newState)

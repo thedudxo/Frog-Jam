@@ -29,10 +29,10 @@ namespace Frogs.Instances
                 danger = pursuerPosAtRespawn >= RunnerposAtRespawn;
             }
 
-            if (frog.state == FrogState.State.StartPlatform) danger = false;
+            if (frog.state.OnStartPlatform) danger = false;
 
             dangerAnimation.SetBool("Danger", danger);
-            frog.inDanger = danger;
+            frog.state.inDanger = danger;
         }
     }
 }

@@ -18,9 +18,11 @@ namespace Frogs.Instances
 
         void Update()
         {
-            bool frogOnStartPlatform = frog.state == FrogState.State.StartPlatform;
-            if (frogOnStartPlatform == false)
+            if (frog.state.OnStartPlatform == false)
+            {
                 CurrentLevelTime += Time.deltaTime;
+            }
+
             timer.text = CurrentLevelTime.ToString("f1");
         }
 

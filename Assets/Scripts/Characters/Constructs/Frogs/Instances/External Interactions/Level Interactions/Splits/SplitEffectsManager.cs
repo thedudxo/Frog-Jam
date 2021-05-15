@@ -70,8 +70,7 @@ namespace Frogs.Instances
 
         private void Update()
         {
-            bool frogOnStartPlatform = frog.state == FrogState.State.StartPlatform;
-            if (frogOnStartPlatform == false)
+            if (frog.state.OnStartPlatform == false)
                 CurrentSplitTime += Time.deltaTime;
         }
 

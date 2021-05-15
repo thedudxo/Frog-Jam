@@ -3,17 +3,18 @@ using Characters.Instances.Deaths;
 
 namespace Frogs.Instances.State
 {
-
     public class FrogAliveState : FrogState
     {
         FrogDeathConditions conditions;
 
         public FrogGhost ghost;
+        public StartPlatform startPlatform;
 
         public FrogAliveState(FrogStateContext context) : base(context)
         {
             conditions = new FrogDeathConditions(context);
-            ghost = new FrogGhost(frog, conditions);
+            ghost = new FrogGhost(frog);
+            startPlatform = new StartPlatform(frog, conditions);
         }
 
         bool PlayerGotToTheEnd => frog.transform.position.x >= frog.currentLevel.region.end;
@@ -37,6 +38,7 @@ namespace Frogs.Instances.State
             }
 
             ghost.Update();
+            startPlatform.Update();
         }
     }
 }
