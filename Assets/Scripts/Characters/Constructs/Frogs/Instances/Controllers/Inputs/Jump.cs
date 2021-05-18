@@ -10,6 +10,8 @@ namespace Frogs.Instances.Inputs
         [SerializeField] JumpController jumpController;
         float chargeTime = 0;
 
+        int touches = 0;
+
         private void Start()
         {
             frog.events.SubscribeOnAnyRespawn(this);
@@ -18,6 +20,28 @@ namespace Frogs.Instances.Inputs
         private void Update()
         {
 #if UNITY_ANDROID
+
+            foreach(Touch touch in Input.touches)
+            {
+                if(touch.phase == TouchPhase.Began)
+                {
+                    touches++;
+                }
+
+                if(touch.phase == TouchPhase.Ended)
+                {
+                    touches--;
+                    if (touches == 0)
+                    {
+                        ReleasedInput();
+                    }
+                }
+
+                if (touches > 0)
+                {
+                    HoldingInput();
+                }
+            }
 #else
 
             if (Input.GetKey(key))
