@@ -2,7 +2,7 @@
 
 namespace Frogs.Instances.Inputs
 {
-    public class QuitToMenu : MonoBehaviour
+    public class QuitToMenuInput : MonoBehaviour
     {
         [HideInInspector] public KeyCode key = KeyCode.Escape;
 

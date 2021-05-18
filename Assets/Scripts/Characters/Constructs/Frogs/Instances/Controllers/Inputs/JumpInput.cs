@@ -3,7 +3,7 @@ using Frogs.Instances.Jump;
 
 namespace Frogs.Instances.Inputs
 {
-    public class Jump : MonoBehaviour, INotifyOnAnyRespawn
+    public class JumpInput : MonoBehaviour, INotifyOnAnyRespawn
     {
         [SerializeField] Frog frog;
         [SerializeField] public KeyCode key;

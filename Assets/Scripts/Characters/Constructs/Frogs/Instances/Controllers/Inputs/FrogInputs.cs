@@ -2,10 +2,12 @@
 
 namespace Frogs.Instances.Inputs
 {
+
     public class FrogInputs : MonoBehaviour
     {
         [SerializeField] public FrogSuicideInput suicide;
-        [SerializeField] public Jump jump;
-        [SerializeField] public QuitToMenu quitToMenu;
+        [SerializeField] public JumpInput jump;
+        [SerializeField] public QuitToMenuInput quitToMenu;
+        [SerializeField] public FrogLevelRestartInput levelRestart;
     }
 }

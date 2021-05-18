@@ -26,12 +26,17 @@ namespace Frogs.Instances.State
             respawnMethod.PrepareRespawn();
         }
 
+        public void ExitState()
+        {
+            context.levelEndScreen.Disable();
+            respawnMethod.Respawn();
+        }
+
         public override void UpdateState()
         {
             if (PlayerInputRestart)
             {
-                context.levelEndScreen.Disable();
-                respawnMethod.Respawn();
+                ExitState();
             }
         }
     }

@@ -32,7 +32,7 @@ namespace Levels
         private void Awake()
         {
             GM.currentLevel = this;
-            Cursor.visible = false;
+            //Cursor.visible = false;
         }
 
         private void OnDrawGizmos()

@@ -15,12 +15,17 @@ namespace Frogs.Instances.Inputs
         {
             if (Input.GetKey(key))
             {
-                holding = true;
+                //holding = true;
             }
             else
             {
-                holding = false;
+                //holding = false;
             }
+        }
+
+        public void Test()
+        {
+            Debug.Log("got it");
         }
 
         public void OnHold()
