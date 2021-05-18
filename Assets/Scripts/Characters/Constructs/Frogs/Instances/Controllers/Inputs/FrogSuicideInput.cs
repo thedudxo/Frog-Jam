@@ -11,6 +11,7 @@ namespace Frogs.Instances.Inputs
 
         [HideInInspector] public bool holding = false;
 
+        #if UNITY_ANDROID == false
         private void Update()
         {
             if (Input.GetKey(key))
@@ -22,11 +23,7 @@ namespace Frogs.Instances.Inputs
                 //holding = false;
             }
         }
-
-        public void Test()
-        {
-            Debug.Log("got it");
-        }
+        #endif
 
         public void OnHold()
         {
