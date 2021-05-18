@@ -23,6 +23,16 @@ namespace Frogs.Instances.Inputs
             }
         }
 
+        public void OnHold()
+        {
+            holding = true;
+        }
+
+        public void OnRelease()
+        {
+            holding = false;
+        }
+
         public bool GetSuicideInput()
         {
             return holding;
