@@ -73,6 +73,8 @@ namespace Frogs.Instances.Jump
 
         public void AttemptJump()
         {
+            if (frog.controllers.stateContext.state != frog.controllers.stateContext.alive) return;
+
             animations.StartJump(jumpCharge01);
 
             jumpSounds.GetRandomAudioSource().Play();

@@ -7050,7 +7050,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frog: {fileID: 9174729617834607438}
   key: 113
-  holding: 0
 --- !u!114 &2091108548720415451
 MonoBehaviour:
   m_ObjectHideFlags: 0

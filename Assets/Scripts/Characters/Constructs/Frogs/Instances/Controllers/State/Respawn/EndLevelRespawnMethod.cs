@@ -12,6 +12,14 @@ namespace Frogs.Instances.State
         public override void Respawn()
         {
             base.Respawn();
+
+            frog.controllers.vfx.ShowFrogVisuals(true);
+            frog.collider.enabled = true;
+            frog.rb.isKinematic = false;
+            frog.rb.velocity = Vector2.zero;
+            frog.transform.position = frog.spawnpoint;
+            frog.transform.rotation = Quaternion.identity;
+
             context.ChangeState(context.alive);
             context.alive.ghost.Activate();
         }
@@ -22,7 +30,10 @@ namespace Frogs.Instances.State
 
             frog.rb.velocity = Vector2.zero;
             frog.transform.position = frog.spawnpoint;
-            frog.transform.rotation = Quaternion.identity;
+
+            frog.controllers.vfx.ShowFrogVisuals(false);
+            frog.collider.enabled = false;
+            frog.rb.isKinematic = true;
 
             frog.events.SendRestart();
         }

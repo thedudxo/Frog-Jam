@@ -1,6 +1,8 @@
-﻿namespace Frogs.Instances.State
+﻿using Characters.Instances.States;
+
+namespace Frogs.Instances.State
 {
-    public abstract class FrogState
+    public abstract class FrogState : ICharacterState
     {
         protected FrogStateContext context;
         protected Frog frog;

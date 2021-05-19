@@ -10,8 +10,6 @@ namespace Frogs.Instances
         [SerializeField] GameObject endScreen;
         [SerializeField] GameObject restartButton;
 
-        public static bool bugOccured = false;
-
         const string timeFormat = "F3";
 
         private void Start()

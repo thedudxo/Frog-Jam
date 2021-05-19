@@ -18,7 +18,7 @@ namespace Frogs.Instances.State
         Frog frog;
         FrogStateContext context;
 
-        public FrogDeathConditions(FrogStateContext context)
+        public FrogDeathConditions(FrogStateContext context, FrogAliveState alive)
         {
             this.context = context;
             frog = context.frog;
@@ -29,7 +29,7 @@ namespace Frogs.Instances.State
 
             belowY = new BelowYDeathCondition(frog.gameObject, -6.5f, setback);
             touchDeadly = new TouchDeadlyDeathCondition(frog.currentCollisions, restart);
-            suicideKey = new PressKeyDeathCondition(frog.controllers.input.suicide, suicide);
+            suicideKey = new PressKeyDeathCondition(frog.controllers.input.suicide, suicide, alive);
 
             deathConditions = new DeathConditions
             (
