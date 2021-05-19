@@ -15,7 +15,6 @@ namespace Frogs.Instances.State
 
         public void Activate()
         {
-            Debug.Log("active");
             frog.events.SendOnEndLevel();
             context.levelStats.CheckForPBTime();
 
