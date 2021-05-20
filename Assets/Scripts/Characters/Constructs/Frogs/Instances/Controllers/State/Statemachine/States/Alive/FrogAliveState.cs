@@ -12,7 +12,7 @@ namespace Frogs.Instances.State
 
         public FrogAliveState(FrogStateContext context) : base(context)
         {
-            conditions = new FrogDeathConditions(context);
+            conditions = new FrogDeathConditions(context,this);
             ghost = new FrogGhost(frog);
             startPlatform = new StartPlatform(frog, conditions);
         }
@@ -21,6 +21,7 @@ namespace Frogs.Instances.State
 
         public override void UpdateState()
         {
+
             if (PlayerGotToTheEnd)
             {
                 context.ChangeState(context.endLevel);

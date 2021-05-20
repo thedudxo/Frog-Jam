@@ -40,7 +40,7 @@ namespace Frogs.Instances.State
 
 
             Statistics.totalDeaths++;
-            frog.controllers.audio.respawnSound.PlayRandom();
+            frog.controllers.audio.deathSound.PlayRandom();
             componentsToggle.ToggleComponents(false);
 
             frog.events.SendOnDeath();

@@ -11,8 +11,11 @@
         {
             this.frog = frog;
             frog.events.SubscribeOnRestart(this);
+
             startPlatformEndPosition = frog.currentLevel.StartPlatformLength + frog.currentLevel.region.start;
+
             this.deathConditions = deathConditions;
+            deathConditions.touchDeadly.Enabled = false;
         }
 
         public void Update()

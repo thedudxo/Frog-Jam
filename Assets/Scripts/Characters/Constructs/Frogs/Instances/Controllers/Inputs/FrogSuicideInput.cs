@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Characters.Instances.Deaths;
+using Characters.Instances.Inputs;
 using Frogs.Instances.State;
 
 namespace Frogs.Instances.Inputs
@@ -9,23 +9,42 @@ namespace Frogs.Instances.Inputs
         [SerializeField] Frog frog;
         [SerializeField] public KeyCode key = KeyCode.Q;
 
-        [HideInInspector] public bool holding = false;
+        FrogStateContext context;
 
-        private void Update()
+        public InputEvent suicideKeyEvent = new InputEvent();
+
+        private void Start()
         {
-            if (Input.GetKey(key))
-            {
-                holding = true;
-            }
-            else
-            {
-                holding = false;
-            }
+            context = frog.controllers.stateContext;
         }
 
-        public bool GetSuicideInput()
+#if UNITY_ANDROID == false
+        private void Update()
         {
-            return holding;
+            if (Input.GetKeyDown(key)) 
+            {
+                suicideKeyEvent.SetHoldingTrue(context.state);
+            }
+            if (Input.GetKeyUp(key))
+            {
+                suicideKeyEvent.SetHoldingFalse();
+            }
+        }
+        #endif
+
+        public void OnHold()
+        {
+            suicideKeyEvent.SetHoldingTrue(context.state);
+        }
+
+        public void OnRelease()
+        {
+            suicideKeyEvent.SetHoldingFalse();
+        }
+
+        public InputEvent GetSuicideInput()
+        {
+            return suicideKeyEvent;
         }
     }
 }

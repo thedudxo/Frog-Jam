@@ -8,19 +8,23 @@ namespace Frogs.Instances
         [SerializeField] Frog frog;
         [SerializeField] Text timeTaken, pbTimeTaken, splitsSum, restartPrompt;
         [SerializeField] GameObject endScreen;
-
-        public static bool bugOccured = false;
+        [SerializeField] GameObject restartButton;
 
         const string timeFormat = "F3";
 
+        private void Start()
+        {
+#if UNITY_ANDROID
+            restartButton.SetActive(true);
+            restartPrompt.enabled = false;
+#else
+            restartButton.SetActive(false);
+            restartPrompt.enabled = true;
+#endif
+        }
+
         public void Enable(float time, float pbTime, float splitsSum)
         {
-            if (splitsSum > 10000000)
-            {
-                bugOccured = true;
-                //Debug.LogError("That annoying split bug");
-                //caught In splitEffectsManager instead
-            }
 
             endScreen.SetActive(true);
             timeTaken.text = time.ToString(timeFormat);

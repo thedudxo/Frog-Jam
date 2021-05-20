@@ -68,13 +68,6 @@ namespace EndScreen
                     yield return null;
                 }
 
-                if (LevelEndScreen.bugOccured)
-                {
-                    Debug.Log("CAUGHT THE BUG");
-                    bugOccurences++;
-                    Debug.Break();
-                }
-
                 yield return null;
             }
 

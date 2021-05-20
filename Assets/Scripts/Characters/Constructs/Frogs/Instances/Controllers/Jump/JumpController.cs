@@ -6,7 +6,7 @@ using static Util.Normalise;
 
 namespace Frogs.Instances.Jump
 {
-    public class JumpController : MonoBehaviour, INotifyOnAnyRespawn
+    public class JumpController : MonoBehaviour
     {
         [Header("Components")]
         [SerializeField] Frog frog;
@@ -26,7 +26,7 @@ namespace Frogs.Instances.Jump
 
         public KeyCode JumpKey => frog.controllers.input.jump.key;
 
-        float jumpChargeTime = 0;
+
         const float maxJumpCharge = .22f;
               float jumpCharge01 = 0;
         const float minJumpCharge01 = .15f; 
@@ -50,8 +50,6 @@ namespace Frogs.Instances.Jump
         {
             powerBar.minValue = 0;
             powerBar.maxValue = 1;
-
-            frog.events.SubscribeOnAnyRespawn(this);
         }
 
         void Update()
@@ -62,30 +60,26 @@ namespace Frogs.Instances.Jump
 
             animations.SetGrounded(CanJump);
 
-
-            if (Input.GetKey(JumpKey))
-            {
-                jumpChargeTime += Time.deltaTime;
-            }
-
-            if (Input.GetKeyUp(JumpKey)) AttemptJump();
-
-            jumpCharge01 = Normalise01(jumpChargeTime, maxJumpCharge);
+            
 
             animations.Squish(jumpCharge01);
             powerBar.value = jumpCharge01;
         }
 
-        private void AttemptJump()
+        public void SetJumpCharge(float chargeTime)
         {
+            jumpCharge01 = Normalise01(chargeTime, maxJumpCharge);
+        }
+
+        public void AttemptJump()
+        {
+            if (frog.controllers.stateContext.state != frog.controllers.stateContext.alive) return;
+
             animations.StartJump(jumpCharge01);
 
             jumpSounds.GetRandomAudioSource().Play();
 
             if (CanJump) Jump();
-
-            jumpChargeTime = 0;
-
 
             void Jump()
             {
@@ -127,11 +121,6 @@ namespace Frogs.Instances.Jump
         public void OnCollisionEnter2D()
         {
             CollidedSinceLastJump = true;
-        }
-
-        public void OnAnyRespawn()
-        {
-            jumpChargeTime = 0;
         }
     }
 }

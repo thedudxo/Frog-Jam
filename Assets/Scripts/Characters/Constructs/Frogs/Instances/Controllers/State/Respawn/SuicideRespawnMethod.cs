@@ -1,4 +1,5 @@
 ﻿using Frogs.Instances.Inputs;
+using Characters.Instances.Inputs;
 
 namespace Frogs.Instances.State
 {
@@ -14,7 +15,8 @@ namespace Frogs.Instances.State
 
         public override void Respawn()
         {
-            if (input.holding)
+            InputEvent inputEvent = input.GetSuicideInput();
+            if (inputEvent.Holding)
             {
                 new RestartRespawnMethod(context).Respawn();
             }
