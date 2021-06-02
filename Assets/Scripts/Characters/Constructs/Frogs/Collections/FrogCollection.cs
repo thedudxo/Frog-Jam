@@ -1,20 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Characters;
 using Frogs.Instances;
 using Levels;
-using Characters;
+using System.Collections.Generic;
+using UnityEngine;
 using static GM.PlayerMode;
 
 public static class SingletonThatNeedsToBeRemoved
 {
     public static Frog frog;
 }
-namespace Frogs.Collections {
+namespace Frogs.Collections
+{
     public static class FrogStartSettings
     {
         public static Level level;
         public static FrogCollection frogCollection;
+        public static FrogFactory factory;
     }
 
     public class FrogCollection : MonoBehaviour
@@ -22,6 +23,7 @@ namespace Frogs.Collections {
         [HideInInspector] public List<Frog> Frogs { get; private set; } = new List<Frog>();
         [SerializeField] public Level level;
         [SerializeField] public PursuitController pursuitHandler;
+        [SerializeField] FrogFactory factory;
 
         [Header("Player Prefabs")]
         [SerializeField] GameObject player1Prefab, player2Prefab, singlePlayerPrefab;
@@ -32,6 +34,7 @@ namespace Frogs.Collections {
 
         private void Awake()
         {
+
             FrogStartSettings.level = level;
             FrogStartSettings.frogCollection = this;
 

@@ -31,13 +31,7 @@ namespace Frogs.Instances
 
         private void Awake()
         {
-            collection = FrogStartSettings.frogCollection;
-            collection.AddFrog(this);
-
-            currentLevel = FrogStartSettings.level;
-            spawnpoint = new Vector2(currentLevel.region.start, transform.position.y);
-
-            splitManager = currentLevel.splitManager;
+            FrogStartSettings.factory.SetupFrog(this);
         }
 
         public void SetObjectUILayer(GameObject obj)
