@@ -25,6 +25,14 @@ public static class GM {
     public enum PlayerMode {single, SplitScreen};
     public static PlayerMode playerMode = single;
 
+    public enum Platform { PC, Android }
+
+#if UNITY_ANDROID
+    public const Platform platform = Platform.Android;
+#elif UNITY_STANDALONE
+    public const Platform platform = Platform.PC;
+#endif
+
     public static void QuitToMenu()
     {
         SceneManager.LoadScene(0);

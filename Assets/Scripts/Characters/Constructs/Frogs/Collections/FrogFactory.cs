@@ -6,42 +6,59 @@ using Levels;
 
 namespace Frogs.Collections 
 {
-    public class FrogFactory : MonoBehaviour
+    public static class FrogStartSettings
     {
-        [SerializeField] FrogCollection collection;
-        [SerializeField] GameObject frogPrefab;
+        //weird but unity doesn't have a nice way of sending parameters through Instantiate()
+        public static FrogFactory factory;
+        public static VeiwMode veiwMode;
+    }
 
-        public Frog CreateFrog()
+    public class FrogFactory
+    {
+        FrogCollection collection;
+        GameObject frogPrefab;
+
+        Level level;
+
+        public FrogFactory(FrogCollection collection, GameObject frogPrefab)
         {
-            FrogStartSettings.factory = this;
-            Frog frog = Instantiate(frogPrefab, gameObject.transform).GetComponent<Frog>();
-            FrogStartSettings.factory = null;
+            this.collection = collection;
+            this.frogPrefab = frogPrefab;
+            level = collection.level;
+        }
 
-            collection.AddFrog(frog);
+        public Frog CreateFrog(VeiwMode veiwMode)
+        {
+
+            FrogStartSettings.factory = this;
+            FrogStartSettings.veiwMode = veiwMode;
+
+            Frog frog = Object.Instantiate(frogPrefab, collection.transform).GetComponent<Frog>();
+
+            FrogStartSettings.factory = null;
 
             return frog;
         }
 
         public void SetupFrog(Frog f)
         {
-            AddToCollection();
-            constructFrog();
+            AddToCollection(f);
+            AddToLevel(f);
 
+            f.setup.Setup();
+        }
 
+        void AddToCollection(Frog f)
+        {
+            f.collection = collection;
+            collection.AddFrog(f);
+        }
 
-            void AddToCollection()
-            {
-                f.collection = collection;
-                collection.AddFrog(f);
-            }
-
-            void constructFrog()
-            {
-                Level level = FrogStartSettings.level;
-                f.currentLevel = level;
-                f.spawnpoint = new Vector2(level.region.start, transform.position.y);
-                f.splitManager = level.splitManager;
-            }
+        void AddToLevel(Frog f)
+        {
+            f.currentLevel = level;
+            f.spawnpoint = new Vector2(level.region.start, f.transform.position.y);
+            f.splitManager = level.splitManager;
         }
     }
 }

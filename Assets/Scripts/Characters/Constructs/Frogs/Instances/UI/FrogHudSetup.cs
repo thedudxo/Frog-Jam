@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Frogs.Instances.UI
 {
-    class UiPositioner : MonoBehaviour
+    class FrogHudSetup : MonoBehaviour
     {
         [SerializeField] RectTransform mainUIPanel;
         [SerializeField] CanvasScaler scaler;

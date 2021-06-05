@@ -11,19 +11,12 @@ public static class SingletonThatNeedsToBeRemoved
 }
 namespace Frogs.Collections
 {
-    public static class FrogStartSettings
-    {
-        public static Level level;
-        public static FrogCollection frogCollection;
-        public static FrogFactory factory;
-    }
-
     public class FrogCollection : MonoBehaviour
     {
         [HideInInspector] public List<Frog> Frogs { get; private set; } = new List<Frog>();
         [SerializeField] public Level level;
         [SerializeField] public PursuitController pursuitHandler;
-        [SerializeField] FrogFactory factory;
+        FrogFactory factory;
 
         [Header("Player Prefabs")]
         [SerializeField] GameObject player1Prefab, player2Prefab, singlePlayerPrefab;
@@ -34,31 +27,15 @@ namespace Frogs.Collections
 
         private void Awake()
         {
+            factory = new FrogFactory(this, singlePlayerPrefab);
 
-            FrogStartSettings.level = level;
-            FrogStartSettings.frogCollection = this;
-
-            AddFrogsToLevel();
-
-            void AddFrogsToLevel()
+            if(GM.playerMode == SplitScreen)
             {
-                switch (GM.playerMode)
-                {
-                    case (single):
-                        CreateFrog(singlePlayerPrefab);
-                        break;
-
-                    case (SplitScreen):
-                        CreateFrog(player1Prefab);
-                        CreateFrog(player2Prefab);
-                        break;
-                }
-
-                void CreateFrog(GameObject frogPrefab)
-                {
-                    GameObject.Instantiate(frogPrefab, gameObject.transform);
-                }
+                factory.CreateFrog(VeiwMode.SplitTop);
+                factory.CreateFrog(VeiwMode.SplitBottom);
             }
+
+            factory.CreateFrog(VeiwMode.Single);
         }
 
         public void AddFrog(Frog frog)

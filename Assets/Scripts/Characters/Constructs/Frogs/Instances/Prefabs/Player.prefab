@@ -27524,6 +27524,7 @@ GameObject:
   - component: {fileID: 9174729618712038250}
   - component: {fileID: 1248141674805331836}
   - component: {fileID: 8501311290567428493}
+  - component: {fileID: 4237671352343256836}
   m_Layer: 0
   m_Name: Phill the Frog
   m_TagString: Phill
@@ -27627,6 +27628,7 @@ MonoBehaviour:
   splitManager: {fileID: 0}
   collider: {fileID: 9174729618712038249}
   rb: {fileID: 9174729618712038166}
+  setup: {fileID: 4237671352343256836}
   controllers: {fileID: 5447464632957326087}
   FrogRunner: {fileID: 5845606616408213340}
   spawnpoint: {x: 0, y: 0}
@@ -27702,6 +27704,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3893f403b90f004480ae1d2c4c71ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4237671352343256836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174729618712038164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e121bd59b088340a20d27c2b6917c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hud: {fileID: 3923808520967680240}
+  ControllsText: {fileID: 6684417489744459302}
 --- !u!1 &9174729618743871617
 GameObject:
   m_ObjectHideFlags: 0
