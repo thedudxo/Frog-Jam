@@ -657,6 +657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainUIPanel: {fileID: 752730925754173147}
   scaler: {fileID: 8257315516922478889}
+  camera: {fileID: 9174729618743871616}
 --- !u!1 &1678205952865316529
 GameObject:
   m_ObjectHideFlags: 0
@@ -27716,6 +27717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e121bd59b088340a20d27c2b6917c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frog: {fileID: 0}
   Hud: {fileID: 3923808520967680240}
   ControllsText: {fileID: 6684417489744459302}
 --- !u!1 &9174729618743871617

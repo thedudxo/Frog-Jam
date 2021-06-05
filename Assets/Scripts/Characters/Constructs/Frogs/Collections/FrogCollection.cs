@@ -29,13 +29,15 @@ namespace Frogs.Collections
         {
             factory = new FrogFactory(this, singlePlayerPrefab);
 
-            if(GM.playerMode == SplitScreen)
+            if (GM.playerMode == SplitScreen)
             {
-                factory.CreateFrog(VeiwMode.SplitTop);
-                factory.CreateFrog(VeiwMode.SplitBottom);
+                factory.CreateFrog(ViewMode.SplitTop);
+                factory.CreateFrog(ViewMode.SplitBottom);
             }
-
-            factory.CreateFrog(VeiwMode.Single);
+            else
+            {
+                factory.CreateFrog(ViewMode.Single);
+            }
         }
 
         public void AddFrog(Frog frog)

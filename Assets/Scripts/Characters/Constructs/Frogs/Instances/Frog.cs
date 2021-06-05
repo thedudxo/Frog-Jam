@@ -23,7 +23,6 @@ namespace Frogs.Instances
         public FrogStateInfo state;
 
         public FrogEvents events = new FrogEvents();
-        public FrogSettings settings;
 
         public float SetbackDistance { get; set; } = 25;
         public Vector2 spawnpoint;

@@ -10,7 +10,7 @@ namespace Frogs.Collections
     {
         //weird but unity doesn't have a nice way of sending parameters through Instantiate()
         public static FrogFactory factory;
-        public static VeiwMode veiwMode;
+        public static ViewMode veiwMode;
     }
 
     public class FrogFactory
@@ -27,7 +27,7 @@ namespace Frogs.Collections
             level = collection.level;
         }
 
-        public Frog CreateFrog(VeiwMode veiwMode)
+        public Frog CreateFrog(ViewMode veiwMode)
         {
 
             FrogStartSettings.factory = this;
@@ -45,7 +45,7 @@ namespace Frogs.Collections
             AddToCollection(f);
             AddToLevel(f);
 
-            f.setup.Setup();
+            f.setup.Setup(FrogStartSettings.veiwMode);
         }
 
         void AddToCollection(Frog f)
