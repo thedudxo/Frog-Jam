@@ -31,9 +31,10 @@ namespace Frogs.Instances
             pbTimeTaken.text = pbTime.ToString(timeFormat);
             this.splitsSum.text = splitsSum.ToString(timeFormat);
 
-            //this is a really quick fix to make the keys display as a user freindly name
-            string restartText = frog.controllers.input.suicide.key.ToString();
-            if (frog.controllers.input.suicide.key == KeyCode.RightShift) restartText = "shift";
+            //this is a really quick fix to make the key display as a user friendly name
+            KeyCode suicideKey = frog.controllers.input.GetKeybind(Inputs.Action.Suicide);
+            string restartText = suicideKey.ToString();
+            if (suicideKey == KeyCode.RightShift) restartText = "shift";
             restartPrompt.text = $"Press {restartText} to restart";
         }
 

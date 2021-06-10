@@ -6,7 +6,7 @@ using Levels;
 
 namespace Frogs.Collections 
 {
-    public static class FrogStartSettings
+    public static class FrogInstantiateSettings
     {
         //weird but unity doesn't have a nice way of sending parameters through Instantiate()
         public static FrogFactory factory;
@@ -30,28 +30,22 @@ namespace Frogs.Collections
         public Frog CreateFrog(ViewMode veiwMode)
         {
 
-            FrogStartSettings.factory = this;
-            FrogStartSettings.veiwMode = veiwMode;
+            FrogInstantiateSettings.factory = this;
+            FrogInstantiateSettings.veiwMode = veiwMode;
 
             Frog frog = Object.Instantiate(frogPrefab, collection.transform).GetComponent<Frog>();
 
-            FrogStartSettings.factory = null;
+            FrogInstantiateSettings.factory = null;
 
             return frog;
         }
 
         public void SetupFrog(Frog f)
         {
-            AddToCollection(f);
+            collection.Add(f);
             AddToLevel(f);
 
-            f.setup.Setup(FrogStartSettings.veiwMode);
-        }
-
-        void AddToCollection(Frog f)
-        {
-            f.collection = collection;
-            collection.AddFrog(f);
+            f.setup.Setup(FrogInstantiateSettings.veiwMode);
         }
 
         void AddToLevel(Frog f)

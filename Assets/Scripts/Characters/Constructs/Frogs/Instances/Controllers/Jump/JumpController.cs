@@ -24,7 +24,7 @@ namespace Frogs.Instances.Jump
         [Header("Parameters")]
         [SerializeField] Vector2 maxJumpForce = new Vector2(600,500);
 
-        public KeyCode JumpKey => frog.controllers.input.jump.key;
+        public KeyCode JumpKey => frog.controllers.input.GetKeybind(Inputs.Action.Jump);
 
 
         const float maxJumpCharge = .22f;

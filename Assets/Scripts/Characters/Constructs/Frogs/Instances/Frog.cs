@@ -32,7 +32,7 @@ namespace Frogs.Instances
 
         private void Awake()
         {
-            FrogStartSettings.factory.SetupFrog(this);
+            FrogInstantiateSettings.factory.SetupFrog(this);
         }
 
         public void SetObjectUILayer(GameObject obj)

@@ -19,7 +19,7 @@ namespace Frogs.Collections
         FrogFactory factory;
 
         [Header("Player Prefabs")]
-        [SerializeField] GameObject player1Prefab, player2Prefab, singlePlayerPrefab;
+        [SerializeField] GameObject singlePlayerPrefab;
 
 
         public Dictionary<int, Frog> IDFrogs = new Dictionary<int, Frog>();
@@ -40,8 +40,9 @@ namespace Frogs.Collections
             }
         }
 
-        public void AddFrog(Frog frog)
+        public void Add(Frog frog)
         {
+            frog.collection = this;
             Frogs.Add(frog);
             IDFrogs.Add(frog.gameObject.GetInstanceID(), frog);
             frog.events.SubscribeOnDeath(events);

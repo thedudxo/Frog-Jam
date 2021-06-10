@@ -13,12 +13,10 @@ namespace Frogs.Instances
         [SerializeField] Frog frog;
         [SerializeField] FrogHudSetup Hud;
         [SerializeField] ControllsTextSetup ControllsText;
-        // camera
-        // controll method based on splitscreen
 
         public void Setup(ViewMode veiwMode)
         {
-            Debug.Log(FrogStartSettings.veiwMode);
+            Debug.Log(FrogInstantiateSettings.veiwMode);
             Debug.Log(GM.platform);
 
             switch (veiwMode)
@@ -32,6 +30,7 @@ namespace Frogs.Instances
 
                 case ViewMode.SplitBottom:
                     Hud.MoveUiToBottom();
+                    frog.controllers.input.SetPlayer2DefaultControlls();
                     break;
             }
         }

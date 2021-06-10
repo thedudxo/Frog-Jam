@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Levels.UI;
+using Frogs.Instances.Inputs;
 
 namespace Frogs.Instances.UI
 {
@@ -16,7 +17,12 @@ namespace Frogs.Instances.UI
                 (prefab, frog.SetObjectUILayer)
                 [0];
 
-            controllsTextTip.SetControlls(frog.controllers.input.jump.key, frog.controllers.input.suicide.key);
+            FrogInputs input = frog.controllers.input;
+
+            controllsTextTip.SetControlls(
+                input.GetKeybind(Action.Jump),
+                input.GetKeybind(Action.Suicide)
+                );
         }
     }
 }

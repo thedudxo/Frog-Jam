@@ -6,7 +6,6 @@ namespace Frogs.Instances.Inputs
     public class JumpInput : MonoBehaviour, INotifyOnAnyRespawn
     {
         [SerializeField] Frog frog;
-        [SerializeField] public KeyCode key;
         [SerializeField] JumpController jumpController;
         float chargeTime = 0;
 
@@ -43,6 +42,7 @@ namespace Frogs.Instances.Inputs
                 }
             }
 #else
+            KeyCode key = frog.controllers.input.GetKeybind(Action.Jump);
 
             if (Input.GetKey(key))
             {
@@ -73,9 +73,5 @@ namespace Frogs.Instances.Inputs
         {
             chargeTime = 0;
         }
-
-
-
-
     }
 }

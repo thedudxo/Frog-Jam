@@ -7074,7 +7074,7 @@ MonoBehaviour:
   suicide: {fileID: 2673086148144529056}
   jump: {fileID: 2091108548720415451}
   quitToMenu: {fileID: 4113714412844346890}
-  levelRestart: {fileID: 0}
+  levelRestart: {fileID: 1170987192257686386}
 --- !u!114 &2673086148144529056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7088,7 +7088,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frog: {fileID: 9174729617834607438}
-  key: 113
 --- !u!114 &2091108548720415451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7102,7 +7101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frog: {fileID: 9174729617834607438}
-  key: 32
   jumpController: {fileID: 164193441602028764}
 --- !u!114 &4113714412844346890
 MonoBehaviour:
@@ -7116,7 +7114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c028ee33fb203bf4eaeffbf43904e118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: 27
+  input: {fileID: 2840089621339752209}
 --- !u!114 &1170987192257686386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8413,7 +8411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9174729617208895207}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Frog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27692,7 +27690,7 @@ MonoBehaviour:
   suicide: {fileID: 2673086148144529056}
   jump: {fileID: 2091108548720415451}
   quitToMenu: {fileID: 4113714412844346890}
-  levelRestart: {fileID: 0}
+  levelRestart: {fileID: 1170987192257686386}
 --- !u!114 &8501311290567428493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27717,9 +27715,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e121bd59b088340a20d27c2b6917c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frog: {fileID: 0}
+  frog: {fileID: 9174729617834607438}
   Hud: {fileID: 3923808520967680240}
   ControllsText: {fileID: 6684417489744459302}
+  input: {fileID: 1248141674805331836}
 --- !u!1 &9174729618743871617
 GameObject:
   m_ObjectHideFlags: 0
