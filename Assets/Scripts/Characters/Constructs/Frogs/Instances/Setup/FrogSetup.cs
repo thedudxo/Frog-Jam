@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Frogs.Collections;
 using Frogs.Instances.UI;
-using Frogs.Collections;
+using UnityEngine;
 
 namespace Frogs.Instances
 {
@@ -13,6 +11,9 @@ namespace Frogs.Instances
         [SerializeField] Frog frog;
         [SerializeField] FrogHudSetup Hud;
         [SerializeField] ControllsTextSetup ControllsText;
+
+        const string player1UILayer = "Player1 UI";
+        const string player2UILayer = "Player2 UI";
 
         public void Setup(ViewMode veiwMode)
         {
@@ -25,14 +26,34 @@ namespace Frogs.Instances
                     break;
 
                 case ViewMode.SplitTop:
-                    Hud.MoveUiToTop();
+                    SetupPlayer1();
                     break;
 
                 case ViewMode.SplitBottom:
-                    Hud.MoveUiToBottom();
-                    frog.controllers.input.SetPlayer2DefaultControlls();
+                    SetupPlayer2();
                     break;
             }
+        }
+
+        void SetupPlayer1()
+        {
+            Hud.MoveUiToTop();
+            frog.UILayer = player1UILayer;
+            HidePlayerUI(player2UILayer);
+        }
+
+        void SetupPlayer2()
+        {
+            Hud.MoveUiToBottom();
+            frog.controllers.input.SetPlayer2DefaultControlls();
+            frog.UILayer = player2UILayer;
+            HidePlayerUI(player1UILayer);
+        }
+
+        void HidePlayerUI(string layer)
+        {
+            int mask = ~LayerMask.GetMask(layer);
+            frog.controllers.camera.SetLayerMask(mask);
         }
     }
 }

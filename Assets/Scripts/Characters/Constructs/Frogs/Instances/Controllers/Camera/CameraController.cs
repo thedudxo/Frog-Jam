@@ -32,6 +32,8 @@ namespace Frogs.Instances {
             centerOffset = (camTransform.position - targetStart);
         }
 
+        public void SetLayerMask(LayerMask mask) => camera.cullingMask = mask;
+
         private void Update()
         {
             targetPos = target.GetPos();

@@ -27,8 +27,7 @@ namespace Frogs.Instances
         public float SetbackDistance { get; set; } = 25;
         public Vector2 spawnpoint;
 
-        [Header("Player UI layer")]
-        [SerializeField] public string UILayer;
+        [HideInInspector] public string UILayer;
 
         private void Awake()
         {
@@ -37,12 +36,14 @@ namespace Frogs.Instances
 
         public void SetObjectUILayer(GameObject obj)
         {
+            int layer = LayerMask.NameToLayer(UILayer);
 
-            foreach(Transform child in obj.transform) 
-                setLayer(child.gameObject);
-            setLayer(obj);
+            obj.layer = layer;
 
-            void setLayer(GameObject _obj) => _obj.layer = LayerMask.NameToLayer(UILayer);
+            foreach (Transform childObj in obj.transform)
+            {
+                childObj.gameObject.layer = layer;
+            }
         }
 
         #region collisions
