@@ -32,7 +32,6 @@ namespace Frogs.Instances.UI
 
         public void MoveUiToTop()
         {
-            camera.rect = new Rect(0, 0.5f, 1, .5f);
             float offset = (Screen.height / YOffsetRatio);
             mainUIPanel.offsetMax = new Vector2(mainUIPanel.offsetMax.x, offset);
             mainUIPanel.offsetMin = new Vector2(mainUIPanel.offsetMin.x, offset);
@@ -40,7 +39,6 @@ namespace Frogs.Instances.UI
 
         public void MoveUiToBottom()
         {
-            camera.rect = new Rect(0, 0f, 1, .5f);
             float offset = (Screen.height / YOffsetRatio);
             mainUIPanel.offsetMax = new Vector2(mainUIPanel.offsetMax.x, -offset);
             mainUIPanel.offsetMin = new Vector2(mainUIPanel.offsetMin.x, -offset);

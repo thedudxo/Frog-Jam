@@ -26,13 +26,11 @@ namespace Frogs.Instances {
         {
             camTransform = camera.transform;
 
-            target = new CameraTarget(transform);
+            target = new CameraTarget(frog.transform);
             Vector3 targetStart = target.GetPos();
 
             centerOffset = (camTransform.position - targetStart);
         }
-
-        public void SetLayerMask(LayerMask mask) => camera.cullingMask = mask;
 
         private void Update()
         {

@@ -19783,7 +19783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vfx: {fileID: 9174729618712038248}
-  camera: {fileID: 9174729618712038250}
+  camera: {fileID: 4426216400399928226}
   jump: {fileID: 164193441602028764}
   input: {fileID: 2840089621339752209}
   cleanJumpEffects: {fileID: 9098765996569449621}
@@ -27520,7 +27520,6 @@ GameObject:
   - component: {fileID: 9174729618712038249}
   - component: {fileID: 9174729617834607438}
   - component: {fileID: 9174729618712038248}
-  - component: {fileID: 9174729618712038250}
   - component: {fileID: 1248141674805331836}
   - component: {fileID: 8501311290567428493}
   - component: {fileID: 4237671352343256836}
@@ -27661,20 +27660,6 @@ MonoBehaviour:
   - {fileID: 9174729617433187278}
   - {fileID: 9174729617163678947}
   bloodSplatterImage: {fileID: 9174729618297507745}
---- !u!114 &9174729618712038250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9174729618712038164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e47a7152bd13b944b6fb970c27d4bea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 9174729618743871616}
-  frog: {fileID: 9174729617834607438}
 --- !u!114 &1248141674805331836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27718,7 +27703,7 @@ MonoBehaviour:
   frog: {fileID: 9174729617834607438}
   Hud: {fileID: 3923808520967680240}
   ControllsText: {fileID: 6684417489744459302}
-  input: {fileID: 1248141674805331836}
+  cameraSetup: {fileID: 8364850323285774631}
 --- !u!1 &9174729618743871617
 GameObject:
   m_ObjectHideFlags: 0
@@ -27730,6 +27715,8 @@ GameObject:
   - component: {fileID: 9174729618743871621}
   - component: {fileID: 9174729618743871616}
   - component: {fileID: 9174729618743871618}
+  - component: {fileID: 4426216400399928226}
+  - component: {fileID: 8364850323285774631}
   m_Layer: 2
   m_Name: Camera
   m_TagString: MainCamera
@@ -27803,3 +27790,30 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9174729618743871617}
   m_Enabled: 1
+--- !u!114 &4426216400399928226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174729618743871617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e47a7152bd13b944b6fb970c27d4bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 9174729618743871616}
+  frog: {fileID: 9174729617834607438}
+--- !u!114 &8364850323285774631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174729618743871617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5433f7765b3ce1f4c83932ed653b9532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 9174729618743871616}
