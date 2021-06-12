@@ -12,7 +12,7 @@ namespace Frogs.Instances.UI
         [SerializeField] Frog frog;
 
         //idk why this exact number, but it's what works.
-        const float YOffsetRatio = 2.8f;
+        //const float YOffsetRatio = 2.8f;
 
         private void Start()
         {
@@ -38,6 +38,10 @@ namespace Frogs.Instances.UI
 
                 case ViewMode.SplitTop:
                     SetOffset(offset, offset);
+                    if (GM.platform == Android)
+                    {
+                        mainUIPanel.rotation = Quaternion.Euler(0, 0, 180);
+                    }
                     break;
 
                 case ViewMode.SplitBottom:
