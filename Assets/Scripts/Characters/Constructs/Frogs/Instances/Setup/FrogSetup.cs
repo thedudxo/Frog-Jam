@@ -13,12 +13,11 @@ namespace Frogs.Instances
         [SerializeField] ControllsTextSetup ControllsText;
         [SerializeField] Cameras.CameraSetup cameraSetup;
 
-        public void Setup(ViewMode veiwMode)
+        public void Setup(ViewMode viewMode)
         {
-            Debug.Log(veiwMode);
-            Debug.Log(GM.platform);
+            frog.ViewMode = viewMode;
 
-            switch (veiwMode)
+            switch (viewMode)
             {
                 case ViewMode.Single:
                     break;
@@ -32,7 +31,7 @@ namespace Frogs.Instances
                     break;
             }
 
-            cameraSetup.Setup(veiwMode);
+            cameraSetup.Setup(viewMode);
         }
 
         void SetupPlayer1()

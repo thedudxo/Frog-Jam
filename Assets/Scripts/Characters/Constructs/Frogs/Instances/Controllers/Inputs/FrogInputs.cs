@@ -27,7 +27,6 @@ namespace Frogs.Instances.Inputs
 
         public KeyCode GetKeybind(Action action)
         {
-            //Debug.Log(keybinds[action]);
             return keybinds[action];
         }
 

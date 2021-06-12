@@ -32,6 +32,7 @@ namespace Frogs.Instances.Cameras {
 
                 case ViewMode.SplitTop:
                     camera.rect = top;
+                    camera.transform.rotation = Quaternion.Euler(0, 0, 180);
                     ExcludeLayerFromCamera(GM.player2UILayer);
                     break;
 
