@@ -33,7 +33,7 @@ public static class GM {
 #if UNITY_ANDROID
     public static readonly Platform platform = Platform.Android;
 #elif UNITY_STANDALONE
-    public const Platform platform = Platform.PC;
+    public static readonly Platform platform = Platform.PC;
 #endif
 
     public static void QuitToMenu()

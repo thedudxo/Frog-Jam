@@ -46,26 +46,6 @@ namespace Frogs.Instances.UI
             }
         }
 
-
-        /// <summary> main UI panel is normaly half the screen size </summary>
-        //void AdjustUISizeToFillScreen(float scale)
-        //{
-        //    float offset = (Screen.height / 2) / scale;
-        //    SetOffset(offset, -offset);
-        //}
-
-        //public void MoveUiToTop()
-        //{
-        //    float offset = (Screen.height / YOffsetRatio);
-        //    SetOffset(offset, offset);
-        //}
-
-        //public void MoveUiToBottom()
-        //{
-        //    float offset = (Screen.height / YOffsetRatio);
-        //    SetOffset(-offset, -offset);
-        //}
-
         void SetOffset(float topOffset, float bottomOffset)
         {
             mainUIPanel.offsetMax = new Vector2(mainUIPanel.offsetMax.x, topOffset);
