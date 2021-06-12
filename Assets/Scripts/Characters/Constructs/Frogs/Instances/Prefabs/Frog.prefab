@@ -658,6 +658,7 @@ MonoBehaviour:
   mainUIPanel: {fileID: 752730925754173147}
   scaler: {fileID: 8257315516922478889}
   camera: {fileID: 9174729618743871616}
+  frog: {fileID: 9174729617834607438}
 --- !u!1 &1678205952865316529
 GameObject:
   m_ObjectHideFlags: 0
@@ -27631,6 +27632,7 @@ MonoBehaviour:
   FrogRunner: {fileID: 5845606616408213340}
   spawnpoint: {x: 0, y: 0}
   UILayer: Player1 UI
+  ViewMode: 0
   currentCollisions: []
 --- !u!114 &9174729618712038248
 MonoBehaviour:

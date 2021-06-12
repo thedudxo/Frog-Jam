@@ -36,13 +36,13 @@ namespace Frogs.Instances
 
         void SetupPlayer1()
         {
-            Hud.MoveUiToTop();
+            //Hud.MoveUiToTop();
             frog.UILayer = GM.player1UILayer;
         }
 
         void SetupPlayer2()
         {
-            Hud.MoveUiToBottom();
+            //Hud.MoveUiToBottom();
             frog.controllers.input.SetPlayer2DefaultControlls();
             frog.UILayer = GM.player2UILayer;
         }
