@@ -14,7 +14,7 @@ namespace Frogs.Instances.UI
 
             ControllsTextTip controllsTextTip = 
                 ObjectInstanceBuilder.CreateInstances<ControllsTextTip>
-                (prefab, frog.SetObjectUILayer)
+                (prefab, frog.setup.layers.SetObjectUILayer)
                 [0];
 
             FrogInputs input = frog.controllers.input;

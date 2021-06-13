@@ -40,19 +40,19 @@ namespace Frogs.Collections
             return frog;
         }
 
-        public void SetupFrog(Frog f)
+        public void SetupFrog(Frog frog)
         {
-            collection.Add(f);
-            AddToLevel(f);
+            collection.Add(frog);
+            AddToLevel(frog);
 
-            f.setup.Setup(FrogInstantiateSettings.veiwMode);
+            frog.setup.Setup(FrogInstantiateSettings.veiwMode);
         }
 
-        void AddToLevel(Frog f)
+        void AddToLevel(Frog frog)
         {
-            f.currentLevel = level;
-            f.spawnpoint = new Vector2(level.region.start, f.transform.position.y);
-            f.splitManager = level.splitManager;
+            frog.currentLevel = level;
+            frog.spawnpoint = new Vector2(level.region.start, frog.transform.position.y);
+            frog.splitManager = level.splitManager;
         }
     }
 }

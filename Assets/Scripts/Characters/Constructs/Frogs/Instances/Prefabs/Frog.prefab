@@ -555,7 +555,6 @@ GameObject:
   - component: {fileID: 3658140987101731770}
   - component: {fileID: 768994368997801385}
   - component: {fileID: 8257315516922478889}
-  - component: {fileID: 3923808520967680240}
   m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
@@ -643,22 +642,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &3923808520967680240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1457863023341841574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd1201c5837a12143b28fb65358bd0c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainUIPanel: {fileID: 752730925754173147}
-  scaler: {fileID: 8257315516922478889}
-  camera: {fileID: 9174729618743871616}
-  frog: {fileID: 9174729617834607438}
 --- !u!1 &1678205952865316529
 GameObject:
   m_ObjectHideFlags: 0
@@ -6643,6 +6626,116 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5094247178871887476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6977981600056209591}
+  - component: {fileID: 5699375253914329471}
+  - component: {fileID: 8684361742508471997}
+  - component: {fileID: 4149832794406752186}
+  - component: {fileID: 6492817798957309705}
+  - component: {fileID: 6213580971394135442}
+  m_Layer: 0
+  m_Name: Setup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6977981600056209591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094247178871887476}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9174729618712038167}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5699375253914329471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094247178871887476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e121bd59b088340a20d27c2b6917c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frog: {fileID: 9174729617834607438}
+  Hud: {fileID: 4149832794406752186}
+  ControllsText: {fileID: 6492817798957309705}
+  cameraSetup: {fileID: 8684361742508471997}
+  layers: {fileID: 6213580971394135442}
+--- !u!114 &8684361742508471997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094247178871887476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5433f7765b3ce1f4c83932ed653b9532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 9174729618743871616}
+--- !u!114 &4149832794406752186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094247178871887476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1201c5837a12143b28fb65358bd0c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainUIPanel: {fileID: 752730925754173147}
+  scaler: {fileID: 8257315516922478889}
+  camera: {fileID: 9174729618743871616}
+  frog: {fileID: 9174729617834607438}
+--- !u!114 &6492817798957309705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094247178871887476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dfb6c63c6b32ea42bf9377c7f57ac45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frog: {fileID: 9174729617834607438}
+--- !u!114 &6213580971394135442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094247178871887476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66dd36d8566f7984483daef41324c756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SetUILayerList:
+  - {fileID: 9174729618089801079}
+  - {fileID: 9174729617350677313}
+  - {fileID: 9174729618176192748}
 --- !u!1 &5227932630965867949
 GameObject:
   m_ObjectHideFlags: 0
@@ -7139,7 +7232,6 @@ GameObject:
   - component: {fileID: 5529073238860149330}
   - component: {fileID: 702444461349873034}
   - component: {fileID: 9098765996569449621}
-  - component: {fileID: 6684417489744459302}
   m_Layer: 0
   m_Name: PerPlayer Instance Managers
   m_TagString: Untagged
@@ -7186,19 +7278,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e73dd398cec96e447a3575bbbc20195b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frog: {fileID: 9174729617834607438}
---- !u!114 &6684417489744459302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6548359566150269039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dfb6c63c6b32ea42bf9377c7f57ac45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   frog: {fileID: 9174729617834607438}
@@ -27522,7 +27601,6 @@ GameObject:
   - component: {fileID: 9174729618712038248}
   - component: {fileID: 1248141674805331836}
   - component: {fileID: 8501311290567428493}
-  - component: {fileID: 4237671352343256836}
   m_Layer: 0
   m_Name: Phill the Frog
   m_TagString: Phill
@@ -27545,6 +27623,7 @@ Transform:
   - {fileID: 9174729617085815935}
   - {fileID: 9174729617139490405}
   - {fileID: 9174729617210768510}
+  - {fileID: 6977981600056209591}
   m_Father: {fileID: 9174729618208786150}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27626,7 +27705,7 @@ MonoBehaviour:
   splitManager: {fileID: 0}
   collider: {fileID: 9174729618712038249}
   rb: {fileID: 9174729618712038166}
-  setup: {fileID: 4237671352343256836}
+  setup: {fileID: 5699375253914329471}
   controllers: {fileID: 5447464632957326087}
   FrogRunner: {fileID: 5845606616408213340}
   spawnpoint: {x: 0, y: 0}
@@ -27689,22 +27768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3893f403b90f004480ae1d2c4c71ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4237671352343256836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9174729618712038164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06e121bd59b088340a20d27c2b6917c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frog: {fileID: 9174729617834607438}
-  Hud: {fileID: 3923808520967680240}
-  ControllsText: {fileID: 6684417489744459302}
-  cameraSetup: {fileID: 8364850323285774631}
 --- !u!1 &9174729618743871617
 GameObject:
   m_ObjectHideFlags: 0
@@ -27717,7 +27780,6 @@ GameObject:
   - component: {fileID: 9174729618743871616}
   - component: {fileID: 9174729618743871618}
   - component: {fileID: 4426216400399928226}
-  - component: {fileID: 8364850323285774631}
   m_Layer: 2
   m_Name: Camera
   m_TagString: MainCamera
@@ -27805,16 +27867,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 9174729618743871616}
   frog: {fileID: 9174729617834607438}
---- !u!114 &8364850323285774631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9174729618743871617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5433f7765b3ce1f4c83932ed653b9532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 9174729618743871616}

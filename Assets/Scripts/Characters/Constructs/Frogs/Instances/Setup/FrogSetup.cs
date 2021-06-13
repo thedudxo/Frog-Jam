@@ -12,6 +12,7 @@ namespace Frogs.Instances
         [SerializeField] FrogHudSetup Hud;
         [SerializeField] ControllsTextSetup ControllsText;
         [SerializeField] Cameras.CameraSetup cameraSetup;
+        [SerializeField] public FrogLayersSetup layers;
 
         public void Setup(ViewMode viewMode)
         {
@@ -32,17 +33,16 @@ namespace Frogs.Instances
             }
 
             cameraSetup.Setup(viewMode);
+            layers.Setup(viewMode);
         }
 
         void SetupPlayer1()
         {
-            //Hud.MoveUiToTop();
             frog.UILayer = GM.player1UILayer;
         }
 
         void SetupPlayer2()
         {
-            //Hud.MoveUiToBottom();
             frog.controllers.input.SetPlayer2DefaultControlls();
             frog.UILayer = GM.player2UILayer;
         }

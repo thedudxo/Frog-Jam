@@ -38,7 +38,7 @@ namespace Frogs.Instances
                 void InstanceFromTemplates()
                 {
                     effects = ObjectInstanceBuilder.CreateInstances
-                        <CleanJumpEffect>(templates, frog.SetObjectUILayer);
+                        <CleanJumpEffect>(templates, frog.setup.layers.SetObjectUILayer);
                 }
 
                 void CreateDictionary()

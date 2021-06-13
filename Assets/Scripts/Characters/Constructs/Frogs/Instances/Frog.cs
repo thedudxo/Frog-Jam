@@ -34,18 +34,6 @@ namespace Frogs.Instances
             FrogInstantiateSettings.factory.SetupFrog(this);
         }
 
-        public void SetObjectUILayer(GameObject obj)
-        {
-            int layer = LayerMask.NameToLayer(UILayer);
-
-            obj.layer = layer;
-
-            foreach (Transform childObj in obj.transform)
-            {
-                childObj.gameObject.layer = layer;
-            }
-        }
-
         #region collisions
         [HideInInspector] public List<GameObject> currentCollisions = new List<GameObject>();
 
