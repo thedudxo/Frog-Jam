@@ -4,7 +4,8 @@ namespace Frogs.Instances.Inputs
 {
     public class QuitToMenuInput : MonoBehaviour
     {
-        [HideInInspector] public KeyCode key = KeyCode.Escape;
+        [SerializeField] FrogInputs input;
+        KeyCode key => input.GetKeybind(Action.Escape);
 
         void Update()
         {

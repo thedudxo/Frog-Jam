@@ -2,6 +2,7 @@
 using UnityEngine;
 using Levels;
 using Frogs.Collections;
+using Frogs.Instances.Setups;
 
 namespace Frogs.Instances
 {
@@ -15,39 +16,23 @@ namespace Frogs.Instances
         [SerializeField] public new Collider2D collider;
         [SerializeField] public Rigidbody2D rb;
 
+        [SerializeField] public FrogSetup setup;
+
         [SerializeField] public Controllers controllers;
         [SerializeField] public FrogRunner FrogRunner;
 
         public FrogStateInfo state;
-
         public FrogEvents events = new FrogEvents();
-
 
         public float SetbackDistance { get; set; } = 25;
         public Vector2 spawnpoint;
 
-        [Header("Player UI layer")]
-        [SerializeField] public string UILayer;
+        [HideInInspector] public string UILayer;
+        [HideInInspector] public ViewMode ViewMode;
 
         private void Awake()
         {
-            collection = FrogStartSettings.frogCollection;
-            collection.AddFrog(this);
-
-            currentLevel = FrogStartSettings.level;
-            spawnpoint = new Vector2(currentLevel.region.start, transform.position.y);
-
-            splitManager = currentLevel.splitManager;
-        }
-
-        public void SetObjectUILayer(GameObject obj)
-        {
-
-            foreach(Transform child in obj.transform) 
-                setLayer(child.gameObject);
-            setLayer(obj);
-
-            void setLayer(GameObject _obj) => _obj.layer = LayerMask.NameToLayer(UILayer);
+            FrogInstantiateSettings.factory.SetupFrog(this);
         }
 
         #region collisions

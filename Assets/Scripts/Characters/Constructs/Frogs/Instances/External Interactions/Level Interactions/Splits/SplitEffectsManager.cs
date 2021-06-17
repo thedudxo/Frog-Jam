@@ -58,7 +58,7 @@ namespace Frogs.Instances
                 foreach (Split split in splitManager.splits)
                     SplitUITemplates.Add(split.canvasPrototype.gameObject);
 
-                splitEffects = CreateInstances<SplitEffect>(SplitUITemplates, frog.SetObjectUILayer);
+                splitEffects = CreateInstances<SplitEffect>(SplitUITemplates, frog.setup.layers.SetObjectUILayer);
 
                 foreach (SplitEffect effect in splitEffects)
                 {

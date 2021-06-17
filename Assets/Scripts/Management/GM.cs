@@ -16,6 +16,9 @@ public static class GM {
 
     public const int NoSelfCollisionsLayer = 11;
 
+    public const string player1UILayer = "Player1 UI";
+    public const string player2UILayer = "Player2 UI";
+
     [Obsolete("Use relevant variable in frog")]
     public const float respawnSetBack = 25;
 
@@ -24,6 +27,14 @@ public static class GM {
     //Session Settings
     public enum PlayerMode {single, SplitScreen};
     public static PlayerMode playerMode = single;
+
+    public enum Platform { PC, Android }
+
+#if UNITY_ANDROID
+    public static readonly Platform platform = Platform.Android;
+#elif UNITY_STANDALONE
+    public static readonly Platform platform = Platform.PC;
+#endif
 
     public static void QuitToMenu()
     {

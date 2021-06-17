@@ -1,21 +1,53 @@
 ﻿using UnityEngine;
 using Frogs.Instances.Jump;
+using Frogs.Instances.Setups;
 
 namespace Frogs.Instances.Inputs
 {
     public class JumpInput : MonoBehaviour, INotifyOnAnyRespawn
     {
         [SerializeField] Frog frog;
-        [SerializeField] public KeyCode key;
         [SerializeField] JumpController jumpController;
         float chargeTime = 0;
 
         int touches = 0;
 
+        delegate bool TouchCheck(Touch touch);
+        TouchCheck ScreenTouchCheck;
+
         private void Start()
         {
             frog.events.SubscribeOnAnyRespawn(this);
+
+            switch (frog.ViewMode)
+            {
+                case ViewMode.SplitTop:
+                    ScreenTouchCheck = TouchedTopHalf;
+                    break;
+
+                case ViewMode.SplitBottom:
+                    ScreenTouchCheck = TouchedBottomHalf;
+                    break;
+
+                case ViewMode.Single:
+                    ScreenTouchCheck = NoCheck;
+                    break;
+            }
         }
+
+        bool TouchedTopHalf(Touch touch)
+        {
+            return touch.position.y > Screen.height / 2;
+        }
+
+        bool TouchedBottomHalf(Touch touch)
+        {
+            return touch.position.y < Screen.height / 2;
+        }
+
+        bool NoCheck(Touch touch) => true;
+
+
 
         private void Update()
         {
@@ -23,26 +55,30 @@ namespace Frogs.Instances.Inputs
 
             foreach(Touch touch in Input.touches)
             {
-                if(touch.phase == TouchPhase.Began)
-                {
-                    touches++;
-                }
+                if (ScreenTouchCheck(touch)){
 
-                if(touch.phase == TouchPhase.Ended)
-                {
-                    touches--;
-                    if (touches == 0)
+                    if (touch.phase == TouchPhase.Began)
                     {
-                        ReleasedInput();
+                        touches++;
                     }
-                }
 
-                if (touches > 0)
-                {
-                    HoldingInput();
+                    if (touch.phase == TouchPhase.Ended)
+                    {
+                        touches--;
+                        if (touches == 0)
+                        {
+                            ReleasedInput();
+                        }
+                    }
+
+                    if (touches > 0)
+                    {
+                        HoldingInput();
+                    }
                 }
             }
 #else
+            KeyCode key = frog.controllers.input.GetKeybind(Action.Jump);
 
             if (Input.GetKey(key))
             {
@@ -73,9 +109,5 @@ namespace Frogs.Instances.Inputs
         {
             chargeTime = 0;
         }
-
-
-
-
     }
 }

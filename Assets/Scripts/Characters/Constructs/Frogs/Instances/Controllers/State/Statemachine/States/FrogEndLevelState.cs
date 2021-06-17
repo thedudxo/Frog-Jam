@@ -4,7 +4,7 @@ namespace Frogs.Instances.State
 {
     public class FrogEndLevelState : FrogState
     {
-        bool PlayerInputRestart => Input.GetKeyDown(frog.controllers.input.suicide.key);
+        bool PlayerInputRestart => Input.GetKeyDown(frog.controllers.input.GetKeybind(Inputs.Action.Suicide));
 
         readonly EndLevelRespawnMethod respawnMethod;
 

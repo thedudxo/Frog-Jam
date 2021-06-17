@@ -7,7 +7,7 @@ namespace Frogs.Instances.Inputs
     public class FrogSuicideInput : MonoBehaviour, ISuicideInput
     {
         [SerializeField] Frog frog;
-        [SerializeField] public KeyCode key = KeyCode.Q;
+        FrogInputs inputs;
 
         FrogStateContext context;
 
@@ -15,12 +15,15 @@ namespace Frogs.Instances.Inputs
 
         private void Start()
         {
+            inputs = frog.controllers.input;
             context = frog.controllers.stateContext;
         }
 
 #if UNITY_ANDROID == false
         private void Update()
         {
+            KeyCode key = inputs.GetKeybind(Action.Suicide);
+
             if (Input.GetKeyDown(key)) 
             {
                 suicideKeyEvent.SetHoldingTrue(context.state);

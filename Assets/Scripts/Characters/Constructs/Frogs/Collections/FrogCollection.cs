@@ -1,30 +1,26 @@
-﻿using System.Collections;
+﻿using Characters;
+using Frogs.Instances;
+using Frogs.Instances.Setups;
+using Levels;
 using System.Collections.Generic;
 using UnityEngine;
-using Frogs.Instances;
-using Levels;
-using Characters;
 using static GM.PlayerMode;
 
 public static class SingletonThatNeedsToBeRemoved
 {
     public static Frog frog;
 }
-namespace Frogs.Collections {
-    public static class FrogStartSettings
-    {
-        public static Level level;
-        public static FrogCollection frogCollection;
-    }
-
+namespace Frogs.Collections
+{
     public class FrogCollection : MonoBehaviour
     {
         [HideInInspector] public List<Frog> Frogs { get; private set; } = new List<Frog>();
         [SerializeField] public Level level;
         [SerializeField] public PursuitController pursuitHandler;
+        FrogFactory factory;
 
         [Header("Player Prefabs")]
-        [SerializeField] GameObject player1Prefab, player2Prefab, singlePlayerPrefab;
+        [SerializeField] GameObject singlePlayerPrefab;
 
 
         public Dictionary<int, Frog> IDFrogs = new Dictionary<int, Frog>();
@@ -32,34 +28,22 @@ namespace Frogs.Collections {
 
         private void Awake()
         {
-            FrogStartSettings.level = level;
-            FrogStartSettings.frogCollection = this;
+            factory = new FrogFactory(this, singlePlayerPrefab);
 
-            AddFrogsToLevel();
-
-            void AddFrogsToLevel()
+            if (GM.playerMode == SplitScreen)
             {
-                switch (GM.playerMode)
-                {
-                    case (single):
-                        CreateFrog(singlePlayerPrefab);
-                        break;
-
-                    case (SplitScreen):
-                        CreateFrog(player1Prefab);
-                        CreateFrog(player2Prefab);
-                        break;
-                }
-
-                void CreateFrog(GameObject frogPrefab)
-                {
-                    GameObject.Instantiate(frogPrefab, gameObject.transform);
-                }
+                factory.CreateFrog(ViewMode.SplitTop);
+                factory.CreateFrog(ViewMode.SplitBottom);
+            }
+            else
+            {
+                factory.CreateFrog(ViewMode.Single);
             }
         }
 
-        public void AddFrog(Frog frog)
+        public void Add(Frog frog)
         {
+            frog.collection = this;
             Frogs.Add(frog);
             IDFrogs.Add(frog.gameObject.GetInstanceID(), frog);
             frog.events.SubscribeOnDeath(events);
