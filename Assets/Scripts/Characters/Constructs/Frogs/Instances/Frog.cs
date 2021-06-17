@@ -2,6 +2,7 @@
 using UnityEngine;
 using Levels;
 using Frogs.Collections;
+using Frogs.Instances.Setups;
 
 namespace Frogs.Instances
 {

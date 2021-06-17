@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GM.Platform;
 
-namespace Frogs.Instances.Cameras {
+namespace Frogs.Instances.Setups {
     public class CameraSetup : MonoBehaviour
     {
         [SerializeField] new Camera camera;

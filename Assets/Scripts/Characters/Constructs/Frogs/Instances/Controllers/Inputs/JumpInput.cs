@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Frogs.Instances.Jump;
+using Frogs.Instances.Setups;
 
 namespace Frogs.Instances.Inputs
 {

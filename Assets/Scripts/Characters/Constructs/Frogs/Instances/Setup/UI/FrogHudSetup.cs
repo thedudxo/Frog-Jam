@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using static GM.Platform;
 
-namespace Frogs.Instances.UI
+namespace Frogs.Instances.Setups
 {
     class FrogHudSetup : MonoBehaviour
     {

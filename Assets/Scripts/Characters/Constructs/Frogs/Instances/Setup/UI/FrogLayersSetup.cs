@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Frogs.Instances.UI
+namespace Frogs.Instances.Setups
 {
     public class FrogLayersSetup : MonoBehaviour
     {

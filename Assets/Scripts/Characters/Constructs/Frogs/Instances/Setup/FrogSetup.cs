@@ -1,8 +1,7 @@
 ﻿using Frogs.Collections;
-using Frogs.Instances.UI;
 using UnityEngine;
 
-namespace Frogs.Instances
+namespace Frogs.Instances.Setups
 {
     public enum ViewMode { Single, SplitTop, SplitBottom }
 
@@ -11,7 +10,7 @@ namespace Frogs.Instances
         [SerializeField] Frog frog;
         [SerializeField] FrogHudSetup Hud;
         [SerializeField] ControllsTextSetup ControllsText;
-        [SerializeField] Cameras.CameraSetup cameraSetup;
+        [SerializeField] CameraSetup cameraSetup;
         [SerializeField] public FrogLayersSetup layers;
 
         public void Setup(ViewMode viewMode)

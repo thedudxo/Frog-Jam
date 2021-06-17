@@ -1,5 +1,6 @@
 ﻿using Characters;
 using Frogs.Instances;
+using Frogs.Instances.Setups;
 using Levels;
 using System.Collections.Generic;
 using UnityEngine;
