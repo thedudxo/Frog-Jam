@@ -44,10 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 0}
-  waveMediator: {fileID: 0}
-  player1Prefab: {fileID: 443601915923904465, guid: e1ce6bf29dd167046995228830b8e77b,
-    type: 3}
-  player2Prefab: {fileID: 7074319548199120391, guid: ba5e897114e46934682a35e319227241,
-    type: 3}
+  pursuitHandler: {fileID: 0}
   singlePlayerPrefab: {fileID: 9174729616915684811, guid: ee73907a125ab89439fd3950bf2b10ce,
     type: 3}
