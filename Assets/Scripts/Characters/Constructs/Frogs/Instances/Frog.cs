@@ -27,7 +27,6 @@ namespace Frogs.Instances
         public float SetbackDistance { get; set; } = 25;
         public Vector2 spawnpoint;
 
-        [HideInInspector] public string UILayer;
         [HideInInspector] public ViewMode ViewMode;
 
         private void Awake()

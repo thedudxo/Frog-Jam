@@ -11,9 +11,6 @@ namespace Frogs.Instances.Setups
         [SerializeField] new Camera camera;
         [SerializeField] Frog frog;
 
-        //idk why this exact number, but it's what works.
-        //const float YOffsetRatio = 2.8f;
-
         private void Start()
         {
             float scale = 1;

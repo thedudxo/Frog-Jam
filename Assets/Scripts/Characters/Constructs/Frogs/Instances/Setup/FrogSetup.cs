@@ -1,49 +1,43 @@
-﻿using Frogs.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace Frogs.Instances.Setups
 {
-    public enum ViewMode { Single, SplitTop, SplitBottom }
-
     public class FrogSetup : MonoBehaviour
     {
         [SerializeField] Frog frog;
         [SerializeField] FrogHudSetup Hud;
-        [SerializeField] ControllsTextSetup ControllsText;
         [SerializeField] CameraSetup cameraSetup;
         [SerializeField] public FrogLayersSetup layers;
+
+        KeybindsSetup keybindsSetup;
+        TutorialTextSetup tutorialTextSetup;
+
+        List<ISetup> setupModules;
 
         public void Setup(ViewMode viewMode)
         {
             frog.ViewMode = viewMode;
+            var conditions = new Conditions { ViewMode = viewMode, Platform = GM.platform };
 
-            switch (viewMode)
-            {
-                case ViewMode.Single:
-                    break;
 
-                case ViewMode.SplitTop:
-                    SetupPlayer1();
-                    break;
-
-                case ViewMode.SplitBottom:
-                    SetupPlayer2();
-                    break;
-            }
+            CreateSetupModules();
 
             cameraSetup.Setup(viewMode);
             layers.Setup(viewMode);
+            
+            foreach(ISetup module in setupModules)
+            {
+                module.Setup(conditions);
+            }
         }
 
-        void SetupPlayer1()
+        void CreateSetupModules()
         {
-            frog.UILayer = GM.player1UILayer;
-        }
-
-        void SetupPlayer2()
-        {
-            frog.controllers.input.SetPlayer2DefaultControlls();
-            frog.UILayer = GM.player2UILayer;
+            setupModules = new List<ISetup>()
+            {
+                new KeybindsSetup(frog)
+            };
         }
     }
 }

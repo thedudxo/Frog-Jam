@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Levels.UI
 {
-    public class ControllsTextTip : MonoBehaviour
+    public class TutorialText : MonoBehaviour
     {
         [SerializeField] Text jumpKeyTipText;
         [SerializeField] Text suicideKeyTipText;
