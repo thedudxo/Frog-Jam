@@ -48,7 +48,7 @@ namespace Levels
             RandomiseSpeed();
         }
 
-        void FixedUpdate() => transform.position = new Vector2(transform.position.x + speed, transform.position.y);
+        void FixedUpdate() => transform.position = new Vector3(transform.position.x + speed, transform.position.y,transform.position.z);
 
         private void Update()
         {
@@ -66,7 +66,7 @@ namespace Levels
 
                     else if (LeftRegion)
                     {
-                        transform.position = new Vector2(manager.region.end, transform.position.y);
+                        transform.position = new Vector3(manager.region.end, transform.position.y, transform.position.z);
                     }
 
                     break;
@@ -91,7 +91,7 @@ namespace Levels
             RandomiseSpawnPos();
             RandomiseSpeed();
 
-            transform.position = new Vector2(spawnPos, transform.position.y);
+            transform.position = new Vector3(spawnPos, transform.position.y, transform.position.z);
 
             animatior.SetTrigger("PopUp");
         }
