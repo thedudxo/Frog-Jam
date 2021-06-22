@@ -17,9 +17,9 @@ namespace Frogs.Instances {
 
         const float Acceleration = 4f;
 
-        const float maxY = -1.85f;
+        const float maxY = -1f;
 
-        const float chaserOffsetWeight = 4;
+        const float chaserOffsetWeight = 5;
         const float chaserMinDist = 20;
 
         internal Camera GetCamera()
