@@ -23,10 +23,10 @@ public static class ObjectInstanceBuilder
         }
         return components;
     }
-    public static List<TComponent> CreateInstances<TComponent>(List<GameObject> Templates, ExtndGameObjSetup extendSetup)
-        where TComponent : MonoBehaviour
+    public static List<T> CreateInstances<T>(List<GameObject> Templates, ExtndGameObjSetup extendSetup)
+        where T : MonoBehaviour
     {
-        List<TComponent> components = new List<TComponent>();
+        List<T> components = new List<T>();
 
         foreach (GameObject template in Templates)
         {

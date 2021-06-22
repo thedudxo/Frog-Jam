@@ -4,18 +4,23 @@ using UnityEngine;
 using static GM.Platform;
 
 namespace Frogs.Instances.Setups {
-    public class CameraSetup : MonoBehaviour
+    class CameraSetup : ISetup
     {
-        [SerializeField] new Camera camera;
+        readonly Camera camera;
 
         readonly Rect fullscreen = new Rect(0, 0, 1, 1f);
         readonly Rect middle = new Rect(0, .25f, 1, .5f);
         readonly Rect top = new Rect(0, 0.5f, 1, .5f);
         readonly Rect bottom = new Rect(0, 0f, 1, .5f);
 
-        public void Setup(ViewMode viewMode)
+        public CameraSetup(Frog frog)
         {
-            switch (viewMode)
+            camera = frog.controllers.camera.GetCamera();
+        }
+
+        public void Setup(Conditions c)
+        {
+            switch (c.ViewMode)
             {
                 case ViewMode.Single:
                     switch (GM.platform)

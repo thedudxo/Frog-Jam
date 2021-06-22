@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Characters.Instances.Inputs;
 
 namespace Frogs.Instances.Inputs
 {
     public enum Action { Jump, Suicide, Escape }
 
-    public class FrogInputs : MonoBehaviour
+    public class FrogInputs : MonoBehaviour, IKeybindings<Action>
     {
         [SerializeField] public FrogSuicideInput suicide;
         [SerializeField] public JumpInput jump;
@@ -28,12 +29,6 @@ namespace Frogs.Instances.Inputs
         public KeyCode GetKeybind(Action action)
         {
             return keybinds[action];
-        }
-
-        public void SetPlayer2DefaultControlls()
-        {
-            ChangeKeybind(Action.Jump, KeyCode.UpArrow);
-            ChangeKeybind(Action.Suicide, KeyCode.RightShift);
         }
     }
 

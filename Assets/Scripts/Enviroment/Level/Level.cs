@@ -18,7 +18,7 @@ namespace Levels
         [SerializeField] public SplitManager splitManager;
         [SerializeField] public FrogCollection frogManager;
         [SerializeField] public WaveCollection waveManager;
-        [SerializeField] public UI.ControllsTextTip controllsTextTipPrefab;
+        [SerializeField] public UI.TutorialText controllsTextTipPrefab;
 
         [HideInInspector] public List<CleanlyJumpableObstacle> cleanJumps;
 
