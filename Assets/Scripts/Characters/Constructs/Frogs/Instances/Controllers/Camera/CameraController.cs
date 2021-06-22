@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,12 @@ namespace Frogs.Instances {
 
         const float chaserOffsetWeight = 4;
         const float chaserMinDist = 20;
+
+        internal Camera GetCamera()
+        {
+            return camera;
+        }
+
         const float chaserMaxDist = 40;
 
         void Start()

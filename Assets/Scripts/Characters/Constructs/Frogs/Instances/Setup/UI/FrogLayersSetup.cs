@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace Frogs.Instances.Setups
 {
-    public class FrogLayersSetup : MonoBehaviour
+    public class FrogLayersSetup : MonoBehaviour, ISetup
     {
         [SerializeField] List<GameObject> SetUILayerList;
 
         string layerName = GM.player1UILayer;
         int layer;
 
-        public void Setup(ViewMode viewMode)
+        public void Setup(Conditions c)
         {
-            if(viewMode == ViewMode.SplitBottom)
+            if(c.ViewMode == ViewMode.SplitBottom)
             {
                 layerName = GM.player2UILayer;
             }

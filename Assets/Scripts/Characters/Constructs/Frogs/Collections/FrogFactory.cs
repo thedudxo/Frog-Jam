@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Frogs.Instances.Setups;
 using Frogs.Instances;
 using Levels;
@@ -34,7 +32,14 @@ namespace Frogs.Collections
             FrogInstantiateSettings.factory = this;
             FrogInstantiateSettings.veiwMode = veiwMode;
 
-            Frog frog = Object.Instantiate(frogPrefab, collection.transform).GetComponent<Frog>();
+            Frog frog = Object.Instantiate(
+                original: frogPrefab,
+                position: collection.transform.position,
+                rotation: Quaternion.identity,
+                parent: collection.transform
+                ).GetComponent<Frog>();
+
+            //frog.transform.position = frog.spawnpoint;
 
             FrogInstantiateSettings.factory = null;
 

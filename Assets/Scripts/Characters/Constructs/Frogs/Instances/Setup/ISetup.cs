@@ -2,7 +2,7 @@
 {
     public enum ViewMode { Single, SplitTop, SplitBottom }
 
-    struct Conditions
+    public struct Conditions
     {
         public ViewMode ViewMode { get; set; }
         public GM.Platform Platform { get; set; }

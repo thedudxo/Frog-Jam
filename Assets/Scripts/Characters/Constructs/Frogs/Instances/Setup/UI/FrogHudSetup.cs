@@ -4,18 +4,18 @@ using static GM.Platform;
 
 namespace Frogs.Instances.Setups
 {
-    class FrogHudSetup : MonoBehaviour
+    class FrogHudSetup : MonoBehaviour, ISetup
     {
         [SerializeField] RectTransform mainUIPanel;
         [SerializeField] CanvasScaler scaler;
         [SerializeField] new Camera camera;
         [SerializeField] Frog frog;
 
-        private void Start()
+        public void Setup(Conditions c)
         {
             float scale = 1;
 
-            if (GM.platform == Android)
+            if (c.Platform == Android)
             {
                 scale = 2;
             }
@@ -23,7 +23,7 @@ namespace Frogs.Instances.Setups
             scaler.scaleFactor = scale;
             float offset = (Screen.height / 4 ) / scale;
 
-            switch (frog.ViewMode)
+            switch (c.ViewMode)
             {   
                 case ViewMode.Single:
                     if (GM.platform == Android)

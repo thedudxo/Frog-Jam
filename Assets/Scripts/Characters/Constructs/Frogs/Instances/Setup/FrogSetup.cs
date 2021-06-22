@@ -7,24 +7,18 @@ namespace Frogs.Instances.Setups
     {
         [SerializeField] Frog frog;
         [SerializeField] FrogHudSetup Hud;
-        [SerializeField] CameraSetup cameraSetup;
         [SerializeField] public FrogLayersSetup layers;
-
-        KeybindsSetup keybindsSetup;
-        TutorialTextSetup tutorialTextSetup;
 
         List<ISetup> setupModules;
 
         public void Setup(ViewMode viewMode)
         {
             frog.ViewMode = viewMode;
-            var conditions = new Conditions { ViewMode = viewMode, Platform = GM.platform };
-
+            var conditions = new Conditions { 
+                ViewMode = viewMode,
+                Platform = GM.platform };
 
             CreateSetupModules();
-
-            cameraSetup.Setup(viewMode);
-            layers.Setup(viewMode);
             
             foreach(ISetup module in setupModules)
             {
@@ -36,8 +30,12 @@ namespace Frogs.Instances.Setups
         {
             setupModules = new List<ISetup>()
             {
-                new KeybindsSetup(frog)
+                new CameraSetup(frog),
+                new KeybindsSetup(frog),
+                new TutorialTextSetup(frog)
             };
+            setupModules.Add(layers);
+            setupModules.Add(Hud);
         }
     }
 }
