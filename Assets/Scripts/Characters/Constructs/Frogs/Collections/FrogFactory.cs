@@ -39,8 +39,6 @@ namespace Frogs.Collections
                 parent: collection.transform
                 ).GetComponent<Frog>();
 
-            //frog.transform.position = frog.spawnpoint;
-
             FrogInstantiateSettings.factory = null;
 
             return frog;
