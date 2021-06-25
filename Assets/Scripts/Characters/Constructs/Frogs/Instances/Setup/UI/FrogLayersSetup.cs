@@ -7,19 +7,30 @@ namespace Frogs.Instances.Setups
     public class FrogLayersSetup : MonoBehaviour, ISetup
     {
         [SerializeField] List<GameObject> SetUILayerList;
-
-        string layerName = GM.player1UILayer;
+        
         int layer;
 
         public void Setup(Conditions c)
         {
-            if(c.ViewMode == ViewMode.SplitBottom)
+            layer = GetUILayer(c);
+
+            SetObjectLayersInTaskList();
+        }
+
+        private static int GetUILayer(Conditions c)
+        {
+            string layerName = GM.player1UILayer;
+
+            if (c.ViewMode == ViewMode.SplitBottom)
             {
                 layerName = GM.player2UILayer;
             }
 
-            layer = LayerMask.NameToLayer(layerName);
+            return LayerMask.NameToLayer(layerName);
+        }
 
+        private void SetObjectLayersInTaskList()
+        {
             foreach (GameObject obj in SetUILayerList)
             {
                 SetObjectUILayer(obj);
