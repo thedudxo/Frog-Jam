@@ -32,10 +32,10 @@ namespace Frogs.Instances.Setups
             {
                 new CameraSetup(frog),
                 new KeybindsSetup(frog),
-                new TutorialTextSetup(frog)
+                layers,
+                new TutorialTextSetup(frog),
+                Hud
             };
-            setupModules.Add(layers);
-            setupModules.Add(Hud);
         }
     }
 }
