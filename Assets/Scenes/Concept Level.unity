@@ -1098,7 +1098,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Q = Suicide
+  m_Text: Press Q to Die
 --- !u!222 &311283720
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1570,7 +1570,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Spacebar = Jump
+  m_Text: 'Press Space to Jump
 
 '
 --- !u!222 &391627099

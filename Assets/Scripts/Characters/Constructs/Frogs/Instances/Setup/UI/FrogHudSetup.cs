@@ -13,22 +13,26 @@ namespace Frogs.Instances.Setups
 
         public void Setup(Conditions c)
         {
-            float scale = 1;
+            float scale = 1f;
 
             if (c.Platform == Android)
             {
-                scale = 2;
+                scale = 2f;
             }
 
+            const float screenSplits = 2f, ofsetDimensions = 2f;
+
             scaler.scaleFactor = scale;
-            float offset = (Screen.height / 4 ) / scale;
+
+            //keep as floats to avoid rounding issues
+            float offset = Screen.height / screenSplits / ofsetDimensions / scale;
 
             switch (c.ViewMode)
             {   
                 case ViewMode.Single:
                     if (GM.platform == Android)
                     {
-                        offset = (Screen.height / 2) / scale;
+                        offset = Mathf.RoundToInt((Screen.height / 2) / scale);
                         SetOffset(offset, -offset);
                     }
                     break;
