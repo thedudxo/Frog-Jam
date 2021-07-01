@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using static PhysicsUtil1D;
 
-namespace Tests
+namespace Util.Physics
 {
     public class PhysicsUtil
     {

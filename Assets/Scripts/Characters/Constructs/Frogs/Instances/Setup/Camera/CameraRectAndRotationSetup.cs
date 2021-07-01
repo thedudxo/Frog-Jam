@@ -1,24 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using static GM.Platform;
 
-namespace Frogs.Instances.Setups {
-    class CameraSetup : ISetup
+namespace Frogs.Instances.Setups
+{
+    static class CameraRectAndRotationSetup
     {
-        readonly Camera camera;
+        static readonly Rect fullscreen = new Rect(0, 0, 1, 1f);
+        static readonly Rect middle = new Rect(0, .25f, 1, .5f);
+        static readonly Rect top = new Rect(0, 0.5f, 1, .5f);
+        static readonly Rect bottom = new Rect(0, 0f, 1, .5f);
 
-        readonly Rect fullscreen = new Rect(0, 0, 1, 1f);
-        readonly Rect middle = new Rect(0, .25f, 1, .5f);
-        readonly Rect top = new Rect(0, 0.5f, 1, .5f);
-        readonly Rect bottom = new Rect(0, 0f, 1, .5f);
-
-        public CameraSetup(Frog frog)
-        {
-            camera = frog.controllers.camera.GetCamera();
-        }
-
-        public void Setup(Conditions c)
+        public static void SetRectAndRotation(this Camera camera, Conditions c)
         {
             switch (c.ViewMode)
             {
@@ -49,12 +41,12 @@ namespace Frogs.Instances.Setups {
                     ExcludeLayerFromCamera(GM.player1UILayer);
                     break;
             }
-        }
 
-        void ExcludeLayerFromCamera(string layer)
-        {
-            int mask = ~LayerMask.GetMask(layer);
-            camera.cullingMask = mask;
+            void ExcludeLayerFromCamera(string layer)
+            {
+                int mask = ~LayerMask.GetMask(layer);
+                camera.cullingMask = mask;
+            }
         }
     }
 }
