@@ -1,85 +1,59 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Frogs.Instances {
+namespace Frogs.Instances.Cameras
+{
+
     public class CameraController : MonoBehaviour
     {
-        [SerializeField] private new Camera camera;
+        [SerializeField] public new Camera camera;
         [SerializeField] Frog frog;
 
-        [HideInInspector] public CameraTarget target;
 
-        Vector2 targetPos;
-        Vector2 centerOffset;
         Transform camTransform;
-
         const float Acceleration = 4f;
 
-        const float maxY = -1f;
 
-        const float chaserOffsetWeight = 5;
-        const float chaserMinDist = 20;
+        List<ICameraWeight> weights;
+        public TargetWeight targetWeight;
 
-        internal Camera GetCamera()
-        {
-            return camera;
-        }
-
-        const float chaserMaxDist = 40;
 
         void Start()
         {
             camTransform = camera.transform;
 
-            target = new CameraTarget(frog.transform);
-            Vector3 targetStart = target.GetPos();
+            targetWeight = new TargetWeight(camTransform, frog);
 
-            centerOffset = (camTransform.position - targetStart);
-        }
-
-        private void Update()
-        {
-            targetPos = target.GetPos();
+            weights = new List<ICameraWeight>()
+            {
+                new ClosestPursuerWeight(camTransform, frog),
+                targetWeight
+            };
         }
 
         private void FixedUpdate()
         {
-            MoveTowardsTarget();
+            Vector3 DesiredPosition = ResultOfAllWeights();
+            MoveTowards(DesiredPosition);
         }
 
-        float PursuerTrackOffsetX
+        Vector3 ResultOfAllWeights()
         {
-            get
+            Vector3 result = new Vector3();
+
+            foreach(ICameraWeight weight in weights)
             {
-                Pursuits.Pursuer firstPursuerBehind = frog.FrogRunner.runner?.pursuerBehind;
-                if (firstPursuerBehind == null) return 0;
-
-                float
-                    chaserPos = firstPursuerBehind.position,
-                    chaserDistToFrog = camTransform.position.x - chaserPos,
-                    chaserDistanceXNormal = 1 - Mathf.Clamp01(
-                        (chaserDistToFrog - chaserMinDist) / (chaserMaxDist - chaserMinDist));
-
-               return chaserDistanceXNormal * chaserOffsetWeight;
+                result += weight.Get();
             }
+
+            return result;
         }
 
-        public void MoveTowardsTarget()
+        public void MoveTowards(Vector3 desired)
         {
+            Vector3 move = (desired - camTransform.position) * Acceleration;
 
-            float offsetTargetX = (targetPos.x + centerOffset.x);
-            float offsetTargetY = (Mathf.Min(targetPos.y, maxY) + centerOffset.y);
-
-            float moveX = ((offsetTargetX - camTransform.position.x) - PursuerTrackOffsetX) * Acceleration;
-            float moveY =  (offsetTargetY - camTransform.position.y)                     * Acceleration;
-
-
-            camTransform.position = new Vector3(
-                camTransform.position.x + (moveX) * Time.deltaTime,
-                camTransform.position.y + (moveY) * Time.deltaTime,
-                camTransform.position.z);
+            camTransform.position += move * Time.deltaTime;
         }
     }
 }

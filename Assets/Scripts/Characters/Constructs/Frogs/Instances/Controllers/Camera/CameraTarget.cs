@@ -60,20 +60,21 @@ public class CameraTarget
     }
 
 
-    public Vector2 GetPos()
-    {
-        switch (targetType)
-        {
-            case TargetType.transform:
-                targetVector.x = targetTransform.position.x;
-                targetVector.y = targetTransform.position.y;
-                return targetVector;
+    public Vector3 Position {
+    get{
+            switch (targetType)
+            {
+                case TargetType.transform:
+                    targetVector.x = targetTransform.position.x;
+                    targetVector.y = targetTransform.position.y;
+                    return targetVector;
 
-            case TargetType.vector2:
-                return targetVector;
+                case TargetType.vector2:
+                    return targetVector;
+            }
+
+            return Vector2.zero;
         }
-
-        return Vector2.zero;
     }
 
 }

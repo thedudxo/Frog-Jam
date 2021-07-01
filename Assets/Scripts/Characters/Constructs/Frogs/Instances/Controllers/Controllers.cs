@@ -4,6 +4,7 @@ using Frogs.Instances.Inputs;
 using Frogs.Instances.State;
 using Frogs.Instances.Audio;
 using UnityEngine;
+using Frogs.Instances.Cameras;
 
 namespace Frogs.Instances
 {

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using Frogs.Instances.Cameras;
 using UnityEngine;
 
 namespace Frogs.Instances.State
@@ -23,14 +23,14 @@ namespace Frogs.Instances.State
             {
                 rb.velocity = new Vector2(frog.rb.velocity.x, 0);
                 rb.gravityScale = 1;
-                camera.target.Set(frog.transform);
+                camera.targetWeight.target.Set(frog.transform);
             }
 
             else
             {
                 rb.velocity = Vector2.zero;
                 rb.gravityScale = 0;
-                camera.target.Set(frog.transform.position);
+                camera.targetWeight.target.Set(frog.transform.position);
             }
         }
     }

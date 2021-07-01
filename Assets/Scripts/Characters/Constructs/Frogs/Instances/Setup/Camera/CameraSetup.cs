@@ -12,7 +12,7 @@ namespace Frogs.Instances.Setups
 
         public CameraSetup(Frog frog)
         {
-            camera = frog.controllers.camera.GetCamera();
+            camera = frog.controllers.camera.camera;
             RectAndRotationSetup = new CameraRectAndRotationSetup(camera);
         }
 
