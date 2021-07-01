@@ -11,7 +11,7 @@ namespace Utils.Cameras
 
     public static class ScreenUtil
     {
-        public static float WorldOffsetFromScreenEdge(
+        public static float GetWorldOffsetFromScreenEdgeX(
             this IScreen cameraDecouple, float offsetPercent)
         {
             bool OffsetOutOfRange = offsetPercent > 1 || offsetPercent < 0;

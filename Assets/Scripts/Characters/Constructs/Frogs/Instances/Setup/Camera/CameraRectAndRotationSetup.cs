@@ -3,14 +3,26 @@ using static GM.Platform;
 
 namespace Frogs.Instances.Setups
 {
-    static class CameraRectAndRotationSetup
+    class CameraRectAndRotationSetup : ISetup
     {
         static readonly Rect fullscreen = new Rect(0, 0, 1, 1f);
         static readonly Rect middle = new Rect(0, .25f, 1, .5f);
         static readonly Rect top = new Rect(0, 0.5f, 1, .5f);
         static readonly Rect bottom = new Rect(0, 0f, 1, .5f);
 
-        public static void SetRectAndRotation(this Camera camera, Conditions c)
+        Camera camera;
+
+        public CameraRectAndRotationSetup(Camera camera)
+        {
+            this.camera = camera;
+        }
+
+        public void Setup(Conditions conditions)
+        {
+            SetRectAndRotation(conditions);
+        }
+
+        void SetRectAndRotation(Conditions c)
         {
             switch (c.ViewMode)
             {

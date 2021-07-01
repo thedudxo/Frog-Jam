@@ -27,7 +27,7 @@ namespace Tests.Utils
         [Test]
         public void ReturnsAFloat()
         {
-            float output = screen.WorldOffsetFromScreenEdge(0.15f);
+            float output = screen.GetWorldOffsetFromScreenEdgeX(0.15f);
             Assert.IsNotNull(output);
         }
 
@@ -42,7 +42,7 @@ namespace Tests.Utils
         public void OffsetNotConstrainedBetween01ThrowsException(
             float Offset)
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => screen.WorldOffsetFromScreenEdge(Offset));
+            Assert.Throws<ArgumentOutOfRangeException>(() => screen.GetWorldOffsetFromScreenEdgeX(Offset));
         }
 
         [Test]
@@ -54,7 +54,7 @@ namespace Tests.Utils
         {
             screen.screenWidth = screenWidth;
 
-            float output = screen.WorldOffsetFromScreenEdge(offsetPercent); //the method being tested
+            float output = screen.GetWorldOffsetFromScreenEdgeX(offsetPercent); //the method being tested
 
             Assert.AreEqual(expectedOffset, output);
         }

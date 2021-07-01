@@ -49,7 +49,7 @@ namespace Frogs.Instances {
             MoveTowardsTarget();
         }
 
-        float WaveTrackOffsetX
+        float PursuerTrackOffsetX
         {
             get
             {
@@ -72,7 +72,7 @@ namespace Frogs.Instances {
             float offsetTargetX = (targetPos.x + centerOffset.x);
             float offsetTargetY = (Mathf.Min(targetPos.y, maxY) + centerOffset.y);
 
-            float moveX = ((offsetTargetX - camTransform.position.x) - WaveTrackOffsetX) * Acceleration;
+            float moveX = ((offsetTargetX - camTransform.position.x) - PursuerTrackOffsetX) * Acceleration;
             float moveY =  (offsetTargetY - camTransform.position.y)                     * Acceleration;
 
 
