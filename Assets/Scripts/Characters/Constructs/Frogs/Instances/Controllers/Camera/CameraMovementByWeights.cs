@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Frogs.Instances.Cameras
 {
 
-    public class CameraController : MonoBehaviour
+    public class CameraMovementByWeights : MonoBehaviour
     {
         [SerializeField] public new Camera camera;
         [SerializeField] Frog frog;

@@ -7,7 +7,7 @@ namespace Frogs.Instances.State
     {
         [SerializeField] Frog frog;
         Rigidbody2D rb;
-        new CameraController camera;
+        new CameraMovementByWeights camera;
 
         private void Awake()
         {

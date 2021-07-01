@@ -11,7 +11,7 @@ namespace Frogs.Instances
     public class Controllers : MonoBehaviour
     {
         [SerializeField] public VfxController vfx;
-        [SerializeField] public new CameraController camera;
+        [SerializeField] public new CameraMovementByWeights camera;
         [SerializeField] public JumpController jump;
         [SerializeField] public FrogInputs input;
         [SerializeField] public FrogCleanJumpManager cleanJumpEffects;
