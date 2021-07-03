@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Tests.EditMode.Util
+namespace Util
 {
     class DummyMonoBehaviour : MonoBehaviour
     {
