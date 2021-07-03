@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 
-namespace Frogs.Instances.Cameras
+namespace Movements
 {
-    public class TargetWeight : ICameraWeight
+    public class TargetWeight : IVector3Weight
     {
-        public CameraTarget target;
+        public Target target;
         Vector3 centerOffset;
         const float maxY = -1f;
 
-        public TargetWeight(Transform camTransform, Frog frog)
+        public TargetWeight(Transform camTransform, Target target)
         {
-            target = new CameraTarget(frog.transform);
-            centerOffset = (camTransform.position - target.Position);
+            this.target = target;
+            centerOffset = camTransform.position - target.Position;
         }
 
         public Vector3 Get()

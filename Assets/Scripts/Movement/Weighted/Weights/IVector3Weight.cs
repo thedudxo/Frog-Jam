@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Frogs.Instances.Cameras
+namespace Movements
 {
-    interface ICameraWeight
+    public interface IVector3Weight
     {
         Vector3 Get();
     }

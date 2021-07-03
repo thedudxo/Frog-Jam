@@ -1,9 +1,10 @@
-﻿using Pursuits;
+﻿using Frogs.Instances;
+using Pursuits;
 using UnityEngine;
 
-namespace Frogs.Instances.Cameras
+namespace Movements
 {
-    class ClosestPursuerWeight : ICameraWeight
+    class ClosestPursuerWeight : IVector3Weight
     {
         Transform cameraTransform;
         Frog frog;
@@ -30,7 +31,7 @@ namespace Frogs.Instances.Cameras
                 pursuerDistToFrog = CamPosX - pursuerPosx,
                 pursuerDistanceNormal = 1 - Mathf.Clamp01(
                     (pursuerDistToFrog - chaserMinDist) / (chaserMaxDist - chaserMinDist));
-                
+
             float result = pursuerDistanceNormal * chaserOffsetWeight;
             return new Vector3(-result, 0, 0);
         }

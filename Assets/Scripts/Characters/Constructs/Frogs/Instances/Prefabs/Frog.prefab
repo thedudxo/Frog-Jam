@@ -19756,9 +19756,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vfx: {fileID: 9174729618712038248}
-  camera: {fileID: 4426216400399928226}
-  jump: {fileID: 164193441602028764}
+  cameraMechanics: {fileID: 3695743660425122216}
   input: {fileID: 2840089621339752209}
+  jump: {fileID: 164193441602028764}
   cleanJumpEffects: {fileID: 9098765996569449621}
   audio: {fileID: 1399289886363456598}
   stateContext: {fileID: 3464756183254776309}
@@ -27121,7 +27121,7 @@ GameObject:
   - component: {fileID: 9174729618743871621}
   - component: {fileID: 9174729618743871616}
   - component: {fileID: 9174729618743871618}
-  - component: {fileID: 4426216400399928226}
+  - component: {fileID: 3695743660425122216}
   m_Layer: 2
   m_Name: GameCamera
   m_TagString: MainCamera
@@ -27194,7 +27194,7 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9174729618743871617}
   m_Enabled: 1
---- !u!114 &4426216400399928226
+--- !u!114 &3695743660425122216
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -27203,8 +27203,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9174729618743871617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e47a7152bd13b944b6fb970c27d4bea, type: 3}
+  m_Script: {fileID: 11500000, guid: ed65d5013677ac745a2bb4ba9f6377da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 9174729618743871616}
-  frog: {fileID: 9174729617834607438}
