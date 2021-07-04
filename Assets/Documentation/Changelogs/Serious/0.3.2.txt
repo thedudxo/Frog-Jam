@@ -4,14 +4,19 @@ ____________________
 
 New Features:
 
-- Playable on android
+- Playable on android, Splitscreen included
 
+- Camera position adapts to different screen resolutions
+
+- Perspective Paralax
 ____________________
 
 
 New Art:
 
 - Straws come in more colours
+
+- Reworked sky art. It's now a physical object in the level, which makes more sence in Frog Jam's setting.
 ____________________
 
 
@@ -20,11 +25,6 @@ Changes:
 - Moved the lilly pad before flippy birb forward slightly. It was possible to fall through the gap there if you fell in at an angle, which was unintended.
 
 - Hold down the suicide key to go back to the start of the level
-
-
-- Refactored/optimised code for wave/frog pursuits
-
-- Refactored Frog life/death code into a statemachine
 ____________________
 
 

@@ -2,7 +2,6 @@
 using Movements;
 using System.Collections.Generic;
 using UnityEngine;
-using Utils.Cameras;
 
 namespace Frogs.Instances.Setups
 {
@@ -12,13 +11,16 @@ namespace Frogs.Instances.Setups
         readonly Frog frog;
         readonly Camera camera;
         readonly CameraRectAndRotationSetup RectAndRotationSetup;
+        readonly CameraOffsetSetup cameraOffsetSetup;
 
         public CameraSetup(Frog frog)
         {
             this.frog = frog;
             cameraMechanics = frog.controllers.cameraMechanics;
             camera = cameraMechanics.camera;
+
             RectAndRotationSetup = new CameraRectAndRotationSetup(camera);
+            cameraOffsetSetup = new CameraOffsetSetup(camera);
         }
 
         public void Setup(Conditions c)
@@ -33,34 +35,14 @@ namespace Frogs.Instances.Setups
 
         public MovementByWeights NewMovementByWeights(Target target)
         {
-            
-
             List<IVector3Weight> weights = new List<IVector3Weight>()
             {
                 new ClosestPursuerWeight(camera.transform, frog),
                 new TargetWeight(target),
-                new ConstantWeight(OffsetCamera(target))
+                new ConstantWeight(cameraOffsetSetup.PositionWithTargetOffset(target))
             };
 
             return new MovementByWeights(camera.transform, weights);
-        }
-
-        private Vector3 OffsetCamera(Target target)
-        {
-            Vector3 cameraPosition = camera.transform.position;
-            float ZPos = cameraPosition.z - target.Position.z;
-
-            float YPos = target.Position.y + 4;
-
-            return new Vector3(GetXPos(), YPos, ZPos);
-
-            float GetXPos()
-            {
-                var unityCamera = new UnityCameraFacade(camera);
-                float TargetX = unityCamera.GetWorldPositionOffsetFromScreenLeftEdge(.15f, ZPos);
-                float weight = TargetX - cameraPosition.x;
-                return weight;
-            }
         }
     }
 }
