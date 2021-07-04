@@ -36,7 +36,8 @@ namespace Frogs.Instances.Setups
             List<IVector3Weight> weights = new List<IVector3Weight>()
             {
                 new ClosestPursuerWeight(camera.transform, frog),
-                new TargetWeight(camera.transform, target)
+                new TargetWeight(target),
+                new ConstantWeight(camera.transform.position - target.Position)
             };
 
             return new MovementByWeights(camera.transform, weights);
