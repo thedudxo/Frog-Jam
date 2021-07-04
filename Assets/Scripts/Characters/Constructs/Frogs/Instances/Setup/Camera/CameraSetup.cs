@@ -25,37 +25,42 @@ namespace Frogs.Instances.Setups
         {
             RectAndRotationSetup.Setup(c);
 
-            Target frogTarget = new Target(frog.transform);
-            MovementByWeights movement = NewMovementByWeights(frogTarget);
+            Target target = new Target(frog.transform);
+            MovementByWeights movement = NewMovementByWeights(target);
 
-            cameraMechanics.Setup(movement, frogTarget );
+            cameraMechanics.Setup(movement, target);
         }
 
         public MovementByWeights NewMovementByWeights(Target target)
         {
+            
+
             List<IVector3Weight> weights = new List<IVector3Weight>()
             {
                 new ClosestPursuerWeight(camera.transform, frog),
                 new TargetWeight(target),
-                new ConstantWeight(camera.transform.position - target.Position)
+                new ConstantWeight(OffsetCamera(target))
             };
 
             return new MovementByWeights(camera.transform, weights);
         }
-    }
 
-    class CameraPositionFromScreenEdgeSetup : ISetup
-    {
-        readonly UnityCameraFacade unityCamera;
-
-        public CameraPositionFromScreenEdgeSetup(Camera camera)
+        private Vector3 OffsetCamera(Target target)
         {
-            unityCamera = new UnityCameraFacade(camera);
-        }
+            Vector3 cameraPosition = camera.transform.position;
+            float ZPos = cameraPosition.z - target.Position.z;
 
-        public void Setup(Conditions conditions)
-        {
-            float offset = unityCamera.GetWorldOffsetFromScreenEdgeX(.15f);
+            float YPos = target.Position.y + 4;
+
+            return new Vector3(GetXPos(), YPos, ZPos);
+
+            float GetXPos()
+            {
+                var unityCamera = new UnityCameraFacade(camera);
+                float TargetX = unityCamera.GetWorldPositionOffsetFromScreenLeftEdge(.15f, ZPos);
+                float weight = TargetX - cameraPosition.x;
+                return weight;
+            }
         }
     }
 }
