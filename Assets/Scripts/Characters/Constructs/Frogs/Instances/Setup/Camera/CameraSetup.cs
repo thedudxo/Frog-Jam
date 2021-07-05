@@ -10,7 +10,8 @@ namespace Frogs.Instances.Setups
         readonly CameraMechanics cameraMechanics;
         readonly Frog frog;
         readonly Camera camera;
-        readonly CameraRectAndRotationSetup RectAndRotationSetup;
+        readonly CameraRectSetup RectSetup;
+        readonly CameraRotationSetup rotationSetup;
         readonly CameraOffsetSetup cameraOffsetSetup;
 
         public CameraSetup(Frog frog)
@@ -19,17 +20,19 @@ namespace Frogs.Instances.Setups
             cameraMechanics = frog.controllers.cameraMechanics;
             camera = cameraMechanics.camera;
 
-            RectAndRotationSetup = new CameraRectAndRotationSetup(camera);
+            RectSetup = new CameraRectSetup(camera);
+            rotationSetup = new CameraRotationSetup(camera);
             cameraOffsetSetup = new CameraOffsetSetup(camera);
         }
 
         public void Setup(Conditions c)
         {
-            RectAndRotationSetup.Setup(c);
+            RectSetup.Setup(c);
 
             Target target = new Target(frog.transform);
             MovementByWeights movement = NewMovementByWeights(target);
 
+            rotationSetup.Setup(c);
             //RectAndRotationSetup.Setup(c); //must be done after setting up the weights or TopScreen on mobile will have issues
 
             cameraMechanics.Setup(movement, target);
