@@ -25,10 +25,12 @@ namespace Frogs.Instances.Setups
 
         public void Setup(Conditions c)
         {
+            RectAndRotationSetup.Setup(c);
+
             Target target = new Target(frog.transform);
             MovementByWeights movement = NewMovementByWeights(target);
 
-            RectAndRotationSetup.Setup(c); //must be done after setting up the weights or TopScreen on mobile will have issues
+            //RectAndRotationSetup.Setup(c); //must be done after setting up the weights or TopScreen on mobile will have issues
 
             cameraMechanics.Setup(movement, target);
         }
