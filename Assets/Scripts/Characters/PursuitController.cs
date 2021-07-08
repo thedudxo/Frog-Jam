@@ -13,18 +13,20 @@ namespace Characters
         Wave IncomingWave = null;
         [HideInInspector] public Pursuit pursuit = new Pursuit();
 
-        readonly float tickspeed = 1f;
+        readonly float tickspeed = 0f;
         float timeSinceLastTick = 0;
 
 
         public Runner AddRunner()
         {
-            if(IncomingWave == null)
+            Runner r = pursuit.Add<Runner>();
+
+            if (IncomingWave == null)
             {
                 waves.waveStarter.StartWave(pursuit.Add<Pursuer>());
             }
 
-            return pursuit.Add<Runner>();
+            return r;
         }
 
         public void Tick()
@@ -41,6 +43,7 @@ namespace Characters
                 Tick();
             }
 
+            
             if (Input.GetKeyDown(KeyCode.P))
             {
                 foreach (string s in pursuit.LastTickLog)

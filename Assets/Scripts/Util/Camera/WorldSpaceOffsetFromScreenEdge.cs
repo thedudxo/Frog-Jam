@@ -11,14 +11,14 @@ namespace Utils.Cameras
 
     public static class ScreenUtil
     {
-        public static float GetWorldOffsetFromScreenEdgeX(
-            this IScreen cameraDecouple, float offsetPercent)
+        public static float GetWorldPositionOffsetFromScreenLeftEdge(
+            this IScreen cameraDecouple, float offsetPercent, float ZPosition = 0)
         {
             bool OffsetOutOfRange = offsetPercent > 1 || offsetPercent < 0;
             if (OffsetOutOfRange) throw new ArgumentOutOfRangeException("offsetPercent");
 
             float offsetPosition = cameraDecouple.ScreenWidth * offsetPercent;
-            var screenPos = new Vector3(offsetPosition, 0, 0);
+            var screenPos = new Vector3(offsetPosition, 0, ZPosition);
             var worldPos = cameraDecouple.ScreenToWorld(screenPos);
 
             return worldPos.x;

@@ -57,10 +57,5 @@ namespace Waves
             state = Wave.State.normal;
             pursuerController.Setup(pursuer);
         }
-
-        public float GetXPos()
-        {
-            return transform.position.x;
-        }
     }
 }

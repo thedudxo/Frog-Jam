@@ -6,10 +6,10 @@ using Characters;
 
 namespace Frogs.Instances
 {
-    public class FrogRunner : MonoBehaviour, 
-        INotifyOnLeftPlatform, 
-        INotifyOnDeath, 
-        INotifyOnEndLevel, 
+    public class FrogRunner : MonoBehaviour,
+        INotifyOnLeftPlatform,
+        INotifyOnDeath,
+        INotifyOnEndLevel,
         INotifyOnRestart
     {
         [SerializeField] public Frog frog;
@@ -36,13 +36,14 @@ namespace Frogs.Instances
         }
 
         public void OnEndLevel() => EndChase();
-        public void OnRestart() => EndChase();
+        public void OnRestart() { EndChase(); }
         public void OnLeftPlatform() => StartChase();
         public void OnDeath()
         {
             if (runner == null) return;
-            float setbackPos = runner.position - frog.SetbackDistance;
-            bool wouldResetBehindChaser = runner.pursuerBehind?.position > setbackPos;
+
+            if(frog.state.inDanger)
+                //EndChase();
 
             pursuitHandler.Tick();
         }
@@ -58,7 +59,5 @@ namespace Frogs.Instances
         {
             runner = pursuitHandler.AddRunner();
         }
-
-
     }
 }

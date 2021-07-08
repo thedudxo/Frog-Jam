@@ -176,7 +176,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cloud 2Straw Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8428801162286610414, guid: 561b98bbcdc0776498b0bc6f4cc9b266, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 561b98bbcdc0776498b0bc6f4cc9b266, type: 3}
 --- !u!4 &6751295755842393966 stripped
 Transform:

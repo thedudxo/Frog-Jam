@@ -3,7 +3,7 @@ using static GM.Platform;
 
 namespace Frogs.Instances.Setups
 {
-    class CameraRectAndRotationSetup : ISetup
+    class CameraRectSetup : ISetup
     {
         static readonly Rect fullscreen = new Rect(0, 0, 1, 1f);
         static readonly Rect middle = new Rect(0, .25f, 1, .5f);
@@ -12,7 +12,7 @@ namespace Frogs.Instances.Setups
 
         Camera camera;
 
-        public CameraRectAndRotationSetup(Camera camera)
+        public CameraRectSetup(Camera camera)
         {
             this.camera = camera;
         }
@@ -41,10 +41,6 @@ namespace Frogs.Instances.Setups
 
                 case ViewMode.SplitTop:
                     camera.rect = top;
-                    if (GM.platform == Android)
-                    {
-                        camera.transform.rotation = Quaternion.Euler(0, 0, 180);
-                    }
                     ExcludeLayerFromCamera(GM.player2UILayer);
                     break;
 
