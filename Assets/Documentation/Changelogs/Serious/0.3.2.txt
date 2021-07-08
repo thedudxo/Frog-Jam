@@ -9,6 +9,11 @@ New Features:
 - Camera position adapts to different screen resolutions
 
 - Perspective Paralax
+
+- Hold down the suicide key to go back to the start of the level
+
+- Reworked the UI and Camera to work well on both PC and Mobile
+
 ____________________
 
 
@@ -24,7 +29,6 @@ Changes:
 
 - Moved the lilly pad before flippy birb forward slightly. It was possible to fall through the gap there if you fell in at an angle, which was unintended.
 
-- Hold down the suicide key to go back to the start of the level
 ____________________
 
 
@@ -43,3 +47,5 @@ ____________________
 
 
 Known Issues:
+
+- Frogs can get stuck in objects when respawning

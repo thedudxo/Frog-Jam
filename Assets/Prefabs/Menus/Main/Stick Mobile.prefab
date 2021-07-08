@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1626260854555151678, guid: 2389e9cda3acd4446b2d9f59b16f29d7,
         type: 3}
       propertyPath: m_Name
-      value: Stick
+      value: Stick Mobile
       objectReference: {fileID: 0}
     - target: {fileID: 3450224731774916836, guid: 2389e9cda3acd4446b2d9f59b16f29d7,
         type: 3}
@@ -115,6 +115,11 @@ PrefabInstance:
     - target: {fileID: 3450224731774916836, guid: 2389e9cda3acd4446b2d9f59b16f29d7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326269435736943365, guid: 2389e9cda3acd4446b2d9f59b16f29d7,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6326269435736943366, guid: 2389e9cda3acd4446b2d9f59b16f29d7,

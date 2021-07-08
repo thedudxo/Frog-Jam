@@ -4,6 +4,8 @@
     {
         PursuitMemberCollection memberList;
         int memberCount;
+        int currentIndex;
+        Pursuer previousPursuer = null;
 
         public DefaultPursuitRules(PursuitMemberCollection memberList)
         {
@@ -14,49 +16,41 @@
         {
             memberCount = memberList.members.Count;
 
-            Pursuer previousPursuer = null;
 
             for (int index = 0; index <= memberCount - 1; index++)
             {
-                PursuitMember member = memberList.members[index];
-                 
-                if (member is Pursuer)
-                {
-                    previousPursuer = PursuerRules(previousPursuer, index, member);
-                }
+                currentIndex = index;
 
-                else
-                {
-                    (member as Runner).pursuerBehind = previousPursuer;
-                }
+                PerformRulesBasedOnMemberType();
             }
         }
 
-        Pursuer PursuerRules(Pursuer previousPursuer, int index, PursuitMember member)
+        private void PerformRulesBasedOnMemberType()
         {
-            bool notLastMember = index != memberCount - 1;
+            PursuitMember member = memberList.members[currentIndex];
 
-            if (notLastMember)
-            {
-                bool nextMemberIsPursuer = memberList.members[index + 1] is Pursuer;
-
-                if (nextMemberIsPursuer)
-                {
-                    memberList.Remove(member);
-                }
-
-                else
-                {
-                    previousPursuer = member as Pursuer;
-                }
-            }
+            if (member is Pursuer)
+                PursuerRules(member as Pursuer);
 
             else
-            {
-                memberList.Remove(member);
-            }
-
-            return previousPursuer;
+                RunnerRules(member as Runner);
         }
+
+        void RunnerRules(Runner runner)
+        {
+            runner.pursuerBehind = previousPursuer;
+        }
+
+        void PursuerRules(Pursuer pursuer)
+        {
+            if (pursuerIsLast || nextMemberIsPursuer)
+                memberList.Remove(pursuer);
+
+            else
+                previousPursuer = pursuer;
+        }
+
+        bool nextMemberIsPursuer => memberList.members[currentIndex + 1] is Pursuer;
+        bool pursuerIsLast => currentIndex == memberCount - 1;
     }
 }

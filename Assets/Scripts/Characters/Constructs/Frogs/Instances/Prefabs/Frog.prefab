@@ -19874,6 +19874,7 @@ MonoBehaviour:
   cleanJumpEffects: {fileID: 9098765996569449621}
   audio: {fileID: 1399289886363456598}
   stateContext: {fileID: 3464756183254776309}
+  dangerState: {fileID: 614079914018134035}
 --- !u!1 &9174729617302572155
 GameObject:
   m_ObjectHideFlags: 0

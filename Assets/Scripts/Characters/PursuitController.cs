@@ -19,12 +19,14 @@ namespace Characters
 
         public Runner AddRunner()
         {
-            if(IncomingWave == null)
+            Runner r = pursuit.Add<Runner>();
+
+            if (IncomingWave == null)
             {
                 waves.waveStarter.StartWave(pursuit.Add<Pursuer>());
             }
 
-            return pursuit.Add<Runner>();
+            return r;
         }
 
         public void Tick()

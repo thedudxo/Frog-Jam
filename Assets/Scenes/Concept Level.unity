@@ -5999,8 +5999,8 @@ MonoBehaviour:
   _region: {fileID: 1563441021}
   expandRegion: {x: 10, y: 15}
   region: {fileID: 1563441021}
-  averageSpeed: -0.02
-  speedVariance: 0.005
+  averageSpeed: -0.04
+  speedVariance: 0.008
   randomRespawnTime: {x: 2, y: 6}
   randomLifeTime: {x: 5, y: 20}
   Clouds: []
