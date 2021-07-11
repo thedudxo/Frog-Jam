@@ -47,7 +47,8 @@ namespace Tests.Pursuits
             Assert.That(runner.pursuerBehind == null);
         }
 
-        bool MembersDoesNotContainPursuer => members.list.Contains(pursuer) == false;
+        bool PursuerWasRemoved => members.removed.Contains(pursuer);
+        bool PursuerNotRemoved => members.removed.Contains(pursuer) == false;
 
         [Test]
         public void PursuerRemoved_If_LastInList()
@@ -56,7 +57,7 @@ namespace Tests.Pursuits
 
             rules.Check();
 
-            Assert.That(MembersDoesNotContainPursuer);
+            Assert.That(PursuerWasRemoved);
         }
 
         [Test]
@@ -67,7 +68,7 @@ namespace Tests.Pursuits
 
             rules.Check();
 
-            Assert.That(MembersDoesNotContainPursuer);
+            Assert.That(PursuerWasRemoved);
         }
 
         [Test]
@@ -77,7 +78,7 @@ namespace Tests.Pursuits
 
             rules.Check();
 
-            Assert.Contains(pursuer, members.list);
+            Assert.That(PursuerNotRemoved);
         }
 
         [Test]
@@ -87,7 +88,7 @@ namespace Tests.Pursuits
 
             rules.Check();
 
-            Assert.That(MembersDoesNotContainPursuer);
+            Assert.That(PursuerWasRemoved);
         }
     }
 }

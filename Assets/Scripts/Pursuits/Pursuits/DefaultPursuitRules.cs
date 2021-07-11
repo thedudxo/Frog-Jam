@@ -13,19 +13,16 @@
 
         public void Check()
         {
-
-            for (int index = 0; index <= members.Count - 1; index++)
+            foreach(PursuitMember member in members)
             {
-                currentIndex = index;
+                PerformRulesBasedOnMemberType(member);
 
-                PerformRulesBasedOnMemberType();
+                currentIndex++;
             }
         }
 
-        private void PerformRulesBasedOnMemberType()
+        private void PerformRulesBasedOnMemberType(PursuitMember member)
         {
-            PursuitMember member = members[currentIndex];
-
             if (member is Pursuer)
                 PursuerRules(member as Pursuer);
 

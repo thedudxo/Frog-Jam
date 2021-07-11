@@ -6,6 +6,7 @@ namespace Tests.Pursuits
     class MemberListMock : IPursuitRulesMemberCollection
     {
         public List<PursuitMember> list = new List<PursuitMember>();
+        public List<PursuitMember> removed = new List<PursuitMember>();
 
         public PursuitMember this[int index] 
         { 
@@ -24,6 +25,6 @@ namespace Tests.Pursuits
 
         public IEnumerator<PursuitMember> GetEnumerator() => list.GetEnumerator();
 
-        public void Remove(PursuitMember member) => list.Remove(member);
+        public void Remove(PursuitMember member) => removed.Add(member);
     }
 }
