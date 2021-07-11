@@ -90,5 +90,26 @@ namespace Tests.Pursuits
 
             Assert.That(PursuerWasRemoved);
         }
+
+        [Test]
+        public void SingleRunner()
+        {
+            members.list.Add(runner);
+
+            rules.Check();
+
+            Assert.Pass();
+        }
+
+        [Test]
+        public void MultipleTicks()
+        {
+            AddTwoPursuitMembersInOrder(pursuer, runner);
+
+            rules.Check();
+            rules.Check();
+
+            Assert.Pass();
+        }
     }
 }

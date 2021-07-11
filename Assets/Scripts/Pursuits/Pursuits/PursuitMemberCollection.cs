@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace Pursuits
 {
@@ -10,9 +11,19 @@ namespace Pursuits
 
         public PursuitMember this[int index]
         {
-            get => members[index];
-            set => members[index] = value;
+            get 
+            {
+                if (IndexOutOfBounds(index)) throw new ArgumentOutOfRangeException();
+                return members[index];
+            }
+            set
+            {
+                if (IndexOutOfBounds(index)) throw new ArgumentOutOfRangeException();
+                members[index] = value;
+            }
         }
+
+        bool IndexOutOfBounds(int index) => index < 0 || index > members.Count - 1;
 
         public int Count => members.Count;
 

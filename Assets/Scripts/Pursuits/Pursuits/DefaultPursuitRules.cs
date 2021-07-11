@@ -3,7 +3,7 @@
     public class DefaultPursuitRules : IPursuitRules
     {
         readonly IPursuitRulesMemberCollection members;
-        int currentIndex;
+        int currentIndex = 0;
         Pursuer previousPursuer = null;
 
         public DefaultPursuitRules(IPursuitRulesMemberCollection memberList)
@@ -19,6 +19,8 @@
 
                 currentIndex++;
             }
+
+            currentIndex = 0;
         }
 
         private void PerformRulesBasedOnMemberType(PursuitMember member)
