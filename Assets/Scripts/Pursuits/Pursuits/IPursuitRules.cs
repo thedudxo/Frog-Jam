@@ -1,6 +1,6 @@
 ﻿namespace Pursuits
 {
-    interface IPursuitRules
+    public interface IPursuitRules
     {
         void Check();
     }

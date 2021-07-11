@@ -1,23 +1,20 @@
 ﻿namespace Pursuits
 {
-    class DefaultPursuitRules : IPursuitRules
+    public class DefaultPursuitRules : IPursuitRules
     {
-        PursuitMemberCollection memberList;
-        int memberCount;
+        readonly IPursuitRulesMemberCollection members;
         int currentIndex;
         Pursuer previousPursuer = null;
 
-        public DefaultPursuitRules(PursuitMemberCollection memberList)
+        public DefaultPursuitRules(IPursuitRulesMemberCollection memberList)
         {
-            this.memberList = memberList;
+            this.members = memberList;
         }
 
         public void Check()
         {
-            memberCount = memberList.members.Count;
 
-
-            for (int index = 0; index <= memberCount - 1; index++)
+            for (int index = 0; index <= members.Count - 1; index++)
             {
                 currentIndex = index;
 
@@ -27,7 +24,7 @@
 
         private void PerformRulesBasedOnMemberType()
         {
-            PursuitMember member = memberList.members[currentIndex];
+            PursuitMember member = members[currentIndex];
 
             if (member is Pursuer)
                 PursuerRules(member as Pursuer);
@@ -43,14 +40,14 @@
 
         void PursuerRules(Pursuer pursuer)
         {
-            if (pursuerIsLast || nextMemberIsPursuer)
-                memberList.Remove(pursuer);
+            if (PursuerIsLast || NextMemberIsPursuer)
+                members.Remove(pursuer);
 
             else
                 previousPursuer = pursuer;
         }
 
-        bool nextMemberIsPursuer => memberList.members[currentIndex + 1] is Pursuer;
-        bool pursuerIsLast => currentIndex == memberCount - 1;
+        bool NextMemberIsPursuer => members[currentIndex + 1] is Pursuer;
+        bool PursuerIsLast => currentIndex == members.Count - 1;
     }
 }

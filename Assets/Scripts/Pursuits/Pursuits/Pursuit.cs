@@ -9,9 +9,12 @@ namespace Pursuits
         PursuitTickRunner ticks;
         public List<string> LastTickLog => ticks.LastTickLog;
 
-        public Pursuit()
+        public Pursuit(IPursuitRules rules = null)
         {
-            rules = new DefaultPursuitRules(memberList);
+            if (rules == null)
+                rules = new DefaultPursuitRules(memberList);
+            else this.rules = rules;
+
             ticks = new PursuitTickRunner(memberList, rules);
         }
 

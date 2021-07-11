@@ -1,150 +1,87 @@
 ﻿using NUnit.Framework;
-using UnityEngine;
-using UnityEngine.TestTools;
 using Pursuits;
 
 namespace Tests.Pursuits
 {
-    public class PursuitTest
+    class MockRules : IPursuitRules
+    {
+        public void Check() { }
+    }
+
+    public class PursuitTest : INotifyOnMemberRemoved
     {
         Pursuit pursuit;
-        /*
-        void LogList()
-        {
-            foreach (string s in pursuit.LastTickLog)
-            {
-                Debug.Log(s);
-            }
-        }
 
-        void SetupPursuit()
-        {
-            pursuit = new Pursuit();
-            pursuit.add.pursuerStartPos = -1;
-        }
+        public bool removed = false;
+        public void OnMemberRemoved() => removed = true;
 
-        
-        Pursuer GetNewPursuer()
+        [SetUp]
+        public void Setp()
         {
-            return new Pursuer(new MockPositionController());
-        }
-
-        Runner AddBasicRunner()
-        {
-            Runner r = new Runner(new MockPositionController());
-            pursuit.add.Runner(r, GetNewPursuer);
-            return r;
+            pursuit = new Pursuit( new MockRules() );
         }
 
         [Test]
         public void AddRunner()
         {
-            //setup
-            SetupPursuit();
+            Runner runner = pursuit.Add<Runner>();
 
-            AddBasicRunner();
-
-            //perform
-            pursuit.Tick();
-            LogList();
-
-            //assert
-            Assert.That(pursuit.incomingPursuer != null);
-            Assert.That(pursuit.members[0] is Runner);
+            Assert.IsNotNull(runner);
         }
 
-        [Test] 
-        public void AddSeveralRunners()
-        { 
-            SetupPursuit();
+        [Test]
+        public void AddPursuer()
+        {
+            Pursuer pursuer = pursuit.Add<Pursuer>();
 
-            //runner that creates the pursuer
-            AddBasicRunner();
-            pursuit.Tick();
-            LogList();
-
-            //runners before pursuer arrives
-            AddBasicRunner(); 
-            AddBasicRunner();
-
-            pursuit.Tick(); 
-            LogList();
-            pursuit.Tick(); 
-            LogList();
-
-            //new runner after pursuer arrived
-            AddBasicRunner();
-
-            pursuit.Tick();
-            LogList();
-            pursuit.Tick();
-            LogList();
-
-            Assert.That(pursuit.members[0] is Pursuer);
-            Assert.That(pursuit.members[1] is Runner);
-            Assert.That(pursuit.members[2] is Pursuer);
-            Assert.That(pursuit.members[3] is Runner);
-            Assert.That(pursuit.members[4] is Runner);
-            Assert.That(pursuit.members[5] is Runner);
+            Assert.IsNotNull(pursuer);
         }
 
         [Test]
         public void RemoveRunner()
         {
-            SetupPursuit();
+            var runner = pursuit.Add<Runner>();
+            runner.ToNotifyOnMemberRemoved = this;
 
-            Runner r = AddBasicRunner();
-            pursuit.Tick(2);
-            LogList();
-
-            pursuit.remove.Runner(r);
+            pursuit.Remove(runner);
             pursuit.Tick();
-            LogList();
 
-            CollectionAssert.IsEmpty(pursuit.members);
+            Assert.That(removed);
         }
 
         [Test]
-        public void RemoveAdjacentPursuers()
+        public void RemovePursuer()
         {
-            SetupPursuit();
+            var pursuer = pursuit.Add<Pursuer>();
+            pursuer.ToNotifyOnMemberRemoved = this;
 
-            //runner ahead to create an adjacent pursuer
-            AddBasicRunner();
-            pursuit.Tick(2);
-            LogList();
-
-            //this is the runner to remove
-            Runner r = AddBasicRunner();
-            pursuit.Tick(2);
-            LogList();
-
-            //add a final one behind to confirm its only adjacency that gets removed
-            AddBasicRunner();
-            pursuit.Tick(2);
-            LogList();
-
-            //remove that runner
-            pursuit.remove.Runner(r);
+            pursuit.Remove(pursuer);
             pursuit.Tick();
-            LogList();
 
-            //assert
-            Assert.That(pursuit.members[0] is Pursuer);
-            Assert.That(pursuit.members[1] is Runner);
-            Assert.That(pursuit.members[2] is Pursuer);
-            Assert.That(pursuit.members[3] is Runner);
+            Assert.That(removed);
         }
 
         [Test]
-        public void SpeedyRunner()
+        public void Log()
         {
-            SetupPursuit();
+            pursuit.Add<Runner>();
 
-            var speedyPosController = new MockPositionController(3);
-            Runner speedyRunner = new Runner(speedyPosController);
-            pursuit.add.Runner(speedyRunner, GetNewPursuer);
+            pursuit.Tick();
+
+            Assert.IsNotEmpty(pursuit.LastTickLog);
         }
-        */
+
+        [Test]
+        public void MemberWithHigherPosition_IsIndexedHigher()
+        {
+            var r = pursuit.Add<Runner>();
+            var p = pursuit.Add<Pursuer>();
+            r.position = 15;
+            p.position = 10;
+
+            pursuit.Tick();
+
+            Assert.That(r.index == 1);
+        }
     }
 }

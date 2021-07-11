@@ -21,7 +21,7 @@ New Art:
 
 - Straws come in more colours
 
-- Reworked sky art. It's now a physical object in the level, which makes more sence in Frog Jam's setting.
+- Reworked sky art. It's now a physical object in the level, which makes more sense in Frog Jam's setting.
 ____________________
 
 
