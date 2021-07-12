@@ -6,10 +6,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GM.PlayerMode;
 
-public static class SingletonThatNeedsToBeRemoved
-{
-    public static Frog frog;
-}
 namespace Frogs.Collections
 {
     public class FrogCollection : MonoBehaviour
