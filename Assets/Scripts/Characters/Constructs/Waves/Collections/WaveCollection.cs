@@ -7,7 +7,6 @@ namespace Waves
 {
     public class WaveCollection : MonoBehaviour
     {
-
         [Header("External")]
         [SerializeField] public Level level;
 
@@ -39,9 +38,5 @@ namespace Waves
             waves.Add(wave);
             return wave;
         }
-
-        bool WaveActiveFilter(Wave wave) => wave.state == Wave.State.normal;
-        public Wave ClosestBehind(float pos) => FindClosest.Behind(waves,pos,WaveActiveFilter);
-        public Wave ClosestAhead(float pos) => FindClosest.Ahead(waves, pos, WaveActiveFilter);
     }
 }
