@@ -20,7 +20,6 @@ namespace Frogs.Collections
 
 
         public Dictionary<int, Frog> IDFrogs = new Dictionary<int, Frog>();
-        public FrogCollectionEvents events = new FrogCollectionEvents();
 
         private void Awake()
         {
@@ -42,7 +41,6 @@ namespace Frogs.Collections
             frog.collection = this;
             Frogs.Add(frog);
             IDFrogs.Add(frog.gameObject.GetInstanceID(), frog);
-            frog.events.SubscribeOnDeath(events);
         }
 
         public Frog GetFrogComponent(GameObject obj)
