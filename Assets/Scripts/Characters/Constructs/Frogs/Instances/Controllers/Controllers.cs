@@ -1,5 +1,5 @@
 ﻿using Frogs.Instances.Visuals;
-using Frogs.Instances.Jump;
+using Frogs.Instances.Jumps;
 using Frogs.Instances.Inputs;
 using Frogs.Instances.State;
 using Frogs.Instances.Audio;

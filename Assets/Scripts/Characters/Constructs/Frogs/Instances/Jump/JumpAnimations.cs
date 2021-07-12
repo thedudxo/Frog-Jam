@@ -2,7 +2,7 @@
 using UnityEngine;
 using static Util.Normalise;
 
-namespace Frogs.Instances.Jump
+namespace Frogs.Instances.Jumps
 {
     public class JumpAnimations : MonoBehaviour
     {
