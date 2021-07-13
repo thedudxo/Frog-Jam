@@ -2,7 +2,7 @@
 
 namespace Frogs.Instances.Jumps
 {
-    interface IForceReceiver
+    public interface IForceReceiver
     {
         void AddForce(Vector2 force);
         void AddTorque(float torque);

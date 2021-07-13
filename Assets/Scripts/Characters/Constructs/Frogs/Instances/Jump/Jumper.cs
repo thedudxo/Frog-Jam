@@ -2,10 +2,11 @@
 
 namespace Frogs.Instances.Jumps
 {
-    class Jumper
+    public class Jumper
     {
-        const float minJumpCharge01 = .15f;
-        const float smallJumpThreshhold01 = 0.3f;
+        public readonly float minJump01 = .15f;
+        public readonly float smallJumpThreshhold01 = 0.3f;
+        public readonly float Torque = -45f;
         readonly Vector2 jumpForce = new Vector2(500, 600);
 
         IForceReceiver forceReceiver;
@@ -17,15 +18,18 @@ namespace Frogs.Instances.Jumps
 
         public void Jump(float jump01)
         {
+            if (jump01 > 1 || jump01 < 0) 
+                throw new System.ArgumentOutOfRangeException("jump01", "Must be between 0 and 1 inclusive");
+
             jump01 = IncreaseSmallJumpAccuracy(jump01);
             var jumpForce = GetJumpForce(jump01);
             PerformJump(jumpForce);
         }
 
-        float IncreaseSmallJumpAccuracy(float jump01)
+        public float IncreaseSmallJumpAccuracy(float jump01)
         {
             bool minimumJump = jump01 < smallJumpThreshhold01;
-            if (minimumJump) jump01 = minJumpCharge01;
+            if (minimumJump) jump01 = minJump01;
             return jump01;
         }
 
@@ -40,7 +44,7 @@ namespace Frogs.Instances.Jumps
         void PerformJump(Vector2 force)
         {
             forceReceiver.AddForce(force);
-            forceReceiver.AddTorque(-45);
+            forceReceiver.AddTorque(Torque);
         }
     }
 }
