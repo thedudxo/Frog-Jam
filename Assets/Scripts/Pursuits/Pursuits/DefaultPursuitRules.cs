@@ -1,34 +1,30 @@
 ﻿namespace Pursuits
 {
-    class DefaultPursuitRules : IPursuitRules
+    public class DefaultPursuitRules : IPursuitRules
     {
-        PursuitMemberCollection memberList;
-        int memberCount;
-        int currentIndex;
+        readonly IPursuitRulesMemberCollection members;
+        int currentIndex = 0;
         Pursuer previousPursuer = null;
 
-        public DefaultPursuitRules(PursuitMemberCollection memberList)
+        public DefaultPursuitRules(IPursuitRulesMemberCollection memberList)
         {
-            this.memberList = memberList;
+            this.members = memberList;
         }
 
         public void Check()
         {
-            memberCount = memberList.members.Count;
-
-
-            for (int index = 0; index <= memberCount - 1; index++)
+            foreach(PursuitMember member in members)
             {
-                currentIndex = index;
+                PerformRulesBasedOnMemberType(member);
 
-                PerformRulesBasedOnMemberType();
+                currentIndex++;
             }
+
+            currentIndex = 0;
         }
 
-        private void PerformRulesBasedOnMemberType()
+        private void PerformRulesBasedOnMemberType(PursuitMember member)
         {
-            PursuitMember member = memberList.members[currentIndex];
-
             if (member is Pursuer)
                 PursuerRules(member as Pursuer);
 
@@ -43,14 +39,14 @@
 
         void PursuerRules(Pursuer pursuer)
         {
-            if (pursuerIsLast || nextMemberIsPursuer)
-                memberList.Remove(pursuer);
+            if (PursuerIsLast || NextMemberIsPursuer)
+                members.Remove(pursuer);
 
             else
                 previousPursuer = pursuer;
         }
 
-        bool nextMemberIsPursuer => memberList.members[currentIndex + 1] is Pursuer;
-        bool pursuerIsLast => currentIndex == memberCount - 1;
+        bool NextMemberIsPursuer => members[currentIndex + 1] is Pursuer;
+        bool PursuerIsLast => currentIndex == members.Count - 1;
     }
 }

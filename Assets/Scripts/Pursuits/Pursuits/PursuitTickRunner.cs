@@ -4,13 +4,13 @@ namespace Pursuits
 {
     class PursuitTickRunner
     {
-        PursuitMemberCollection memberList;
+        PursuitMemberCollection members;
         IPursuitRules pursuitRules;
         int tickCount = 0;
         public List<string> LastTickLog { get; private set; } = new List<string>();
         public PursuitTickRunner(PursuitMemberCollection memberList, IPursuitRules pursuitRules)
         {
-            this.memberList = memberList;
+            this.members = memberList;
             this.pursuitRules = pursuitRules;
         }
 
@@ -29,11 +29,11 @@ namespace Pursuits
         {
             tickCount++;
 
-            memberList.Sort();
+            members.Sort();
 
             pursuitRules.Check();
-            memberList.RemoveQueuedMembers();
-            memberList.AssignMemberIndexes();
+            members.RemoveQueuedMembers();
+            members.AssignMemberIndexes();
 
             LogTick();
         }
@@ -44,7 +44,7 @@ namespace Pursuits
 
             LastTickLog.Add($"<color=yellow>________ Tick {tickCount} ________</color>");
 
-            foreach (PursuitMember m in memberList.members)
+            foreach (PursuitMember m in members)
             {
                 LastTickLog.Add(m.ToString());
             }

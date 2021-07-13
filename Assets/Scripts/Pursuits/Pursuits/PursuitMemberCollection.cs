@@ -1,11 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System;
 
 namespace Pursuits
 {
-    class PursuitMemberCollection
+    class PursuitMemberCollection : IEnumerable<PursuitMember>, IPursuitRulesMemberCollection
     {
-        public List<PursuitMember> members = new List<PursuitMember>();
-        Stack<PursuitMember> membersToRemove = new Stack<PursuitMember>();
+        readonly List<PursuitMember> members = new List<PursuitMember>();
+        readonly Stack<PursuitMember> membersToRemove = new Stack<PursuitMember>();
+
+        public PursuitMember this[int index]
+        {
+            get 
+            {
+                if (IndexOutOfBounds(index)) throw new ArgumentOutOfRangeException();
+                return members[index];
+            }
+            set
+            {
+                if (IndexOutOfBounds(index)) throw new ArgumentOutOfRangeException();
+                members[index] = value;
+            }
+        }
+
+        bool IndexOutOfBounds(int index) => index < 0 || index > members.Count - 1;
+
+        public int Count => members.Count;
+
 
         public memberType Add<memberType>() where memberType : PursuitMember, new()
         {
@@ -43,6 +64,16 @@ namespace Pursuits
             {
                 members[i].index = i;
             }
+        }
+
+        public IEnumerator<PursuitMember> GetEnumerator()
+        {
+            return ((IEnumerable<PursuitMember>)members).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable)members).GetEnumerator();
         }
     }
 }

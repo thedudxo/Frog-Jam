@@ -5,13 +5,14 @@ namespace Pursuits
     public class Pursuit
     {
         PursuitMemberCollection memberList = new PursuitMemberCollection();
-        IPursuitRules rules;
         PursuitTickRunner ticks;
         public List<string> LastTickLog => ticks.LastTickLog;
 
-        public Pursuit()
+        public Pursuit(IPursuitRules rules = null)
         {
-            rules = new DefaultPursuitRules(memberList);
+            if (rules == null)
+                rules = new DefaultPursuitRules(memberList);
+
             ticks = new PursuitTickRunner(memberList, rules);
         }
 

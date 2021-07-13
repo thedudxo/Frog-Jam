@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Frogs.Instances.Jump
+namespace Frogs.Instances.Jumps
 {
     class GroundedDetection : MonoBehaviour
     {
