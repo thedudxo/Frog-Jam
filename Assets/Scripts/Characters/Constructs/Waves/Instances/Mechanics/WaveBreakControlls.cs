@@ -30,7 +30,6 @@ namespace Waves
 
         public void BreakWave()
         {
-            Debug.Log("BreakCommand");
 
             if (wave.state != normal)
             {

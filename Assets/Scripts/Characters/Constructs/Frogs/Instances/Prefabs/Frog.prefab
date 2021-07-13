@@ -7028,12 +7028,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frog: {fileID: 9174729617834607438}
   rb: {fileID: 9174729618712038166}
+  powerBarUiSlider: {fileID: 9174729616823476525}
   groundedDetection: {fileID: 8501311290567428493}
   animations: {fileID: 6244754691832725776}
   landSounds: {fileID: 9174729617181033737}
   jumpSounds: {fileID: 9174729616964550922}
-  powerBar: {fileID: 9174729616823476525}
-  maxJumpForce: {x: 500, y: 600}
 --- !u!114 &6244754691832725776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7048,6 +7047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpController: {fileID: 164193441602028764}
   animator: {fileID: 9174729618208786169}
+  frog: {fileID: 9174729617834607438}
 --- !u!1 &5840235279232103940
 GameObject:
   m_ObjectHideFlags: 0
@@ -19874,7 +19874,6 @@ MonoBehaviour:
   cleanJumpEffects: {fileID: 9098765996569449621}
   audio: {fileID: 1399289886363456598}
   stateContext: {fileID: 3464756183254776309}
-  dangerState: {fileID: 614079914018134035}
 --- !u!1 &9174729617302572155
 GameObject:
   m_ObjectHideFlags: 0

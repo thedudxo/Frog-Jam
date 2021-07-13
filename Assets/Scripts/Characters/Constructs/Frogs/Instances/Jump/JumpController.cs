@@ -2,68 +2,84 @@
 using UnityEngine;
 using UnityEngine.UI;
 using static Utils.Normalise;
+using Frogs.Instances.State;
 
 namespace Frogs.Instances.Jumps
 {
+    interface IGroundedDetection
+    {
+        bool IsGrounded();
+    }
+
     public class JumpController : MonoBehaviour
     {
         [Header("Dependancies")]
         [SerializeField] Frog frog;
+        FrogStateContext stateContext;
         [SerializeField] Rigidbody2D rb;
+        [SerializeField] Slider powerBarUiSlider;
 
         [Header("Components")]
         [SerializeField] GroundedDetection groundedDetection;
         [SerializeField] JumpAnimations animations;
         Jumper jumper;
+        JumpPowerBar jumpPowerBar;
+        JumpAudio jumpAudio;
 
         [Header("Audio")]
         [SerializeField] AudioClip landSounds;
         [SerializeField] AudioClip jumpSounds;
 
-        [Header("UI")]
-        [SerializeField] Slider powerBar;
-
-        public KeyCode JumpKey => frog.controllers.input.GetKeybind(Inputs.Action.Jump);
-
-
         const float maxJumpCharge = .22f;
               float jumpCharge01 = 0;
 
-        bool _canJump = false;
-        bool Grounded { 
-            get { return _canJump; } 
-            set 
-            {
-                bool changedToTrue = (value != _canJump) && value == true;
-                _canJump = value;
-                if (changedToTrue) LandingFrame();
-            } 
-        }
+        bool grounded = false;
+        bool groundedLastFrame;
         float airTime = 0; 
 
         void Start()
         {
-            powerBar.minValue = 0;
-            powerBar.maxValue = 1;
+            jumpAudio = new JumpAudio (landSounds, jumpSounds);
+            jumpPowerBar = new JumpPowerBar(powerBarUiSlider);
+            stateContext = frog.controllers.stateContext;
 
             List<IJump01Modifier> modifiers = new List<IJump01Modifier>()
             {
                 new IncreaseSmallJumpAccuracy(0.15f, 0.3f)
             };
+
             jumper = new Jumper(new RigidBody2DForceReceiver(rb), modifiers);
         }
 
         void Update()
         {
-            Grounded = groundedDetection.IsGrounded;
+            if (CheckGrounded() == false)
+                AddAirTime();
 
-            if (Grounded == false) 
-                airTime += Time.deltaTime;
+            animations.SetValues(grounded, jumpCharge01);
 
-            animations.SetGrounded(Grounded);
-            animations.Squish(jumpCharge01);
+            jumpPowerBar.SetValue(jumpCharge01);
+        }
 
-            powerBar.value = jumpCharge01;
+        private bool CheckGrounded()
+        {
+            groundedLastFrame = grounded;
+            grounded = groundedDetection.IsGrounded;
+
+            CheckForLandingFrame(groundedLastFrame);
+
+            return grounded;
+        }
+
+        private void CheckForLandingFrame(bool groundedLastFrame)
+        {
+            bool JustLanded = groundedLastFrame == false && grounded == true;
+            if (JustLanded) LandingFrame();
+        }
+
+        private void AddAirTime()
+        {
+            airTime += Time.deltaTime;
         }
 
         public void SetJumpCharge(float chargeTime)
@@ -71,22 +87,32 @@ namespace Frogs.Instances.Jumps
             jumpCharge01 = Normalise01(chargeTime, maxJumpCharge);
         }
 
+        bool Dead => stateContext.state != stateContext.alive;
         public void AttemptJump()
         {
-            bool frogNotAlive = frog.controllers.stateContext.state != frog.controllers.stateContext.alive;
-            if (frogNotAlive) return;
+            if (Dead) return;
 
+            CharacterJumpEffects();
+
+            if (grounded)
+                DoJump();
+        }
+
+        private void CharacterJumpEffects()
+        {
             animations.StartJump(jumpCharge01);
+            jumpAudio.PlayJump();
+        }
 
-            jumpSounds.GetRandomAudioSource().Play();
-
-            if (Grounded) jumper.Jump(jumpCharge01);
+        private void DoJump()
+        {
+            jumper.Jump(jumpCharge01);
         }
 
         private void LandingFrame()
         {
             animations.Landed(airTime);
-            landSounds.GetRandomAudioSource().Play();
+            jumpAudio.PlayLand();
 
             airTime = 0;
         }

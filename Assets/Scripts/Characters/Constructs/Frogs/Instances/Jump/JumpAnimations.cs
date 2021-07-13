@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using static Utils.Normalise;
 
@@ -8,8 +9,15 @@ namespace Frogs.Instances.Jumps
     {
         [SerializeField] JumpController jumpController;
         [SerializeField] Animator animator;
+        [SerializeField] Frog frog;
+        KeyCode JumpKey;
 
         const float AirTimeMaxEffect = 1.5f;
+
+        private void Start()
+        {
+            JumpKey = frog.controllers.input.GetKeybind(Inputs.Action.Jump);
+        }
 
         private void Update()
         {
@@ -25,10 +33,10 @@ namespace Frogs.Instances.Jumps
             animator.SetBool("ChargingJump", false);
             animator.SetFloat("JumpPowerAtKeyRelease", jumpPower);
         }
-
-        public void Squish(float jumpPower)
+        public void SetValues(bool grounded, float jumpCharge01)
         {
-            animator.SetFloat("JumpPower", jumpPower);
+            SetGrounded(grounded);
+            Squish(jumpCharge01);
         }
 
         public void Landed(float airTime)
@@ -37,9 +45,13 @@ namespace Frogs.Instances.Jumps
             animator.SetFloat("AirTime", airTimeNormal);
         }
 
-        public void SetGrounded(bool grounded)
+        void SetGrounded(bool grounded)
         {
             animator.SetBool("Landed", grounded);
+        }
+        void Squish(float jumpPower)
+        {
+            animator.SetFloat("JumpPower", jumpPower);
         }
     }
 }
