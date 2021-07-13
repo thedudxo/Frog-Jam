@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Util.Generic;
+using Utils.Generic;
 
 namespace Levels
 {

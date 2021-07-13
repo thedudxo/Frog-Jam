@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static Util.Normalise;
+using static Utils.Normalise;
 
 namespace Frogs.Instances.Jumps
 {
@@ -47,7 +46,11 @@ namespace Frogs.Instances.Jumps
             powerBar.minValue = 0;
             powerBar.maxValue = 1;
 
-            jumper = new Jumper(new RigidBody2DForceReceiver(rb));
+            List<IJump01Modifier> modifiers = new List<IJump01Modifier>()
+            {
+                new IncreaseSmallJumpAccuracy(0.15f, 0.3f)
+            };
+            jumper = new Jumper(new RigidBody2DForceReceiver(rb), modifiers);
         }
 
         void Update()

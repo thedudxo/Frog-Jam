@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Util.Generic
+namespace Utils.Generic
 {
     public static class TimerUtil
     {

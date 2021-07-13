@@ -1,35 +1,42 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
+using Utils;
 
 namespace Frogs.Instances.Jumps
 {
     public class Jumper
     {
-        public readonly float minJump01 = .15f;
-        public readonly float smallJumpThreshhold01 = 0.3f;
         public readonly float Torque = -45f;
-        readonly Vector2 jumpForce = new Vector2(500, 600);
+        readonly Vector2 jumpForce;
+        public float ModifiedJump01 { get; private set; }
+        List<IJump01Modifier> modifiers;
 
         IForceReceiver forceReceiver;
 
-        public Jumper(IForceReceiver forceReceiver)
+        public Jumper(IForceReceiver forceReceiver, List<IJump01Modifier> modifiers, 
+            float forceX = 500, float forceY = 600)
         {
+            jumpForce = new Vector2(forceX, forceY);
+
             this.forceReceiver = forceReceiver;
+            this.modifiers = modifiers;
         }
 
         public void Jump(float jump01)
         {
-            if (jump01 > 1 || jump01 < 0) 
-                throw new System.ArgumentOutOfRangeException("jump01", "Must be between 0 and 1 inclusive");
+            Normalise.ThrowExceptionIfNotNormal01(jump01);
 
-            jump01 = IncreaseSmallJumpAccuracy(jump01);
-            var jumpForce = GetJumpForce(jump01);
+            ModifiedJump01 = ApplyModifiers(jump01);
+            var jumpForce = GetJumpForce(ModifiedJump01);
             PerformJump(jumpForce);
         }
 
-        public float IncreaseSmallJumpAccuracy(float jump01)
+        float ApplyModifiers(float jump01)
         {
-            bool minimumJump = jump01 < smallJumpThreshhold01;
-            if (minimumJump) jump01 = minJump01;
+            foreach(IJump01Modifier modifier in modifiers)
+            {
+                jump01 = modifier.Modify(jump01);
+            }
             return jump01;
         }
 
